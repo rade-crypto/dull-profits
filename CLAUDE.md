@@ -9,6 +9,8 @@ Audience: roughly 40–65+, has capital, might actually buy or sell one; many wa
   Don't hand the owner editing instructions instead.
 - Keep replies short and direct. The owner often can't see text written between tool calls, so put answers in
   the final message, and send images/audio/video with SendUserFile.
+- **The channel always uses AI voices.** Never suggest the owner record their own voice, hire a voice actor, or
+  anything like that. More generally, don't recommend things the owner didn't ask for; just do the task.
 - The owner uses a **Magnific** account (Freepik rebranded as Magnific, Apr 2026) through the official MCP connector
   `https://mcp.magnific.com` (OAuth). They declined to paste an API key; use the connector, not a key.
 
@@ -60,7 +62,9 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   Jake Miller (id 438), Owen Combs Huff (993), Callum Thornbury (1006), Nico Cochran House (1090). Samples 1 and 4 have
   identical size and length, so check they aren't the same file before sending. The owner hasn't heard them yet.
   **Voice must be made locally (free).** Samples 5–6 (Qwen3-TTS VoiceDesign) were rejected as "AI sounding".
-  Priority is the most human-sounding free local model (try Chatterbox / VibeVoice next).
+  Priority is the most human-sounding free local model. Samples 7–9 = Chatterbox (MIT, `/opt/tts/cb-env`, CPU ~3x slower
+  than real time; Turbo ~1.5x): 7 = Chatterbox with sample 6 as voice reference, 8 = Turbo with the same reference,
+  9 = Chatterbox default voice. Awaiting the owner's pick. Keep Chatterbox's built-in Perth watermark on (needs `setuptools<81`).
   Tools: `tools/voiceover/` (Kokoro-82M and Phonon 31M, both Apache-2.0, CPU). Run `setup.sh` first, since a fresh container has no venv.
   `render.py` makes the VO plus captions.srt, chapters.txt and timings.json. `qa_asr.py` proofreads it with Whisper.
   Don't use Phonon 40M models (non-commercial), Coqui XTTS, F5-TTS, Fish, or ElevenLabs' free tier (no commercial rights).
