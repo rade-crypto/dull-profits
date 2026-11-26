@@ -77,6 +77,12 @@ R2 = ("px-counting-money-office.mp4", 4.0)       # pulling cash (Pexels)
 R3 = ("px-man-working-machine.mp4", 1.0)         # fixing (Pexels)
 
 
+import sys as _sys
+_sys.path.insert(0, str(EP.parents[1] / "tools" / "video"))
+from timing import Timeline as _TL
+CUT1 = round(_TL(EP / "voiceover" / "timings-clean.json").at("and a soda drops"), 3)   # where the second opening clip starts
+
+
 def B(at, bg, scene, **kw):
     """A graphic on its own background image: bg=(clip, seconds) becomes a blurred, darkened, slowly drifting still."""
     return dict(at=at, kind="B", bg=bg, scene=scene, **kw)
@@ -89,8 +95,8 @@ def sc(type, **params):
 # Templates are numbered as in docs/templates (template sheets). Footage-only shots have nothing on top.
 SHOTS = [
     # ---------------------------------------------------------------- 1 · Hook
-    ftg(None, "01-phone-pay-vending.mp4", 1.0),
-    ftg("and a soda drops", "c12-vending-closeup.mp4", 4.0),
+    # one video file for both opening clips, joined by a hard cut on "and a soda drops" (no player switch 1.2 s in)
+    dict(at=None, kind="F", clips=[("01-phone-pay-vending.mp4", 1.0, CUT1), ("c12-vending-closeup.mp4", 4.0, None, {"cut": True})]),
     B("$2", [("prev", 0, 4.3), ("n-coins-office-vending.mp4", 1.0)],                                               # T9 The Split
       split(["@government", "@drink company", "@card processor", "@software company", "@the building", None],
             title="$2.00", titleAt=0, wholeAt="@Before the owner", splitAt="@five other players")),

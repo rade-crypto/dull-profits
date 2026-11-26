@@ -112,7 +112,10 @@ function enter(i, t) {
     if (vids[1 - front].dataset.src === s.src) v = vids[1 - front];
     else if (v.dataset.src !== s.src) { v = vids[1 - front]; v.dataset.src = s.src; v.src = s.src; }
     v.defaultPlaybackRate = v.playbackRate = audio.playbackRate;
-    try { v.currentTime = Math.max(0, t - s.start); } catch (e) {}
+    // During normal playback the next clip is already loaded at its first frame: start it from there instead of
+    // seeking (a seek stalls the picture for a few frames, which reads as a glitch at the cut). Only seek when jumping.
+    const want = Math.max(0, t - s.start);
+    if (!(want < 0.3 && v.readyState >= 2 && v.currentTime < 0.05)) { try { v.currentTime = want; } catch (e) {} }
     whenReady(v, () => {
       if (my !== token) return;
       const old = vids.find(x => x !== v);
@@ -133,8 +136,11 @@ function tick() {
   if (i !== cur) enter(i, t);
   if (s.scene && sceneOf === i) draw(t - s.start);
   if (s.src && vids[front].dataset.src === s.src) {
-    const v = vids[front], want = t - s.start;
-    if (Math.abs(v.currentTime - want) > 0.25) { try { v.currentTime = want; } catch (e) {} }
+    const v = vids[front], want = t - s.start, drift = want - v.currentTime;
+    // keep the picture on the voice without seeking: nudge the speed for small drifts, seek only when far off
+    if (Math.abs(drift) > 0.6) { try { v.currentTime = want; } catch (e) {} }
+    else { const r = audio.playbackRate * (Math.abs(drift) > 0.04 ? 1 + Math.max(-0.25, Math.min(0.25, drift)) : 1);
+      if (Math.abs(v.playbackRate - r) > 0.01) v.playbackRate = r; }
     if (playing && v.paused) v.play().catch(() => {});
     if (!playing && !v.paused) v.pause();
   }
