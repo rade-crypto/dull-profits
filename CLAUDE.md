@@ -9,6 +9,8 @@ Audience: roughly 40–65+, has capital, might actually buy or sell one; many wa
 ## What the owner wants from Claude
 - **Claude makes the videos end to end**: script → voiceover → stock footage + custom motion graphics → captions → final MP4.
   Don't hand the owner editing instructions instead.
+- **Replies: one or two lines max. No explanations, research summaries or reasoning unless the owner asks.**
+  Put explanations in a .md file instead (and only if useful). Never send a wall of text.
 - Keep replies short and direct. The owner often can't see text written between tool calls, so put answers in
   the final message, and send images/audio/video with SendUserFile.
 - **Send scripts/documents so they open in the side panel, not as a download:** write them as `.md` and send with
