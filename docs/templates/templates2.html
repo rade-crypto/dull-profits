@@ -1,0 +1,95 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'LF';src:url(../../tools/video/gfx/fonts/LibreFranklin-400.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:'LCD';src:url(../../tools/video/gfx/fonts/LibreCaslonDisplay-400.woff2) format('woff2')}
+@font-face{font-family:'LCT';src:url(../../tools/video/gfx/fonts/LibreCaslonText-400.woff2) format('woff2')}
+@font-face{font-family:'LCT';src:url(../../tools/video/gfx/fonts/LibreCaslonText-700.woff2) format('woff2');font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#000;font-family:'LF';color:#fff}
+.f{position:relative;width:1920px;height:1080px;overflow:hidden;margin-bottom:20px;background:#0B1422}
+.bg{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(16px) brightness(.42) saturate(.75)}
+.a{position:absolute}.num{font-family:'LCD';line-height:1;letter-spacing:-1px}
+.lab{font:600 50px 'LF'}.sm{font:500 46px 'LF'}
+.S{--tax:#B65A86;--sup:#4F7EC2;--pay:#B88E30;--loc:#16998A}
+</style></head><body class="S">
+
+<!-- 9 The Split on its own background image -->
+<div class="f" id="u1"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-02.jpg)"></div>
+  <div class="a num" style="left:120px;top:150px;font-size:190px">$2.00</div>
+  <div class="a" style="left:120px;top:470px;width:1680px;height:120px;display:flex;gap:6px">
+    <div style="flex:11;background:var(--tax)"></div><div style="flex:94;background:var(--sup)"></div><div style="flex:13;background:var(--pay)"></div><div style="flex:20;background:var(--loc)"></div><div style="flex:62;background:#fff;color:#0B1422;font:600 54px 'LF';display:flex;align-items:center;justify-content:center">Owner 62¢</div>
+  </div>
+  <div class="a sm" style="left:120px;top:630px">Tax<br><b style="font-weight:600;font-size:54px">11¢</b></div>
+  <div class="a sm" style="left:540px;top:630px">Drink company<br><b style="font-weight:600;font-size:54px">94¢</b></div>
+  <div class="a sm" style="left:1000px;top:630px">Cards<br><b style="font-weight:600;font-size:54px">13¢</b></div>
+  <div class="a sm" style="left:1230px;top:630px">Building<br><b style="font-weight:600;font-size:54px">20¢</b></div>
+</div>
+
+<!-- 10 200 pennies: every cent of the $2, colored by who gets it -->
+<div class="f" id="u2"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-30.jpg)"></div>
+  <div class="a lab" style="left:120px;top:110px">Every cent of a $2 soda</div>
+  <div class="a" id="grid" style="left:120px;top:220px;width:1240px;display:grid;grid-template-columns:repeat(20,56px);gap:8px"></div>
+  <div class="a" style="left:1480px;top:260px;display:grid;gap:34px">
+    <div class="sm"><span style="display:inline-block;width:34px;height:34px;background:var(--tax);margin-right:18px"></span>Tax 11¢</div>
+    <div class="sm"><span style="display:inline-block;width:34px;height:34px;background:var(--sup);margin-right:18px"></span>Drink 94¢</div>
+    <div class="sm"><span style="display:inline-block;width:34px;height:34px;background:var(--pay);margin-right:18px"></span>Cards 13¢</div>
+    <div class="sm"><span style="display:inline-block;width:34px;height:34px;background:var(--loc);margin-right:18px"></span>Building 20¢</div>
+    <div class="sm"><span style="display:inline-block;width:34px;height:34px;background:#fff;margin-right:18px"></span>Owner 62¢</div>
+  </div>
+</div>
+
+<!-- 11 Receipt: the month's math on paper -->
+<div class="f" id="u3"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-26.jpg)"></div>
+  <div class="a" style="left:560px;top:110px;width:800px;background:#F7F8F5;color:#111827;padding:56px 64px;font-family:'LCT';transform:rotate(-1.5deg);box-shadow:0 30px 80px rgba(0,0,0,.5)">
+    <div style="font:700 50px 'LCT';text-align:center">One machine, one month</div>
+    <div style="border-top:3px dashed #9aa3ae;margin:30px 0"></div>
+    <div style="display:flex;justify-content:space-between;font-size:50px;margin:18px 0"><span>Sales</span><span>$900</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:50px;margin:18px 0"><span>Building, 10%</span><span>−$90</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:50px;margin:18px 0"><span>Product, fees, gas</span><span>−$613</span></div>
+    <div style="border-top:3px dashed #9aa3ae;margin:30px 0"></div>
+    <div style="display:flex;justify-content:space-between;font:700 62px 'LCT'"><span>Kept</span><span style="background:#FFE14D;padding:0 8px">$197</span></div>
+  </div>
+</div>
+
+<!-- 12 Comparison bars on a background image -->
+<div class="f" id="u4"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-28.jpg)"></div>
+  <div class="a lab" style="left:120px;top:150px">The building's cut</div>
+  <div class="a" style="left:120px;top:290px;width:1700px">
+    <div class="sm">Typical office</div><div style="display:flex;align-items:center;gap:26px;margin:12px 0 50px"><div style="width:230px;height:64px;background:var(--loc)"></div><div class="num" style="font-size:90px">10%</div></div>
+    <div class="sm">Riverside college</div><div style="display:flex;align-items:center;gap:26px;margin:12px 0 50px"><div style="width:760px;height:64px;background:var(--loc)"></div><div class="num" style="font-size:90px">33%</div></div>
+    <div class="sm">LAX</div><div style="display:flex;align-items:center;gap:26px;margin:12px 0 0"><div style="width:1370px;height:64px;background:var(--loc)"></div><div class="num" style="font-size:90px">59.5%</div></div>
+  </div>
+</div>
+
+<!-- 13 Payback timeline on a background image -->
+<div class="f" id="u5"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-24.jpg)"></div>
+  <div class="a lab" style="left:120px;top:170px">Paying off a $3,500 machine</div>
+  <div class="a num" style="left:120px;top:400px;font-size:120px">20 months</div>
+  <div class="a num" style="right:120px;top:400px;font-size:120px;text-align:right">14+ years</div>
+  <div class="a" style="left:120px;top:570px;width:1680px;height:40px;background:rgba(255,255,255,.18)"><div style="width:11%;height:100%;background:#fff"></div><div style="position:absolute;left:11%;top:0;width:86%;height:100%;background:var(--loc)"></div></div>
+  <div class="a sm" style="left:120px;top:640px">Good location</div><div class="a sm" style="right:120px;top:640px">Weak location</div>
+</div>
+
+<!-- 14 Then vs now -->
+<div class="f" id="u6"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-43.jpg);filter:blur(10px) brightness(.45) grayscale(1)"></div>
+  <div class="a" style="left:0;width:960px;top:300px;text-align:center"><div class="lab">1929</div><div class="num" style="font-size:240px;margin-top:20px">5¢</div><div class="sm" style="margin-top:20px">candy bar</div></div>
+  <div class="a" style="left:958px;top:280px;width:4px;height:520px;background:rgba(255,255,255,.6)"></div>
+  <div class="a" style="left:960px;width:960px;top:300px;text-align:center"><div class="lab">Today</div><div class="num" style="font-size:240px;margin-top:20px">$2.00</div><div class="sm" style="margin-top:20px">soda</div></div>
+</div>
+
+<!-- 15 The pitch, struck through -->
+<div class="f" id="u7"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-07.jpg);filter:blur(8px) brightness(.5)"></div>
+  <div class="a num" style="left:0;width:1920px;top:400px;text-align:center;font-size:150px">“Easy passive income.”</div>
+  <div class="a" style="left:330px;top:490px;width:1260px;height:12px;background:#FFE14D"></div>
+</div>
+
+<!-- 16 Company card -->
+<div class="f" id="u8"><div class="bg" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-42.jpg)"></div>
+  <div class="a" style="left:120px;top:300px"><div style="width:520px;height:4px;background:#fff;margin-bottom:40px"></div>
+    <div class="num" style="font-size:200px">Canteen</div>
+    <div class="lab" style="margin-top:40px">Owned by Compass Group</div><div class="sm" style="margin-top:16px">Started in Chicago, 1929</div></div>
+</div>
+
+<script>
+const g = document.getElementById('grid'), seq = [['tax',11],['sup',94],['pay',13],['loc',20],['own',62]];
+seq.forEach(([k,n]) => { for (let i = 0; i < n; i++) { const d = document.createElement('div'); d.style.cssText = `width:56px;height:56px;background:${k==='own'?'#fff':`var(--${k})`}`; g.appendChild(d); } });
+</script>
+</body></html>
