@@ -1,4 +1,6 @@
-# Dull Profits: project context for Claude
+# Net to Owner: project context for Claude
+
+(Renamed from "Dull Profits" on Nov 26, 2026. The repo is still called `dull-profits`.)
 
 Faceless YouTube channel about **buying, owning and selling unglamorous small businesses, with real numbers**
 (vending routes, laundromats, car washes, self-storage, HVAC/plumbing roll-ups, funeral homes).
@@ -51,7 +53,10 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   `simulate_cost` = 0 check above. Only *downloads of existing stock* are free.
 
 ## Decisions so far
-- Name: **Dull Profits**. YouTube @dullprofits, dullprofits.com, X **@dull_profits** (@dullprofits is taken on X).
+- Name: **Net to Owner** (chosen Nov 26, 2026, replacing Dull Profits). YouTube **@nettoowner** and **nettoowner.com** were free
+  on Nov 26, 2026 (not yet claimed; X and Instagram not checked from here). "Net to owner" is the line in business-for-sale
+  listings for what the owner keeps, so it hints at buying/selling without saying it and matches The Split's last slice.
+  Logo: `NET TO OWNER` in white with the split bar under it (colored slices under NET TO, the cream owner slice under OWNER).
 - Logo: `brand/`. Recommended profile picture: `profile-coin.png`. Wordmark and banner are there too.
 - Visual approach (`docs/visual-style-guide.md`): **stock footage + custom motion graphics**, about 60% footage,
   25% graphics mostly overlaid on darkened footage, and 15% "Deal File" source documents.

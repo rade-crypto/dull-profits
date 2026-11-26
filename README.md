@@ -1,6 +1,6 @@
-# Dull Profits
+# Net to Owner
 
-YouTube **@dullprofits** · dullprofits.com · X **@dull_profits** (plain @dullprofits is taken on X)
+YouTube **@nettoowner**, nettoowner.com (renamed from Dull Profits on Nov 26, 2026; the repo name stayed `dull-profits`)
 
 A faceless YouTube channel about **buying, owning and selling unglamorous small businesses, using real numbers**:
 vending routes, laundromats, car washes, self-storage, HVAC and plumbing roll-ups, funeral homes.

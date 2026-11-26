@@ -1,4 +1,4 @@
-# Dull Profits · Episode 1 · Voiceover script
+# Net to Owner, Episode 1: voiceover script
 
 About 1801 words, about 12 minutes. Paste each part into the voice tool. Numbers are written out on purpose so they're read correctly.
 Pronunciation: "Kamel" = CAM-ul (like the animal).

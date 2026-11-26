@@ -1,7 +1,10 @@
 # Channel name ideas
 
-**Decision: Dull Profits.** Free everywhere the owner checked except X, where @dullprofits is taken → use **@dull_profits**
-(backups: @dullprofitshq, @thedullprofits).
+**Decision (Nov 26, 2026): Net to Owner.** @nettoowner on YouTube and nettoowner.com were both free; no other channel or brand
+found with the name. It replaced Dull Profits, which read as playful and "boring" rather than authoritative (the word
+"boring" in titles halved breakout odds for faceless channels in the competitor data). X and Instagram not checked yet.
+
+Earlier decision, kept for the record: Dull Profits (@dullprofits; X @dull_profits).
 
 Checked 2026-11-26. "Free" means the .com domain was unregistered (Verisign registry lookup)
 and the YouTube @handle returned "not found". Names can be taken at any time, so claim them the same day.

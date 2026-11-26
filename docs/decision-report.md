@@ -1,4 +1,6 @@
-# Dull Profits · Decision report
+# Net to Owner: decision report
+
+> The channel was renamed from Dull Profits to **Net to Owner** after this report (Nov 26, 2026). Read "Dull Profits" below as the channel.
 
 *November 26, 2026. This covers what was researched, who the competitors are, what their audiences say, our differentiator, and why each decision was made.*
 
@@ -154,7 +156,7 @@ How each part answers what the research found:
 | **5. Calm and TV-readable, the anti-hype** | No cash piles, no "SHOCKED", no course, no epic music; big type, slow cuts | Patrick Boyle / Rob Berger tone wins with this audience; cash piles and courses are the top distrust signals |
 | **6. Quality over volume** | 2–4 episodes a month, unique research and graphics each time | Mass producers sit at 1K–18K medians and match YouTube's "inauthentic content" pattern |
 
-**Description footer every episode:** "Narration uses a synthetic voice. Researched and written by Dull Profits. No course, no coaching, no affiliate links. Not financial advice."
+**Description footer every episode:** "Narration uses a synthetic voice. Researched and written by Net to Owner. No course, no coaching, no affiliate links. Not financial advice."
 
 ---
 

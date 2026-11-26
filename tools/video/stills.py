@@ -117,7 +117,7 @@ def main():
         .k{{font:800 18px Inter;letter-spacing:2px;padding:4px 10px;border-radius:6px;background:#343944;color:#F2EFE8}}
         .kGF{{background:#4C8DD6;color:#15171B}} .kG{{background:#F2EFE8;color:#15171B}} .kD{{background:#F5D547;color:#15171B}}
         .vo{{margin-top:8px;color:#F2EFE8}} .note{{margin-top:6px;color:#C9A227}}</style></head>
-        <body><h1>{ci + 1} · {title}</h1><div class="sub">Dull Profits · Episode 1 · stills storyboard · {len(cs)} shots</div>
+        <body><h1>{ci + 1} · {title}</h1><div class="sub">Net to Owner, Episode 1, stills storyboard, {len(cs)} shots</div>
         <div class="grid">{cells}</div></body></html>"""
         (out / f"sheet-{ci + 1:02d}.html").write_text(html, encoding="utf-8")
     subprocess.run(["node", str(HERE / "sheets.js"), str(out)], check=True)
