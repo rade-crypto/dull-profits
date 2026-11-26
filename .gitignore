@@ -16,3 +16,4 @@ episodes/*/render/
 # Music beds (CC-BY files; credits are in episodes/*/music/CREDITS.md)
 episodes/*/music/*.mp3
 docs/templates/*.jpg
+episodes/*/tracks/*.ref.jpg

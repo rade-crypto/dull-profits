@@ -24,7 +24,7 @@ Measured on `render/Net-to-Owner-Ep1.mp4` (11:38.7, 91 shots) and `review/shots.
 | Graphics on a blurred background (B) | 56% of runtime | 25% or less |
 | Average shot length | 7.7 s | 4–5 s (about 140–160 shots) |
 | Shots longer than 8 s | 31 of 91 | 0 (end screen excepted) |
-| Shots that measure as frozen (motion median under 1.0 or identical frames) | 41 shots, about 40% of runtime | 0 |
+| Shots that fail the motion check (median under 1.0, or identical frames 0.5 s apart) | 34 shots, 406 s, 58% of runtime | 0 |
 | Clips used more than once | 12 | 0, plus one deliberate callback |
 | On-screen number that differs from the voice | "$3,450" while the voice says "$3,500" (shot 16) | 0 |
 | Graphics in the bottom 15% of the frame | route pins (shot 15), "Source: VMFS USA" (shot 16) | 0 |
@@ -97,9 +97,9 @@ Every frame needs at least one of these, and ideally two:
 
 | Shot | What it is | Motion median |
 |---|---|---|
-| 14 (company names) | | 2.0 |
-| 15 (route) | | 0.24 |
-| 16 (prices) | | 0.93 |
+| 14 | company names, owner said "stuck" | 2.0, with frozen steps |
+| 15 | route, owner said "nothing is happening" | 0.24 |
+| 16 | prices, owner said "stuck" | 0.93 |
 | 91 | end screen | 0.00 |
 | 4 | sharp footage the owner accepted | 6.1 |
 | 9 | sharp footage the owner accepted | 11 |
@@ -268,7 +268,7 @@ The background of a B shot is a **playing clip**, softened like an out-of-focus 
   5. Card and software slices.
   6. A machine in a lobby ("the building").
   7. Building slice and owner slice.
-- Background footage that is a different part of a clip you show sharp is fine, and a focus pull back to sharp on the same clip ("The biggest slice is the product") is the best cutaway of all.
+- The best cutaway is the graphic's own background clip pulled back into focus (the bottling line at "The biggest slice is the product"). It counts as one use of that clip.
 
 ### Rule 10. Transitions
 
@@ -674,7 +674,7 @@ Each line gives the time, what the viewer sees, the kind of shot and what to do.
 | 1:16.9–1:21.8 | Restocking, coin box, repair: one clip each (15) | F | New: Fix D |
 | 1:21.8–1:39.6 | Machine delivered; drawings and prices, with elevator footage in the middle (16) | F + B | New: Fix E |
 | 1:39.6–1:42.0 | A machine in a small business ("the deal with the location") (17) | F | Fix: split shot 17 (8.7 s) with a new clip |
-| 1:42.0–1:48.2 | Break room; **"Free"** rises on "free" (about 1:44.4), placed on the wall area (17) | GF | Fix: navy text if the wall is light |
+| 1:42.0–1:48.2 | Break room; **"Free"** rises on "free" (1:44.5), placed on the wall area (17) | GF | Fix: navy text if the wall is light |
 | 1:48.2–1:55.3 | "5–20%" at the transit station (18) | GF | Fix: move the number to the dark upper-left (y about 150); rise on "five to 20%" |
 | 1:55.3–1:59.7 | Two machines in very different places, about 2.2 s each ("depend almost entirely on where it stands") (19) | F | Fix: sandwich, new clips |
 
@@ -889,7 +889,7 @@ Calibration on the current cut:
 
 - The owner's "stuck" shots score 0.2–2.0, with frozen steps.
 - Footage the owner accepted scores 4–35.
-- The current cut fails 41 shots.
+- The current cut fails 34 shots and flags 8 more as slow.
 
 **2. Shot lengths.**
 

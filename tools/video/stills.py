@@ -46,12 +46,19 @@ def resolve(ep: Path):
     def rel(phrase, s0):
         # Whisper word starts run a little early; graphics land just after the word begins.
         # "@phrase+0.4" lands 0.4 s after the phrase (for staggered builds).
-        m = re.match(r"^(.*?)\+(\d+(?:\.\d+)?)$", phrase)
+        m = re.match(r"^(.*?)([+-]\d+(?:\.\d+)?)$", phrase)
         off = float(m[2]) if m else 0.0
         phrase = m[1] if m else phrase
         return round(max(0.0, tl.at(phrase, after=s0 - 0.05) - s0 + CUE_DELAY + off), 3)
 
+    def span(phrase, s0):
+        # "@@phrase" -> [start, end] of the spoken phrase, relative to the shot (for word-by-word reveals)
+        a = tl.at(phrase, after=s0 - 0.05)
+        return [round(a - s0 + CUE_DELAY, 3), round(tl.end(phrase, after=s0 - 0.05) - s0 + CUE_DELAY, 3)]
+
     def fix(v, s0):
+        if isinstance(v, str) and v.startswith("@@"):
+            return span(v[2:], s0)
         if isinstance(v, str) and v.startswith("@"):
             return rel(v[1:], s0)
         if isinstance(v, str) and 'data-cue="@' in v:
@@ -74,6 +81,48 @@ def resolve(ep: Path):
                             "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,eq=saturation=0.86:contrast=1.03", "-q:v", "2", str(out)], check=True)
         return out.resolve().as_uri()
 
+    # Backgrounds that continue the footage the previous shot was playing (bg="prev" or a ("prev", 0) piece), the focus
+    # pull (rack) when a graphic's background is the clip that was just on screen, and the rack back to sharp after one.
+    def last_piece(p):
+        """(clip, second where the shot's footage ended) for a footage or graphic shot; assumes no slow-down."""
+        if p.get("clip"):
+            return p["clip"], (p.get("in") or 0.0) + p["dur"]
+        if p.get("clips"):
+            cl = p["clips"]
+            joins = sum(0 if (len(x) > 3 and x[3].get("cut")) else 0.5 for x in cl[1:])
+            fixed = sum(x[2] for x in cl[:-1] if len(x) > 2 and x[2])
+            return cl[-1][0], cl[-1][1] + p["dur"] - fixed + joins
+        if p.get("bg"):
+            b = p["bg"]
+            pcs = [tuple(x) for x in b] if isinstance(b[0], (list, tuple)) else [tuple(b)]
+            n = len(pcs)
+            fixed = [x[2] if len(x) > 2 and x[2] else None for x in pcs]
+            free = [i for i in range(n) if fixed[i] is None]
+            rest = p["dur"] + 0.6 * (n - 1) - sum(x for x in fixed if x)
+            L = fixed[-1] if fixed[-1] else rest / max(1, len(free))
+            return pcs[-1][0], pcs[-1][1] + L
+        return None
+    for i, s in enumerate(shots):
+        prev = shots[i - 1] if i else None
+        b = s.get("bg")
+        if b and prev:
+            lp = last_piece(prev)
+            if b == "prev":
+                s["bg"] = b = lp
+            elif isinstance(b, list) and b and b[0][0] == "prev":
+                s["bg"] = b = [lp + tuple(b[0][2:])] + [tuple(x) for x in b[1:]]
+            first = b[0] if isinstance(b[0], (list, tuple)) else b
+            if "rack" not in s:
+                s["rack"] = bool(lp and first[0] == lp[0] and abs(first[1] - lp[1]) < 1.0)
+        if prev and prev.get("kind") in ("B", "D") and s.get("kind") in ("F", "GF") and "rack_open" not in s:
+            s["rack_open"] = 0.5
+    for i, s in enumerate(shots):
+        nxt = shots[i + 1] if i + 1 < len(shots) else None
+        if s.get("scene"):
+            s["scene"]["exit"] = not (nxt and nxt.get("carry"))
+            s["scene"]["kind"] = s["kind"]
+            if s.get("carry"):
+                s["scene"]["carry"] = True
     for s in shots:
         if s.get("scene") and isinstance(s["scene"].get("params", {}).get("img"), (list, tuple)):
             s["scene"]["params"]["img"] = still(s["scene"]["params"]["img"])

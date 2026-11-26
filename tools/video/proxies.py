@@ -3,12 +3,13 @@
 
     python tools/video/proxies.py episodes/01-vending-machines      # light copies for the browser preview
 
-A shot uses `clip` + `in`, or `clips`: a list of (file, in, seconds) pieces joined with short crossfades
-(the last piece's seconds may be None: it fills the rest). Pieces never freeze: if a clip is too short it is
-slowed (at most 1.5x), and only then held. render.py calls make_bg() for the final, higher-quality version.
+A shot uses `clip` + `in`, or `clips`: a list of (file, in, seconds[, options]) pieces joined with short crossfades
+or hard cuts (the last piece's seconds may be None: it fills the rest). Pieces never freeze: a clip may be slowed
+at most 1.1x; if it is still too short the build stops with an error. render.py calls make_bg() for the final version.
 """
 import hashlib
 import json
+import math
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -24,15 +25,17 @@ def dur_of(f):
 
 
 def shot_key(s):
-    """Stable file name for a shot's background: changes only when its footage or length changes."""
+    """Stable file name for a shot's background: changes only when its footage, length or look changes."""
     spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else [])
-                      + ([s["bg"], "v2"] if s.get("bg") else []), sort_keys=True)
+                      + ([s["bg"], s.get("rack"), s.get("soft"), s.get("dim")] if s.get("bg") else [])
+                      + [s.get("rack_open"), s.get("push"), "v3"], sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
 def pieces_of(s):
-    """(file, in, seconds or None, options). Options: flip (mirror so a person sits clear of the text panel),
-    until (last usable second of the source, to stop before a cut inside a stock clip)."""
+    """(file, in, seconds or None, options). Options: flip (mirror so a person sits clear of the text),
+    until (last usable second of the source, to stop before a cut inside a stock clip), cut (hard cut into this
+    piece instead of the 0.5 s crossfade)."""
     base = {"flip": True} if s.get("flip") else {}
     if s.get("clips"):
         return [(p[0], p[1], p[2] if len(p) > 2 else None, dict(base, **(p[3] if len(p) > 3 else {}))) for p in s["clips"]]
@@ -43,32 +46,84 @@ def has_bg(s):
     return bool(s.get("clip") or s.get("clips") or s.get("bg"))
 
 
+MAX_SLOW = 1.1  # footage may be slowed this much at most; never frozen (editing playbook, rule 3)
+
+
+def rack_cmds(path, dur, sigma, dim, sat, opening=False, start=0.0):
+    """sendcmd lines for a real focus pull: sharp -> soft and dim over `dur` (soft -> sharp when opening). Sine ease."""
+    n = max(1, round(dur * FPS))
+    lines = []
+    for f in range(n + 1):
+        e = -(math.cos(math.pi * f / n) - 1) / 2
+        if opening:
+            e = 1 - e
+        d = 1 - (1 - dim) * e
+        lines.append(f"{start + f / FPS:.4f} gblur sigma {0.01 + sigma * e:.3f}, colorchannelmixer rr {d:.3f}, "
+                     f"colorchannelmixer gg {d:.3f}, colorchannelmixer bb {d:.3f}, eq saturation {1 - (1 - sat) * e:.3f};")
+    Path(path).write_text("\n".join(lines))
+
+
+def push_filter(z, dur):
+    """Sub-pixel push-in from 1.0 to 1+z over the shot (perspective samples between pixels, so it never jitters)."""
+    Z = f"(1+{z:.4f}*in/{max(1, round(dur * FPS))})"
+    a, b = f"W*(1-1/{Z})/2", f"H*(1-1/{Z})/2"
+    return (f"perspective=x0='{a}':y0='{b}':x1='W-{a}':y1='{b}':x2='{a}':y2='H-{b}':x3='W-{a}':y3='H-{b}'"
+            f":interpolation=linear:eval=frame")
+
+
+def _piece_chain(i, clip, t_in, L, avail, opt, s):
+    slow = max(1.0, L / avail)
+    if slow > MAX_SLOW + 1e-6:
+        raise RuntimeError(f"shot {s['n']}: {clip.name} from {t_in}s has {avail:.2f}s, needs {L:.2f}s (would slow {slow:.2f}x). "
+                           f"Chain another clip or start earlier.")
+    return slow, (f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
+                  f"crop=1920:1080,setsar=1,{'hflip,' if opt.get('flip') else ''}format=yuv420p,eq=saturation=0.86:contrast=1.03,"
+                  f"trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
+
+
+def _join(chains, lens, joins):
+    """Join pieces p0..pn: crossfade (XF) or hard cut. Returns the label of the joined stream."""
+    last, t = "p0", lens[0]
+    for i in range(1, len(lens)):
+        if joins[i] == 0:
+            chains.append(f"[{last}][p{i}]concat=n=2:v=1:a=0[x{i}]")
+            t += lens[i]
+        else:
+            chains.append(f"[{last}][p{i}]xfade=transition=fade:duration={joins[i]}:offset={t - joins[i]:.3f}[x{i}]")
+            t += lens[i] - joins[i]
+        last = f"x{i}"
+    return last
+
+
 def make_still_bg(ep, s, out, crf):
-    """A graphic's own background: real footage that racks out of focus and dims over the first 0.6 s (the cut into a
-    graphic feels like a focus pull), keeps moving, and drifts slowly sideways. bg is (clip, t) or a list of them:
-    long graphics chain several clips with 0.8 s crossfades so the background never stops."""
+    """A graphic's own background: real footage, kept playing, softened (gblur) and dimmed so text reads, with a slow
+    push-in. If the background continues the clip the previous shot was playing (s["rack"]), the lens pulls focus from
+    sharp to soft over 0.6 s; otherwise it cuts straight to the soft picture. bg is (clip, t) or a list of (clip, t[, seconds])
+    pieces joined with 0.6 s crossfades, so a long graphic gets a new picture every few seconds."""
     bg = s["bg"]
     pieces = [tuple(x) for x in bg] if isinstance(bg[0], (list, tuple)) else [tuple(bg)]
-    dim, dur, XB = 0.42, s["dur"], 0.8
-    cmd, chains, lens, left = ["ffmpeg", "-v", "error", "-y"], [], [], dur
-    for i, (f, t, *_) in enumerate(pieces):
+    dur, XB = s["dur"], 0.6
+    sigma, dim, sat = s.get("soft") or 8.0, s.get("dim") or 0.6, 0.75
+    n = len(pieces)
+    fixed = [p[2] if len(p) > 2 and p[2] else None for p in pieces]
+    free = [i for i in range(n) if fixed[i] is None]
+    rest = dur + XB * (n - 1) - sum(x for x in fixed if x)
+    lens = [fixed[i] if fixed[i] else rest / len(free) for i in range(n)]
+    cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
+    for i, (p, L) in enumerate(zip(pieces, lens)):
+        f, t = p[0], p[1]
         clip = ep / "footage" / f
-        avail = max(0.5, dur_of(clip) - t - 0.05)
-        last = i == len(pieces) - 1
-        L = left if last else min(avail * 1.25, left + XB * (len(pieces) - 1 - i))
-        slow = min(max(1.0, L / avail), 1.5 if last else 1.25)
+        avail = max(0.3, dur_of(clip) - t - 0.05)
+        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s)
         cmd += ["-ss", f"{t:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
-        chains.append(f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=2208:1242:force_original_aspect_ratio=increase,crop=2208:1242,setsar=1,"
-                      f"format=yuv420p,eq=saturation=0.86:contrast=1.03,tpad=stop_mode=clone:stop_duration={L + 1:.2f},trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
-        lens.append(L); left -= L - XB
-    lastl, off = "p0", 0.0
-    for i in range(1, len(pieces)):
-        off += lens[i - 1] - XB
-        chains.append(f"[{lastl}][p{i}]xfade=transition=fade:duration={XB}:offset={off:.3f}[x{i}]"); lastl = f"x{i}"
-    chains.append(f"[{lastl}]trim=duration={dur:.3f},setpts=PTS-STARTPTS,split[a][b]")
-    chains.append(f"[b]boxblur=luma_radius=22:luma_power=2:chroma_radius=12:chroma_power=2,colorchannelmixer=rr={dim}:gg={dim}:bb={dim},eq=saturation=0.75,"
-                  f"format=yuva420p,fade=t=in:st=0:d=0.6:alpha=1[bb]")
-    chains.append(f"[a][bb]overlay=0:0,crop=1920:1080:x='(iw-1920)*(0.15+0.7*t/{dur:.3f})':y=(ih-1080)/2,format=yuv420p[v]")
+        chains.append(ch)
+    last = _join(chains, lens, [0] + [XB] * (n - 1))
+    look = f"gblur=sigma={sigma}:steps=2,colorchannelmixer=rr={dim}:gg={dim}:bb={dim},eq=saturation={sat}"
+    if s.get("rack"):
+        cf = out.with_suffix(".rack.txt")
+        rack_cmds(cf, 0.6, sigma, dim, sat)
+        look = f"sendcmd=f='{cf}'," + look
+    chains.append(f"[{last}]trim=duration={dur:.3f},setpts=PTS-STARTPTS,{look},{push_filter(0.05, dur)},format=yuv420p[v]")
     cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
             "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", str(out)]
     r = subprocess.run(cmd, capture_output=True)
@@ -83,29 +138,31 @@ def make_bg(ep, s, out, crf=28):
     dur = s["dur"]
     ps = pieces_of(s)
     n = len(ps)
+    joins = [0] + [0 if ps[i][3].get("cut") else XF for i in range(1, n)]
     lens = [p[2] for p in ps]
     fixed = sum(L for L in lens[:-1] if L) if n > 1 else 0
-    lens[-1] = dur - fixed + XF * (n - 1) if n > 1 else dur
+    lens[-1] = dur - fixed + sum(joins)
     cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
     for i, ((f, t_in, _, opt), L) in enumerate(zip(ps, lens)):
         clip = ep / "footage" / f
-        avail = max(0.5, min(dur_of(clip), opt.get("until", 1e9)) - t_in - 0.05)
-        slow = min(max(1.0, L / avail), 1.5)
+        avail = max(0.3, min(dur_of(clip), opt.get("until", 1e9)) - t_in - 0.05)
+        slow, ch = _piece_chain(i, clip, t_in, L, avail, opt, s)
         cmd += ["-ss", f"{t_in:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
-        chains.append(f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
-                      f"crop=1920:1080,setsar=1,{'hflip,' if opt.get('flip') else ''}format=yuv420p,eq=saturation=0.86:contrast=1.03,"
-                      f"tpad=stop_mode=clone:stop_duration={L + 1:.2f},trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
-    last, off = "p0", 0.0
-    for i in range(1, n):
-        off += lens[i - 1] - XF
-        chains.append(f"[{last}][p{i}]xfade=transition=fade:duration={XF}:offset={off:.3f}[x{i}]")
-        last = f"x{i}"
+        chains.append(ch)
+    last = _join(chains, lens, joins)
     tail = f"[{last}]"
     for i, (x, y, w, h) in enumerate(s.get("blur") or []):
         chains.append(f"{tail}split[m{i}][c{i}];[c{i}]crop={w}:{h}:{x}:{y},boxblur=luma_radius=24:luma_power=2:chroma_radius=10:chroma_power=2[z{i}];"
                       f"[m{i}][z{i}]overlay={x}:{y}[b{i}]")
         tail = f"[b{i}]"
-    chains.append(f"{tail}null[v]")
+    post = []
+    if s.get("push"):  # a gentle push-in for clips whose camera barely moves
+        post.append(push_filter(s["push"], dur))
+    if s.get("rack_open"):  # after a graphic: start soft and dim, pull focus to sharp (one focus move across the cut)
+        ro, cf = s["rack_open"], out.with_suffix(".open.txt")
+        rack_cmds(cf, ro, 8.0, 0.6, 0.75, opening=True)
+        post.append(f"sendcmd=f='{cf}',gblur=sigma=0.01:steps=2,colorchannelmixer=rr=1:gg=1:bb=1,eq=saturation=1")
+    chains.append(f"{tail}{','.join(post) if post else 'null'}[v]")
     cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
             "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p",
             "-movflags", "+faststart", "-an", str(out)]
@@ -127,9 +184,18 @@ def main():
     edit = json.load(open(ep / "render" / "player" / "edit.json"))
     only = {int(x) for x in sys.argv[2].split(",")} if len(sys.argv) > 2 else None
     shots = [s for s in edit["shots"] if has_bg(s) and (not only or s["n"] in only)]
+    errs = []
+    def safe(s):
+        try:
+            return one(ep, s)
+        except Exception as e:  # report every bad shot, not just the first
+            errs.append(str(e)[:400])
+            return f"{s['n']} FAILED"
     with ThreadPoolExecutor(4) as ex:
-        for n in ex.map(lambda s: one(ep, s), shots):
+        for n in ex.map(safe, shots):
             print("proxy", n, flush=True)
+    if errs:
+        sys.exit("\n".join(errs))
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numer
 .src b{color:var(--ink2);font-weight:700}
 .shadow{text-shadow:0 2px 10px rgba(0,0,0,.55),0 4px 34px rgba(0,0,0,.6)}
 .card{background:transparent;padding:34px 0 0 0}
-.paper{background:#F7F8F5;color:#111827;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'Libre Caslon Text',Georgia,serif;font-weight:400}
+.paper{background:#F7F8F5;color:#111827;box-shadow:none;font-family:'Libre Caslon Text',Georgia,serif;font-weight:400}
 .hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:0}
 </style></head>
 <body><div id="stage"></div>
@@ -32,26 +32,44 @@ body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numer
 // draw(t) sets every element's state for time t (seconds from shot start) and returns a key that
 // only changes while something is moving, so the renderer can reuse identical frames.
 // ---------------------------------------------------------------------------------------------
-const S = document.getElementById('stage');
+const ROOT = document.getElementById('stage');
+let S = ROOT, CAM = null, LAYERS = {}, GLASS = ROOT, CAMKEYS = [], SC = {};
 let CUES = {}, TWEENS = [];
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
-const ease = p => p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+const E = {
+  linear: p => p,
+  inOut: p => p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2, // moves between two resting places
+  out: p => p >= 1 ? 1 : 1 - Math.pow(2, -10 * p),                         // easeOutExpo: arrivals
+  outQuint: p => 1 - Math.pow(1 - p, 5),                                    // bars, rules, lines
+  outCubic: p => 1 - Math.pow(1 - p, 3),                                    // opacity
+  in: p => p * p * p,                                                       // easeInCubic: exits
+  sine: p => -(Math.cos(Math.PI * p) - 1) / 2,                              // camera, routes, highlighter
+};
+const ease = E.inOut;
+const DEF = { fade: 'outCubic', up: 'out', rise: 'out', land: 'out', slide: 'out', pop: 'outQuint', wipe: 'outQuint', grow: 'outQuint', growY: 'outQuint', hl: 'sine', count: 'out', dim: 'outCubic', fn: 'inOut' };
 const cue = c => (c === undefined || c === null) ? 0 : (typeof c === 'number' ? c : !isNaN(parseFloat(c)) ? parseFloat(c) : (c in CUES ? CUES[c] : (() => { throw new Error('missing cue ' + c) })()));
 function el(html, parent = S) { const d = document.createElement('div'); d.innerHTML = html.trim(); const n = d.firstElementChild; parent.appendChild(n); return n; }
-function anim(node, opts) { TWEENS.push(Object.assign({ node, anim: 'fade', dur: (opts && opts.anim === 'up') ? 0.6 : 0.5, at: 0, base: node.style.transform || '' }, opts)); return node; }
+const DUR = { fade: 0.5, up: 0.7, rise: 0.7, land: 0.9, pop: 0.5, wipe: 0.8, grow: 0.8, growY: 0.6, hl: 0.7, count: 1.2 };
+function anim(node, opts) { const a = (opts && opts.anim) || 'fade'; TWEENS.push(Object.assign({ node, anim: a, dur: DUR[a] ?? 0.5, at: 0, base: node.style.transform || '' }, opts)); return node; }
 const fmt = {
   money2: v => '$' + v.toFixed(2), money0: v => '$' + Math.round(v).toLocaleString('en-US'),
   cents: v => Math.round(v) + '¢', int: v => Math.round(v).toLocaleString('en-US'), pct1: v => v.toFixed(1) + '%', pct0: v => Math.round(v) + '%',
 };
 function apply(tw, t) {
-  const a = cue(tw.at), p = tw.ease === false ? clamp((t - a) / tw.dur) : ease(clamp((t - a) / tw.dur));
-  let q = 1; if (tw.out !== undefined) q = 1 - ease(clamp((t - cue(tw.out)) / (tw.outDur || 0.4)));
-  const n = tw.node, o = p * q;
+  const a = cue(tw.at), raw = clamp((t - a) / tw.dur);
+  const p = tw.ease === false ? raw : (E[tw.ease] || E[DEF[tw.anim]] || E.inOut)(raw);
+  let q = 1; if (tw.out !== undefined) q = 1 - E.in(clamp((t - cue(tw.out)) / (tw.outDur || 0.35)));
+  const n = tw.node, o = E.outCubic(clamp((t - a) / Math.min(tw.dur, 0.35))) * q; // opacity lands fast, position keeps settling
   switch (tw.anim) {
     case 'fade': n.style.opacity = o; break;
-    case 'up': n.style.opacity = o; n.style.transform = `${tw.base} translateY(${(1 - p) * 30}px)`; break;
+    case 'up': case 'rise': { const b = Math.max(6 * (1 - clamp((t - a) / 0.45)), 6 * (1 - q));
+      n.style.opacity = o; n.style.transform = `${tw.base} translateY(${(1 - p) * (tw.dist ?? 48) - (1 - q) * 24}px)`;
+      n.style.filter = b > 0.05 && o > 0 ? `blur(${b.toFixed(2)}px)` : ''; break; }
+    case 'land': { const r = tw.rot ?? 0, hold = Math.max(0, t - a - tw.dur);
+      n.style.opacity = o; n.style.transform = `translateY(${(1 - p) * (tw.dist ?? 140)}px) rotate(${(r + (1 - p) * (tw.turn ?? -3) + (tw.sway ?? 0.04) * hold).toFixed(3)}deg)`;
+      n.style.boxShadow = 'none'; break; }
     case 'slide': n.style.opacity = o; n.style.transform = `translateX(${(1 - p) * -220}px)`; break;
-    case 'pop': n.style.opacity = o; n.style.transform = `${tw.base} scale(${0.98 + 0.02 * p})`; break;
+    case 'pop': n.style.opacity = o; n.style.transform = `${tw.base} scale(${(tw.from ?? 0.6) + (1 - (tw.from ?? 0.6)) * p})`; break;
     case 'wipe': n.style.opacity = q; n.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`; break;
     case 'grow': n.style.opacity = q; n.style.transform = `scaleX(${p})`; n.style.transformOrigin = 'left center'; break;
     case 'growY': n.style.opacity = q; n.style.transform = `scaleY(${p})`; n.style.transformOrigin = tw.origin || 'center bottom'; break;
@@ -63,7 +81,81 @@ function apply(tw, t) {
   return (p > 0 && p < 1) || (q > 0 && q < 1) ? p.toFixed(3) + ',' + q.toFixed(3) : (p >= 1 ? 'A' : 'B') + (q >= 1 ? 'a' : 'b');
 }
 window.draw = t => TWEENS.map(tw => apply(tw, t)).join('|');
-window.setup = (scene) => { CUES = scene.cues || {}; TWEENS = []; S.innerHTML = ''; if (scene.opaque) document.body.style.background = 'var(--bg)'; SCENES[scene.type](scene.params || {}, scene); countUps(); draw(0); };
+// Camera: every graphic sits in #cam > layers (far 0.7, mid 1, near 1.25). The camera always drifts and pushes a little,
+// and camTo()/focusOn() add directed moves on cues. Footnotes sit on GLASS, outside the camera.
+// A function of t that runs for the whole shot (hold motion, markers). It reports motion every frame.
+function live(fn, node = ROOT) { return anim(node, { anim: 'fn', at: 0, dur: SC.dur || 8, ease: false, live: true, fn: (pp, q, t) => fn(t) }); }
+// Shapes only (bars, slices, dots). When a later item is spoken, earlier ones step back; `restore` brings all back. Text is never dimmed.
+function spot(items, restore) {
+  const back = restore === undefined ? Infinity : cue(restore);
+  items.forEach((it, i) => { const next = items[i + 1]; if (!next) return; const off = cue(next.at);
+    live(t => { const d = E.sine(clamp((t - off) / 0.4)) * (1 - E.sine(clamp((t - back) / 0.5)));
+      it.node.style.filter = d > 0.001 ? `opacity(${(1 - 0.6 * d).toFixed(3)})` : ''; }); });
+}
+// Text lists: a 6 px bar in the item's colour slides to the row being spoken (0.6 s, outExpo). Text stays white.
+function marker(rows, x = 112) { // rows: [{node, at, key}]
+  const m = el(`<div class="abs" style="left:${x}px;top:0;width:6px;height:0;opacity:0"></div>`);
+  const box = rows.map(r => { const b = r.node.getBoundingClientRect(); return [b.top + 6, b.height - 12]; });
+  live(t => { let i = -1; rows.forEach((r, k) => { if (t >= cue(r.at)) i = k; });
+    if (i < 0) { m.style.opacity = 0; return; }
+    const e = E.out(clamp((t - cue(rows[i].at)) / 0.6)), [y0, h0] = box[Math.max(0, i - 1)], [y1, h1] = box[i];
+    m.style.opacity = i ? 1 : e; m.style.top = (i ? y0 + (y1 - y0) * e : y1) + 'px';
+    m.style.height = (i ? h0 + (h1 - h0) * e : h1 * e) + 'px'; m.style.background = `var(--${rows[i].key || 'own'})`; });
+}
+// Words appear as they are said. span = [start, end] of the spoken phrase (resolve turns "@@phrase" into it).
+// Times are spread by characters, which follows speech closely enough for a calm reveal.
+function wordsIn(node, span) {
+  node.innerHTML = node.innerHTML.split(/(<br\s*\/?>)/).map(part => /^<br/.test(part) ? part :
+    part.split(/(\s+)/).map(w => /^\s*$/.test(w) ? w : `<span class="w" style="display:inline-block">${w}</span>`).join('')).join('');
+  const ws = [...node.querySelectorAll('.w')], total = ws.reduce((a, w) => a + w.textContent.length, 0); let acc = 0;
+  ws.forEach(w => { anim(w, { anim: 'rise', at: span[0] + (span[1] - span[0]) * acc / total + 0.05, dur: 0.45, dist: 14 }); acc += w.textContent.length; });
+}
+// Names and headlines rise from behind their own baseline, letter-spacing settling from +6 px to -1 px.
+function maskRise(node, at, dur = 0.7) {
+  const wrap = document.createElement('div'); wrap.style.clipPath = 'inset(-60px -80px -0.12em -80px)';
+  node.parentNode.insertBefore(wrap, node); wrap.appendChild(node);
+  return anim(node, { anim: 'fn', at, dur: 1.2, ease: false, fn: pp => { const e = E.out(clamp(pp * 1.2 / dur)), e2 = E.out(pp);
+    node.style.opacity = pp > 0 ? 1 : 0; node.style.transform = `translateY(${((1 - e) * 120).toFixed(2)}%)`; node.style.letterSpacing = `${(6 - 7 * e2).toFixed(2)}px`; } });
+}
+function camTo(at, dx = 0, dy = 0, ds = 0, dur = 1.4) { CAMKEYS.push({ at, dx, dy, ds, dur }); }
+function focusOn(node, at, k = 0.35, ds = 0.04, dur = 1.4) { // move the camera part of the way toward a node's centre
+  const r = node.getBoundingClientRect(); camTo(at, (960 - (r.left + r.width / 2)) * k, (540 - (r.top + r.height / 2)) * k * 0.6, ds, dur); }
+function startCamera(sc, p) {
+  const D = sc.dur || 8, SAFE = 96;
+  // origin at the middle of what's on screen, so the push grows the content in place
+  const rs = [...S.children].map(c => c.getBoundingClientRect()).filter(r => r.width && r.height);
+  const L = rs.length ? Math.min(...rs.map(r => r.left)) : 760, R = rs.length ? Math.max(...rs.map(r => r.right)) : 1160;
+  const T = rs.length ? Math.min(...rs.map(r => r.top)) : 440, B = rs.length ? Math.max(...rs.map(r => r.bottom)) : 640;
+  const ox = (L + R) / 2, oy = (T + B) / 2;
+  // push at most 3% (0.35%/s) but never past the safe margins; then drift toward the side with more room
+  let push = p.push ?? Math.min(0.03, 0.0035 * D);
+  push = Math.max(0, Math.min(push, (ox - SAFE) / (ox - L || 1) - 1, (1920 - SAFE - ox) / (R - ox || 1) - 1, (918 - oy) / (B - oy || 1) - 1));
+  const roomL = ox - (ox - L) * (1 + push) - SAFE, roomR = 1920 - SAFE - (ox + (R - ox) * (1 + push));
+  const want = p.drift ?? Math.min(48, 6 * D), drift = roomR >= roomL ? -Math.min(want, Math.max(0, roomR)) : Math.min(want, Math.max(0, roomL));
+  const exitAt = sc.exit === false ? Infinity : D - (sc.exitDur ?? 0.4);
+  anim(CAM, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
+    let x = -drift * pp, y = 0, s = 1 + push * pp;
+    CAMKEYS.forEach(k => { const e = E.sine(clamp((t - cue(k.at)) / k.dur)); x += k.dx * e; y += k.dy * e; s += k.ds * e; });
+    Object.values(LAYERS).forEach((L, i) => { const d = L.depth, xo = E.in(clamp((t - exitAt - (2 - i) * 0.05) / 0.35));
+      L.style.transformOrigin = `${ox}px ${oy}px`;
+      L.style.transform = `translate(${(x * d).toFixed(2)}px, ${(y * d - 20 * xo).toFixed(2)}px) scale(${(1 + (s - 1) * d).toFixed(5)})`;
+      L.style.opacity = 1 - xo; L.style.filter = xo > 0.01 ? `blur(${(6 * xo).toFixed(2)}px)` : ''; });
+    GLASS.style.opacity = 1 - E.in(clamp((t - exitAt) / 0.35));
+  } });
+}
+window.setup = (scene) => {
+  CUES = scene.cues || {}; TWEENS = []; CAMKEYS = []; ROOT.innerHTML = ''; SC = scene;
+  if (scene.opaque) document.body.style.background = 'var(--bg)';
+  CAM = el('<div id="cam" class="abs" style="left:0;top:0;width:1920px;height:1080px"></div>', ROOT);
+  LAYERS = {}; [['far', 0.7], ['mid', 1], ['near', 1.25]].forEach(([k, d]) => { LAYERS[k] = el('<div class="abs" style="left:0;top:0;width:1920px;height:1080px"></div>', CAM); LAYERS[k].depth = d; });
+  GLASS = el('<div class="abs" style="left:0;top:0;width:1920px;height:1080px"></div>', ROOT);
+  S = LAYERS.mid;
+  if (scene.kind === 'GF') scene.params = Object.assign({ drift: 0, push: 0.015 }, scene.params || {});
+  SCENES[scene.type](scene.params || {}, scene); countUps();
+  if (scene.carry) TWEENS.forEach(tw => { if (!tw.live && tw.node !== CAM && cue(tw.at) <= 0.05) tw.at = -100; });
+  if (scene.camera !== false && (scene.params || {}).camera !== false) startCamera(scene, scene.params || {});
+  draw(0);
+};
 
 // Shared pieces ----------------------------------------------------------------------------------
 // No panels, boxes or veils (owner's rule). Text sits on the shot's empty space, or the graphic has its own
@@ -77,13 +169,13 @@ function countUps() {
     if (!['up', 'fade', 'pop', 'slide'].includes(tw.anim)) return;
     const leaves = [tw.node, ...tw.node.querySelectorAll('*')].filter(e => !e.children.length && !counted.has(e));
     leaves.forEach(e => {
-      const txt = e.textContent.trim(), m = txt.match(/^([$~−-]?)(\d[\d,]*\.?\d*)(¢|%|×|x|k|K|M|B)?(\+)?$/);
+      const txt = e.textContent.trim(), m = txt.match(/^([$~−-]?)(\d[\d,]*\.?\d*)(¢|%|×|x|k|K|M|B| billion| million)?(\+)?$/);
       if (!m || /^(19|20)\d\d$/.test(txt) || parseFloat(getComputedStyle(e).fontSize) < 52) return;
       const num = parseFloat(m[2].replace(/,/g, '')); if (!(num > 0)) return;
       const dec = (m[2].split('.')[1] || '').length, comma = m[2].includes(',');
       counted.add(e);
-      add.push({ node: e, anim: 'fn', at: tw.at, dur: num >= 10 ? 1.1 : 0.8, base: '', fn: (pp) => {
-        const v = num * (1 - Math.pow(1 - pp, 3));
+      add.push({ node: e, anim: 'fn', at: tw.at, dur: num >= 10 ? 1.2 : 0.9, ease: false, base: '', fn: (pp) => {
+        const v = num * E.out(pp);
         e.textContent = m[1] + (comma ? v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : v.toFixed(dec)) + (m[3] || '') + (m[4] || ''); } });
     });
   });
@@ -265,8 +357,8 @@ const SCENES = {
     const paper = el(`<div class="abs paper" style="left:${p.x ?? 250}px;top:${p.y ?? 150}px;width:${p.w ?? 1420}px;padding:60px 80px;transform:rotate(${p.rot ?? -1.2}deg)">
       <div style="font:700 46px 'Libre Franklin';color:#111827;margin-bottom:30px">${p.header}</div>
       <div style="font-size:${Math.max(48, p.size || 50)}px;line-height:1.55">${p.html}</div></div>`);
-    anim(paper, { anim: 'up', at: 0, dur: 0.6 });
-    paper.querySelectorAll('.hl').forEach(h => anim(h, { anim: 'hl', at: h.dataset.cue, dur: 0.9 }));
+    anim(paper, { anim: 'land', at: 0, rot: p.rot ?? -1.2 });
+    paper.querySelectorAll('.hl').forEach(h => { anim(h, { anim: 'hl', at: h.dataset.cue, dur: Math.min(1.2, Math.max(0.5, h.getBoundingClientRect().width / 900)) }); focusOn(h, cue(h.dataset.cue) - 0.3, 0.5, 0.08, 1.4); });
   },
 
   // A → B deal card with facts underneath.
@@ -449,7 +541,7 @@ const SCENES = {
 // ================================================================================================
 const F = "'Libre Franklin'", NAVY = '#0B1422';
 function blk(html, x, y, extra = '') { return el(`<div class="abs" style="left:${x}px;top:${y}px;${extra}">${html}</div>`); }
-function srcLine(text, at, y = 850, x = 140, col = '#fff') { return anim(blk(`<div class="${col === '#fff' ? 'shadow' : ''}" style="font:500 46px ${F};color:${col};opacity:.92">Source: ${text}</div>`, x, y), { anim: 'fade', at: cue(at) + 0.9, dur: 0.6 }); }
+function srcLine(text, at, y = 850, x = 140, col = '#fff') { return anim(GLASS.appendChild(blk(`<div class="${col === '#fff' ? 'shadow' : ''}" style="font:500 46px ${F};color:${col};opacity:.92">Source: ${text}</div>`, x, y)), { anim: 'fade', at: cue(at) + 0.9, dur: 0.6 }); }
 Object.assign(SCENES, {
   // T1 / T38 — a number (or date) in the shot's empty space. items: shown one after another in the same place.
   num(p) {
@@ -460,13 +552,14 @@ Object.assign(SCENES, {
       const w = blk('', it.x ?? p.x ?? 140, it.y ?? p.y ?? 140, `color:${col};${right ? 'transform:translateX(-100%);text-align:right' : ''}`);
       w.className += ' ' + sh;
       const out = nxt ? { out: cue(nxt.at) - 0.1, outDur: 0.3 } : {};
-      if (it.kicker) anim(el(`<div style="font:600 52px ${F};margin-bottom:6px">${it.kicker}</div>`, w), Object.assign({ anim: 'fade', at: it.at }, out));
+      if (it.kicker) anim(el(`<div style="font:600 ${it.kickerSize || 52}px ${F};margin-bottom:${it.pre ? 40 : 6}px">${it.kicker}</div>`, w), Object.assign({ anim: 'up', dist: 32, at: it.kickerAt ?? it.at }, out));
+      if (it.pre) anim(el(`<div style="font:600 56px ${F};margin-bottom:2px">${it.pre}</div>`, w), Object.assign({ anim: 'up', dist: 32, at: it.preAt ?? it.at }, out));
       const n = el(`<div class="h" style="font-size:${it.size || p.size || 230}px;white-space:nowrap">${it.text || fmt[it.fmt](it.count[1])}</div>`, w);
       if (it.count) anim(n, Object.assign({ anim: 'count', at: it.at, dur: it.countDur ?? 1.1, from: it.count[0], to: it.count[1], fmt: it.fmt }, out));
       else anim(n, Object.assign({ anim: 'up', at: it.at }, out));
       if (it.label) anim(el(`<div style="font:600 52px ${F};margin-top:16px;max-width:${it.maxw || 1200}px;line-height:1.2">${it.label}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.labelAt ?? it.at) + 0.3 }, out));
       if (it.sub) anim(el(`<div style="font:500 46px ${F};margin-top:10px">${it.sub}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.subAt ?? it.at) + 0.5 }, out));
-      if (it.source) anim(el(`<div style="font:500 46px ${F};margin-top:22px;opacity:.92">Source: ${it.source}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.at) + 0.9 }, out));
+      if (it.source) srcLine(it.source, it.sourceAt !== undefined ? cue(it.sourceAt) - 0.9 : it.at, p.sourceY ?? 850, it.x ?? p.x ?? 140);
     });
   },
   // T37 — place tag: a short rule, a name, a line under it.
@@ -491,11 +584,33 @@ Object.assign(SCENES, {
     }
     const pts = p.pts, n = pts.length; let len = 0; const segs = [0];
     for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n]; len += Math.hypot(a[0] - b[0], a[1] - b[1]); segs.push(len); }
-    const d = pts.map((q, i) => `${i ? 'L' : 'M'}${q[0]} ${q[1]}`).join(' ') + ' Z';
-    const svg = el(`<svg class="abs" style="left:0;top:0" width="1920" height="1080"><path class="u" d="${d}" fill="none" stroke="${NAVY}" stroke-opacity=".75" stroke-width="22" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/><path class="r" d="${d}" fill="none" stroke="#FFE14D" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/></svg>`, host);
-    const paths = [svg.querySelector('.u'), svg.querySelector('.r')], at = cue(p.at ?? 0.4), dd = p.drawDur ?? 3;
-    anim(svg, { anim: 'fn', at, dur: dd, fn: pp => paths.forEach(q => q.setAttribute('stroke-dashoffset', len * (1 - pp))) });
-    pts.forEach((q, i) => { const pin = blk(`<div style="width:44px;height:44px;border-radius:50%;background:#FFE14D;border:7px solid ${NAVY}"></div>`, q[0] - 22, q[1] - 22); host.appendChild(pin); anim(pin, { anim: 'pop', at: at + dd * segs[i] / len, dur: 0.25 }); });
+    const d = pts.map((q, i) => `${i ? 'L' : 'M'}${q[0]} ${q[1]}`).join(' ') + ' Z', at = cue(p.at ?? 0.4);
+    // Knots: (time, length drawn). The head slows into each stop as the voice names it, like the van stopping there.
+    const knots = [[at, 0]];
+    (p.stops || []).slice().sort((x, y) => x.i - y.i).forEach(st => { const tk = Math.max(knots[knots.length - 1][0] + 0.6, cue(st.cue) - 0.3); knots.push([tk, segs[st.i]]); });
+    const speed = p.speed ?? 700, last = knots[knots.length - 1], rest = (len - last[1]) / speed;
+    knots.push([last[0] + Math.max(1.2, Math.min(4.5, p.stops ? rest : len / speed)), len]);
+    const drawn = t => { if (t <= knots[0][0]) return 0; for (let k = 1; k < knots.length; k++) { const [t0, l0] = knots[k - 1], [t1, l1] = knots[k];
+      if (t <= t1) return l0 + (l1 - l0) * E.sine((t - t0) / (t1 - t0)); } return len; };
+    const tEnd = knots[knots.length - 1][0];
+    const svg = el(`<svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080">
+      <path class="u" d="${d}" fill="none" stroke="${NAVY}" stroke-opacity=".55" stroke-width="34" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len} ${len}" stroke-dashoffset="${len}"/>
+      <path class="r" d="${d}" fill="none" stroke="#FFE14D" stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len} ${len}" stroke-dashoffset="${len}" style="filter:drop-shadow(0 0 10px rgba(255,225,77,.55))"/>
+      <path class="pulse" d="${d}" fill="none" stroke="#FFFFFF" stroke-opacity=".9" stroke-width="8" stroke-linecap="round" stroke-dasharray="160 ${len}" stroke-dashoffset="0" style="opacity:0"/>
+      <circle class="head" r="14" fill="#FFFFFF" stroke="#FFE14D" stroke-width="6" style="opacity:0"/></svg>`, host);
+    const [pu, pr, pulse, head] = ['.u', '.r', '.pulse', '.head'].map(k => svg.querySelector(k));
+    if (p.img) { const img = host.querySelector('img'); anim(img, { anim: 'fn', at, dur: 0.8, ease: false, fn: pp => { const e = E.sine(pp); img.style.filter = `brightness(${1 - 0.15 * e}) saturate(${1 - 0.2 * e})`; } }); }
+    anim(svg, { anim: 'fn', at: 0, dur: sc.dur || 8, ease: false, fn: (pp, q, t) => {
+      const L = drawn(t); [pu, pr].forEach(x => x.setAttribute('stroke-dashoffset', (len - L).toFixed(2)));
+      const h = pr.getPointAtLength(Math.min(L, len - 0.01)); head.setAttribute('cx', h.x); head.setAttribute('cy', h.y);
+      head.style.opacity = L > 0 && t < tEnd + 0.3 ? 1 - clamp((t - tEnd) / 0.3) : 0;
+      const tp = t - tEnd - 0.4; pulse.style.opacity = tp > 0 ? Math.min(1, tp / 0.3) : 0;   // after the loop closes, light keeps travelling it
+      pulse.setAttribute('stroke-dashoffset', (-(Math.max(0, tp) * 600) % len).toFixed(2)); } });
+    pts.forEach((q, i) => { let tp = at; for (let t = at; t < tEnd + 1; t += 1 / 30) { if (drawn(t) >= segs[i] - 1) { tp = t; break; } }
+      const pin = blk(`<div style="width:44px;height:44px;border-radius:50%;background:#FFE14D;border:7px solid ${NAVY}"></div>`, q[0] - 22, q[1] - 22); host.appendChild(pin);
+      anim(pin, { anim: 'pop', at: tp, dur: 0.35, from: 0.6 });
+      const ring = blk(`<div style="width:44px;height:44px;border-radius:50%;border:4px solid #FFE14D"></div>`, q[0] - 22, q[1] - 22); host.appendChild(ring);
+      anim(ring, { anim: 'fn', at: tp, dur: 0.9, ease: false, fn: pp => { ring.style.opacity = pp > 0 && pp < 1 ? 0.8 * (1 - E.outCubic(pp)) : 0; ring.style.transform = `scale(${1 + 1.4 * E.outCubic(pp)})`; } }); });
     (p.stops || []).forEach(st => {
       const q = pts[st.i], left = q[0] > 1300;
       const lab = blk(`<div class="shadow" style="font:600 60px ${F};color:#fff;white-space:nowrap">${st.text}</div>`, q[0] + (left ? -40 : 40), q[1] - 100, left ? 'transform:translateX(-100%)' : '');
@@ -506,8 +621,8 @@ Object.assign(SCENES, {
   // T11 — receipt: the month's math on paper.
   receipt(p) {
     const w = p.w ?? 860, x = p.x ?? (960 - w / 2), y = p.y ?? 110, at = cue(p.at ?? 0);
-    const r = blk('', x, y, `width:${w}px;background:#F7F8F5;color:#111827;padding:56px 66px;transform:rotate(${p.rot ?? -1.5}deg);box-shadow:0 30px 80px rgba(0,0,0,.5);font-family:'Libre Caslon Text'`);
-    anim(r, { anim: 'up', at, dur: 0.6 });
+    const r = blk('', x, y, `width:${w}px;background:#F7F8F5;color:#111827;padding:56px 66px;transform:rotate(${p.rot ?? -1.5}deg);box-shadow:none;font-family:'Libre Caslon Text'`);
+    anim(r, { anim: 'land', at, rot: p.rot ?? -1.5 });
     if (p.title) el(`<div style="font:700 54px 'Libre Caslon Text';text-align:center">${p.title}</div>`, r);
     el(`<div style="border-top:3px dashed #9aa3ae;margin:30px 0 14px"></div>`, r);
     p.lines.forEach(l => anim(el(`<div style="display:flex;justify-content:space-between;gap:40px;font-size:54px;margin:18px 0"><span>${l.label}</span><span style="white-space:nowrap">${l.value}</span></div>`, r), { anim: 'fade', at: l.cue ?? at }));
@@ -528,9 +643,17 @@ Object.assign(SCENES, {
       if (it.locked) { anim(blk(`<div class="shadow" style="font:600 110px ${F};line-height:1">?</div>`, X, by - 18), { anim: 'up', at: it.cue }); return; }
       const f = it.value / p.max, f0 = (it.from_ ?? 0) / p.max;
       if (it.from_ !== undefined) anim(blk('', X, by, `width:${W * f0}px;height:64px;background:var(--${it.key});opacity:.35`), { anim: 'grow', at: it.cue, dur: 0.6 });
-      anim(blk('', X + W * f0, by, `width:${Math.max(8, W * (f - f0))}px;height:64px;background:var(--${it.key})`), { anim: 'grow', at: cue(it.cue) + 0.1, dur: 0.9 });
-      anim(blk(`<div class="h shadow" style="font-size:${p.valueSize || 96}px;white-space:nowrap">${it.text}</div>`, X + W * f + 28, by - 20), { anim: 'fade', at: cue(it.cue) + 0.35 });
+      const bw = Math.max(8, W * (f - f0)), t0 = cue(it.cue) + 0.1;
+      const bar = anim(blk('', X + W * f0, by, `width:${bw}px;height:64px;background:var(--${it.key})`), { anim: 'grow', at: t0, dur: 1.0 });
+      const val = blk(`<div class="h shadow" style="font-size:${p.valueSize || 96}px;white-space:nowrap">${it.text}</div>`, X + W * f0 + 28, by - 20), num = val.firstElementChild;
+      const m = it.text.match(/^([^\d]*)(\d[\d,]*\.?\d*)(.*)$/), dec = m ? (m[2].split('.')[1] || '').length : 0, target = m ? parseFloat(m[2].replace(/,/g, '')) : 0;
+      anim(val, { anim: 'fn', at: t0, dur: 1.0, ease: false, fn: (pp) => { const e = E.outQuint(pp);
+        val.style.opacity = clamp(pp / 0.12); val.style.transform = `translateX(${(bw * e).toFixed(2)}px)`;
+        if (m && !/[–-]\d/.test(it.text)) num.textContent = m[1] + (target * e).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3]; } });
+      if (i) focusOn(bar, t0, 0.12, 0.006, 1.2);
+      (p._spot = p._spot || []).push({ node: bar, at: t0 });
     });
+    if (p._spot) spot(p._spot, p.restoreAt);
     if (p.source) srcLine(p.source, p.sourceAt ?? firstCue(p), top + n * rowH + 10);
   },
   // T41 — month grid: every month of 14 years; the good site's 20 months fill in white.
@@ -574,7 +697,7 @@ Object.assign(SCENES, {
     const w = blk('', 140, p.y ?? 300); w.className += ' shadow';
     const r = el(`<div style="width:520px;height:4px;background:#fff;margin-bottom:40px"></div>`, w);
     anim(r, { anim: 'grow', at: p.at, dur: 0.6 });
-    (p.names || [{ text: p.name, cue: cue(p.at) + 0.15 }]).forEach(nm => anim(el(`<div class="h" style="font-size:${p.size || 200}px;white-space:nowrap;line-height:1.1">${nm.text}</div>`, w), { anim: 'up', at: nm.cue }));
+    (p.names || [{ text: p.name, cue: cue(p.at) + 0.15 }]).forEach(nm => maskRise(el(`<div class="h" style="font-size:${p.size || 200}px;white-space:nowrap;line-height:1.1">${nm.text}</div>`, w), cue(nm.cue)));
     (p.lines || []).forEach((l, i) => anim(el(`<div style="font:${i ? '500 48px' : '600 54px'} ${F};margin-top:${i ? 14 : 40}px">${l.text}</div>`, w), { anim: 'fade', at: l.cue ?? (cue(p.at) + 0.5 + i * 0.3) }));
   },
   // T17 — three (or two) columns, each a label, a big number and a line.
@@ -603,7 +726,8 @@ Object.assign(SCENES, {
   ranked(p) {
     const top = p.y ?? 280;
     if (p.kicker) anim(blk(`<div class="shadow" style="font:600 52px ${F}">${p.kicker}</div>`, 140, top - 110), { anim: 'fade', at: p.kickerAt ?? 0 });
-    p.items.forEach((it, i) => anim(blk(`<div class="shadow" style="display:flex;align-items:baseline;gap:50px;padding:30px 0;border-top:2px solid rgba(255,255,255,.4)"><div class="h" style="font-size:80px;width:70px">${i + 1}</div><div style="font:600 64px ${F};flex:1">${it.name}</div><div class="h" style="font-size:120px">${it.value}</div></div>`, 140, top + i * 170, 'width:1640px'), { anim: 'up', at: it.cue }));
+    const rows = p.items.map((it, i) => ({ at: it.spoken ?? it.cue, key: 'hl', node: anim(blk(`<div class="shadow" style="display:flex;align-items:baseline;gap:50px;padding:30px 0;border-top:2px solid rgba(255,255,255,.4)"><div class="h" style="font-size:80px;width:70px">${i + 1}</div><div style="font:600 64px ${F};flex:1">${it.name}</div><div class="h" style="font-size:120px">${it.value}</div></div>`, 140, top + i * 170, 'width:1640px'), { anim: 'up', at: it.cue }) }));
+    marker(rows);
     if (p.source) srcLine(p.source, firstCue(p), top + p.items.length * 170 + 20);
   },
   // T20 — growth line between two values.
@@ -644,7 +768,7 @@ Object.assign(SCENES, {
     const at = cue(p.at ?? 0);
     const c = blk(`<div style="font:500 46px ${F};border-bottom:3px solid #111;padding-bottom:16px;display:flex;justify-content:space-between"><span>${p.date}</span><span>${p.place || ''}</span></div>
       <div style="font:700 ${p.headSize || 92}px 'Libre Caslon Text';line-height:1.05;margin:34px 0">${p.headline}</div>
-      <div style="font-size:52px;line-height:1.45">${p.body}</div>`, p.x ?? 450, p.y ?? 110, `width:${p.w ?? 1020}px;background:#EFEDE6;color:#111;padding:52px 66px;transform:rotate(${p.rot ?? 1.2}deg);box-shadow:0 30px 80px rgba(0,0,0,.5);font-family:'Libre Caslon Text'`);
+      <div style="font-size:52px;line-height:1.45">${p.body}</div>`, p.x ?? 450, p.y ?? 110, `width:${p.w ?? 1020}px;background:#EFEDE6;color:#111;padding:52px 66px;transform:rotate(${p.rot ?? 1.2}deg);box-shadow:none;font-family:'Libre Caslon Text'`);
     anim(c, { anim: 'up', at, dur: 0.6 });
     c.querySelectorAll('.hl').forEach(h => anim(h, { anim: 'hl', at: h.dataset.cue, dur: 0.8 }));
   },
@@ -653,14 +777,103 @@ Object.assign(SCENES, {
     const at = cue(p.at ?? 0), y = p.y ?? 330;
     anim(blk(`<div class="h shadow" style="font-size:300px;opacity:.55;line-height:1">“</div>`, 130, y - 170), { anim: 'fade', at });
     const q = blk(`<div class="h shadow" style="font-size:${p.size || 130}px;line-height:1.1;max-width:1640px">${p.text}</div>`, 140, y);
-    anim(q, { anim: 'up', at });
+    if (p.span) wordsIn(q.firstElementChild, p.span); else anim(q, { anim: 'up', at });
     if (p.name) anim(blk(`<div class="shadow" style="font:600 54px ${F}">${p.name}</div>${p.role ? `<div class="shadow" style="font:500 48px ${F};margin-top:8px">${p.role}</div>` : ''}`, 146, y + (p.nameDy ?? 330)), { anim: 'fade', at: cue(p.nameAt ?? p.at) + 0.5 });
   },
   // T8 variant — the three kinds of source, dealt in as paper cards.
   papers(p) {
     const n = p.items.length, W = 500, gap = (1640 - n * W) / (n - 1);
     p.items.forEach((it, i) => anim(blk(`<div style="font:700 54px 'Libre Caslon Text';line-height:1.15">${it.title}</div><div style="border-top:3px solid #111;margin:26px 0 22px"></div><div style="font:500 46px ${F};line-height:1.3">${it.sub}</div>`,
-      140 + i * (W + gap), (p.y ?? 300) + (i % 2) * 40, `width:${W}px;background:#F7F8F5;color:#111827;padding:46px 46px 54px;transform:rotate(${[-2, 1.5, -1][i % 3]}deg);box-shadow:0 30px 80px rgba(0,0,0,.5)`), { anim: 'up', at: it.cue, dur: 0.55 }));
+      140 + i * (W + gap), (p.y ?? 300) + (i % 2) * 40, `width:${W}px;background:#F7F8F5;color:#111827;padding:46px 46px 54px;transform:rotate(${[-2, 1.5, -1][i % 3]}deg);box-shadow:none`), { anim: 'up', at: it.cue, dur: 0.55 }));
+  },
+});
+
+// ================================================================================================
+// Episode 1 rebuild (editing + motion playbooks): stacked claims, the US map that zooms into a tracked route,
+// machine line drawings.
+// ================================================================================================
+const H2M = h => `matrix3d(${h[0]},${h[3]},0,${h[6]},${h[1]},${h[4]},0,${h[7]},0,0,1,0,${h[2]},${h[5]},0,${h[8]})`;
+Object.assign(SCENES, {
+  // T15b — a kicker and lines that stack, each on its cue (claims, names). No strikes, no judgment.
+  stack(p) {
+    const x = p.x ?? 116, y = p.y ?? 150, size = p.size || 110;
+    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 56px ${F}">${p.kicker}</div>`, x, y), { anim: 'up', at: p.kickerAt ?? 0, dist: 32 });
+    p.lines.forEach((l, i) => {
+      const b = blk(`<div class="h shadow" style="font-size:${l.size || size}px;white-space:nowrap;line-height:1.12">${l.text}</div>`, x, y + (p.first ?? 80) + i * (p.gap ?? 140));
+      if (p.mask) maskRise(b.firstElementChild, cue(l.at)); else anim(b, { anim: 'up', at: l.at });
+    });
+  },
+  // T33 + T4 — the US map fills with small operators, zooms through to one suburb, and hands over to the playing aerial
+  // underneath, where pins drop on houses and the route loop draws, tracked to the ground (track = per-frame homographies).
+  usmap(p, sc) {
+    const D = sc.dur || 10, ch = p.chicago, zoomAt = cue(p.zoomAt), rev = cue(p.revealAt);
+    const map = el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:var(--bg);transform-origin:${ch[0]}px ${ch[1]}px"></div>`, ROOT);
+    ROOT.insertBefore(map, ROOT.firstChild);
+    const svg = el(`<svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><g class="st">${p.states.map(d => `<path d="${d}" fill="#13213A" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2" stroke-linejoin="round"/>`).join('')}</g><g class="dots"></g></svg>`, map);
+    const st = svg.querySelector('.st'); anim(st, { anim: 'fade', at: 0, dur: 0.5 });
+    const g = svg.querySelector('.dots'), d0 = cue(p.dotsAt), spread = p.dotsSpread ?? 2.4;
+    p.dots.forEach((q, i) => { const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', q[0]); c.setAttribute('cy', q[1]); c.setAttribute('r', 7); c.setAttribute('fill', '#FFE14D'); c.style.opacity = 0; g.appendChild(c);
+      const at = d0 + spread * i / p.dots.length;
+      anim(c, { anim: 'fn', at, dur: 0.3, ease: false, fn: pp => { c.style.opacity = pp > 0 ? 1 : 0; c.setAttribute('r', (7 * (0.5 + 0.5 * E.outQuint(pp))).toFixed(2)); } }); });
+    if (p.label) { const lb = blk(`<div style="font:600 60px ${F}">${p.label}</div>`, 116, p.labelY ?? 760); map.appendChild(lb);
+      anim(lb, { anim: 'up', at: p.labelAt, dist: 32, out: zoomAt, outDur: 0.3 }); }
+    // map camera: a slow push all along, then the zoom-through toward Chicago, then it dissolves into the footage
+    anim(map, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
+      const z = E.in(clamp((t - zoomAt) / (rev + 0.35 - zoomAt)));
+      map.style.transform = `scale(${(1 + 0.04 * clamp(t / Math.max(1, zoomAt)) + 3 * z).toFixed(4)})`;
+      map.style.opacity = 1 - E.outCubic(clamp((t - rev) / 0.35)); } });
+    // tracked layer on the footage
+    const host = el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:0 0"></div>`, GLASS);
+    const tr = p.track;
+    if (tr) anim(host, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
+      const k = Math.max(0, Math.min(tr.H.length - 1, Math.round((t - tr.t0) * 30))); host.style.transform = H2M(tr.H[k]); } });
+    const pts = p.pins, n = pts.length; let len = 0; const segs = [0];
+    for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n]; len += Math.hypot(a[0] - b[0], a[1] - b[1]); segs.push(len); }
+    const dd = pts.map((q, i) => `${i ? 'L' : 'M'}${q[0]} ${q[1]}`).join(' ') + ' Z';
+    const rs = el(`<svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080">
+      <path class="u" d="${dd}" fill="none" stroke="${NAVY}" stroke-opacity=".55" stroke-width="34" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len} ${len}" stroke-dashoffset="${len}"/>
+      <path class="r" d="${dd}" fill="none" stroke="#FFE14D" stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len} ${len}" stroke-dashoffset="${len}" style="filter:drop-shadow(0 0 10px rgba(255,225,77,.55))"/>
+      <circle class="head" r="16" fill="#FFFFFF" stroke="#FFE14D" stroke-width="7" style="opacity:0"/></svg>`, host);
+    const [pu, pr, head] = ['.u', '.r', '.head'].map(k => rs.querySelector(k));
+    const r0 = cue(p.routeAt), rd = p.routeDur ?? 1.6, lap = p.lap ?? 4.0;
+    anim(rs, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
+      const L = len * E.sine(clamp((t - r0) / rd));
+      [pu, pr].forEach(x => x.setAttribute('stroke-dashoffset', (len - L).toFixed(2)));
+      const along = t < r0 + rd ? L : (len + (t - r0 - rd) / lap * len) % len;   // the van keeps driving the loop
+      const h = pr.getPointAtLength(Math.max(0.01, Math.min(len - 0.01, along))); head.setAttribute('cx', h.x); head.setAttribute('cy', h.y);
+      head.style.opacity = t >= r0 ? 1 : 0; } });
+    pts.forEach((q, i) => { const at = cue(p.pinsAt) + 0.06 * i;
+      const pin = blk(`<div style="width:48px;height:48px;border-radius:50%;background:#FFE14D;border:7px solid ${NAVY};box-sizing:border-box"></div>`, q[0] - 24, q[1] - 24); host.appendChild(pin);
+      anim(pin, { anim: 'pop', at, dur: 0.35, from: 0.6 });
+      const ring = blk(`<div style="width:48px;height:48px;border-radius:50%;border:4px solid #FFE14D;box-sizing:border-box;opacity:0"></div>`, q[0] - 24, q[1] - 24); host.appendChild(ring);
+      anim(ring, { anim: 'fn', at, dur: 0.9, ease: false, fn: pp => { ring.style.opacity = pp > 0 && pp < 1 ? 0.8 * (1 - E.outCubic(pp)) : 0; ring.style.transform = `scale(${1 + 1.4 * E.outCubic(pp)})`; } }); });
+  },
+  // T26 — machine line drawings that draw themselves, each with its name and price (prices count up on the word).
+  machines(p) {
+    const base = p.base ?? 600, X = p.xs || [116, 660, 1220];
+    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 56px ${F}">${p.kicker}</div>`, 116, p.kickerY ?? 110), { anim: 'up', at: p.kickerAt ?? 0, dist: 32 });
+    const box = (x, y, w, h) => `M${x} ${y}H${x + w}V${y + h}H${x}Z`;
+    const shapes = {
+      counter: { w: 240, h: 160, d: [box(0, 0, 240, 160), box(16, 16, 150, 104), 'M16 52H166M16 86H166', box(182, 24, 42, 30), box(182, 70, 42, 50), box(40, 134, 100, 14)] },
+      combo: { w: 260, h: 380, d: [box(0, 0, 260, 380), box(16, 16, 176, 270), 'M16 80H192M16 146H192M16 212H192', box(206, 30, 40, 34), box(206, 84, 40, 90), box(40, 310, 130, 44)] },
+      elevator: { w: 340, h: 380, d: [box(0, 0, 340, 380), box(16, 16, 250, 300), 'M16 84H266M16 152H266M16 220H266', 'M232 16V316', box(280, 30, 44, 34), box(280, 84, 44, 90), box(60, 286, 140, 26)] },
+    };
+    (p.items || []).forEach((it, i) => {
+      const sh = shapes[it.kind], x = X[i], y = base - sh.h;
+      const svg = blk(`<svg width="${sh.w + 10}" height="${sh.h + 10}" style="overflow:visible">${sh.d.map(d => `<path d="${d}" pathLength="1" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="miter" stroke-dasharray="1 1" stroke-dashoffset="1"/>`).join('')}</svg>`, x, y);
+      svg.className += ' shadow';
+      const paths = [...svg.querySelectorAll('path')], at = cue(it.cue);
+      anim(svg, { anim: 'fn', at, dur: 0.9, ease: false, fn: pp => paths.forEach((q, k) => q.setAttribute('stroke-dashoffset', (1 - E.sine(clamp(pp * 1.25 - k * 0.05))).toFixed(4))) });
+      if (it.kind === 'elevator' && p.lowerAt !== undefined) {   // the product rides the lift down instead of dropping
+        const prod = blk(`<div style="width:56px;height:40px;background:#FFE14D"></div>`, x + 160, y + 42 - 40), plat = blk(`<div style="width:80px;height:6px;background:#fff"></div>`, x + 148, y + 42);
+        [prod, plat].forEach(e => { e.style.opacity = 0; anim(e, { anim: 'fn', at: cue(p.lowerAt) - 0.4, dur: 2.6, ease: false, fn: pp => {
+          const tt = pp * 2.6, dy = 234 * E.inOut(clamp((tt - 0.4) / 2.0)); e.style.opacity = clamp(tt / 0.3); e.style.transform = `translateY(${dy.toFixed(2)}px)`; } }); });
+      }
+      anim(blk(`<div class="shadow" style="font:600 56px ${F}">${it.label}</div>`, x, base + 26), { anim: 'up', at: at + 0.25, dist: 32 });
+      if (it.value) anim(blk(`<div class="h shadow" style="font-size:${p.valueSize || 130}px;white-space:nowrap">${it.value}</div>`, x, base + 100), { anim: 'up', at: it.valueAt ?? at + 0.4 });
+    });
+    if (p.source) srcLine(p.source, p.sourceAt ?? firstCue(p), 860, 116);
   },
 });
 </script></body></html>

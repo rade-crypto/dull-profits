@@ -29,7 +29,7 @@ for name in ["LibreFranklin-400", "LibreCaslonDisplay-400", "LibreCaslonText-400
 css = css.replace("html,body{width:1920px;height:1080px;background:transparent;overflow:hidden}", "")
 css = css.replace("body{color:var(--ink);", ".frame{width:1920px;height:1080px;overflow:hidden;color:var(--ink);")
 js = js.replace("const S = document.getElementById('stage');", "const S = document.getElementById('stage');")
-js = js.replace("if (scene.opaque) document.body.style.background = 'var(--bg)';", "S.style.background = scene.opaque ? 'var(--bg)' : '';")
+js = js.replace("if (scene.opaque) document.body.style.background = 'var(--bg)';", "ROOT.style.background = scene.opaque ? 'var(--bg)' : '';")
 
 sys.path.insert(0, str(HERE))
 from stills import resolve  # noqa: E402
@@ -37,7 +37,7 @@ from proxies import shot_key  # noqa: E402
 shots, _ = resolve(ep)
 edit = {"shots": [], "duration": shots[-1]["end"]}
 for s in shots:
-    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene")}
+    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene", "rack", "rack_open", "push", "soft", "dim", "carry")}
     if d["clip"] or d["clips"] or d["bg"]:
         d["key"] = shot_key(d)
     edit["shots"].append(d)
