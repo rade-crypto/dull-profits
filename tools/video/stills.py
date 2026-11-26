@@ -114,7 +114,9 @@ def main():
         a, b = (int(x) for x in args.only.split("-"))
         shots = [s for s in shots if a <= s["n"] <= b]
     for s in shots:
-        src = s.get("clip") or (s.get("clips") or [[None]])[0][0] or (s.get("bg") or [None])[0]
+        bgp = s.get("bg")
+        if bgp and isinstance(bgp[0], (list, tuple)): bgp = bgp[0]
+        src = s.get("clip") or (s.get("clips") or [[None]])[0][0] or (bgp or [None])[0]
         t_in = s.get("in") if s.get("clip") else (s["clips"][0][1] if s.get("clips") else 0)
         if src:  # the shot's built background (mirroring, multi-clip) near its end; raw clip if not built yet
             import proxies

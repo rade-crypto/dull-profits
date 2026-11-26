@@ -479,21 +479,28 @@ Object.assign(SCENES, {
   },
   // T4 — a route drawn on an aerial shot, pins dropping as the line reaches them, a number in the sky.
   routeMap(p, sc) {
-    // With p.img the shot is a still frame drawn here, zooming in slowly together with the route (they stay aligned).
+    // T4. With p.img the shot is a still frame drawn here: it eases in from a wider zoom (the transition), keeps zooming
+    // slowly, and the route draws over it from the start, pins dropping as the line reaches them, stop labels on cue.
     let host = S;
     if (p.img) {
       host = el('<div class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:50% 60%"></div>');
       el(`<img src="${p.img}" style="position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover">`, host);
-      const D = sc.dur || 8; anim(host, { anim: 'fn', at: 0, dur: D, fn: pp => { host.style.transform = `scale(${1 + 0.06 * pp})`; } });
+      const D = sc.dur || 8;
+      anim(host, { anim: 'fn', at: 0, dur: D, fn: (pp, q, t) => { const e = 1 - Math.pow(1 - Math.min(1, t / 0.9), 3); host.style.transform = `scale(${1.14 - 0.14 * e + 0.05 * pp})`; } });
       TWEENS[TWEENS.length - 1].ease = false;
     }
     const pts = p.pts, n = pts.length; let len = 0; const segs = [0];
     for (let i = 0; i < n; i++) { const a = pts[i], b = pts[(i + 1) % n]; len += Math.hypot(a[0] - b[0], a[1] - b[1]); segs.push(len); }
     const d = pts.map((q, i) => `${i ? 'L' : 'M'}${q[0]} ${q[1]}`).join(' ') + ' Z';
-    const svg = el(`<svg class="abs" style="left:0;top:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))" width="1920" height="1080"><path d="${d}" fill="none" stroke="#FFE14D" stroke-width="7" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/></svg>`, host);
-    const path = svg.querySelector('path'), at = cue(p.at ?? 0), dd = p.drawDur ?? 3;
-    anim(path, { anim: 'fn', at, dur: dd, fn: pp => path.setAttribute('stroke-dashoffset', len * (1 - pp)) });
-    pts.forEach((q, i) => { const pin = blk(`<div style="width:30px;height:30px;border-radius:50%;background:#FFE14D;border:5px solid ${NAVY}"></div>`, q[0] - 15, q[1] - 15); host.appendChild(pin); anim(pin, { anim: 'pop', at: at + dd * segs[i] / len, dur: 0.25 }); });
+    const svg = el(`<svg class="abs" style="left:0;top:0" width="1920" height="1080"><path class="u" d="${d}" fill="none" stroke="${NAVY}" stroke-opacity=".75" stroke-width="22" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/><path class="r" d="${d}" fill="none" stroke="#FFE14D" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/></svg>`, host);
+    const paths = [svg.querySelector('.u'), svg.querySelector('.r')], at = cue(p.at ?? 0.4), dd = p.drawDur ?? 3;
+    anim(svg, { anim: 'fn', at, dur: dd, fn: pp => paths.forEach(q => q.setAttribute('stroke-dashoffset', len * (1 - pp))) });
+    pts.forEach((q, i) => { const pin = blk(`<div style="width:44px;height:44px;border-radius:50%;background:#FFE14D;border:7px solid ${NAVY}"></div>`, q[0] - 22, q[1] - 22); host.appendChild(pin); anim(pin, { anim: 'pop', at: at + dd * segs[i] / len, dur: 0.25 }); });
+    (p.stops || []).forEach(st => {
+      const q = pts[st.i], left = q[0] > 1300;
+      const lab = blk(`<div class="shadow" style="font:600 60px ${F};color:#fff;white-space:nowrap">${st.text}</div>`, q[0] + (left ? -40 : 40), q[1] - 100, left ? 'transform:translateX(-100%)' : '');
+      host.appendChild(lab); anim(lab, { anim: 'up', at: st.cue });
+    });
     if (p.value || p.label) SCENES.num({ x: p.x ?? 140, y: p.y ?? 110, size: p.size ?? 170, text: p.value, kicker: p.label, at: p.valueAt ?? p.at, color: p.color });
   },
   // T11 — receipt: the month's math on paper.

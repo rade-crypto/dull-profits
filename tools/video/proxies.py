@@ -26,7 +26,7 @@ def dur_of(f):
 def shot_key(s):
     """Stable file name for a shot's background: changes only when its footage or length changes."""
     spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else [])
-                      + ([s["bg"]] if s.get("bg") else []), sort_keys=True)
+                      + ([s["bg"], "v2"] if s.get("bg") else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
@@ -44,18 +44,34 @@ def has_bg(s):
 
 
 def make_still_bg(ep, s, out, crf):
-    """A graphic's own background: one frame of a clip, blurred and darkened, drifting slowly sideways."""
-    f, t = s["bg"][0], s["bg"][1]
-    dim = s["bg"][2] if len(s["bg"]) > 2 else 0.42
-    dur = s["dur"]
-    vf = (f"scale=2208:1242:force_original_aspect_ratio=increase,crop=2208:1242,boxblur=luma_radius=22:luma_power=2:chroma_radius=12:chroma_power=2,"
-          f"colorchannelmixer=rr={dim}:gg={dim}:bb={dim},eq=saturation=0.75,"
-          f"crop=1920:1080:x='(iw-1920)*(0.15+0.7*t/{dur:.3f})':y=(ih-1080)/2,fps={FPS},format=yuv420p")
-    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.3f}", "-i", str(ep / "footage" / f), "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"]
-    png = subprocess.run(cmd, capture_output=True, check=True).stdout
-    r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-framerate", str(FPS), "-f", "image2pipe", "-i", "-", "-vf", vf, "-t", f"{dur:.3f}",
-                        "-c:v", "libx264", "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p",
-                        "-movflags", "+faststart", "-an", str(out)], input=png, capture_output=True)
+    """A graphic's own background: real footage that racks out of focus and dims over the first 0.6 s (the cut into a
+    graphic feels like a focus pull), keeps moving, and drifts slowly sideways. bg is (clip, t) or a list of them:
+    long graphics chain several clips with 0.8 s crossfades so the background never stops."""
+    bg = s["bg"]
+    pieces = [tuple(x) for x in bg] if isinstance(bg[0], (list, tuple)) else [tuple(bg)]
+    dim, dur, XB = 0.42, s["dur"], 0.8
+    cmd, chains, lens, left = ["ffmpeg", "-v", "error", "-y"], [], [], dur
+    for i, (f, t, *_) in enumerate(pieces):
+        clip = ep / "footage" / f
+        avail = max(0.5, dur_of(clip) - t - 0.05)
+        last = i == len(pieces) - 1
+        L = left if last else min(avail * 1.25, left + XB * (len(pieces) - 1 - i))
+        slow = min(max(1.0, L / avail), 1.5 if last else 1.25)
+        cmd += ["-ss", f"{t:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
+        chains.append(f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=2208:1242:force_original_aspect_ratio=increase,crop=2208:1242,setsar=1,"
+                      f"format=yuv420p,eq=saturation=0.86:contrast=1.03,tpad=stop_mode=clone:stop_duration={L + 1:.2f},trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
+        lens.append(L); left -= L - XB
+    lastl, off = "p0", 0.0
+    for i in range(1, len(pieces)):
+        off += lens[i - 1] - XB
+        chains.append(f"[{lastl}][p{i}]xfade=transition=fade:duration={XB}:offset={off:.3f}[x{i}]"); lastl = f"x{i}"
+    chains.append(f"[{lastl}]trim=duration={dur:.3f},setpts=PTS-STARTPTS,split[a][b]")
+    chains.append(f"[b]boxblur=luma_radius=22:luma_power=2:chroma_radius=12:chroma_power=2,colorchannelmixer=rr={dim}:gg={dim}:bb={dim},eq=saturation=0.75,"
+                  f"format=yuva420p,fade=t=in:st=0:d=0.6:alpha=1[bb]")
+    chains.append(f"[a][bb]overlay=0:0,crop=1920:1080:x='(iw-1920)*(0.15+0.7*t/{dur:.3f})':y=(ih-1080)/2,format=yuv420p[v]")
+    cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
+            "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", str(out)]
+    r = subprocess.run(cmd, capture_output=True)
     if r.returncode:
         raise RuntimeError(f"shot {s['n']}: {r.stderr[-1500:].decode(errors='ignore')}")
     return s["n"]
