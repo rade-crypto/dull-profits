@@ -80,9 +80,9 @@ const EDIT = /*EDIT_JSON*/null;
 const $ = id => document.getElementById(id);
 const W = 1920;
 const shots = EDIT.shots, TOTAL = EDIT.duration;
-shots.forEach(s => { s.src = s.clip ? `shots/s${String(s.n).padStart(2, '0')}.mp4` : null; });
+shots.forEach(s => { s.src = (s.clip || s.clips) ? `shots/s${String(s.n).padStart(2, '0')}.mp4` : null; });
 const audio = $('audio'), vids = [$('va'), $('vb')], stage = $('stage');
-let cur = -1, front = 0, playing = false, scrubbing = false;
+let cur = -1, front = 0, playing = false, scrubbing = false, sceneOf = -1, token = 0;
 const say = t => { $('status').textContent = t; };
 const clock = t => { t = Math.max(0, t); return `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`; };
 
@@ -91,29 +91,48 @@ new ResizeObserver(fit).observe($('screen')); fit();
 
 function shotAt(t) { let lo = 0, hi = shots.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (shots[m].start <= t + 1e-6) lo = m; else hi = m - 1; } return lo; }
 
+// Switch shots without a black flash: the old picture stays until the new clip has its frame ready.
+function whenReady(v, fn) {
+  if (v.readyState >= 2 && !v.seeking) { fn(); return; }
+  const on = () => { v.removeEventListener('seeked', on); v.removeEventListener('loadeddata', on); fn(); };
+  v.addEventListener('seeked', on); v.addEventListener('loadeddata', on);
+}
+function preload(i) {
+  const next = shots.slice(i + 1).find(x => x.src), back = vids[1 - front];
+  if (next && back.dataset.src !== next.src && back.style.visibility !== 'visible') { back.dataset.src = next.src; back.src = next.src; back.load(); }
+}
+function showScene(i) {
+  sceneOf = i; const s = shots[i];
+  if (s.scene) setup(s.scene); else { stage.innerHTML = ''; stage.style.background = ''; }
+}
 function enter(i, t) {
-  cur = i; const s = shots[i];
+  cur = i; const s = shots[i], my = ++token;
   if (s.src) {
-    if (vids[1 - front].dataset.src === s.src) front = 1 - front;
-    else if (vids[front].dataset.src !== s.src) { vids[front].dataset.src = s.src; vids[front].src = s.src; }
-    const v = vids[front], back = vids[1 - front];
-    v.style.visibility = 'visible'; back.style.visibility = 'hidden'; back.pause();
+    let v = vids[front];
+    if (vids[1 - front].dataset.src === s.src) v = vids[1 - front];
+    else if (v.dataset.src !== s.src) { v = vids[1 - front]; v.dataset.src = s.src; v.src = s.src; }
     v.defaultPlaybackRate = v.playbackRate = audio.playbackRate;
     try { v.currentTime = Math.max(0, t - s.start); } catch (e) {}
-    if (playing) v.play().catch(() => {});
-    const next = shots.slice(i + 1).find(x => x.src);
-    if (next && back.dataset.src !== next.src) { back.dataset.src = next.src; back.src = next.src; back.load(); }
+    whenReady(v, () => {
+      if (my !== token) return;
+      const old = vids.find(x => x !== v);
+      v.style.visibility = 'visible'; old.style.visibility = 'hidden'; old.pause();
+      front = vids.indexOf(v);
+      if (playing) v.play().catch(() => {});
+      showScene(i); preload(i);
+    });
   } else {
+    showScene(i);
     vids.forEach(v => { v.pause(); v.style.visibility = 'hidden'; });
+    preload(i);
   }
-  if (s.scene) setup(s.scene); else { stage.innerHTML = ''; stage.style.background = ''; }
 }
 
 function tick() {
   const t = audio.currentTime, i = shotAt(t), s = shots[i];
   if (i !== cur) enter(i, t);
-  if (s.scene) draw(t - s.start);
-  if (s.src) {
+  if (s.scene && sceneOf === i) draw(t - s.start);
+  if (s.src && vids[front].dataset.src === s.src) {
     const v = vids[front], want = t - s.start;
     if (Math.abs(v.currentTime - want) > 0.25) { try { v.currentTime = want; } catch (e) {} }
     if (playing && v.paused) v.play().catch(() => {});

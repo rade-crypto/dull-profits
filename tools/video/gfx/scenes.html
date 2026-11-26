@@ -34,7 +34,7 @@ body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numer
 const S = document.getElementById('stage');
 let CUES = {}, TWEENS = [];
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
-const ease = p => 1 - Math.pow(1 - p, 3);
+const ease = p => p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
 const cue = c => (c === undefined || c === null) ? 0 : (typeof c === 'number' ? c : !isNaN(parseFloat(c)) ? parseFloat(c) : (c in CUES ? CUES[c] : (() => { throw new Error('missing cue ' + c) })()));
 function el(html, parent = S) { const d = document.createElement('div'); d.innerHTML = html.trim(); const n = d.firstElementChild; parent.appendChild(n); return n; }
 function anim(node, opts) { TWEENS.push(Object.assign({ node, anim: 'fade', dur: 0.5, at: 0, base: node.style.transform || '' }, opts)); return node; }
@@ -48,8 +48,8 @@ function apply(tw, t) {
   const n = tw.node, o = p * q;
   switch (tw.anim) {
     case 'fade': n.style.opacity = o; break;
-    case 'up': n.style.opacity = o; n.style.transform = `${tw.base} translateY(${(1 - p) * 40}px)`; break;
-    case 'pop': n.style.opacity = o; n.style.transform = `${tw.base} scale(${0.92 + 0.08 * p})`; break;
+    case 'up': n.style.opacity = o; n.style.transform = `${tw.base} translateY(${(1 - p) * 12}px)`; break;
+    case 'pop': n.style.opacity = o; n.style.transform = `${tw.base} scale(${0.98 + 0.02 * p})`; break;
     case 'wipe': n.style.opacity = q; n.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`; break;
     case 'grow': n.style.opacity = q; n.style.transform = `scaleX(${p})`; n.style.transformOrigin = 'left center'; break;
     case 'growY': n.style.opacity = q; n.style.transform = `scaleY(${p})`; n.style.transformOrigin = 'center bottom'; break;
@@ -65,6 +65,12 @@ window.setup = (scene) => { CUES = scene.cues || {}; TWEENS = []; S.innerHTML = 
 
 // Shared pieces ----------------------------------------------------------------------------------
 function dim(at = 0, max = 0.62) { return anim(el('<div class="abs" style="inset:0;background:linear-gradient(90deg,#08101C 0%,#08101C 38%,rgba(8,16,28,.62) 100%)"></div>'), { anim: 'dim', at, max: Math.min(1, max + 0.18), dur: 0.6 }); }
+function firstCue(p) {
+  const c = [];
+  ['items', 'lines', 'marks', 'facts', 'slices', 'big'].forEach(k => (p[k] || []).forEach(x => { const v = x.cue ?? x.at; if (v !== undefined && v !== null) c.push(cue(v)); }));
+  if (p.at !== undefined) c.push(cue(p.at));
+  return c.length ? Math.min(...c) : 0;
+}
 function source(text, at = 0) { return anim(el(`<div class="src">Source: ${text}</div>`), { at: cue(at) + 0.8, anim: 'fade', dur: 0.6, out: cue(at) + 5.5, outDur: 0.6 }); }
 function kicker(text, at = 0, x = 116, y = 96) { return anim(el(`<div class="abs kicker" style="left:${x}px;top:${y}px">${text}</div>`), { at, anim: 'fade' }); }
 
@@ -88,7 +94,7 @@ const SCENES = {
     if (p.count) anim(n, { anim: 'count', at: p.at, dur: p.countDur ?? 1.0, from: p.count[0], to: p.count[1], fmt: p.fmt });
     else anim(n, { anim: 'up', at: p.at });
     (p.lines || []).forEach((l, i) => anim(el(`<div class="abs shadow" style="left:122px;top:${y + size + 30 + i * 74}px;font:${i ? '500 48px' : '700 60px'} 'Libre Franklin';color:${i ? 'var(--ink2)' : 'var(--ink)'};max-width:1680px">${l.text}</div>`), { anim: 'up', at: l.at ?? p.at }));
-    if (p.source) source(p.source, p.sourceAt ?? p.at);
+    if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
   // The Split: a $2.00 bar that splits into labeled slices. Modes: 'intro' (names only) or 'full' (cents + tally).
@@ -107,7 +113,7 @@ const SCENES = {
     const segs = sl.map((s, i) => {
       const g = geo[i];
       const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:0;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:600 46px 'Libre Franklin'">${s.inside || ''}</div>`);
-      anim(seg, { anim: 'fn', at: p.splitAt, dur: 0.6, fn: (pp) => { seg.style.opacity = pp > 0 ? 1 : 0; seg.style.transform = `scaleX(${0.85 + 0.15 * pp})`; seg.style.filter = s.cue ? '' : ''; } });
+      anim(seg, { anim: 'fn', at: p.splitAt, dur: 0.6, fn: (pp) => { seg.style.opacity = pp; seg.style.filter = s.cue ? '' : ''; } });
       if (s.cue && s.key !== 'own') { // dim slices until named, then brighten
         anim(seg, { anim: 'fn', at: s.cue, dur: 0.35, fn: (pp) => { seg.style.filter = `saturate(${0.25 + 0.75 * pp}) brightness(${0.55 + 0.45 * pp})`; } });
       }
@@ -134,7 +140,7 @@ const SCENES = {
       const num = box.children[1]; let left = 200;
       p.tally.steps.forEach(st => { const from = left; left -= st.cents; const to = left; anim(num, { anim: 'fn', at: st.cue, dur: 0.6, fn: (pp) => { if (pp > 0) num.textContent = fmt.money2((from + (to - from) * pp) / 100); } }); });
     }
-    if (p.source) source(p.source, p.sourceAt ?? 0);
+    if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
   // Quote card: big quoted phrase, optional attribution and strike-through.
@@ -170,34 +176,26 @@ const SCENES = {
 
   // Row of cards: price tags, stat tiles, comparisons, the three winners.
   cards(p, sc) {
-    if (!sc.opaque) dim(0, p.dim ?? 0.8);
-    if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: p.titleAt ?? 0 });
-    const n = p.items.length, gap = 40, W = (1688 - gap * (n - 1)) / n, top = p.y ?? 300, H = p.h ?? 470;
+    // Stacked on the left (label over value), so the footage on the right stays visible.
+    if (!sc.opaque) dim(0, p.dim ?? 0.6);
+    if (p.kicker) kicker(p.kicker, p.kickerAt ?? firstCue(p));
+    const vs = p.valueSize || 110, hasLabel = p.items.some(it => it.label), rowH = p.rowH ?? Math.round(vs * 1.05 + (hasLabel ? 82 : 34));
+    const top = p.y ?? Math.round(540 - (p.items.length * rowH) / 2 + (p.kicker ? 40 : 0));
     p.items.forEach((it, i) => {
-      const x = 116 + i * (W + gap);
-      const icon = it.icon ? machineIcon(it.icon) : '';
-      const c = el(`<div class="abs card" style="left:${x}px;top:${top}px;width:${W}px;height:${H}px;padding:44px 44px;overflow:hidden">
-        <div style="position:absolute;left:0;top:0;right:0;height:3px;background:var(--${it.key || 'grid'})"></div>
-        <div class="kicker" style="color:var(--ink2)">${it.label}</div>
-        ${icon}
-        <div class="h" style="font-size:${it.size || p.valueSize || 130}px;margin-top:${icon ? 10 : 40}px;letter-spacing:-3px">${it.value || ''}</div>
-        <div style="font:500 42px 'Libre Franklin';color:var(--ink2);margin-top:16px;line-height:1.25">${it.sub || ''}</div></div>`);
-      if (it.locked) { c.style.background = 'transparent'; c.style.border = '4px dashed var(--grid)'; c.style.boxShadow = 'none'; }
+      const c = el(`<div class="abs" style="left:116px;top:${top + i * rowH}px;width:760px;border-top:2px solid var(--${it.key || 'grid'});padding-top:16px">
+        ${it.label ? `<div class="label shadow">${it.label}</div>` : ''}
+        <div class="h shadow" style="font-size:${it.size || vs}px;margin-top:${it.label ? 8 : 4}px;white-space:nowrap">${it.value || ''}</div></div>`);
       anim(c, { anim: 'up', at: it.cue });
-      if (it.lightAt !== undefined) anim(c, { anim: 'fn', at: it.lightAt, dur: 0.4, fn: (pp) => { c.style.outline = pp > 0 ? `6px solid var(--${it.key})` : 'none'; c.style.outlineOffset = '0px'; } });
     });
-    if (p.center) { const b = el(`<div class="abs" style="left:${960 - 260}px;top:${top + H + 30}px;width:520px;text-align:center;display:flex;flex-direction:column;align-items:center">${machineIcon('combo', 0.55)}<div style="font:800 38px 'Libre Franklin';color:var(--ink2);letter-spacing:3px;margin-top:10px">${p.center.label}</div></div>`); anim(b, { anim: 'up', at: p.center.cue }); }
-    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:${top + H + 40}px;font-size:40px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
-    if (p.source) source(p.source, p.sourceAt ?? 0);
+    if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
   // Horizontal bars (values or ranges). Value text sits at the bar end.
   bars(p, sc) {
-    if (!sc.opaque) dim(0, p.dim ?? 0.82);
+    if (!sc.opaque) dim(0, p.dim ?? 0.62);
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: p.titleAt ?? 0 });
-    const top = p.y ?? 320, rowH = p.rowH ?? 150, LX = 116, LW = p.labelW ?? 560, BX = LX + LW + 30, BW = 1804 - BX - 260;
+    const top = p.y ?? 320, rowH = p.rowH ?? 150, LX = 116, LW = p.labelW ?? 440, BX = LX + LW + 30, BW = p.barW ?? 620;
     p.items.forEach((it, i) => {
       const y = top + i * rowH, f = it.value / p.max, f0 = (it.from_ ?? 0) / p.max;
       const lab = el(`<div class="abs" style="left:${LX}px;top:${y}px;width:${LW}px;height:96px;display:flex;flex-direction:column;justify-content:center"><div class="label" style="font-size:46px">${it.label}</div>${it.sub ? `<div style="font:500 34px 'Libre Franklin';color:var(--ink2)">${it.sub}</div>` : ''}</div>`);
@@ -213,12 +211,12 @@ const SCENES = {
       anim(v, { anim: 'fade', at: it.cue + 0.4 });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:${top + p.items.length * rowH + 10}px;font-size:40px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
-    if (p.source) source(p.source, p.sourceAt ?? 0);
+    if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
   // Ledger card: label .... value lines, optional total.
   ledger(p, sc) {
-    if (!sc.opaque) dim(0, p.dim ?? 0.82);
+    if (!sc.opaque) dim(0, p.dim ?? 0.62);
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
     const W = p.w ?? 1300, x = p.x ?? 116, y = p.y ?? 190;
     const card = el(`<div class="abs card" style="left:${x}px;top:${y}px;width:${W}px;padding:0"></div>`);
@@ -231,7 +229,7 @@ const SCENES = {
       anim(row, { anim: 'up', at: l.cue ?? 0 });
     });
     if (p.note) anim(el(`<div style="font:500 38px 'Libre Franklin';color:var(--muted);margin-top:22px">${p.note}</div>`, card), { anim: 'fade', at: p.noteAt ?? 0 });
-    if (p.source) source(p.source, p.sourceAt ?? 0);
+    if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
   // Deal File: a retyped document excerpt on a dark desk, highlighter sweeps on cue.
@@ -246,58 +244,63 @@ const SCENES = {
 
   // A → B deal card with facts underneath.
   flow(p, sc) {
-    if (!sc.opaque) dim(0, p.dim ?? 0.82);
-    if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
-    const y = p.y ?? 250, W = 600;
-    const box = (b, x, at) => anim(el(`<div class="abs card" style="left:${x}px;top:${y}px;width:${W}px;height:240px;display:flex;flex-direction:column;justify-content:center">
-       <div style="font:900 64px 'Libre Franklin';letter-spacing:-1px">${b.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2);margin-top:8px">${b.sub || ''}</div></div>`), { anim: 'up', at });
-    box(p.src, 116, p.srcAt ?? 0);
-    box(p.dst, 1804 - W, p.dstAt ?? 0.3);
-    const ar = el(`<div class="abs" style="left:${116 + W + 30}px;top:${y + 90}px;width:${1804 - W - 116 - W - 60}px;text-align:center">
-       <div style="height:10px;background:var(--hl);border-radius:0;position:relative;margin-top:24px"><div style="position:absolute;right:-6px;top:-17px;border-left:34px solid var(--hl);border-top:22px solid transparent;border-bottom:22px solid transparent"></div></div>
-       <div style="font:800 38px 'Libre Franklin';margin-top:22px;line-height:1.2">${p.arrowLabel || ''}</div></div>`);
-    anim(ar, { anim: 'wipe', at: p.arrowAt ?? 0.4, dur: 0.6 });
-    (p.facts || []).forEach((f, i) => anim(el(`<div class="abs" style="left:116px;top:${y + 300 + i * 100}px;font:700 56px 'Libre Franklin'"><span style="display:inline-block;width:20px;height:20px;border-radius:0;background:var(--${f.key || 'hl'});margin-right:24px;vertical-align:middle"></span>${f.text}</div>`), { anim: 'up', at: f.cue }));
-    if (p.source) source(p.source, p.sourceAt ?? 0);
+    // One line, left-aligned: Seller -> Buyer, then the facts under it.
+    if (!sc.opaque) dim(0, p.dim ?? 0.6);
+    const y = p.y ?? 330;
+    if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0, 116, y - 90);
+    const row = el(`<div class="abs" style="left:116px;top:${y}px;display:flex;align-items:center;gap:34px;white-space:nowrap">
+      <div class="serif shadow" style="font-size:96px">${p.src.title}</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div class="arrow" style="width:190px;height:3px;background:#FFFFFF;position:relative"><div style="position:absolute;right:-2px;top:-9px;border-left:18px solid #FFFFFF;border-top:10px solid transparent;border-bottom:10px solid transparent"></div></div>
+        <div class="shadow" style="font:500 36px 'Libre Franklin'">${p.arrowLabel || ''}</div></div>
+      <div class="serif shadow" style="font-size:96px">${p.dst.title}</div></div>`);
+    anim(row, { anim: 'up', at: p.srcAt ?? 0 });
+    (p.facts || []).forEach((f, i) => anim(el(`<div class="abs shadow" style="left:116px;top:${y + 170 + i * 84}px;font:500 52px 'Libre Franklin';border-left:3px solid var(--${f.key || 'hl'});padding-left:22px">${f.text}</div>`), { anim: 'up', at: f.cue }));
+    if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
+  },
+
+  // Words that appear as they're said, stacked on the left (no boxes).
+  words(p) {
+    dim(0, p.dim ?? 0.5);
+    p.items.forEach((it, i) => anim(el(`<div class="abs shadow" style="left:116px;top:${(p.y ?? 560) + i * 92}px;font:500 60px 'Libre Franklin'">${it.text}</div>`), { anim: 'up', at: it.cue }));
   },
 
   // Payback strip: a timeline from 0 to N years with two markers.
   payback(p, sc) {
-    if (!sc.opaque) dim(0, 0.85);
+    if (!sc.opaque) dim(0, 0.6);
     if (p.kicker) kicker(p.kicker, 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
-    const X = 116, W = 1688, Y = 520, yrs = p.years || 15;
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:170px;font:500 52px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
+    const X = 116, W = 1500, Y = 560, yrs = p.years || 15;
     let ticks = ''; for (let i = 0; i <= yrs; i++) ticks += `<div class="abs" style="left:${X + W * i / yrs - 1}px;top:${Y + 70}px;width:3px;height:${i % 5 ? 18 : 34}px;background:var(--grid)"></div>` + (i % 5 === 0 ? `<div class="abs" style="left:${X + W * i / yrs}px;top:${Y + 112}px;transform:translateX(-50%);font:600 38px 'Libre Franklin';color:var(--ink2)">${i} yr</div>` : '');
-    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:70px;border-radius:0;background:var(--panel)"></div>`); el(`<div>${ticks}</div>`);
+    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:56px;background:rgba(255,255,255,.12)"></div>`); el(`<div>${ticks}</div>`);
     p.marks.forEach(m => {
       const fx = X + W * Math.min(m.years, yrs) / yrs;
-      anim(el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${fx - X}px;height:70px;border-radius:0;background:var(--${m.key});opacity:${m.op ?? 1}"></div>`), { anim: 'grow', at: m.cue, dur: 0.8 });
-      anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:84px;white-space:nowrap">${m.label}</div><div style="font:600 36px 'Libre Franklin';color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
+      anim(el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${fx - X}px;height:56px;background:var(--${m.key});opacity:${m.op ?? 1}"></div>`), { anim: 'grow', at: m.cue, dur: 0.8 });
+      anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:110px;white-space:nowrap">${m.label}</div><div style="font:600 36px 'Libre Franklin';color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:740px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
-    if (p.source) source(p.source, 0);
+    if (p.source) source(p.source, firstCue(p));
   },
 
   // Multiple scale: 0x .. Nx with markers.
   multiple(p, sc) {
-    if (!sc.opaque) dim(0, 0.85);
+    if (!sc.opaque) dim(0, 0.6);
     if (p.kicker) kicker(p.kicker, 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
-    const X = 116, W = 1688, Y = 560, mx = p.max || 4;
-    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:10px;border-radius:0;background:var(--grid)"></div>`);
-    for (let i = 0; i <= mx; i++) el(`<div class="abs" style="left:${X + W * i / mx}px;top:${Y + 40}px;transform:translateX(-50%);font:700 44px 'Libre Franklin';color:var(--muted)">${i}×</div>`);
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:170px;font:500 52px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
+    const X = 116, W = 1300, Y = 600, mx = p.max || 4;
+    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:3px;background:rgba(255,255,255,.5)"></div>`);
+    for (let i = 0; i <= mx; i++) el(`<div class="abs shadow" style="left:${X + W * i / mx}px;top:${Y + 30}px;transform:translateX(-50%);font:500 44px 'Libre Franklin'">${i}×</div>`);
     p.marks.forEach(m => {
       const fx = X + W * m.x / mx;
-      anim(el(`<div class="abs" style="left:${fx - 18}px;top:${Y - 13}px;width:36px;height:36px;border-radius:0;background:var(--${m.key});box-shadow:0 0 0 8px rgba(0,0,0,.3)"></div>`), { anim: 'pop', at: m.cue });
-      anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 120 : Y - 230}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:96px;color:var(--${m.key})">${m.label}</div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
+      anim(el(`<div class="abs" style="left:${fx - 3}px;top:${Y - 40}px;width:6px;height:80px;background:var(--${m.key})"></div>`), { anim: 'fade', at: m.cue });
+      anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 110 : Y - 200}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:130px">${m.label}</div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:700px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
-    if (p.source) source(p.source, 0);
+    if (p.source) source(p.source, firstCue(p));
   },
 
   // Checklist with boxes that tick on cue.
   checklist(p, sc) {
-    if (!sc.opaque) dim(0, p.dim ?? 0.82);
+    if (!sc.opaque) dim(0, p.dim ?? 0.62);
     if (p.kicker) kicker(p.kicker, 0);
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 68px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: 0 });
     p.items.forEach((it, i) => {
@@ -308,26 +311,24 @@ const SCENES = {
 
   // Retyped forum post (no site UI).
   post(p, sc) {
-    if (!sc.opaque) dim(0, 0.85);
+    if (!sc.opaque) dim(0, 0.62);
     const c = el(`<div class="abs card" style="left:260px;top:150px;width:1400px;padding:40px 0 0 0;border-top:6px solid #FFFFFF">
       ${p.meta ? `<div style="font:500 38px 'Libre Franklin';margin-bottom:24px">${p.meta}</div>` : ''}
       <div style="font:800 58px 'Libre Franklin';margin-bottom:22px">${p.title}</div><div style="font:500 44px 'Libre Franklin';color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
     anim(c, { anim: 'up', at: 0 });
     if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 40px 'Libre Franklin';color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });
-    if (p.source) source(p.source, 0);
+    if (p.source) source(p.source, firstCue(p));
   },
 
-  // Market map: a few big named tiles next to a field of small ones.
+  // Market names: the giants named in the serif, then the many small operators; footage stays visible.
   tiles(p, sc) {
-    if (!sc.opaque) dim(0, 0.85);
-    if (p.kicker) kicker(p.kicker, 0);
-    p.big.forEach((b, i) => anim(el(`<div class="abs card" style="left:116px;top:${200 + i * 300}px;width:640px;height:260px;display:flex;flex-direction:column;justify-content:center;border-left:14px solid var(--${b.key})"><div style="font:900 64px 'Libre Franklin'">${b.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2)">${b.sub || ''}</div></div>`), { anim: 'up', at: b.cue }));
-    const g = el(`<div class="abs" style="left:840px;top:200px;width:964px;height:560px;display:grid;grid-template-columns:repeat(24,1fr);gap:8px"></div>`);
-    let cells = ''; for (let i = 0; i < 24 * 13; i++) cells += `<div style="height:35px;border-radius:0;background:var(--${p.smallKey || 'grid'});opacity:${0.55 + 0.45 * ((i * 37) % 11) / 10}"></div>`;
-    g.innerHTML = cells; anim(g, { anim: 'wipe', at: p.smallCue, dur: 1.0 });
-    anim(el(`<div class="abs" style="left:840px;top:790px;font:800 52px 'Libre Franklin'">${p.smallLabel}</div>`), { anim: 'fade', at: p.smallCue + 0.4 });
-    if (p.note) anim(el(`<div class="abs" style="left:116px;top:800px;font:500 34px 'Libre Franklin';color:var(--muted)">${p.note}</div>`), { anim: 'fade', at: 0 });
-    if (p.source) source(p.source, 0);
+    dim(0, p.dim ?? 0.5);
+    p.big.forEach((b, i) => {
+      const r = el(`<div class="abs" style="left:116px;top:${(p.y ?? 300) + i * 170}px;border-top:2px solid var(--${b.key})"><div class="serif shadow" style="font-size:110px;padding-top:18px">${b.title}</div></div>`);
+      anim(r, { anim: 'up', at: b.cue });
+    });
+    anim(el(`<div class="abs shadow" style="left:116px;top:${(p.y ?? 300) + p.big.length * 170 + 40}px;font:500 52px 'Libre Franklin'">${p.smallLabel}</div>`), { anim: 'up', at: p.smallCue });
+    if (p.source) source(p.source, firstCue(p));
   },
 
   // Route maps: 'loop' (one route) or 'compare' (clustered vs scattered).
@@ -378,6 +379,14 @@ const SCENES = {
   // The pitch: big quoted lines that appear as spoken, then get struck through.
   pitch(p) {
     dim(0, p.dim ?? 0.62);
+    if (p.replace) {
+      p.lines.forEach((l, i) => {
+        const q = el(`<div class="abs serif shadow" style="left:116px;top:${p.y ?? 600}px;font-size:${p.size || 110}px;line-height:1.08;white-space:nowrap">${l.text}</div>`);
+        const nxt = p.lines[i + 1];
+        anim(q, Object.assign({ anim: 'fade', at: l.at, dur: 0.5 }, nxt ? { out: nxt.at, outDur: 0.35 } : {}));
+      });
+      return;
+    }
     let y = p.y ?? 220;
     p.lines.forEach(l => {
       const q = el(`<div class="abs serif shadow" style="left:116px;top:${y}px;font-size:${p.size || 120}px;line-height:1.08;white-space:nowrap">${l.text}</div>`);

@@ -17,6 +17,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from stills import resolve  # noqa: E402
+from proxies import make_bg  # noqa: E402
 
 FPS = 30
 
@@ -56,7 +57,7 @@ def main():
         s["frames"] = s["f1"] - s["f0"]
 
     # 1) graphics
-    jobs = [dict(scene=s["scene"], frames=s["frames"], fps=FPS, dir=str(work / f"g{s['n']:02d}"), transparent=bool(s.get("clip")))
+    jobs = [dict(scene=s["scene"], frames=s["frames"], fps=FPS, dir=str(work / f"g{s['n']:02d}"), transparent=bool(s.get("clip") or s.get("clips")))
             for s in shots if s.get("scene") and (not redo or s["n"] in redo)]
     for j in jobs:
         if redo and Path(j["dir"]).exists():
@@ -74,22 +75,15 @@ def main():
             segs.append(out)
             continue
         cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
-        if s.get("clip"):
-            clip = ep / "footage" / s["clip"]
-            t_in = s.get("in", 0.0)
-            avail = max(0.5, probe_dur(clip) - t_in - 0.05)
-            slow = min(max(1.0, dur / avail), 1.5)
-            cmd += ["-ss", f"{t_in:.3f}", "-i", str(clip)]
-            bg = (f"[0:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
-                  f"crop=1920:1080,setsar=1,eq=saturation=0.86:contrast=1.03,tpad=stop_mode=clone:stop_duration={dur + 1:.2f}")
-            for i, (x, y, w, h) in enumerate(s.get("blur", [])):
-                bg += f"[b{i}];[b{i}]split[m{i}][c{i}];[c{i}]crop={w}:{h}:{x}:{y},boxblur=luma_radius=24:luma_power=2:chroma_radius=10:chroma_power=2[z{i}];[m{i}][z{i}]overlay={x}:{y}"
-            chains.append(bg + "[bg]")
+        if s.get("clip") or s.get("clips"):
+            bg = work / f"bg{n:02d}.mp4"
+            make_bg(ep, dict(s, dur=dur), bg, crf=16)
+            cmd += ["-i", str(bg)]
             if s.get("scene"):
                 cmd += ["-framerate", str(FPS), "-i", str(work / f"g{n:02d}" / "%05d.png")]
-                chains.append("[1:v]format=rgba[fg];[bg][fg]overlay=0:0:format=auto,format=yuv420p[v]")
+                chains.append("[1:v]format=rgba[fg];[0:v][fg]overlay=0:0:format=auto,format=yuv420p[v]")
             else:
-                chains.append("[bg]format=yuv420p[v]")
+                chains.append("[0:v]format=yuv420p[v]")
         else:
             cmd += ["-framerate", str(FPS), "-i", str(work / f"g{n:02d}" / "%05d.png")]
             chains.append("[0:v]format=yuv420p[v]")

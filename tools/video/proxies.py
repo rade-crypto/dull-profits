@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Make light 1080p proxies, one per shot, exactly as long as the shot, for the browser player.
+"""Background footage for each shot, exactly as long as the shot (1080p, graded, blur boxes baked in).
 
-    python tools/video/proxies.py episodes/01-vending-machines
-Reads render/player/edit.json, writes render/player/shots/sNN.mp4 (blur boxes and grade baked in).
+    python tools/video/proxies.py episodes/01-vending-machines      # light copies for the browser preview
+
+A shot uses `clip` + `in`, or `clips`: a list of (file, in, seconds) pieces joined with short crossfades
+(the last piece's seconds may be None: it fills the rest). Pieces never freeze: if a clip is too short it is
+slowed (at most 1.5x), and only then held. render.py calls make_bg() for the final, higher-quality version.
 """
 import json
 import subprocess
@@ -11,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 FPS = 30
+XF = 0.5  # crossfade between pieces
 
 
 def dur_of(f):
@@ -18,28 +22,57 @@ def dur_of(f):
                                 capture_output=True, text=True, check=True).stdout)
 
 
-def one(ep, s):
-    out = ep / "render" / "player" / "shots" / f"s{s['n']:02d}.mp4"
-    clip = ep / "footage" / s["clip"]
-    t_in = s.get("in") or 0.0
+def pieces_of(s):
+    if s.get("clips"):
+        return [(p[0], p[1], p[2] if len(p) > 2 else None) for p in s["clips"]]
+    return [(s["clip"], s.get("in") or 0.0, None)]
+
+
+def make_bg(ep, s, out, crf=28):
     dur = s["dur"]
-    slow = min(max(1.0, dur / max(0.5, dur_of(clip) - t_in - 0.05)), 1.5)
-    vf = (f"setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,"
-          f"eq=saturation=0.86:contrast=1.03,tpad=stop_mode=clone:stop_duration={dur + 1:.2f}")
-    chain = "[0:v]" + vf
+    ps = pieces_of(s)
+    n = len(ps)
+    lens = [p[2] for p in ps]
+    fixed = sum(L for L in lens[:-1] if L) if n > 1 else 0
+    lens[-1] = dur - fixed + XF * (n - 1) if n > 1 else dur
+    cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
+    for i, ((f, t_in, _), L) in enumerate(zip(ps, lens)):
+        clip = ep / "footage" / f
+        avail = max(0.5, dur_of(clip) - t_in - 0.05)
+        slow = min(max(1.0, L / avail), 1.5)
+        cmd += ["-ss", f"{t_in:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
+        chains.append(f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
+                      f"crop=1920:1080,setsar=1,format=yuv420p,eq=saturation=0.86:contrast=1.03,"
+                      f"tpad=stop_mode=clone:stop_duration={L + 1:.2f},trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
+    last, off = "p0", 0.0
+    for i in range(1, n):
+        off += lens[i - 1] - XF
+        chains.append(f"[{last}][p{i}]xfade=transition=fade:duration={XF}:offset={off:.3f}[x{i}]")
+        last = f"x{i}"
+    tail = f"[{last}]"
     for i, (x, y, w, h) in enumerate(s.get("blur") or []):
-        chain += f"[b{i}];[b{i}]split[m{i}][c{i}];[c{i}]crop={w}:{h}:{x}:{y},boxblur=luma_radius=24:luma_power=2:chroma_radius=10:chroma_power=2[z{i}];[m{i}][z{i}]overlay={x}:{y}"
-    chain += "[v]"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t_in:.3f}", "-t", f"{dur / slow + 1:.3f}", "-i", str(clip),
-                    "-filter_complex", chain, "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
-                    "-preset", "veryfast", "-crf", "28", "-g", "30", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", str(out)], check=True)
+        chains.append(f"{tail}split[m{i}][c{i}];[c{i}]crop={w}:{h}:{x}:{y},boxblur=luma_radius=24:luma_power=2:chroma_radius=10:chroma_power=2[z{i}];"
+                      f"[m{i}][z{i}]overlay={x}:{y}[b{i}]")
+        tail = f"[b{i}]"
+    chains.append(f"{tail}null[v]")
+    cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
+            "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p",
+            "-movflags", "+faststart", "-an", str(out)]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode:
+        raise RuntimeError(f"shot {s['n']}: {r.stderr[-1500:]}")
     return s["n"]
+
+
+def one(ep, s):
+    return make_bg(ep, s, ep / "render" / "player" / "shots" / f"s{s['n']:02d}.mp4")
 
 
 def main():
     ep = Path(sys.argv[1]).resolve()
     edit = json.load(open(ep / "render" / "player" / "edit.json"))
-    shots = [s for s in edit["shots"] if s.get("clip")]
+    only = {int(x) for x in sys.argv[2].split(",")} if len(sys.argv) > 2 else None
+    shots = [s for s in edit["shots"] if (s.get("clip") or s.get("clips")) and (not only or s["n"] in only)]
     with ThreadPoolExecutor(4) as ex:
         for n in ex.map(lambda s: one(ep, s), shots):
             print("proxy", n, flush=True)

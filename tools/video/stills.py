@@ -19,6 +19,8 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from timing import Timeline  # noqa: E402
 
+CUE_DELAY = 0.2  # seconds after the word's start that its graphic appears
+
 
 def load_edit(ep: Path):
     spec = importlib.util.spec_from_file_location("edit", ep / "edit.py")
@@ -42,7 +44,8 @@ def resolve(ep: Path):
         a["dur"] = round(a["end"] - a["start"], 3)
 
     def rel(phrase, s0):
-        return round(max(0.0, tl.at(phrase, after=s0 - 0.05) - s0), 3)
+        # Whisper word starts run a little early; graphics land just after the word begins.
+        return round(max(0.0, tl.at(phrase, after=s0 - 0.05) - s0 + CUE_DELAY), 3)
 
     def fix(v, s0):
         if isinstance(v, str) and v.startswith("@"):
@@ -91,9 +94,11 @@ def main():
         a, b = (int(x) for x in args.only.split("-"))
         shots = [s for s in shots if a <= s["n"] <= b]
     for s in shots:
-        if s.get("clip"):
-            frame(ep / "footage" / s["clip"], s.get("in", 0) + min(2.0, s["dur"] / 2), out / f"bg-{s['n']:02d}.jpg")
-    jobs = [dict(n=s["n"], bg=str(out / f"bg-{s['n']:02d}.jpg") if s.get("clip") else None, scene=s.get("scene"),
+        src = s.get("clip") or (s.get("clips") or [[None]])[0][0]
+        t_in = s.get("in") if s.get("clip") else (s["clips"][0][1] if s.get("clips") else 0)
+        if src:
+            frame(ep / "footage" / src, (t_in or 0) + min(2.0, s["dur"] / 2), out / f"bg-{s['n']:02d}.jpg")
+    jobs = [dict(n=s["n"], bg=str(out / f"bg-{s['n']:02d}.jpg") if (s.get("clip") or s.get("clips")) else None, scene=s.get("scene"),
                  t=s.get("still_t", s["dur"]), out=str(out / f"{s['n']:02d}.png")) for s in shots]
     (out / "jobs.json").write_text(json.dumps(jobs))
     subprocess.run(["node", str(HERE / "stills.js"), str(out / "jobs.json"), str(HERE / "gfx" / "scenes.html")], check=True)
