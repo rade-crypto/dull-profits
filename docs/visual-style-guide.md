@@ -8,13 +8,24 @@ The channels this one is modeled on keep real footage on screen. (Corrected afte
 version of this guide said graphics-first, based on written descriptions rather than the videos themselves.)
 Graphics carry the numbers. Footage carries the feeling that this is a real business in the real world.
 
-## Screen-time mix (per 10–14 min episode)
+## Screen-time mix (per 10–14 min episode). Locked Nov 26, 2026 after the competitor research (`docs/decision-report.md`)
 | Share | What | Examples in Ep 1 |
 |---|---|---|
-| 55–65% | **Real footage**: mostly free stock, plus archive film, Google Earth flyovers and (optional) your own phone clips | Card tap, route van, break room, airport concourse |
-| 20–30% | **Graphics**, mostly *on top of* darkened footage | The Split over a shot of a real machine; full-screen only for the 3–4 biggest numbers |
-| 10–15% | **"Deal File" source documents** | LAX board report, Riverside contract, FTC 1998 release |
+| ~45% | **Real footage, full screen**, and every shot shows exactly what the narration says | Card tap, route van, break room, LAX at sunset |
+| ~35% | **Graphics**, mostly *on top of* darkened footage, so real footage stays visible most of the time | The Split over a real machine, the 59.5% over LAX |
+| ~20% | **"Deal File" source documents** (real wording, highlighted, source tag) | LAX board report, Riverside contract, FTC 1998 release |
 | 0% | AI images | None. Real footage is the point |
+
+**Why less stock than before:** viewers name "barely relevant stock footage" as a sign of low-effort AI channels. If no clip
+shows exactly what's being said, use a graphic or a document instead of a vaguely related clip.
+
+**Rules added by the research:**
+- **No cash piles** (bills, quarter buckets, counting money). Operators mock them, and they're the hype look we stand against.
+- **No stand-ins** (a grocery shelf for "restocking a vending machine", a generic panel for "repair").
+- **Show what the owner actually keeps:** after their own time, the loan and taxes, not just "profit".
+- **End every episode with the owner's checklist card** (lease or location contract · real sales records · equipment age ·
+  card vs cash · who covers when you can't).
+- **Every number has a source on screen**, ideally the document itself.
 
 **Why custom graphics matter:** stock footage alone looks like the generic "template" channels YouTube now demonetizes, and anyone can download the same clips.
 The graphics built from each episode's own numbers make the video original. Never use pre-made graphics templates unchanged.
