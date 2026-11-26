@@ -72,7 +72,7 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   like a financial statement. Footage darkened with a left-to-right gradient (text side dark, footage visible on the
   right) and graded slightly (saturation 0.86). Fonts: **Libre Caslon Display** for hero numbers, quotes and the logo,
   **Libre Caslon Text** for documents, **Libre Franklin** 500/600 for labels and chart values (sentence case).
-  Files in `tools/video/gfx/fonts/`. Never use Inter, cream/terracotta, warm charcoal or rounded UI shapes.
+  **Nothing smaller than 46 px on a 1920x1080 frame** (owner: no small text). Files in `tools/video/gfx/fonts/`. Never use Inter, cream/terracotta, warm charcoal or rounded UI shapes.
   TV rules: key numbers 120–200 px, nothing under 36 px, bottom 15% clear, 4–8 s shots.
 - **No realistic AI-generated footage** of real places or people. It would need YouTube's synthetic-content label and
   undermines credibility. AI images only for abstract or illustrative use. Never rip news or other creators' clips.

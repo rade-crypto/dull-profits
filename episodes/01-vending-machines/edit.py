@@ -280,7 +280,7 @@ SHOTS = [
     # ---------------------------------------------------------------- 11 · Operation Vend Up Broke
     ftg("And none of this is new", "c11-newsprint-listings.mp4", 5.0),
     dict(at="In 1998, the Federal Trade Commission", kind="D",
-         scene=dict(type="doc", params=dict(header="FTC press release, Sept 3, 1998", size=42,
+         scene=dict(type="doc", params=dict(header="FTC press release, Sept 3, 1998", size=48,
                     html='FTC Announces <span class="hl" data-cue="@Operation Vend Up Broke">"OPERATION VEND UP BROKE"</span>: States and Feds Stop Business Opportunity Scams<br><br>"Every year, thousands of consumers literally end up broke after investing in purportedly lucrative vending opportunities." … <span class="hl" data-cue="@fake references">"You can\'t rely on supposedly satisfied consumers supplied by the seller."</span>'))),
     ftg("The ads have moved", "c11-phone-night-viewer.mp4", 6.0),
     dict(at="and the math behind them", kind="D",

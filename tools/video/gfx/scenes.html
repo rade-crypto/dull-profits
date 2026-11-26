@@ -14,10 +14,10 @@ body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numer
 #stage{position:absolute;inset:0}
 .abs{position:absolute}
 .h{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;letter-spacing:-1px;line-height:1;font-variant-numeric:lining-nums}
-.kicker{font:500 42px 'Libre Franklin';letter-spacing:.3px;color:var(--ink)}
-.label{font:500 42px 'Libre Franklin';color:var(--ink)}
+.kicker{font:500 46px 'Libre Franklin';letter-spacing:.3px;color:var(--ink)}
+.label{font:500 46px 'Libre Franklin';color:var(--ink)}
 .sub{font:500 48px 'Libre Franklin';color:var(--ink2);line-height:1.3}
-.src{position:absolute;left:116px;top:868px;font:500 36px 'Libre Franklin';color:var(--muted);opacity:.9}
+.src{position:absolute;left:116px;top:868px;font:500 46px 'Libre Franklin';color:var(--muted);opacity:.9}
 .src b{color:var(--ink2);font-weight:700}
 .shadow{text-shadow:0 4px 30px rgba(0,0,0,.6)}
 .card{background:transparent;padding:34px 0 0 0}
@@ -132,7 +132,7 @@ const SCENES = {
     });
     if (p.costs) { // operating-cost chips that bite into the owner's slice
       const g = geo[geo.length - 1];
-      p.costs.forEach((c, i) => anim(el(`<div class="abs shadow" style="left:${g.x}px;top:${Y + H + 36 + i * 62}px;color:var(--ink);font:500 42px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
+      p.costs.forEach((c, i) => anim(el(`<div class="abs shadow" style="left:${g.x}px;top:${Y + H + 36 + i * 62}px;color:var(--ink);font:500 46px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
     }
     if (p.tally) { // Owner's tally, top right, counts down as slices leave
       const box = el(`<div class="abs" style="right:116px;top:70px;text-align:right"><div class="kicker">${p.tally.label}</div><div class="h shadow" style="font-size:150px">$2.00</div></div>`);
@@ -161,7 +161,7 @@ const SCENES = {
       const y = 210 + i * 210;
       const c = el(`<div class="abs card" style="left:116px;top:${y}px;width:1300px;height:170px;display:flex;align-items:center;gap:40px;padding:0 48px">
         <div style="width:16px;height:96px;border-radius:0;background:var(--${it.key || 'hl'})"></div>
-        <div><div style="font:800 60px 'Libre Franklin'">${it.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2);margin-top:6px">${it.sub || ''}</div></div></div>`);
+        <div><div style="font:800 60px 'Libre Franklin'">${it.title}</div><div style="font:500 46px 'Libre Franklin';color:var(--ink2);margin-top:6px">${it.sub || ''}</div></div></div>`);
       anim(c, { anim: 'up', at: it.cue });
     });
   },
@@ -198,7 +198,7 @@ const SCENES = {
     const top = p.y ?? 320, rowH = p.rowH ?? 150, LX = 116, LW = p.labelW ?? 440, BX = LX + LW + 30, BW = p.barW ?? 620;
     p.items.forEach((it, i) => {
       const y = top + i * rowH, f = it.value / p.max, f0 = (it.from_ ?? 0) / p.max;
-      const lab = el(`<div class="abs" style="left:${LX}px;top:${y}px;width:${LW}px;height:96px;display:flex;flex-direction:column;justify-content:center"><div class="label" style="font-size:46px">${it.label}</div>${it.sub ? `<div style="font:500 34px 'Libre Franklin';color:var(--ink2)">${it.sub}</div>` : ''}</div>`);
+      const lab = el(`<div class="abs" style="left:${LX}px;top:${y}px;width:${LW}px;height:96px;display:flex;flex-direction:column;justify-content:center"><div class="label" style="font-size:46px">${it.label}</div>${it.sub ? `<div style="font:500 46px 'Libre Franklin';color:var(--ink2)">${it.sub}</div>` : ''}</div>`);
       anim(lab, { anim: 'fade', at: it.cue });
       if (it.locked) {
         const b = el(`<div class="abs" style="left:${BX}px;top:${y + 20}px;width:${BW * 0.6}px;height:52px;border:4px dashed var(--muted);border-radius:0;display:flex;align-items:center;justify-content:center;font:900 60px 'Libre Franklin';color:var(--muted)">?</div>`);
@@ -210,7 +210,7 @@ const SCENES = {
       const v = el(`<div class="abs shadow" style="left:${BX + BW * f + 24}px;top:${y - 4}px;font:600 ${p.valueSize || 64}px 'Libre Franklin';white-space:nowrap;font-variant-numeric:tabular-nums">${it.text}</div>`);
       anim(v, { anim: 'fade', at: it.cue + 0.4 });
     });
-    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:${top + p.items.length * rowH + 10}px;font-size:40px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
+    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:${top + p.items.length * rowH + 10}px;font-size:46px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
@@ -228,7 +228,7 @@ const SCENES = {
         <div style="white-space:nowrap;margin-left:30px;font:${l.total ? 600 : 500} ${l.total ? 80 : 54}px 'Libre Franklin';font-variant-numeric:tabular-nums;color:${l.key ? `var(--${l.key})` : 'var(--ink)'}">${l.value || ''}</div></div>`, card);
       anim(row, { anim: 'up', at: l.cue ?? 0 });
     });
-    if (p.note) anim(el(`<div style="font:500 38px 'Libre Franklin';color:var(--muted);margin-top:22px">${p.note}</div>`, card), { anim: 'fade', at: p.noteAt ?? 0 });
+    if (p.note) anim(el(`<div style="font:500 46px 'Libre Franklin';color:var(--muted);margin-top:22px">${p.note}</div>`, card), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, p.sourceAt ?? firstCue(p));
   },
 
@@ -236,8 +236,8 @@ const SCENES = {
   doc(p) {
     el(`<svg class="abs" width="1920" height="1080" style="left:0;top:0"><defs><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0"/></filter></defs><rect width="1920" height="1080" fill="#0A111D"/><rect width="1920" height="1080" filter="url(#n)"/></svg>`);
     const paper = el(`<div class="abs paper" style="left:${p.x ?? 250}px;top:${p.y ?? 150}px;width:${p.w ?? 1420}px;padding:60px 80px;transform:rotate(${p.rot ?? -1.2}deg)">
-      <div style="font:700 34px 'Libre Franklin';color:#111827;margin-bottom:30px">${p.header}</div>
-      <div style="font-size:${p.size || 46}px;line-height:1.55">${p.html}</div></div>`);
+      <div style="font:700 46px 'Libre Franklin';color:#111827;margin-bottom:30px">${p.header}</div>
+      <div style="font-size:${Math.max(48, p.size || 50)}px;line-height:1.55">${p.html}</div></div>`);
     anim(paper, { anim: 'up', at: 0, dur: 0.6 });
     paper.querySelectorAll('.hl').forEach(h => anim(h, { anim: 'hl', at: h.dataset.cue, dur: 0.9 }));
   },
@@ -251,7 +251,7 @@ const SCENES = {
     const row = el(`<div class="abs" style="left:116px;top:${y}px;display:flex;align-items:center;gap:34px;white-space:nowrap">
       <div class="serif shadow" style="font-size:96px">${p.src.title}</div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div class="arrow" style="width:190px;height:3px;background:#FFFFFF;position:relative"><div style="position:absolute;right:-2px;top:-9px;border-left:18px solid #FFFFFF;border-top:10px solid transparent;border-bottom:10px solid transparent"></div></div>
-        <div class="shadow" style="font:500 36px 'Libre Franklin'">${p.arrowLabel || ''}</div></div>
+        <div class="shadow" style="font:500 46px 'Libre Franklin'">${p.arrowLabel || ''}</div></div>
       <div class="serif shadow" style="font-size:96px">${p.dst.title}</div></div>`);
     anim(row, { anim: 'up', at: p.srcAt ?? 0 });
     (p.facts || []).forEach((f, i) => anim(el(`<div class="abs shadow" style="left:116px;top:${y + 170 + i * 84}px;font:500 52px 'Libre Franklin';border-left:3px solid var(--${f.key || 'hl'});padding-left:22px">${f.text}</div>`), { anim: 'up', at: f.cue }));
@@ -270,14 +270,14 @@ const SCENES = {
     if (p.kicker) kicker(p.kicker, 0);
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:170px;font:500 52px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
     const X = 116, W = 1500, Y = 560, yrs = p.years || 15;
-    let ticks = ''; for (let i = 0; i <= yrs; i++) ticks += `<div class="abs" style="left:${X + W * i / yrs - 1}px;top:${Y + 70}px;width:3px;height:${i % 5 ? 18 : 34}px;background:var(--grid)"></div>` + (i % 5 === 0 ? `<div class="abs" style="left:${X + W * i / yrs}px;top:${Y + 112}px;transform:translateX(-50%);font:600 38px 'Libre Franklin';color:var(--ink2)">${i} yr</div>` : '');
+    let ticks = ''; for (let i = 0; i <= yrs; i++) ticks += `<div class="abs" style="left:${X + W * i / yrs - 1}px;top:${Y + 70}px;width:3px;height:${i % 5 ? 18 : 34}px;background:var(--grid)"></div>` + (i % 5 === 0 ? `<div class="abs" style="left:${X + W * i / yrs}px;top:${Y + 112}px;transform:translateX(-50%);font:600 46px 'Libre Franklin';color:var(--ink2)">${i} yr</div>` : '');
     el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:56px;background:rgba(255,255,255,.12)"></div>`); el(`<div>${ticks}</div>`);
     p.marks.forEach(m => {
       const fx = X + W * Math.min(m.years, yrs) / yrs;
       anim(el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${fx - X}px;height:56px;background:var(--${m.key});opacity:${m.op ?? 1}"></div>`), { anim: 'grow', at: m.cue, dur: 0.8 });
-      anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:110px;white-space:nowrap">${m.label}</div><div style="font:600 36px 'Libre Franklin';color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
+      anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:110px;white-space:nowrap">${m.label}</div><div style="font:600 46px 'Libre Franklin';color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
     });
-    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:740px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
+    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:740px;font-size:46px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, firstCue(p));
   },
 
@@ -288,13 +288,13 @@ const SCENES = {
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:170px;font:500 52px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
     const X = 116, W = 1300, Y = 600, mx = p.max || 4;
     el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:3px;background:rgba(255,255,255,.5)"></div>`);
-    for (let i = 0; i <= mx; i++) el(`<div class="abs shadow" style="left:${X + W * i / mx}px;top:${Y + 30}px;transform:translateX(-50%);font:500 44px 'Libre Franklin'">${i}×</div>`);
+    for (let i = 0; i <= mx; i++) el(`<div class="abs shadow" style="left:${X + W * i / mx}px;top:${Y + 30}px;transform:translateX(-50%);font:500 46px 'Libre Franklin'">${i}×</div>`);
     p.marks.forEach(m => {
       const fx = X + W * m.x / mx;
       anim(el(`<div class="abs" style="left:${fx - 3}px;top:${Y - 40}px;width:6px;height:80px;background:var(--${m.key})"></div>`), { anim: 'fade', at: m.cue });
-      anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 110 : Y - 200}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:130px">${m.label}</div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
+      anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 110 : Y - 200}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:130px">${m.label}</div><div style="font:600 46px 'Libre Franklin';color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
     });
-    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:700px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
+    if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:700px;font-size:46px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, firstCue(p));
   },
 
@@ -313,10 +313,10 @@ const SCENES = {
   post(p, sc) {
     if (!sc.opaque) dim(0, 0.62);
     const c = el(`<div class="abs card" style="left:260px;top:150px;width:1400px;padding:40px 0 0 0;border-top:6px solid #FFFFFF">
-      ${p.meta ? `<div style="font:500 38px 'Libre Franklin';margin-bottom:24px">${p.meta}</div>` : ''}
-      <div style="font:800 58px 'Libre Franklin';margin-bottom:22px">${p.title}</div><div style="font:500 44px 'Libre Franklin';color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
+      ${p.meta ? `<div style="font:500 46px 'Libre Franklin';margin-bottom:24px">${p.meta}</div>` : ''}
+      <div style="font:800 58px 'Libre Franklin';margin-bottom:22px">${p.title}</div><div style="font:500 46px 'Libre Franklin';color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
     anim(c, { anim: 'up', at: 0 });
-    if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 40px 'Libre Franklin';color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });
+    if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 46px 'Libre Franklin';color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });
     if (p.source) source(p.source, firstCue(p));
   },
 
@@ -346,7 +346,7 @@ const SCENES = {
       const path = svg.querySelector('path.route');
       anim(svg, { anim: 'fade', at, dur: 0.4 });
       anim(path, { anim: 'fn', at: at + 0.3, dur: p.drawDur ?? 2.0, fn: (pp) => path.setAttribute('stroke-dashoffset', len * (1 - pp)) });
-      if (title) anim(el(`<div class="abs" style="left:${x}px;top:${y + h + 24}px;width:${w}px"><div style="font:800 52px 'Libre Franklin'">${title}</div><div style="font:500 38px 'Libre Franklin';color:var(--ink2)">${sub || ''}</div></div>`), { anim: 'up', at: at + 0.3 });
+      if (title) anim(el(`<div class="abs" style="left:${x}px;top:${y + h + 24}px;width:${w}px"><div style="font:800 52px 'Libre Franklin'">${title}</div><div style="font:500 46px 'Libre Franklin';color:var(--ink2)">${sub || ''}</div></div>`), { anim: 'up', at: at + 0.3 });
     };
     if (p.mode === 'compare') {
       panel(116, 190, 820, 520, [[.42, .38], [.5, .3], [.6, .36], [.62, .5], [.55, .62], [.45, .6], [.38, .5]], p.a.title, p.a.sub, p.a.cue, 'sup');
@@ -361,13 +361,13 @@ const SCENES = {
   versus(p, sc) {
     dim(0, 0.88);
     const ad = el(`<div class="abs paper" style="left:160px;top:150px;width:700px;height:640px;padding:44px;transform:rotate(-2deg)">
-      <div style="font:700 30px 'Libre Franklin';letter-spacing:2px;color:#6B6F78">CLASSIFIEDS · 1998</div>
-      <div style="border:4px solid #22252B;margin-top:24px;padding:30px;text-align:center"><div style="font:900 64px 'DejaVu Serif',serif;line-height:1.05">${p.adHead}</div><div style="font:400 36px 'DejaVu Serif',serif;margin-top:20px;line-height:1.35">${p.adBody}</div></div></div>`);
+      <div style="font:700 46px 'Libre Franklin';letter-spacing:2px;color:#6B6F78">CLASSIFIEDS · 1998</div>
+      <div style="border:4px solid #22252B;margin-top:24px;padding:30px;text-align:center"><div style="font:900 64px 'DejaVu Serif',serif;line-height:1.05">${p.adHead}</div><div style="font:400 46px 'DejaVu Serif',serif;margin-top:20px;line-height:1.35">${p.adBody}</div></div></div>`);
     anim(ad, { anim: 'up', at: p.adCue ?? 0 });
     const ph = el(`<div class="abs" style="left:1180px;top:110px;width:400px;height:760px;border-radius:0;background:#0B0C0F;border:10px solid #3A3F49;padding:30px 24px;display:flex;flex-direction:column;justify-content:flex-end">
-      <div style="font:800 46px 'Libre Franklin';line-height:1.15">${p.feedHead}</div><div style="font:500 30px 'Libre Franklin';color:var(--ink2);margin-top:16px">${p.feedBody}</div></div>`);
+      <div style="font:800 46px 'Libre Franklin';line-height:1.15">${p.feedHead}</div><div style="font:500 46px 'Libre Franklin';color:var(--ink2);margin-top:16px">${p.feedBody}</div></div>`);
     anim(ph, { anim: 'up', at: p.feedCue ?? 0.4 });
-    anim(el(`<div class="abs" style="left:116px;top:860px;font:600 32px 'Libre Franklin';color:var(--muted);letter-spacing:1px;text-transform:uppercase">Illustration, not real ads</div>`), { anim: 'fade', at: 0 });
+    anim(el(`<div class="abs" style="left:116px;top:860px;font:600 46px 'Libre Franklin';color:var(--muted);letter-spacing:1px;text-transform:uppercase">Illustration, not real ads</div>`), { anim: 'fade', at: 0 });
   },
 
   // End screen: the wordmark only. YouTube places its own end-screen video tiles on top.
