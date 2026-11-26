@@ -16,7 +16,7 @@ Audience: roughly 40–65+, has capital, might actually buy or sell one; many wa
 
 ## Magnific is for B-ROLL ONLY (owner's standing rule)
 **Use Magnific only to search and download stock footage/photos for B-roll.** Never use it for voiceover, music,
-images, video generation or anything else. **The voiceover is made by Claude locally with free open-source models.**
+images, video generation or anything else. **The owner makes the voiceover in ElevenLabs.**
 (144 credits were once wrongly spent on Magnific voice samples. Don't repeat that.)
 
 ## ⛔ NEVER spend Magnific credits (owner's standing rule)
@@ -61,6 +61,10 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   3 parts under 4,500 characters each). Claude does NOT make voiceovers anymore. After 20 rejected samples from
   Magnific, Qwen3-TTS, Chatterbox, VoxCPM2 and VibeVoice, all local voice tools and samples were deleted.
   When the owner provides the audio file, get word timings from it (e.g. faster-whisper) and build the video around it.
+  Recommended ElevenLabs Voice Library voices (library voices persist; the old built-in defaults Brian/Eric/Bill
+  expire Dec 31, 2026 and aren't available to accounts made after Mar 2026):
+  "David - American Narrator" (https://elevenlabs.io/app/voice-library?voiceId=v9LgF91V36LGgbLX3iHW),
+  "David Castlemore - Newsreader" (…voiceId=XjLkpWUlnhS8i7gGz3lZ), "Bill - Informative, Clean and Natural" (…voiceId=lnUnPeUhSI5EcqtFBux7).
 
 ## Next steps
 1. Confirm the Magnific MCP tools work. Find out what they offer (stock video? images? AI video?) and their credit cost.
