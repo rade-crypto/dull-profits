@@ -839,7 +839,7 @@ Object.assign(SCENES, {
     const r0 = cue(p.routeAt), rd = p.routeDur ?? 1.6, lap = p.lap ?? 4.0;
     anim(rs, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
       const L = len * E.sine(clamp((t - r0) / rd));
-      [pu, pr].forEach(x => x.setAttribute('stroke-dashoffset', (len - L).toFixed(2)));
+      [pu, pr].forEach(x => { x.setAttribute('stroke-dashoffset', (len - L).toFixed(2)); x.style.opacity = L > 0.5 ? 1 : 0; });  // no stray round cap before it draws
       const along = t < r0 + rd ? L : (len + (t - r0 - rd) / lap * len) % len;   // the van keeps driving the loop
       const h = pr.getPointAtLength(Math.max(0.01, Math.min(len - 0.01, along))); head.setAttribute('cx', h.x); head.setAttribute('cy', h.y);
       head.style.opacity = t >= r0 ? 1 : 0; } });

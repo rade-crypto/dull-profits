@@ -81,6 +81,8 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   TV rules: key numbers 120–200 px, nothing under 36 px, bottom 15% clear, 4–8 s shots.
 - **No realistic AI-generated footage** of real places or people. It would need YouTube's synthetic-content label and
   undermines credibility. AI images only for abstract or illustrative use. Never rip news or other creators' clips.
+- **Owner (Nov 26, 2026): use Pexels when Magnific hits its download limit, and in general whenever Pexels has footage
+  that fits better or looks better.** Pexels API key is a network secret on the environment (host api.pexels.com).
 - Footage sources: **Magnific stock via MCP (downloads confirmed free)**; raw files go in `episodes/*/footage/`, which is
   gitignored (stock licenses forbid redistributing raw files, and the repo is public). Also Mixkit (free, no key, reachable, but no vending-machine clips),
   Pexels (free key, not set up), archive.org Prelinger (public-domain archive film).
