@@ -51,7 +51,7 @@
   - **Views ÷ subs:** median views divided by subscribers. It shows how much of the subscriber base actually watches.
   - **Long-form per month:** estimated from YouTube's approximate upload dates ("2 months ago"), so it is rough for slow channels.
   - **Outlier multiple:** a video's views divided by the median of the 20 uploads around it on the same channel. This corrects for channel growth.
-  - **Outlier:** at least 3× its neighbors *and* at least 3× the channel's recent median, with at least 50K views. That gave 649 outliers among the English-language channels.
+  - **Outlier:** at least 3× its neighbors *and* at least 3× the channel's recent median, with at least 50K views. That gave 649 outliers across about 70 English-language channels.
 - **"Faceless / AI" labels** are judged from thumbnails (checked visually as contact sheets) and from upload cadence. Watch pages are behind a bot check, so **the narrator's voice could not be checked**. "AI-made look" means AI-generated thumbnail art plus a mass-production cadence, not a confirmed synthetic voice.
 - **Not used:** paid trackers (Social Blade history, vidIQ audience age). Audience-age claims come from the creators' own statements, cited below.
 - **Raw data** (not in the repo): `/tmp/claude-0/-home-user-dull-profits/2d3a3f8e-aea6-5074-995c-c55aa0aa7c64/scratchpad/landscape/`. Files: `channel_stats.csv`, `outliers.csv`, `topics.json`, `search/*.jsonl`, `channels/*.json`, `thumbs/sheet*.jpg`.
@@ -189,7 +189,7 @@ Vending videos from outside the niche: CNBC Make It 3.5M, UpFlip 3.3M and 2.0M (
 | Franchise Inspectors | Why are Gas Stations Selling so Cheap? | 259K | 98× | 7 min | Market anomaly framed as a question to answer |
 | Hard Hat Economics (faceless) | Codie Sanchez Sold Her Laundromats… Why Does She Want YOU to Buy One? | 142K | 32× | 10 min | Skeptical reply to a famous guru |
 | Hard Hat Economics (faceless) | Why Mechanics Are Done With Dealerships. Ford's CEO Still Doesn't Get It | 424K | 154× | 7 min | Blue-collar insider view plus contrarian take |
-| David Explains Money (faceless AI) | 20 BORING BUSINESSES That Make Money While You Sleep | 1.4M | 10.5× | 28 min | Long list with an older-man mascot. A clone of an Indian channel's 2.7M title |
+| David Explains Money (faceless AI) | 20 BORING BUSINESSES That Make Money While You Sleep | 1.4M | 10.5× | 28 min | Long list with an older-man mascot. Near-identical to another channel's 2.7M title from the same month |
 | Mr. Finance (faceless AI) | The Economics of Owning a Cafe | 233K | 17× | 24 min | Template. The rare hit in a 44-a-month stream |
 | Modern MBA | Why Crumbl Cookies Can't Survive | 2.3M | 5.1× | 30 min | Familiar brand plus "can't survive" |
 | Modern MBA | The Crumbling Business of Marijuana | 1.7M | 7.1× | 54 min | Whole-industry economics |
@@ -218,7 +218,7 @@ Vending videos from outside the niche: CNBC Make It 3.5M, UpFlip 3.3M and 2.0M (
 
 **Title features, outliers vs normal videos.** Normal = less than 1.5× the neighbors.
 
-| Feature | All 72 English channels: outliers / normal (lift) | 21 faceless channels: outliers / normal (lift) |
+| Feature | ~70 English channels: outliers / normal (lift) | 21 faceless channels: outliers / normal (lift) |
 |---|---|---|
 | Contains a $ figure | 27% / 17% (×1.6) | **22% / 12% (×1.9)** |
 | Contains any number | 53% / 40% (×1.3) | 42% / 29% (×1.45) |
