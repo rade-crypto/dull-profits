@@ -8,3 +8,7 @@ __pycache__/
 
 # Raw stock footage: licensed for use in our videos, not for redistribution (repo is public)
 episodes/*/footage/
+
+# Voiceover audio and rendered video: large, and unpublished episodes stay private (repo is public)
+episodes/*/voiceover/*.mp3
+episodes/*/render/

@@ -38,6 +38,9 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   `stock_download`, even though `stock_search` shows `creditCost: 600`. Ignore that label: **`stock_download`
   (photos, videos, icons, vectors) is free to use as much as needed.** Download URLs may come from
   delivery.gettyimages.com, which is normal.
+- **Download rate limit:** after roughly 40 downloads in a short burst, `stock_download` returns `rate_limit_exceeded`
+  (account-wide, resets after ~15 min). Its error text suggests `images_generate` instead: never do that (costs credits).
+  Queue the IDs (`footage/pending.tsv`, `manifest-*.json` with `status: pending_download`) and download them after the reset.
 - Still never call generation tools (`audio_tts`, `images_generate`, `video_generate`, music, upscales, …) without the
   `simulate_cost` = 0 check above. Only *downloads of existing stock* are free.
 
@@ -62,7 +65,9 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 - **Voiceover: the owner generates it themselves in ElevenLabs** from `voiceover-script.md` (numbers spelled out,
   3 parts under 4,500 characters each). Claude does NOT make voiceovers anymore. After 20 rejected samples from
   Magnific, Qwen3-TTS, Chatterbox, VoxCPM2 and VibeVoice, all local voice tools and samples were deleted.
-  When the owner provides the audio file, get word timings from it (e.g. faster-whisper) and build the video around it.
+  When the owner provides the audio file, get word timings from it (`tools/video/transcribe.py`) and build the video around it.
+  **QA the transcript first:** the first ElevenLabs file had the "PART n of 3 (… characters)" headings read aloud; they were
+  cut out (`voiceover-clean.wav`, `timings-clean.json`). Phrase lookup for timing: `tools/video/timing.py`.
   Recommended ElevenLabs Voice Library voices (library voices persist; the old built-in defaults Brian/Eric/Bill
   expire Dec 31, 2026 and aren't available to accounts made after Mar 2026):
   "David - American Narrator" (https://elevenlabs.io/app/voice-library?voiceId=v9LgF91V36LGgbLX3iHW),

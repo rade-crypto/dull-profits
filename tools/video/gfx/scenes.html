@@ -1,0 +1,153 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;background:transparent;overflow:hidden}
+body{color:var(--ink);font-family:Inter,sans-serif;font-variant-numeric:tabular-nums;position:relative;
+  --bg:#1C1F24;--bg2:#15171B;--panel:#252932;--ink:#F2EFE8;--ink2:#B9BEC7;--muted:#8B93A1;--grid:#343944;
+  --tax:#6B7280;--sup:#4C8DD6;--pay:#D1679E;--loc:#DB8230;--own:#F2EFE8;--cost:#C9A227;--hl:#F5D547}
+#stage{position:absolute;inset:0}
+.abs{position:absolute}
+.h{font-family:'Inter Display',Inter,sans-serif;font-weight:900;letter-spacing:-2px;line-height:1}
+.kicker{font:700 38px Inter;letter-spacing:4px;color:var(--ink2);text-transform:uppercase}
+.label{font:700 44px Inter;color:var(--ink)}
+.sub{font:500 48px Inter;color:var(--ink2);line-height:1.3}
+.src{position:absolute;left:116px;top:862px;font:600 34px Inter;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.src b{color:var(--ink2);font-weight:700}
+.shadow{text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.card{background:var(--panel);border-radius:22px;padding:40px 48px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.paper{background:#EDE9E0;color:#22252B;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'DejaVu Serif',Georgia,serif}
+.hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:4px}
+</style></head>
+<body><div id="stage"></div>
+<script>
+// ---------------------------------------------------------------------------------------------
+// Animation engine. Elements get data-in (cue name or seconds), data-anim, data-dur, data-out.
+// draw(t) sets every element's state for time t (seconds from shot start) and returns a key that
+// only changes while something is moving, so the renderer can reuse identical frames.
+// ---------------------------------------------------------------------------------------------
+const S = document.getElementById('stage');
+let CUES = {}, TWEENS = [];
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = p => 1 - Math.pow(1 - p, 3);
+const cue = c => (c === undefined || c === null) ? 0 : (typeof c === 'number' ? c : (c in CUES ? CUES[c] : (() => { throw new Error('missing cue ' + c) })()));
+function el(html, parent = S) { const d = document.createElement('div'); d.innerHTML = html.trim(); const n = d.firstElementChild; parent.appendChild(n); return n; }
+function anim(node, opts) { TWEENS.push(Object.assign({ node, anim: 'fade', dur: 0.5, at: 0 }, opts)); return node; }
+const fmt = {
+  money2: v => '$' + v.toFixed(2), money0: v => '$' + Math.round(v).toLocaleString('en-US'),
+  cents: v => Math.round(v) + '¢', int: v => Math.round(v).toLocaleString('en-US'), pct1: v => v.toFixed(1) + '%', pct0: v => Math.round(v) + '%',
+};
+function apply(tw, t) {
+  const a = cue(tw.at), p = ease(clamp((t - a) / tw.dur));
+  let q = 1; if (tw.out !== undefined) q = 1 - ease(clamp((t - cue(tw.out)) / (tw.outDur || 0.4)));
+  const n = tw.node, o = p * q;
+  switch (tw.anim) {
+    case 'fade': n.style.opacity = o; break;
+    case 'up': n.style.opacity = o; n.style.transform = `translateY(${(1 - p) * 40}px)`; break;
+    case 'pop': n.style.opacity = o; n.style.transform = `scale(${0.92 + 0.08 * p})`; break;
+    case 'wipe': n.style.opacity = q; n.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`; break;
+    case 'grow': n.style.opacity = q; n.style.transform = `scaleX(${p})`; n.style.transformOrigin = 'left center'; break;
+    case 'growY': n.style.opacity = q; n.style.transform = `scaleY(${p})`; n.style.transformOrigin = 'center bottom'; break;
+    case 'hl': n.style.setProperty('--p', (p * 100) + '%'); break;
+    case 'count': n.style.opacity = q; n.textContent = fmt[tw.fmt](tw.from + (tw.to - tw.from) * p); break;
+    case 'dim': n.style.opacity = o * (tw.max ?? 0.62); break;
+    case 'fn': tw.fn(p, q, t); break;
+  }
+  return (p > 0 && p < 1) || (q > 0 && q < 1) ? p.toFixed(3) + ',' + q.toFixed(3) : (p >= 1 ? 'A' : 'B') + (q >= 1 ? 'a' : 'b');
+}
+window.draw = t => TWEENS.map(tw => apply(tw, t)).join('|');
+window.setup = (scene) => { CUES = scene.cues || {}; TWEENS = []; S.innerHTML = ''; if (scene.opaque) document.body.style.background = 'var(--bg)'; SCENES[scene.type](scene.params || {}, scene); draw(0); };
+
+// Shared pieces ----------------------------------------------------------------------------------
+function dim(at = 0, max = 0.62) { return anim(el('<div class="abs" style="inset:0;background:#0D0F12"></div>'), { anim: 'dim', at, max, dur: 0.6 }); }
+function source(text, at = 0) { return anim(el(`<div class="src"><b>Source:</b> ${text}</div>`), { at, anim: 'fade', dur: 0.6 }); }
+function kicker(text, at = 0, x = 116, y = 96) { return anim(el(`<div class="abs kicker" style="left:${x}px;top:${y}px">${text}</div>`), { at, anim: 'fade' }); }
+
+// Scenes -----------------------------------------------------------------------------------------
+const SCENES = {
+  // One big number (optionally counting) with a line under it. Over dimmed footage unless opaque.
+  bignum(p, sc) {
+    if (!sc.opaque) dim(p.dimAt ?? p.at ?? 0, p.dim ?? 0.62);
+    if (p.kicker) kicker(p.kicker, p.at);
+    const y = p.y ?? 300, size = p.size ?? 260;
+    const n = el(`<div class="abs h shadow" style="left:116px;top:${y}px;font-size:${size}px;color:${p.color || 'var(--ink)'}">${p.text || ''}</div>`);
+    if (p.count) anim(n, { anim: 'count', at: p.at, dur: p.countDur ?? 1.0, from: p.count[0], to: p.count[1], fmt: p.fmt });
+    else anim(n, { anim: 'up', at: p.at });
+    (p.lines || []).forEach((l, i) => anim(el(`<div class="abs shadow" style="left:122px;top:${y + size + 30 + i * 74}px;font:${i ? '500 48px' : '700 60px'} Inter;color:${i ? 'var(--ink2)' : 'var(--ink)'};max-width:1680px">${l.text}</div>`), { anim: 'up', at: l.at ?? p.at }));
+    if (p.source) source(p.source, p.sourceAt ?? p.at);
+  },
+
+  // The Split: a $2.00 bar that splits into labeled slices. Modes: 'intro' (names only) or 'full' (cents + tally).
+  split(p) {
+    if (p.dimAt !== undefined || p.dim) dim(p.dimAt ?? 0, p.dim ?? 0.7);
+    const X = 116, W = 1688, Y = p.y ?? 470, H = 150, GAP = 8;
+    const sl = p.slices; // [{key,label,cents,cue}]
+    const total = sl.reduce((a, s) => a + s.cents, 0);
+    const unit = (W - GAP * (sl.length - 1)) / total;
+    let x = X; const geo = sl.map(s => { const g = { x, w: s.cents * unit }; x += g.w + GAP; return g; });
+    if (p.title) anim(el(`<div class="abs h shadow" style="left:116px;top:150px;font-size:${p.titleSize || 200}px">${p.title}</div>`), { anim: 'up', at: p.titleAt ?? 0 });
+    if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
+    // Whole bar (before the split): cream with the total
+    const whole = el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:${H}px;border-radius:20px;background:var(--own);display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 64px 'Inter Display'">${p.wholeLabel || ''}</div>`);
+    anim(whole, { anim: 'wipe', at: p.wholeAt ?? 0, dur: 0.7, out: p.splitAt, outDur: 0.35 });
+    const segs = sl.map((s, i) => {
+      const g = geo[i];
+      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:16px;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 58px 'Inter Display'">${s.inside || ''}</div>`);
+      anim(seg, { anim: 'fn', at: p.splitAt, dur: 0.6, fn: (pp) => { seg.style.opacity = pp > 0 ? 1 : 0; seg.style.transform = `scaleX(${0.85 + 0.15 * pp})`; seg.style.filter = s.cue ? '' : ''; } });
+      if (s.cue && s.key !== 'own') { // dim slices until named, then brighten
+        anim(seg, { anim: 'fn', at: s.cue, dur: 0.35, fn: (pp) => { seg.style.filter = `saturate(${0.25 + 0.75 * pp}) brightness(${0.55 + 0.45 * pp})`; } });
+      }
+      // label with leader line
+      if (s.label) {
+        const row = s.row ?? 0, cx = g.x + g.w / 2;
+        const ly = row < 0 ? Y - 150 : Y + H + 50 + row * 120;
+        const align = s.align || 'center';
+        const lx = align === 'left' ? g.x : (align === 'right' ? g.x + g.w : cx);
+        const tx = align === 'left' ? 'translateX(0)' : (align === 'right' ? 'translateX(-100%)' : 'translateX(-50%)');
+        const line = el(`<div class="abs" style="left:${cx - 2}px;top:${row < 0 ? ly + 104 : Y + H + 8}px;width:4px;height:${row < 0 ? Y - ly - 112 : ly - Y - H - 14}px;background:var(--${s.key})"></div>`);
+        const lab = el(`<div class="abs" style="left:${lx}px;top:${ly}px;transform:${tx};white-space:nowrap;text-align:${align}">
+            <div class="label shadow">${s.label}</div>${s.amount ? `<div class="h shadow" style="font-size:60px;margin-top:6px;letter-spacing:-1px">${s.amount}</div>` : ''}</div>`);
+        anim(line, { anim: 'growY', at: s.cue, dur: 0.35 }); anim(lab, { anim: 'up', at: s.cue, dur: 0.45 });
+      }
+    });
+    if (p.tally) { // Owner's tally, top right, counts down as slices leave
+      const box = el(`<div class="abs" style="right:116px;top:70px;text-align:right"><div class="kicker">${p.tally.label}</div><div class="h shadow" style="font-size:150px">$2.00</div></div>`);
+      anim(box, { anim: 'fade', at: p.tally.at ?? 0 });
+      const num = box.children[1]; let left = 200;
+      p.tally.steps.forEach(st => { const from = left; left -= st.cents; const to = left; anim(num, { anim: 'fn', at: st.cue, dur: 0.6, fn: (pp) => { if (pp > 0) num.textContent = fmt.money2((from + (to - from) * pp) / 100); } }); });
+    }
+    if (p.source) source(p.source, p.sourceAt ?? 0);
+  },
+
+  // Quote card: big quoted phrase, optional attribution and strike-through.
+  quote(p) {
+    dim(p.at ?? 0, p.dim ?? 0.6);
+    const q = el(`<div class="abs" style="left:116px;top:${p.y ?? 330}px;max-width:1690px"><div class="h shadow" style="font-size:${p.size || 150}px;letter-spacing:-3px">${p.text}</div></div>`);
+    anim(q, { anim: 'up', at: p.at });
+    if (p.by) anim(el(`<div class="abs sub shadow" style="left:122px;top:${(p.y ?? 330) + (p.byOffset ?? 200)}px">${p.by}</div>`), { anim: 'fade', at: p.byAt ?? p.at });
+    if (p.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${(p.y ?? 330) + (p.size || 150) * 0.52}px;width:${p.strikeW || 1500}px;height:14px;background:var(--hl);border-radius:7px"></div>`), { anim: 'grow', at: p.strikeAt, dur: 0.5 });
+    if (p.source) source(p.source, p.at);
+  },
+
+  // Stacked source cards ("where the numbers come from").
+  sources(p) {
+    dim(0, p.dim ?? 0.8);
+    if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
+    p.items.forEach((it, i) => {
+      const y = 210 + i * 210;
+      const c = el(`<div class="abs card" style="left:116px;top:${y}px;width:1300px;height:170px;display:flex;align-items:center;gap:40px;padding:0 48px">
+        <div style="width:16px;height:96px;border-radius:8px;background:var(--${it.key || 'hl'})"></div>
+        <div><div style="font:800 60px Inter">${it.title}</div><div style="font:500 40px Inter;color:var(--ink2);margin-top:6px">${it.sub || ''}</div></div></div>`);
+      anim(c, { anim: 'up', at: it.cue });
+    });
+  },
+
+  // Chapter / title card on a plain background.
+  chapter(p) {
+    if (p.dim !== false) dim(0, p.dim ?? 0.75);
+    if (p.kicker) anim(el(`<div class="abs kicker" style="left:116px;top:390px">${p.kicker}</div>`), { anim: 'fade', at: 0 });
+    anim(el(`<div class="abs h shadow" style="left:116px;top:450px;font-size:${p.size || 150}px;letter-spacing:-3px">${p.title}</div>`), { anim: 'up', at: 0.1 });
+    if (p.rule) anim(el(`<div class="abs" style="left:120px;top:${450 + (p.size || 150) + 50}px;width:360px;height:10px;border-radius:5px;background:var(--${p.rule})"></div>`), { anim: 'grow', at: 0.35, dur: 0.6 });
+  },
+};
+</script></body></html>

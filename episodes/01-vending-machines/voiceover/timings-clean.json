@@ -1,0 +1,11533 @@
+{
+ "audio": "voiceover-clean.wav",
+ "duration": 678.716,
+ "model": "medium.en",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.12,
+   "text": "You tap your phone, and a soda drops."
+  },
+  {
+   "start": 2.66,
+   "end": 2.84,
+   "text": "$2."
+  },
+  {
+   "start": 3.74,
+   "end": 6.64,
+   "text": "Before the owner of this machine keeps a single cent,"
+  },
+  {
+   "start": 7.14,
+   "end": 8.74,
+   "text": "five other players get paid."
+  },
+  {
+   "start": 9.12,
+   "end": 10.76,
+   "text": "They're the government, the drink company,"
+  },
+  {
+   "start": 11.06,
+   "end": 13.28,
+   "text": "the card processor, the software company,"
+  },
+  {
+   "start": 13.4,
+   "end": 15.42,
+   "text": "and the building the machine stands in."
+  },
+  {
+   "start": 15.78,
+   "end": 17.98,
+   "text": "At one of the busiest airports in America,"
+  },
+  {
+   "start": 18.38,
+   "end": 22.1,
+   "text": "the building takes 59.5% of every sale."
+  },
+  {
+   "start": 22.44,
+   "end": 24.08,
+   "text": "We'll get to that deal in a few minutes."
+  },
+  {
+   "start": 24.64,
+   "end": 26.62,
+   "text": "Online, vending machines get pitched"
+  },
+  {
+   "start": 26.62,
+   "end": 28.22,
+   "text": "as easy passive income."
+  },
+  {
+   "start": 28.22,
+   "end": 30.62,
+   "text": "Stock a machine with snacks once a week"
+  },
+  {
+   "start": 30.62,
+   "end": 32.34,
+   "text": "and let the cash pile up."
+  },
+  {
+   "start": 32.82,
+   "end": 35.48,
+   "text": "So we check the real numbers, from payment data,"
+  },
+  {
+   "start": 35.78,
+   "end": 38.88,
+   "text": "public contracts, and operators own posted results."
+  },
+  {
+   "start": 39.42,
+   "end": 41.98,
+   "text": "The picture is a lot less exciting than the videos,"
+  },
+  {
+   "start": 42.34,
+   "end": 44.92,
+   "text": "and it shows where the money in this business is moving."
+  },
+  {
+   "start": 45.42,
+   "end": 46.9,
+   "text": "So let's follow the $2."
+  },
+  {
+   "start": 47.48,
+   "end": 50.1,
+   "text": "These machines usually belong to an operator,"
+  },
+  {
+   "start": 50.48,
+   "end": 51.96,
+   "text": "a business that buys machines,"
+  },
+  {
+   "start": 52.36,
+   "end": 53.98,
+   "text": "places them in other people's buildings,"
+  },
+  {
+   "start": 53.98,
+   "end": 55.3,
+   "text": "and keeps them stocked."
+  },
+  {
+   "start": 55.3,
+   "end": 58.88,
+   "text": "In 2025, US vending operators brought in"
+  },
+  {
+   "start": 58.88,
+   "end": 60.24,
+   "text": "more than $7 billion,"
+  },
+  {
+   "start": 60.96,
+   "end": 63.1,
+   "text": "according to the research firm, Ibisworld."
+  },
+  {
+   "start": 63.64,
+   "end": 65.7,
+   "text": "The biggest names are food service giants,"
+  },
+  {
+   "start": 65.9,
+   "end": 67.24,
+   "text": "Compass Group and Aramark."
+  },
+  {
+   "start": 67.68,
+   "end": 69.6,
+   "text": "But most of the map is still covered"
+  },
+  {
+   "start": 69.6,
+   "end": 71.38,
+   "text": "in small, local businesses."
+  },
+  {
+   "start": 71.94,
+   "end": 73.86,
+   "text": "Most of them are built around a route."
+  },
+  {
+   "start": 74.26,
+   "end": 76.52,
+   "text": "An operator drives a loop of locations,"
+  },
+  {
+   "start": 76.88,
+   "end": 78.72,
+   "text": "restocking snacks, pulling cash,"
+  },
+  {
+   "start": 79.06,
+   "end": 81.46,
+   "text": "and fixing whatever broke since the last visit."
+  },
+  {
+   "start": 81.82,
+   "end": 83.18,
+   "text": "The machines aren't cheap."
+  },
+  {
+   "start": 83.18,
+   "end": 85.92,
+   "text": "One supplier sells small countertop machines"
+  },
+  {
+   "start": 85.92,
+   "end": 87.32,
+   "text": "from about $1,900."
+  },
+  {
+   "start": 88.18,
+   "end": 91.62,
+   "text": "A combo snack and drink machine starts around $3,500."
+  },
+  {
+   "start": 92.08,
+   "end": 95.12,
+   "text": "An elevator machine, which gently lowers each item"
+  },
+  {
+   "start": 95.12,
+   "end": 98.86,
+   "text": "instead of dropping it, starts at about $8,650."
+  },
+  {
+   "start": 99.56,
+   "end": 101.52,
+   "text": "Then there's the deal with the location."
+  },
+  {
+   "start": 101.96,
+   "end": 104.78,
+   "text": "Plenty of small businesses host a machine for free"
+  },
+  {
+   "start": 104.78,
+   "end": 107.7,
+   "text": "because snacks for their staff are the whole point."
+  },
+  {
+   "start": 108.22,
+   "end": 109.94,
+   "text": "Busy places know what they're worth."
+  },
+  {
+   "start": 110.18,
+   "end": 112.86,
+   "text": "They usually ask for a share of gross sales,"
+  },
+  {
+   "start": 112.86,
+   "end": 115.32,
+   "text": "commonly five to 20%."
+  },
+  {
+   "start": 115.32,
+   "end": 118.06,
+   "text": "Sales per machine depend almost entirely"
+  },
+  {
+   "start": 118.06,
+   "end": 119.24,
+   "text": "on where it stands."
+  },
+  {
+   "start": 119.74,
+   "end": 122.06,
+   "text": "The same supplier's guide puts a typical site"
+  },
+  {
+   "start": 122.06,
+   "end": 125.06,
+   "text": "at $150 to $700 a month,"
+  },
+  {
+   "start": 125.32,
+   "end": 127.62,
+   "text": "and a strong one at up to $1,500."
+  },
+  {
+   "start": 128.38,
+   "end": 131.56,
+   "text": "Top spots like hospitals, factories, and transit hubs"
+  },
+  {
+   "start": 131.56,
+   "end": 133.5,
+   "text": "can do $2,000 or more."
+  },
+  {
+   "start": 133.92,
+   "end": 135.5,
+   "text": "Those are sales figures, though."
+  },
+  {
+   "start": 135.8,
+   "end": 139.38,
+   "text": "To see what an operator keeps, go back to the $2 soda."
+  },
+  {
+   "start": 139.38,
+   "end": 143.0,
+   "text": "Here's how one equipment supplier models a $2 soda."
+  },
+  {
+   "start": 143.5,
+   "end": 147.66,
+   "text": "It assumes a 6% sales tax, a 10% location commission,"
+  },
+  {
+   "start": 147.68,
+   "end": 149.84,
+   "text": "and most customers paying by card."
+  },
+  {
+   "start": 150.32,
+   "end": 152.96,
+   "text": "First, about 11 cents is sales tax."
+  },
+  {
+   "start": 153.28,
+   "end": 155.26,
+   "text": "That was never the operator's money."
+  },
+  {
+   "start": 155.66,
+   "end": 157.46,
+   "text": "The biggest slice is the product."
+  },
+  {
+   "start": 157.96,
+   "end": 161.26,
+   "text": "Roughly half the pre-tax price, about 94 cents,"
+  },
+  {
+   "start": 161.5,
+   "end": 163.52,
+   "text": "goes to whoever supplied the drink."
+  },
+  {
+   "start": 163.84,
+   "end": 165.82,
+   "text": "Then the tech companies take theirs."
+  },
+  {
+   "start": 166.28,
+   "end": 168.42,
+   "text": "Card processing costs about nine cents,"
+  },
+  {
+   "start": 168.42,
+   "end": 170.8,
+   "text": "and the card reader and software subscription"
+  },
+  {
+   "start": 170.8,
+   "end": 171.84,
+   "text": "about four more."
+  },
+  {
+   "start": 172.32,
+   "end": 174.16,
+   "text": "The building takes its 10%."
+  },
+  {
+   "start": 174.16,
+   "end": 175.24,
+   "text": "That's 20 cents."
+  },
+  {
+   "start": 175.78,
+   "end": 178.46,
+   "text": "That leaves the operator about 62 cents"
+  },
+  {
+   "start": 178.46,
+   "end": 182.16,
+   "text": "before paying for gas, labor, repairs, insurance,"
+  },
+  {
+   "start": 182.52,
+   "end": 183.52,
+   "text": "and income tax."
+  },
+  {
+   "start": 184.04,
+   "end": 186.98,
+   "text": "Every restock means driving out, hauling cases,"
+  },
+  {
+   "start": 187.2,
+   "end": 189.28,
+   "text": "and doing it all again next week."
+  },
+  {
+   "start": 189.82,
+   "end": 192.24,
+   "text": "Those costs come out of the 62 cents too."
+  },
+  {
+   "start": 192.66,
+   "end": 196.16,
+   "text": "Run the full numbers on a machine selling $900 a month,"
+  },
+  {
+   "start": 196.16,
+   "end": 198.86,
+   "text": "and the same supplier estimates the operator"
+  },
+  {
+   "start": 198.86,
+   "end": 200.44,
+   "text": "keeps about 197."
+  },
+  {
+   "start": 201.18,
+   "end": 204.94,
+   "text": "That's roughly a 22% margin at a decent location,"
+  },
+  {
+   "start": 205.24,
+   "end": 207.58,
+   "text": "and it's before the operator pays themselves"
+  },
+  {
+   "start": 207.58,
+   "end": 208.98,
+   "text": "anything for their time."
+  },
+  {
+   "start": 209.32,
+   "end": 211.98,
+   "text": "And the better the location, the bigger it's cut."
+  },
+  {
+   "start": 212.48,
+   "end": 215.6,
+   "text": "Some public contracts go far past 10%."
+  },
+  {
+   "start": 215.6,
+   "end": 218.66,
+   "text": "One California community college district, Riverside,"
+  },
+  {
+   "start": 218.94,
+   "end": 221.44,
+   "text": "gets 33% of gross sales,"
+  },
+  {
+   "start": 221.56,
+   "end": 223.78,
+   "text": "and that airport from the start of this video,"
+  },
+  {
+   "start": 223.78,
+   "end": 225.8,
+   "text": "its deal is bigger still."
+  },
+  {
+   "start": 226.5,
+   "end": 229.0,
+   "text": "Card payments do help the operator in one way."
+  },
+  {
+   "start": 229.46,
+   "end": 232.6,
+   "text": "In 2025, people paying by card or phone"
+  },
+  {
+   "start": 232.6,
+   "end": 236.5,
+   "text": "spent an average of $2.45 per purchase"
+  },
+  {
+   "start": 236.5,
+   "end": 239.42,
+   "text": "at vending machines on Cantaloupe's payment network"
+  },
+  {
+   "start": 239.42,
+   "end": 242.66,
+   "text": "versus $1.57 in cash."
+  },
+  {
+   "start": 243.1,
+   "end": 246.66,
+   "text": "Card fees cost a few cents, but card customers spend more,"
+  },
+  {
+   "start": 247.04,
+   "end": 251.1,
+   "text": "and 78% of vending sales on that network were cashless."
+  },
+  {
+   "start": 251.1,
+   "end": 255.0,
+   "text": "So the operator ends up with a thin slice of each soda."
+  },
+  {
+   "start": 255.54,
+   "end": 256.64,
+   "text": "The bigger money in vending"
+  },
+  {
+   "start": 256.64,
+   "end": 258.58,
+   "text": "goes to three kinds of players."
+  },
+  {
+   "start": 259.58,
+   "end": 261.22,
+   "text": "Winner number one is the location."
+  },
+  {
+   "start": 261.82,
+   "end": 264.1,
+   "text": "That airport is Los Angeles International."
+  },
+  {
+   "start": 264.62,
+   "end": 267.72,
+   "text": "In 2023, its board approved a vending deal"
+  },
+  {
+   "start": 267.72,
+   "end": 271.92,
+   "text": "where the operator pays 59.5% of gross sales,"
+  },
+  {
+   "start": 272.28,
+   "end": 276.14,
+   "text": "or $100 per machine per month, whichever is more."
+  },
+  {
+   "start": 276.14,
+   "end": 279.48,
+   "text": "Even the runner-up bid from Compass Group's Canteen"
+  },
+  {
+   "start": 279.48,
+   "end": 282.3,
+   "text": "offered 51.6%."
+  },
+  {
+   "start": 282.3,
+   "end": 285.1,
+   "text": "The operator runs and maintains the machines."
+  },
+  {
+   "start": 285.62,
+   "end": 287.98,
+   "text": "The airport just collects for the floor space."
+  },
+  {
+   "start": 288.66,
+   "end": 290.24,
+   "text": "Winner number two is scale."
+  },
+  {
+   "start": 290.84,
+   "end": 292.08,
+   "text": "Driving between machines"
+  },
+  {
+   "start": 292.08,
+   "end": 294.14,
+   "text": "is one of the biggest costs in vending,"
+  },
+  {
+   "start": 294.6,
+   "end": 298.1,
+   "text": "so an operator with 100 machines packed into one area"
+  },
+  {
+   "start": 298.1,
+   "end": 301.32,
+   "text": "beats someone with 10 machines scattered across a city."
+  },
+  {
+   "start": 301.76,
+   "end": 304.26,
+   "text": "Big operators also buy products in bulk"
+  },
+  {
+   "start": 304.26,
+   "end": 306.5,
+   "text": "and can bid on huge contracts."
+  },
+  {
+   "start": 306.9,
+   "end": 308.94,
+   "text": "The biggest of them all is Canteen,"
+  },
+  {
+   "start": 309.26,
+   "end": 311.52,
+   "text": "owned by the food service giant Compass Group."
+  },
+  {
+   "start": 312.06,
+   "end": 314.38,
+   "text": "It started in Chicago in 1929"
+  },
+  {
+   "start": 314.38,
+   "end": 316.6,
+   "text": "with five-cent candy bar machines."
+  },
+  {
+   "start": 317.12,
+   "end": 319.42,
+   "text": "Today, Compass Group describes Canteen"
+  },
+  {
+   "start": 319.42,
+   "end": 321.98,
+   "text": "as the largest unattended retail provider"
+  },
+  {
+   "start": 321.98,
+   "end": 323.26,
+   "text": "in the United States,"
+  },
+  {
+   "start": 323.72,
+   "end": 326.62,
+   "text": "a label that covers far more than vending machines."
+  },
+  {
+   "start": 326.98,
+   "end": 329.14,
+   "text": "And the big players keep getting bigger."
+  },
+  {
+   "start": 329.46,
+   "end": 332.86,
+   "text": "In 2025, the Alabama bottler Buffalo Rock"
+  },
+  {
+   "start": 332.86,
+   "end": 334.28,
+   "text": "sold its vending business,"
+  },
+  {
+   "start": 334.78,
+   "end": 336.58,
+   "text": "almost 700 micro markets"
+  },
+  {
+   "start": 336.58,
+   "end": 339.86,
+   "text": "and more than 7,600 vending locations"
+  },
+  {
+   "start": 339.86,
+   "end": 342.46,
+   "text": "to Canteen and its franchise partners."
+  },
+  {
+   "start": 342.9,
+   "end": 344.74,
+   "text": "The third winner runs the payments."
+  },
+  {
+   "start": 345.3,
+   "end": 347.4,
+   "text": "Every tap sends a few cents to whoever"
+  },
+  {
+   "start": 347.4,
+   "end": 348.46,
+   "text": "runs the card reader."
+  },
+  {
+   "start": 349.12,
+   "end": 350.54,
+   "text": "Cantaloupe, one of the biggest,"
+  },
+  {
+   "start": 350.88,
+   "end": 353.72,
+   "text": "tracked more than 600,000 connected machines"
+  },
+  {
+   "start": 353.72,
+   "end": 357.52,
+   "text": "and kiosks across the US and Canada in 2025."
+  },
+  {
+   "start": 358.14,
+   "end": 362.24,
+   "text": "Together, they handled about $4.6 billion in sales."
+  },
+  {
+   "start": 362.92,
+   "end": 365.1,
+   "text": "Cantaloupe earns a cut of each card sale"
+  },
+  {
+   "start": 365.1,
+   "end": 368.82,
+   "text": "plus monthly fees without stocking a single snack."
+  },
+  {
+   "start": 369.32,
+   "end": 371.76,
+   "text": "And Cantaloupe itself just changed hands."
+  },
+  {
+   "start": 372.3,
+   "end": 376.56,
+   "text": "In May, 2026, a rival, 365 retail markets,"
+  },
+  {
+   "start": 376.98,
+   "end": 380.1,
+   "text": "finished buying it for about $848 million."
+  },
+  {
+   "start": 381.06,
+   "end": 382.96,
+   "text": "Regulators only let the deal through"
+  },
+  {
+   "start": 382.96,
+   "end": 385.16,
+   "text": "after the company agreed to sell off"
+  },
+  {
+   "start": 385.16,
+   "end": 386.82,
+   "text": "a competing kiosk business."
+  },
+  {
+   "start": 387.3,
+   "end": 389.64,
+   "text": "But some of the biggest changes in this industry"
+  },
+  {
+   "start": 389.64,
+   "end": 391.54,
+   "text": "are happening inside offices."
+  },
+  {
+   "start": 391.54,
+   "end": 394.38,
+   "text": "Big operators are adding micro markets."
+  },
+  {
+   "start": 395.06,
+   "end": 397.4,
+   "text": "A micro market is an unlocked mini store"
+  },
+  {
+   "start": 397.4,
+   "end": 399.34,
+   "text": "with open shelves, fresh food"
+  },
+  {
+   "start": 399.34,
+   "end": 401.18,
+   "text": "and a self-checkout kiosk."
+  },
+  {
+   "start": 401.52,
+   "end": 402.76,
+   "text": "People spend more in them."
+  },
+  {
+   "start": 403.16,
+   "end": 405.86,
+   "text": "In 2025, the average vending purchase"
+  },
+  {
+   "start": 405.86,
+   "end": 408.76,
+   "text": "on Cantaloupe's network was $2.01."
+  },
+  {
+   "start": 409.48,
+   "end": 412.34,
+   "text": "At micro markets, it was $3.02."
+  },
+  {
+   "start": 413.04,
+   "end": 415.54,
+   "text": "At smart stores, the locked smart fridges"
+  },
+  {
+   "start": 415.54,
+   "end": 417.76,
+   "text": "and cabinets you open with a card tap,"
+  },
+  {
+   "start": 418.04,
+   "end": 420.02,
+   "text": "it was $4.49."
+  },
+  {
+   "start": 420.9,
+   "end": 422.52,
+   "text": "Micro markets on that network"
+  },
+  {
+   "start": 422.52,
+   "end": 426.02,
+   "text": "sold more than a billion dollars worth of goods in 2025,"
+  },
+  {
+   "start": 426.62,
+   "end": 428.04,
+   "text": "up 13%."
+  },
+  {
+   "start": 428.04,
+   "end": 430.82,
+   "text": "Smart stores grew from 71 locations"
+  },
+  {
+   "start": 430.82,
+   "end": 434.06,
+   "text": "to 572 in a single year."
+  },
+  {
+   "start": 434.2,
+   "end": 437.42,
+   "text": "Though together, they still sold only about $6 million."
+  },
+  {
+   "start": 438.36,
+   "end": 441.6,
+   "text": "Vending machines still bring in far more money in total,"
+  },
+  {
+   "start": 441.96,
+   "end": 446.3,
+   "text": "about $3.3 billion on that network in 2025."
+  },
+  {
+   "start": 446.3,
+   "end": 449.66,
+   "text": "But the fastest growth is in these newer formats,"
+  },
+  {
+   "start": 449.9,
+   "end": 452.24,
+   "text": "where people spend more on every visit."
+  },
+  {
+   "start": 452.74,
+   "end": 455.82,
+   "text": "But the passive income videos skip almost all of this."
+  },
+  {
+   "start": 456.18,
+   "end": 457.46,
+   "text": "So here's what one beginner"
+  },
+  {
+   "start": 457.46,
+   "end": 459.6,
+   "text": "says their first six months looked like."
+  },
+  {
+   "start": 459.94,
+   "end": 461.52,
+   "text": "They posted their numbers on Reddit."
+  },
+  {
+   "start": 461.96,
+   "end": 465.56,
+   "text": "They spent $3,200 on two refurbished machines"
+  },
+  {
+   "start": 465.56,
+   "end": 468.42,
+   "text": "and another 400 on snacks and drinks."
+  },
+  {
+   "start": 468.88,
+   "end": 471.8,
+   "text": "One machine sits in an office with about 50 employees."
+  },
+  {
+   "start": 472.26,
+   "end": 474.42,
+   "text": "The other is in an auto repair shop."
+  },
+  {
+   "start": 474.42,
+   "end": 479.46,
+   "text": "The office machine brings in about $280 to $350 a month."
+  },
+  {
+   "start": 479.88,
+   "end": 482.78,
+   "text": "The repair shop does 120 to 180."
+  },
+  {
+   "start": 483.34,
+   "end": 485.78,
+   "text": "After gas, restocking and repairs,"
+  },
+  {
+   "start": 486.22,
+   "end": 490.08,
+   "text": "they say they keep about 130 to $150 a month."
+  },
+  {
+   "start": 490.48,
+   "end": 491.84,
+   "text": "We can't check those numbers,"
+  },
+  {
+   "start": 492.08,
+   "end": 494.18,
+   "text": "but they fit the supplier's own ranges."
+  },
+  {
+   "start": 494.74,
+   "end": 495.98,
+   "text": "Their verdict was simple."
+  },
+  {
+   "start": 496.34,
+   "end": 498.72,
+   "text": "It's not as passive as people make it sound."
+  },
+  {
+   "start": 499.2,
+   "end": 501.7,
+   "text": "Now do the math on an ordinary location."
+  },
+  {
+   "start": 501.7,
+   "end": 504.44,
+   "text": "One supplier estimates a typical site"
+  },
+  {
+   "start": 504.44,
+   "end": 507.76,
+   "text": "nets about 20 to $175 a month."
+  },
+  {
+   "start": 508.08,
+   "end": 511.36,
+   "text": "At that rate, a $3,500 combo machine"
+  },
+  {
+   "start": 511.36,
+   "end": 513.56,
+   "text": "takes anywhere from about 20 months"
+  },
+  {
+   "start": 513.56,
+   "end": 517.18,
+   "text": "to more than 14 years just to pay for itself."
+  },
+  {
+   "start": 517.4,
+   "end": 519.16,
+   "text": "And that's if nothing breaks."
+  },
+  {
+   "start": 519.76,
+   "end": 520.7,
+   "text": "Things do break."
+  },
+  {
+   "start": 521.1,
+   "end": 523.1,
+   "text": "That same operator says they dealt"
+  },
+  {
+   "start": 523.1,
+   "end": 524.76,
+   "text": "with a jammed bill acceptor"
+  },
+  {
+   "start": 524.76,
+   "end": 527.98,
+   "text": "and an attempted break-in within their first six months."
+  },
+  {
+   "start": 529.02,
+   "end": 529.96,
+   "text": "Then there's debt."
+  },
+  {
+   "start": 530.46,
+   "end": 532.54,
+   "text": "Personal finance host George Camel"
+  },
+  {
+   "start": 532.54,
+   "end": 534.36,
+   "text": "looked at one creator's breakdown"
+  },
+  {
+   "start": 534.36,
+   "end": 538.38,
+   "text": "of what it costs to start, about $3,330."
+  },
+  {
+   "start": 539.02,
+   "end": 540.88,
+   "text": "And his advice was blunt."
+  },
+  {
+   "start": 541.38,
+   "end": 542.32,
+   "text": "Save it in cash."
+  },
+  {
+   "start": 542.74,
+   "end": 544.86,
+   "text": "Don't borrow it or put it on a credit card."
+  },
+  {
+   "start": 545.16,
+   "end": 546.46,
+   "text": "It's easy to see why."
+  },
+  {
+   "start": 546.7,
+   "end": 548.88,
+   "text": "Put it on a card and the interest starts"
+  },
+  {
+   "start": 548.88,
+   "end": 551.36,
+   "text": "before the machine sells a single soda."
+  },
+  {
+   "start": 551.74,
+   "end": 553.02,
+   "text": "If you'd rather buy a route"
+  },
+  {
+   "start": 553.02,
+   "end": 554.24,
+   "text": "that already exists,"
+  },
+  {
+   "start": 554.58,
+   "end": 556.54,
+   "text": "the usual yardstick is a multiple"
+  },
+  {
+   "start": 556.54,
+   "end": 558.8,
+   "text": "of what it earns the owner each year"
+  },
+  {
+   "start": 558.8,
+   "end": 560.44,
+   "text": "before they pay themselves."
+  },
+  {
+   "start": 560.98,
+   "end": 563.3,
+   "text": "BizBuy sells figures for vending businesses"
+  },
+  {
+   "start": 563.3,
+   "end": 566.34,
+   "text": "sold between 2021 and 2025,"
+  },
+  {
+   "start": 566.72,
+   "end": 569.28,
+   "text": "put the middle at about two times those earnings"
+  },
+  {
+   "start": 569.28,
+   "end": 573.32,
+   "text": "with a typical sale price of about $83,500."
+  },
+  {
+   "start": 574.2,
+   "end": 576.16,
+   "text": "Asking prices often run higher."
+  },
+  {
+   "start": 576.62,
+   "end": 579.24,
+   "text": "One Chicago area route with 12 machines"
+  },
+  {
+   "start": 579.24,
+   "end": 582.6,
+   "text": "is listed at $138,000."
+  },
+  {
+   "start": 582.6,
+   "end": 586.38,
+   "text": "The seller estimates it nets about 49,000 a year."
+  },
+  {
+   "start": 586.68,
+   "end": 588.76,
+   "text": "So that's nearly three times earnings."
+  },
+  {
+   "start": 589.3,
+   "end": 592.5,
+   "text": "Those are asking prices and seller reported numbers,"
+  },
+  {
+   "start": 592.78,
+   "end": 594.3,
+   "text": "not audited results."
+  },
+  {
+   "start": 594.8,
+   "end": 598.02,
+   "text": "A careful buyer asks for every machine sales records"
+  },
+  {
+   "start": 598.02,
+   "end": 599.84,
+   "text": "before believing any of them."
+  },
+  {
+   "start": 600.14,
+   "end": 601.58,
+   "text": "And none of this is new."
+  },
+  {
+   "start": 601.98,
+   "end": 604.58,
+   "text": "In 1998, the Federal Trade Commission"
+  },
+  {
+   "start": 604.58,
+   "end": 608.06,
+   "text": "and 10 states announced Operation Vend Up Broke."
+  },
+  {
+   "start": 608.32,
+   "end": 610.8,
+   "text": "It was a sweep of 40 enforcement actions"
+  },
+  {
+   "start": 610.8,
+   "end": 613.48,
+   "text": "against companies selling vending business opportunities."
+  },
+  {
+   "start": 614.2,
+   "end": 617.12,
+   "text": "The pitch back then was easy routes and big money."
+  },
+  {
+   "start": 617.64,
+   "end": 621.04,
+   "text": "The FTC warned that some sellers paid fake references,"
+  },
+  {
+   "start": 621.6,
+   "end": 624.56,
+   "text": "people it called singers to vouch for the profits."
+  },
+  {
+   "start": 625.12,
+   "end": 627.66,
+   "text": "The ads have moved from newspapers to TikTok"
+  },
+  {
+   "start": 627.66,
+   "end": 630.1,
+   "text": "and the math behind them is the same."
+  },
+  {
+   "start": 630.66,
+   "end": 631.46,
+   "text": "Back to your $2."
+  },
+  {
+   "start": 631.96,
+   "end": 634.06,
+   "text": "The supplier takes the biggest slice."
+  },
+  {
+   "start": 634.52,
+   "end": 635.94,
+   "text": "The building takes its cut"
+  },
+  {
+   "start": 635.94,
+   "end": 638.3,
+   "text": "and the best buildings take most of it."
+  },
+  {
+   "start": 638.3,
+   "end": 641.24,
+   "text": "The payment companies take a little from every tap"
+  },
+  {
+   "start": 641.24,
+   "end": 643.46,
+   "text": "and the operator keeps what's left"
+  },
+  {
+   "start": 643.46,
+   "end": 646.28,
+   "text": "if the location is good and nothing breaks."
+  },
+  {
+   "start": 646.92,
+   "end": 649.52,
+   "text": "The people who win in vending own the location,"
+  },
+  {
+   "start": 649.96,
+   "end": 651.88,
+   "text": "the scale or the technology."
+  },
+  {
+   "start": 652.48,
+   "end": 655.16,
+   "text": "The machine itself is just the box in the middle."
+  },
+  {
+   "start": 655.62,
+   "end": 657.98,
+   "text": "So if you're ever looking at a route for sale,"
+  },
+  {
+   "start": 658.26,
+   "end": 661.04,
+   "text": "ask which of those three it actually owns."
+  },
+  {
+   "start": 661.56,
+   "end": 663.94,
+   "text": "Would you still buy one after seeing these numbers?"
+  },
+  {
+   "start": 664.34,
+   "end": 665.42,
+   "text": "And if you own a route,"
+  },
+  {
+   "start": 665.42,
+   "end": 668.32,
+   "text": "tell me what your real numbers look like in the comments."
+  },
+  {
+   "start": 669.02,
+   "end": 670.42,
+   "text": "Next time, the car wash."
+  },
+  {
+   "start": 670.98,
+   "end": 673.86,
+   "text": "What one wash really costs, who gets paid"
+  },
+  {
+   "start": 673.86,
+   "end": 676.58,
+   "text": "and why big investors keep buying them."
+  },
+  {
+   "start": 677.06,
+   "end": 678.56,
+   "text": "Subscribe so you don't miss it."
+  }
+ ],
+ "words": [
+  {
+   "w": "You",
+   "start": 0.0,
+   "end": 0.16,
+   "p": 0.789
+  },
+  {
+   "w": "tap",
+   "start": 0.16,
+   "end": 0.44,
+   "p": 0.997
+  },
+  {
+   "w": "your",
+   "start": 0.44,
+   "end": 0.62,
+   "p": 0.992
+  },
+  {
+   "w": "phone,",
+   "start": 0.62,
+   "end": 0.9,
+   "p": 0.996
+  },
+  {
+   "w": "and",
+   "start": 1.24,
+   "end": 1.3,
+   "p": 0.987
+  },
+  {
+   "w": "a",
+   "start": 1.3,
+   "end": 1.5,
+   "p": 0.981
+  },
+  {
+   "w": "soda",
+   "start": 1.5,
+   "end": 1.66,
+   "p": 0.984
+  },
+  {
+   "w": "drops.",
+   "start": 1.66,
+   "end": 2.12,
+   "p": 0.998
+  },
+  {
+   "w": "$2.",
+   "start": 2.66,
+   "end": 2.84,
+   "p": 0.834
+  },
+  {
+   "w": "Before",
+   "start": 3.74,
+   "end": 4.1,
+   "p": 0.906
+  },
+  {
+   "w": "the",
+   "start": 4.1,
+   "end": 4.36,
+   "p": 0.995
+  },
+  {
+   "w": "owner",
+   "start": 4.36,
+   "end": 4.58,
+   "p": 0.999
+  },
+  {
+   "w": "of",
+   "start": 4.58,
+   "end": 4.78,
+   "p": 0.997
+  },
+  {
+   "w": "this",
+   "start": 4.78,
+   "end": 4.98,
+   "p": 0.989
+  },
+  {
+   "w": "machine",
+   "start": 4.98,
+   "end": 5.32,
+   "p": 0.996
+  },
+  {
+   "w": "keeps",
+   "start": 5.32,
+   "end": 5.64,
+   "p": 0.99
+  },
+  {
+   "w": "a",
+   "start": 5.64,
+   "end": 5.92,
+   "p": 0.996
+  },
+  {
+   "w": "single",
+   "start": 5.92,
+   "end": 6.2,
+   "p": 0.998
+  },
+  {
+   "w": "cent,",
+   "start": 6.2,
+   "end": 6.64,
+   "p": 0.995
+  },
+  {
+   "w": "five",
+   "start": 7.14,
+   "end": 7.32,
+   "p": 0.693
+  },
+  {
+   "w": "other",
+   "start": 7.32,
+   "end": 7.7,
+   "p": 0.998
+  },
+  {
+   "w": "players",
+   "start": 7.7,
+   "end": 8.08,
+   "p": 0.998
+  },
+  {
+   "w": "get",
+   "start": 8.08,
+   "end": 8.36,
+   "p": 0.995
+  },
+  {
+   "w": "paid.",
+   "start": 8.36,
+   "end": 8.74,
+   "p": 0.998
+  },
+  {
+   "w": "They're",
+   "start": 9.12,
+   "end": 9.26,
+   "p": 0.862
+  },
+  {
+   "w": "the",
+   "start": 9.26,
+   "end": 9.4,
+   "p": 0.985
+  },
+  {
+   "w": "government,",
+   "start": 9.4,
+   "end": 9.7,
+   "p": 0.959
+  },
+  {
+   "w": "the",
+   "start": 10.04,
+   "end": 10.16,
+   "p": 0.99
+  },
+  {
+   "w": "drink",
+   "start": 10.16,
+   "end": 10.4,
+   "p": 0.996
+  },
+  {
+   "w": "company,",
+   "start": 10.4,
+   "end": 10.76,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 11.06,
+   "end": 11.18,
+   "p": 0.993
+  },
+  {
+   "w": "card",
+   "start": 11.18,
+   "end": 11.42,
+   "p": 0.998
+  },
+  {
+   "w": "processor,",
+   "start": 11.42,
+   "end": 11.94,
+   "p": 0.996
+  },
+  {
+   "w": "the",
+   "start": 12.28,
+   "end": 12.44,
+   "p": 0.996
+  },
+  {
+   "w": "software",
+   "start": 12.44,
+   "end": 12.8,
+   "p": 0.999
+  },
+  {
+   "w": "company,",
+   "start": 12.8,
+   "end": 13.28,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 13.4,
+   "end": 13.76,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 13.76,
+   "end": 13.96,
+   "p": 0.996
+  },
+  {
+   "w": "building",
+   "start": 13.96,
+   "end": 14.22,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 14.22,
+   "end": 14.42,
+   "p": 0.991
+  },
+  {
+   "w": "machine",
+   "start": 14.42,
+   "end": 14.68,
+   "p": 0.976
+  },
+  {
+   "w": "stands",
+   "start": 14.68,
+   "end": 15.12,
+   "p": 0.995
+  },
+  {
+   "w": "in.",
+   "start": 15.12,
+   "end": 15.42,
+   "p": 0.995
+  },
+  {
+   "w": "At",
+   "start": 15.78,
+   "end": 15.9,
+   "p": 0.991
+  },
+  {
+   "w": "one",
+   "start": 15.9,
+   "end": 16.08,
+   "p": 0.998
+  },
+  {
+   "w": "of",
+   "start": 16.08,
+   "end": 16.24,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 16.24,
+   "end": 16.46,
+   "p": 0.999
+  },
+  {
+   "w": "busiest",
+   "start": 16.46,
+   "end": 16.76,
+   "p": 0.998
+  },
+  {
+   "w": "airports",
+   "start": 16.76,
+   "end": 17.26,
+   "p": 0.985
+  },
+  {
+   "w": "in",
+   "start": 17.26,
+   "end": 17.52,
+   "p": 0.999
+  },
+  {
+   "w": "America,",
+   "start": 17.52,
+   "end": 17.98,
+   "p": 0.995
+  },
+  {
+   "w": "the",
+   "start": 18.38,
+   "end": 18.42,
+   "p": 0.991
+  },
+  {
+   "w": "building",
+   "start": 18.42,
+   "end": 18.74,
+   "p": 0.999
+  },
+  {
+   "w": "takes",
+   "start": 18.74,
+   "end": 19.1,
+   "p": 0.996
+  },
+  {
+   "w": "59",
+   "start": 19.1,
+   "end": 19.72,
+   "p": 0.984
+  },
+  {
+   "w": ".5",
+   "start": 19.72,
+   "end": 20.52,
+   "p": 0.995
+  },
+  {
+   "w": "%",
+   "start": 20.52,
+   "end": 20.92,
+   "p": 0.929
+  },
+  {
+   "w": "of",
+   "start": 20.92,
+   "end": 21.2,
+   "p": 0.991
+  },
+  {
+   "w": "every",
+   "start": 21.2,
+   "end": 21.7,
+   "p": 0.995
+  },
+  {
+   "w": "sale.",
+   "start": 21.7,
+   "end": 22.1,
+   "p": 0.998
+  },
+  {
+   "w": "We'll",
+   "start": 22.44,
+   "end": 22.66,
+   "p": 0.994
+  },
+  {
+   "w": "get",
+   "start": 22.66,
+   "end": 22.78,
+   "p": 0.999
+  },
+  {
+   "w": "to",
+   "start": 22.78,
+   "end": 22.9,
+   "p": 0.998
+  },
+  {
+   "w": "that",
+   "start": 22.9,
+   "end": 23.08,
+   "p": 0.996
+  },
+  {
+   "w": "deal",
+   "start": 23.08,
+   "end": 23.3,
+   "p": 0.996
+  },
+  {
+   "w": "in",
+   "start": 23.3,
+   "end": 23.44,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 23.44,
+   "end": 23.56,
+   "p": 0.997
+  },
+  {
+   "w": "few",
+   "start": 23.56,
+   "end": 23.7,
+   "p": 1.0
+  },
+  {
+   "w": "minutes.",
+   "start": 23.7,
+   "end": 24.08,
+   "p": 0.999
+  },
+  {
+   "w": "Online,",
+   "start": 24.64,
+   "end": 25.1,
+   "p": 0.973
+  },
+  {
+   "w": "vending",
+   "start": 25.42,
+   "end": 25.62,
+   "p": 0.997
+  },
+  {
+   "w": "machines",
+   "start": 25.62,
+   "end": 26.02,
+   "p": 0.997
+  },
+  {
+   "w": "get",
+   "start": 26.02,
+   "end": 26.26,
+   "p": 0.996
+  },
+  {
+   "w": "pitched",
+   "start": 26.26,
+   "end": 26.62,
+   "p": 0.998
+  },
+  {
+   "w": "as",
+   "start": 26.62,
+   "end": 26.9,
+   "p": 0.998
+  },
+  {
+   "w": "easy",
+   "start": 26.9,
+   "end": 27.34,
+   "p": 0.839
+  },
+  {
+   "w": "passive",
+   "start": 27.34,
+   "end": 27.78,
+   "p": 0.952
+  },
+  {
+   "w": "income.",
+   "start": 27.78,
+   "end": 28.22,
+   "p": 0.996
+  },
+  {
+   "w": "Stock",
+   "start": 28.22,
+   "end": 28.86,
+   "p": 0.52
+  },
+  {
+   "w": "a",
+   "start": 28.86,
+   "end": 29.04,
+   "p": 0.987
+  },
+  {
+   "w": "machine",
+   "start": 29.04,
+   "end": 29.28,
+   "p": 0.988
+  },
+  {
+   "w": "with",
+   "start": 29.28,
+   "end": 29.52,
+   "p": 0.996
+  },
+  {
+   "w": "snacks",
+   "start": 29.52,
+   "end": 29.92,
+   "p": 0.979
+  },
+  {
+   "w": "once",
+   "start": 29.92,
+   "end": 30.26,
+   "p": 0.96
+  },
+  {
+   "w": "a",
+   "start": 30.26,
+   "end": 30.42,
+   "p": 0.995
+  },
+  {
+   "w": "week",
+   "start": 30.42,
+   "end": 30.62,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 30.62,
+   "end": 30.94,
+   "p": 0.92
+  },
+  {
+   "w": "let",
+   "start": 30.94,
+   "end": 31.14,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 31.14,
+   "end": 31.34,
+   "p": 0.996
+  },
+  {
+   "w": "cash",
+   "start": 31.34,
+   "end": 31.58,
+   "p": 0.994
+  },
+  {
+   "w": "pile",
+   "start": 31.58,
+   "end": 31.88,
+   "p": 0.996
+  },
+  {
+   "w": "up.",
+   "start": 31.88,
+   "end": 32.34,
+   "p": 0.981
+  },
+  {
+   "w": "So",
+   "start": 32.82,
+   "end": 32.88,
+   "p": 0.973
+  },
+  {
+   "w": "we",
+   "start": 32.88,
+   "end": 33.24,
+   "p": 0.631
+  },
+  {
+   "w": "check",
+   "start": 33.24,
+   "end": 33.42,
+   "p": 0.473
+  },
+  {
+   "w": "the",
+   "start": 33.42,
+   "end": 33.68,
+   "p": 0.994
+  },
+  {
+   "w": "real",
+   "start": 33.68,
+   "end": 33.86,
+   "p": 0.984
+  },
+  {
+   "w": "numbers,",
+   "start": 33.86,
+   "end": 34.34,
+   "p": 0.998
+  },
+  {
+   "w": "from",
+   "start": 34.58,
+   "end": 34.82,
+   "p": 0.97
+  },
+  {
+   "w": "payment",
+   "start": 34.82,
+   "end": 35.16,
+   "p": 0.988
+  },
+  {
+   "w": "data,",
+   "start": 35.16,
+   "end": 35.48,
+   "p": 0.993
+  },
+  {
+   "w": "public",
+   "start": 35.78,
+   "end": 36.0,
+   "p": 0.992
+  },
+  {
+   "w": "contracts,",
+   "start": 36.0,
+   "end": 36.6,
+   "p": 0.993
+  },
+  {
+   "w": "and",
+   "start": 36.82,
+   "end": 37.06,
+   "p": 0.976
+  },
+  {
+   "w": "operators",
+   "start": 37.06,
+   "end": 37.52,
+   "p": 0.811
+  },
+  {
+   "w": "own",
+   "start": 37.52,
+   "end": 37.96,
+   "p": 0.366
+  },
+  {
+   "w": "posted",
+   "start": 37.96,
+   "end": 38.4,
+   "p": 0.994
+  },
+  {
+   "w": "results.",
+   "start": 38.4,
+   "end": 38.88,
+   "p": 0.998
+  },
+  {
+   "w": "The",
+   "start": 39.42,
+   "end": 39.5,
+   "p": 0.966
+  },
+  {
+   "w": "picture",
+   "start": 39.5,
+   "end": 39.78,
+   "p": 0.991
+  },
+  {
+   "w": "is",
+   "start": 39.78,
+   "end": 40.06,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 40.06,
+   "end": 40.34,
+   "p": 0.99
+  },
+  {
+   "w": "lot",
+   "start": 40.34,
+   "end": 40.52,
+   "p": 0.997
+  },
+  {
+   "w": "less",
+   "start": 40.52,
+   "end": 40.76,
+   "p": 0.999
+  },
+  {
+   "w": "exciting",
+   "start": 40.76,
+   "end": 41.26,
+   "p": 0.997
+  },
+  {
+   "w": "than",
+   "start": 41.26,
+   "end": 41.46,
+   "p": 0.99
+  },
+  {
+   "w": "the",
+   "start": 41.46,
+   "end": 41.62,
+   "p": 0.993
+  },
+  {
+   "w": "videos,",
+   "start": 41.62,
+   "end": 41.98,
+   "p": 0.965
+  },
+  {
+   "w": "and",
+   "start": 42.34,
+   "end": 42.54,
+   "p": 0.984
+  },
+  {
+   "w": "it",
+   "start": 42.54,
+   "end": 42.66,
+   "p": 0.992
+  },
+  {
+   "w": "shows",
+   "start": 42.66,
+   "end": 42.98,
+   "p": 0.997
+  },
+  {
+   "w": "where",
+   "start": 42.98,
+   "end": 43.22,
+   "p": 0.994
+  },
+  {
+   "w": "the",
+   "start": 43.22,
+   "end": 43.4,
+   "p": 0.993
+  },
+  {
+   "w": "money",
+   "start": 43.4,
+   "end": 43.58,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 43.58,
+   "end": 43.78,
+   "p": 0.995
+  },
+  {
+   "w": "this",
+   "start": 43.78,
+   "end": 43.96,
+   "p": 0.987
+  },
+  {
+   "w": "business",
+   "start": 43.96,
+   "end": 44.26,
+   "p": 0.997
+  },
+  {
+   "w": "is",
+   "start": 44.26,
+   "end": 44.56,
+   "p": 0.998
+  },
+  {
+   "w": "moving.",
+   "start": 44.56,
+   "end": 44.92,
+   "p": 0.999
+  },
+  {
+   "w": "So",
+   "start": 45.42,
+   "end": 45.54,
+   "p": 0.987
+  },
+  {
+   "w": "let's",
+   "start": 45.54,
+   "end": 46.04,
+   "p": 0.872
+  },
+  {
+   "w": "follow",
+   "start": 46.04,
+   "end": 46.32,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 46.32,
+   "end": 46.52,
+   "p": 0.993
+  },
+  {
+   "w": "$2.",
+   "start": 46.52,
+   "end": 46.9,
+   "p": 0.651
+  },
+  {
+   "w": "These",
+   "start": 47.48,
+   "end": 47.82,
+   "p": 0.939
+  },
+  {
+   "w": "machines",
+   "start": 47.82,
+   "end": 48.26,
+   "p": 0.998
+  },
+  {
+   "w": "usually",
+   "start": 48.26,
+   "end": 48.84,
+   "p": 0.998
+  },
+  {
+   "w": "belong",
+   "start": 48.84,
+   "end": 49.18,
+   "p": 0.99
+  },
+  {
+   "w": "to",
+   "start": 49.18,
+   "end": 49.42,
+   "p": 0.999
+  },
+  {
+   "w": "an",
+   "start": 49.42,
+   "end": 49.66,
+   "p": 0.995
+  },
+  {
+   "w": "operator,",
+   "start": 49.66,
+   "end": 50.1,
+   "p": 0.985
+  },
+  {
+   "w": "a",
+   "start": 50.48,
+   "end": 50.6,
+   "p": 0.992
+  },
+  {
+   "w": "business",
+   "start": 50.6,
+   "end": 50.9,
+   "p": 0.999
+  },
+  {
+   "w": "that",
+   "start": 50.9,
+   "end": 51.16,
+   "p": 0.998
+  },
+  {
+   "w": "buys",
+   "start": 51.16,
+   "end": 51.48,
+   "p": 0.997
+  },
+  {
+   "w": "machines,",
+   "start": 51.48,
+   "end": 51.96,
+   "p": 0.999
+  },
+  {
+   "w": "places",
+   "start": 52.36,
+   "end": 52.56,
+   "p": 0.997
+  },
+  {
+   "w": "them",
+   "start": 52.56,
+   "end": 52.82,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 52.82,
+   "end": 53.0,
+   "p": 0.996
+  },
+  {
+   "w": "other",
+   "start": 53.0,
+   "end": 53.28,
+   "p": 0.996
+  },
+  {
+   "w": "people's",
+   "start": 53.28,
+   "end": 53.7,
+   "p": 0.976
+  },
+  {
+   "w": "buildings,",
+   "start": 53.7,
+   "end": 53.98,
+   "p": 0.991
+  },
+  {
+   "w": "and",
+   "start": 53.98,
+   "end": 54.52,
+   "p": 0.995
+  },
+  {
+   "w": "keeps",
+   "start": 54.52,
+   "end": 54.72,
+   "p": 0.995
+  },
+  {
+   "w": "them",
+   "start": 54.72,
+   "end": 54.92,
+   "p": 0.998
+  },
+  {
+   "w": "stocked.",
+   "start": 54.92,
+   "end": 55.3,
+   "p": 0.995
+  },
+  {
+   "w": "In",
+   "start": 55.3,
+   "end": 55.9,
+   "p": 0.826
+  },
+  {
+   "w": "2025,",
+   "start": 55.9,
+   "end": 56.76,
+   "p": 0.93
+  },
+  {
+   "w": "US",
+   "start": 57.14,
+   "end": 57.4,
+   "p": 0.532
+  },
+  {
+   "w": "vending",
+   "start": 57.4,
+   "end": 57.78,
+   "p": 0.743
+  },
+  {
+   "w": "operators",
+   "start": 57.78,
+   "end": 58.3,
+   "p": 0.996
+  },
+  {
+   "w": "brought",
+   "start": 58.3,
+   "end": 58.68,
+   "p": 0.988
+  },
+  {
+   "w": "in",
+   "start": 58.68,
+   "end": 58.88,
+   "p": 0.996
+  },
+  {
+   "w": "more",
+   "start": 58.88,
+   "end": 59.02,
+   "p": 0.991
+  },
+  {
+   "w": "than",
+   "start": 59.02,
+   "end": 59.36,
+   "p": 0.995
+  },
+  {
+   "w": "$7",
+   "start": 59.36,
+   "end": 59.72,
+   "p": 0.823
+  },
+  {
+   "w": "billion,",
+   "start": 59.72,
+   "end": 60.24,
+   "p": 0.934
+  },
+  {
+   "w": "according",
+   "start": 60.96,
+   "end": 61.32,
+   "p": 0.988
+  },
+  {
+   "w": "to",
+   "start": 61.32,
+   "end": 61.58,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 61.58,
+   "end": 61.72,
+   "p": 0.993
+  },
+  {
+   "w": "research",
+   "start": 61.72,
+   "end": 62.08,
+   "p": 0.99
+  },
+  {
+   "w": "firm,",
+   "start": 62.08,
+   "end": 62.4,
+   "p": 0.972
+  },
+  {
+   "w": "Ibisworld.",
+   "start": 62.76,
+   "end": 63.1,
+   "p": 0.758
+  },
+  {
+   "w": "The",
+   "start": 63.64,
+   "end": 63.72,
+   "p": 0.971
+  },
+  {
+   "w": "biggest",
+   "start": 63.72,
+   "end": 64.04,
+   "p": 0.997
+  },
+  {
+   "w": "names",
+   "start": 64.04,
+   "end": 64.42,
+   "p": 0.996
+  },
+  {
+   "w": "are",
+   "start": 64.42,
+   "end": 64.62,
+   "p": 0.996
+  },
+  {
+   "w": "food",
+   "start": 64.62,
+   "end": 64.96,
+   "p": 0.965
+  },
+  {
+   "w": "service",
+   "start": 64.96,
+   "end": 65.3,
+   "p": 0.421
+  },
+  {
+   "w": "giants,",
+   "start": 65.3,
+   "end": 65.7,
+   "p": 0.945
+  },
+  {
+   "w": "Compass",
+   "start": 65.9,
+   "end": 66.14,
+   "p": 0.981
+  },
+  {
+   "w": "Group",
+   "start": 66.14,
+   "end": 66.42,
+   "p": 0.745
+  },
+  {
+   "w": "and",
+   "start": 66.42,
+   "end": 66.8,
+   "p": 0.89
+  },
+  {
+   "w": "Aramark.",
+   "start": 66.8,
+   "end": 67.24,
+   "p": 0.861
+  },
+  {
+   "w": "But",
+   "start": 67.68,
+   "end": 67.8,
+   "p": 0.981
+  },
+  {
+   "w": "most",
+   "start": 67.8,
+   "end": 68.14,
+   "p": 0.991
+  },
+  {
+   "w": "of",
+   "start": 68.14,
+   "end": 68.34,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 68.34,
+   "end": 68.48,
+   "p": 0.997
+  },
+  {
+   "w": "map",
+   "start": 68.48,
+   "end": 68.66,
+   "p": 0.996
+  },
+  {
+   "w": "is",
+   "start": 68.66,
+   "end": 68.88,
+   "p": 0.996
+  },
+  {
+   "w": "still",
+   "start": 68.88,
+   "end": 69.24,
+   "p": 0.998
+  },
+  {
+   "w": "covered",
+   "start": 69.24,
+   "end": 69.6,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 69.6,
+   "end": 69.86,
+   "p": 0.996
+  },
+  {
+   "w": "small,",
+   "start": 69.86,
+   "end": 70.32,
+   "p": 0.997
+  },
+  {
+   "w": "local",
+   "start": 70.58,
+   "end": 70.84,
+   "p": 0.997
+  },
+  {
+   "w": "businesses.",
+   "start": 70.84,
+   "end": 71.38,
+   "p": 0.983
+  },
+  {
+   "w": "Most",
+   "start": 71.94,
+   "end": 72.22,
+   "p": 0.993
+  },
+  {
+   "w": "of",
+   "start": 72.22,
+   "end": 72.4,
+   "p": 0.999
+  },
+  {
+   "w": "them",
+   "start": 72.4,
+   "end": 72.58,
+   "p": 0.998
+  },
+  {
+   "w": "are",
+   "start": 72.58,
+   "end": 72.82,
+   "p": 0.994
+  },
+  {
+   "w": "built",
+   "start": 72.82,
+   "end": 73.06,
+   "p": 0.997
+  },
+  {
+   "w": "around",
+   "start": 73.06,
+   "end": 73.4,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 73.4,
+   "end": 73.62,
+   "p": 0.995
+  },
+  {
+   "w": "route.",
+   "start": 73.62,
+   "end": 73.86,
+   "p": 0.988
+  },
+  {
+   "w": "An",
+   "start": 74.26,
+   "end": 74.44,
+   "p": 0.984
+  },
+  {
+   "w": "operator",
+   "start": 74.44,
+   "end": 74.86,
+   "p": 0.997
+  },
+  {
+   "w": "drives",
+   "start": 74.86,
+   "end": 75.3,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 75.3,
+   "end": 75.56,
+   "p": 0.997
+  },
+  {
+   "w": "loop",
+   "start": 75.56,
+   "end": 75.68,
+   "p": 0.995
+  },
+  {
+   "w": "of",
+   "start": 75.68,
+   "end": 75.9,
+   "p": 0.998
+  },
+  {
+   "w": "locations,",
+   "start": 75.9,
+   "end": 76.52,
+   "p": 0.998
+  },
+  {
+   "w": "restocking",
+   "start": 76.88,
+   "end": 77.3,
+   "p": 0.977
+  },
+  {
+   "w": "snacks,",
+   "start": 77.3,
+   "end": 77.8,
+   "p": 0.995
+  },
+  {
+   "w": "pulling",
+   "start": 78.12,
+   "end": 78.32,
+   "p": 0.991
+  },
+  {
+   "w": "cash,",
+   "start": 78.32,
+   "end": 78.72,
+   "p": 0.998
+  },
+  {
+   "w": "and",
+   "start": 79.06,
+   "end": 79.22,
+   "p": 0.993
+  },
+  {
+   "w": "fixing",
+   "start": 79.22,
+   "end": 79.54,
+   "p": 0.998
+  },
+  {
+   "w": "whatever",
+   "start": 79.54,
+   "end": 79.96,
+   "p": 0.995
+  },
+  {
+   "w": "broke",
+   "start": 79.96,
+   "end": 80.36,
+   "p": 0.997
+  },
+  {
+   "w": "since",
+   "start": 80.36,
+   "end": 80.64,
+   "p": 0.989
+  },
+  {
+   "w": "the",
+   "start": 80.64,
+   "end": 80.84,
+   "p": 0.995
+  },
+  {
+   "w": "last",
+   "start": 80.84,
+   "end": 81.08,
+   "p": 0.999
+  },
+  {
+   "w": "visit.",
+   "start": 81.08,
+   "end": 81.46,
+   "p": 1.0
+  },
+  {
+   "w": "The",
+   "start": 81.82,
+   "end": 81.94,
+   "p": 0.993
+  },
+  {
+   "w": "machines",
+   "start": 81.94,
+   "end": 82.36,
+   "p": 0.999
+  },
+  {
+   "w": "aren't",
+   "start": 82.36,
+   "end": 82.76,
+   "p": 0.996
+  },
+  {
+   "w": "cheap.",
+   "start": 82.76,
+   "end": 83.18,
+   "p": 0.998
+  },
+  {
+   "w": "One",
+   "start": 83.18,
+   "end": 83.72,
+   "p": 0.715
+  },
+  {
+   "w": "supplier",
+   "start": 83.72,
+   "end": 84.16,
+   "p": 0.98
+  },
+  {
+   "w": "sells",
+   "start": 84.16,
+   "end": 84.48,
+   "p": 0.834
+  },
+  {
+   "w": "small",
+   "start": 84.48,
+   "end": 84.92,
+   "p": 0.992
+  },
+  {
+   "w": "countertop",
+   "start": 84.92,
+   "end": 85.52,
+   "p": 0.889
+  },
+  {
+   "w": "machines",
+   "start": 85.52,
+   "end": 85.92,
+   "p": 0.997
+  },
+  {
+   "w": "from",
+   "start": 85.92,
+   "end": 86.18,
+   "p": 0.966
+  },
+  {
+   "w": "about",
+   "start": 86.18,
+   "end": 86.46,
+   "p": 0.992
+  },
+  {
+   "w": "$1",
+   "start": 86.46,
+   "end": 86.98,
+   "p": 0.667
+  },
+  {
+   "w": ",900.",
+   "start": 86.98,
+   "end": 87.32,
+   "p": 0.995
+  },
+  {
+   "w": "A",
+   "start": 88.18,
+   "end": 88.48,
+   "p": 0.988
+  },
+  {
+   "w": "combo",
+   "start": 88.48,
+   "end": 88.76,
+   "p": 0.986
+  },
+  {
+   "w": "snack",
+   "start": 88.76,
+   "end": 89.14,
+   "p": 0.967
+  },
+  {
+   "w": "and",
+   "start": 89.14,
+   "end": 89.4,
+   "p": 0.739
+  },
+  {
+   "w": "drink",
+   "start": 89.4,
+   "end": 89.6,
+   "p": 0.999
+  },
+  {
+   "w": "machine",
+   "start": 89.6,
+   "end": 89.94,
+   "p": 0.954
+  },
+  {
+   "w": "starts",
+   "start": 89.94,
+   "end": 90.4,
+   "p": 0.997
+  },
+  {
+   "w": "around",
+   "start": 90.4,
+   "end": 90.72,
+   "p": 0.99
+  },
+  {
+   "w": "$3",
+   "start": 90.72,
+   "end": 91.06,
+   "p": 0.936
+  },
+  {
+   "w": ",500.",
+   "start": 91.06,
+   "end": 91.62,
+   "p": 0.999
+  },
+  {
+   "w": "An",
+   "start": 92.08,
+   "end": 92.28,
+   "p": 0.991
+  },
+  {
+   "w": "elevator",
+   "start": 92.28,
+   "end": 92.68,
+   "p": 0.993
+  },
+  {
+   "w": "machine,",
+   "start": 92.68,
+   "end": 93.1,
+   "p": 0.999
+  },
+  {
+   "w": "which",
+   "start": 93.22,
+   "end": 93.46,
+   "p": 0.997
+  },
+  {
+   "w": "gently",
+   "start": 93.46,
+   "end": 93.94,
+   "p": 0.999
+  },
+  {
+   "w": "lowers",
+   "start": 93.94,
+   "end": 94.3,
+   "p": 0.998
+  },
+  {
+   "w": "each",
+   "start": 94.3,
+   "end": 94.7,
+   "p": 0.999
+  },
+  {
+   "w": "item",
+   "start": 94.7,
+   "end": 95.12,
+   "p": 0.999
+  },
+  {
+   "w": "instead",
+   "start": 95.12,
+   "end": 95.5,
+   "p": 0.981
+  },
+  {
+   "w": "of",
+   "start": 95.5,
+   "end": 95.7,
+   "p": 0.998
+  },
+  {
+   "w": "dropping",
+   "start": 95.7,
+   "end": 96.02,
+   "p": 0.999
+  },
+  {
+   "w": "it,",
+   "start": 96.02,
+   "end": 96.34,
+   "p": 0.993
+  },
+  {
+   "w": "starts",
+   "start": 96.44,
+   "end": 96.86,
+   "p": 0.996
+  },
+  {
+   "w": "at",
+   "start": 96.86,
+   "end": 97.1,
+   "p": 0.994
+  },
+  {
+   "w": "about",
+   "start": 97.1,
+   "end": 97.32,
+   "p": 0.992
+  },
+  {
+   "w": "$8",
+   "start": 97.32,
+   "end": 97.74,
+   "p": 0.981
+  },
+  {
+   "w": ",650.",
+   "start": 97.74,
+   "end": 98.86,
+   "p": 0.998
+  },
+  {
+   "w": "Then",
+   "start": 99.56,
+   "end": 99.92,
+   "p": 0.994
+  },
+  {
+   "w": "there's",
+   "start": 99.92,
+   "end": 100.28,
+   "p": 0.816
+  },
+  {
+   "w": "the",
+   "start": 100.28,
+   "end": 100.44,
+   "p": 0.991
+  },
+  {
+   "w": "deal",
+   "start": 100.44,
+   "end": 100.68,
+   "p": 0.998
+  },
+  {
+   "w": "with",
+   "start": 100.68,
+   "end": 100.88,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 100.88,
+   "end": 101.04,
+   "p": 0.995
+  },
+  {
+   "w": "location.",
+   "start": 101.04,
+   "end": 101.52,
+   "p": 0.998
+  },
+  {
+   "w": "Plenty",
+   "start": 101.96,
+   "end": 102.26,
+   "p": 0.996
+  },
+  {
+   "w": "of",
+   "start": 102.26,
+   "end": 102.5,
+   "p": 1.0
+  },
+  {
+   "w": "small",
+   "start": 102.5,
+   "end": 102.8,
+   "p": 0.999
+  },
+  {
+   "w": "businesses",
+   "start": 102.8,
+   "end": 103.28,
+   "p": 0.992
+  },
+  {
+   "w": "host",
+   "start": 103.28,
+   "end": 103.68,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 103.68,
+   "end": 103.88,
+   "p": 0.967
+  },
+  {
+   "w": "machine",
+   "start": 103.88,
+   "end": 104.14,
+   "p": 0.999
+  },
+  {
+   "w": "for",
+   "start": 104.14,
+   "end": 104.52,
+   "p": 0.998
+  },
+  {
+   "w": "free",
+   "start": 104.52,
+   "end": 104.78,
+   "p": 0.998
+  },
+  {
+   "w": "because",
+   "start": 104.78,
+   "end": 105.3,
+   "p": 0.599
+  },
+  {
+   "w": "snacks",
+   "start": 105.3,
+   "end": 105.76,
+   "p": 0.995
+  },
+  {
+   "w": "for",
+   "start": 105.76,
+   "end": 105.96,
+   "p": 0.998
+  },
+  {
+   "w": "their",
+   "start": 105.96,
+   "end": 106.12,
+   "p": 0.999
+  },
+  {
+   "w": "staff",
+   "start": 106.12,
+   "end": 106.52,
+   "p": 0.999
+  },
+  {
+   "w": "are",
+   "start": 106.52,
+   "end": 106.78,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 106.78,
+   "end": 106.94,
+   "p": 0.999
+  },
+  {
+   "w": "whole",
+   "start": 106.94,
+   "end": 107.24,
+   "p": 0.995
+  },
+  {
+   "w": "point.",
+   "start": 107.24,
+   "end": 107.7,
+   "p": 0.999
+  },
+  {
+   "w": "Busy",
+   "start": 108.22,
+   "end": 108.54,
+   "p": 0.997
+  },
+  {
+   "w": "places",
+   "start": 108.54,
+   "end": 108.88,
+   "p": 0.998
+  },
+  {
+   "w": "know",
+   "start": 108.88,
+   "end": 109.24,
+   "p": 0.998
+  },
+  {
+   "w": "what",
+   "start": 109.24,
+   "end": 109.44,
+   "p": 0.998
+  },
+  {
+   "w": "they're",
+   "start": 109.44,
+   "end": 109.68,
+   "p": 0.991
+  },
+  {
+   "w": "worth.",
+   "start": 109.68,
+   "end": 109.94,
+   "p": 1.0
+  },
+  {
+   "w": "They",
+   "start": 110.18,
+   "end": 110.44,
+   "p": 0.994
+  },
+  {
+   "w": "usually",
+   "start": 110.44,
+   "end": 110.84,
+   "p": 0.999
+  },
+  {
+   "w": "ask",
+   "start": 110.84,
+   "end": 111.24,
+   "p": 0.996
+  },
+  {
+   "w": "for",
+   "start": 111.24,
+   "end": 111.42,
+   "p": 0.999
+  },
+  {
+   "w": "a",
+   "start": 111.42,
+   "end": 111.64,
+   "p": 0.998
+  },
+  {
+   "w": "share",
+   "start": 111.64,
+   "end": 111.82,
+   "p": 0.999
+  },
+  {
+   "w": "of",
+   "start": 111.82,
+   "end": 112.1,
+   "p": 0.999
+  },
+  {
+   "w": "gross",
+   "start": 112.1,
+   "end": 112.36,
+   "p": 0.996
+  },
+  {
+   "w": "sales,",
+   "start": 112.36,
+   "end": 112.86,
+   "p": 0.999
+  },
+  {
+   "w": "commonly",
+   "start": 112.86,
+   "end": 113.56,
+   "p": 0.796
+  },
+  {
+   "w": "five",
+   "start": 113.56,
+   "end": 114.12,
+   "p": 0.217
+  },
+  {
+   "w": "to",
+   "start": 114.12,
+   "end": 114.34,
+   "p": 0.991
+  },
+  {
+   "w": "20%.",
+   "start": 114.34,
+   "end": 115.32,
+   "p": 0.293
+  },
+  {
+   "w": "Sales",
+   "start": 115.32,
+   "end": 115.82,
+   "p": 0.967
+  },
+  {
+   "w": "per",
+   "start": 115.82,
+   "end": 116.08,
+   "p": 0.991
+  },
+  {
+   "w": "machine",
+   "start": 116.08,
+   "end": 116.5,
+   "p": 0.992
+  },
+  {
+   "w": "depend",
+   "start": 116.5,
+   "end": 116.86,
+   "p": 0.978
+  },
+  {
+   "w": "almost",
+   "start": 116.86,
+   "end": 117.36,
+   "p": 0.997
+  },
+  {
+   "w": "entirely",
+   "start": 117.36,
+   "end": 118.06,
+   "p": 0.999
+  },
+  {
+   "w": "on",
+   "start": 118.06,
+   "end": 118.36,
+   "p": 0.997
+  },
+  {
+   "w": "where",
+   "start": 118.36,
+   "end": 118.62,
+   "p": 0.999
+  },
+  {
+   "w": "it",
+   "start": 118.62,
+   "end": 118.78,
+   "p": 0.998
+  },
+  {
+   "w": "stands.",
+   "start": 118.78,
+   "end": 119.24,
+   "p": 0.998
+  },
+  {
+   "w": "The",
+   "start": 119.74,
+   "end": 119.82,
+   "p": 0.975
+  },
+  {
+   "w": "same",
+   "start": 119.82,
+   "end": 120.1,
+   "p": 0.991
+  },
+  {
+   "w": "supplier's",
+   "start": 120.1,
+   "end": 120.78,
+   "p": 0.656
+  },
+  {
+   "w": "guide",
+   "start": 120.78,
+   "end": 120.96,
+   "p": 0.996
+  },
+  {
+   "w": "puts",
+   "start": 120.96,
+   "end": 121.24,
+   "p": 0.977
+  },
+  {
+   "w": "a",
+   "start": 121.24,
+   "end": 121.4,
+   "p": 0.996
+  },
+  {
+   "w": "typical",
+   "start": 121.4,
+   "end": 121.74,
+   "p": 0.999
+  },
+  {
+   "w": "site",
+   "start": 121.74,
+   "end": 122.06,
+   "p": 0.987
+  },
+  {
+   "w": "at",
+   "start": 122.06,
+   "end": 122.4,
+   "p": 0.995
+  },
+  {
+   "w": "$150",
+   "start": 122.4,
+   "end": 123.24,
+   "p": 0.722
+  },
+  {
+   "w": "to",
+   "start": 123.24,
+   "end": 123.52,
+   "p": 0.776
+  },
+  {
+   "w": "$700",
+   "start": 123.52,
+   "end": 124.18,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 124.18,
+   "end": 124.74,
+   "p": 0.941
+  },
+  {
+   "w": "month,",
+   "start": 124.74,
+   "end": 125.06,
+   "p": 1.0
+  },
+  {
+   "w": "and",
+   "start": 125.32,
+   "end": 125.52,
+   "p": 0.991
+  },
+  {
+   "w": "a",
+   "start": 125.52,
+   "end": 125.68,
+   "p": 0.996
+  },
+  {
+   "w": "strong",
+   "start": 125.68,
+   "end": 126.02,
+   "p": 0.999
+  },
+  {
+   "w": "one",
+   "start": 126.02,
+   "end": 126.28,
+   "p": 0.998
+  },
+  {
+   "w": "at",
+   "start": 126.28,
+   "end": 126.54,
+   "p": 0.986
+  },
+  {
+   "w": "up",
+   "start": 126.54,
+   "end": 126.76,
+   "p": 0.998
+  },
+  {
+   "w": "to",
+   "start": 126.76,
+   "end": 127.08,
+   "p": 0.999
+  },
+  {
+   "w": "$1",
+   "start": 127.08,
+   "end": 127.44,
+   "p": 0.799
+  },
+  {
+   "w": ",500.",
+   "start": 127.44,
+   "end": 127.62,
+   "p": 0.998
+  },
+  {
+   "w": "Top",
+   "start": 128.38,
+   "end": 128.56,
+   "p": 0.996
+  },
+  {
+   "w": "spots",
+   "start": 128.56,
+   "end": 128.96,
+   "p": 0.941
+  },
+  {
+   "w": "like",
+   "start": 128.96,
+   "end": 129.28,
+   "p": 0.706
+  },
+  {
+   "w": "hospitals,",
+   "start": 129.28,
+   "end": 129.78,
+   "p": 0.993
+  },
+  {
+   "w": "factories,",
+   "start": 130.12,
+   "end": 130.48,
+   "p": 0.998
+  },
+  {
+   "w": "and",
+   "start": 130.74,
+   "end": 130.86,
+   "p": 0.998
+  },
+  {
+   "w": "transit",
+   "start": 130.86,
+   "end": 131.28,
+   "p": 0.998
+  },
+  {
+   "w": "hubs",
+   "start": 131.28,
+   "end": 131.56,
+   "p": 0.998
+  },
+  {
+   "w": "can",
+   "start": 131.56,
+   "end": 131.96,
+   "p": 0.953
+  },
+  {
+   "w": "do",
+   "start": 131.96,
+   "end": 132.14,
+   "p": 0.999
+  },
+  {
+   "w": "$2",
+   "start": 132.14,
+   "end": 132.56,
+   "p": 0.791
+  },
+  {
+   "w": ",000",
+   "start": 132.56,
+   "end": 132.92,
+   "p": 0.998
+  },
+  {
+   "w": "or",
+   "start": 132.92,
+   "end": 133.12,
+   "p": 0.994
+  },
+  {
+   "w": "more.",
+   "start": 133.12,
+   "end": 133.5,
+   "p": 1.0
+  },
+  {
+   "w": "Those",
+   "start": 133.92,
+   "end": 134.14,
+   "p": 0.992
+  },
+  {
+   "w": "are",
+   "start": 134.14,
+   "end": 134.32,
+   "p": 0.999
+  },
+  {
+   "w": "sales",
+   "start": 134.32,
+   "end": 134.78,
+   "p": 0.996
+  },
+  {
+   "w": "figures,",
+   "start": 134.78,
+   "end": 135.12,
+   "p": 0.999
+  },
+  {
+   "w": "though.",
+   "start": 135.42,
+   "end": 135.5,
+   "p": 0.999
+  },
+  {
+   "w": "To",
+   "start": 135.8,
+   "end": 135.94,
+   "p": 0.996
+  },
+  {
+   "w": "see",
+   "start": 135.94,
+   "end": 136.16,
+   "p": 1.0
+  },
+  {
+   "w": "what",
+   "start": 136.16,
+   "end": 136.32,
+   "p": 0.999
+  },
+  {
+   "w": "an",
+   "start": 136.32,
+   "end": 136.54,
+   "p": 0.998
+  },
+  {
+   "w": "operator",
+   "start": 136.54,
+   "end": 136.94,
+   "p": 0.998
+  },
+  {
+   "w": "keeps,",
+   "start": 136.94,
+   "end": 137.46,
+   "p": 0.999
+  },
+  {
+   "w": "go",
+   "start": 137.8,
+   "end": 137.94,
+   "p": 0.998
+  },
+  {
+   "w": "back",
+   "start": 137.94,
+   "end": 138.2,
+   "p": 0.999
+  },
+  {
+   "w": "to",
+   "start": 138.2,
+   "end": 138.4,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 138.4,
+   "end": 138.54,
+   "p": 0.995
+  },
+  {
+   "w": "$2",
+   "start": 138.54,
+   "end": 138.96,
+   "p": 0.96
+  },
+  {
+   "w": "soda.",
+   "start": 138.96,
+   "end": 139.38,
+   "p": 0.986
+  },
+  {
+   "w": "Here's",
+   "start": 139.38,
+   "end": 140.16,
+   "p": 0.929
+  },
+  {
+   "w": "how",
+   "start": 140.16,
+   "end": 140.3,
+   "p": 0.992
+  },
+  {
+   "w": "one",
+   "start": 140.3,
+   "end": 140.6,
+   "p": 0.964
+  },
+  {
+   "w": "equipment",
+   "start": 140.6,
+   "end": 140.98,
+   "p": 0.989
+  },
+  {
+   "w": "supplier",
+   "start": 140.98,
+   "end": 141.44,
+   "p": 0.993
+  },
+  {
+   "w": "models",
+   "start": 141.44,
+   "end": 141.88,
+   "p": 0.991
+  },
+  {
+   "w": "a",
+   "start": 141.88,
+   "end": 142.16,
+   "p": 0.985
+  },
+  {
+   "w": "$2",
+   "start": 142.16,
+   "end": 142.56,
+   "p": 0.888
+  },
+  {
+   "w": "soda.",
+   "start": 142.56,
+   "end": 143.0,
+   "p": 0.962
+  },
+  {
+   "w": "It",
+   "start": 143.5,
+   "end": 143.54,
+   "p": 0.915
+  },
+  {
+   "w": "assumes",
+   "start": 143.54,
+   "end": 143.96,
+   "p": 0.993
+  },
+  {
+   "w": "a",
+   "start": 143.96,
+   "end": 144.16,
+   "p": 0.99
+  },
+  {
+   "w": "6",
+   "start": 144.16,
+   "end": 144.52,
+   "p": 0.893
+  },
+  {
+   "w": "%",
+   "start": 144.52,
+   "end": 144.92,
+   "p": 0.942
+  },
+  {
+   "w": "sales",
+   "start": 144.92,
+   "end": 145.26,
+   "p": 0.988
+  },
+  {
+   "w": "tax,",
+   "start": 145.26,
+   "end": 145.66,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 145.98,
+   "end": 146.2,
+   "p": 0.968
+  },
+  {
+   "w": "10",
+   "start": 146.2,
+   "end": 146.36,
+   "p": 0.996
+  },
+  {
+   "w": "%",
+   "start": 146.36,
+   "end": 146.74,
+   "p": 0.987
+  },
+  {
+   "w": "location",
+   "start": 146.74,
+   "end": 147.18,
+   "p": 0.956
+  },
+  {
+   "w": "commission,",
+   "start": 147.18,
+   "end": 147.66,
+   "p": 0.976
+  },
+  {
+   "w": "and",
+   "start": 147.68,
+   "end": 148.12,
+   "p": 0.991
+  },
+  {
+   "w": "most",
+   "start": 148.12,
+   "end": 148.42,
+   "p": 0.998
+  },
+  {
+   "w": "customers",
+   "start": 148.42,
+   "end": 148.86,
+   "p": 0.996
+  },
+  {
+   "w": "paying",
+   "start": 148.86,
+   "end": 149.26,
+   "p": 0.992
+  },
+  {
+   "w": "by",
+   "start": 149.26,
+   "end": 149.56,
+   "p": 0.998
+  },
+  {
+   "w": "card.",
+   "start": 149.56,
+   "end": 149.84,
+   "p": 0.991
+  },
+  {
+   "w": "First,",
+   "start": 150.32,
+   "end": 150.66,
+   "p": 0.955
+  },
+  {
+   "w": "about",
+   "start": 150.94,
+   "end": 151.14,
+   "p": 0.995
+  },
+  {
+   "w": "11",
+   "start": 151.14,
+   "end": 151.62,
+   "p": 0.736
+  },
+  {
+   "w": "cents",
+   "start": 151.62,
+   "end": 151.9,
+   "p": 0.962
+  },
+  {
+   "w": "is",
+   "start": 151.9,
+   "end": 152.18,
+   "p": 0.988
+  },
+  {
+   "w": "sales",
+   "start": 152.18,
+   "end": 152.52,
+   "p": 0.995
+  },
+  {
+   "w": "tax.",
+   "start": 152.52,
+   "end": 152.96,
+   "p": 0.999
+  },
+  {
+   "w": "That",
+   "start": 153.28,
+   "end": 153.48,
+   "p": 0.988
+  },
+  {
+   "w": "was",
+   "start": 153.48,
+   "end": 153.7,
+   "p": 0.998
+  },
+  {
+   "w": "never",
+   "start": 153.7,
+   "end": 154.12,
+   "p": 0.994
+  },
+  {
+   "w": "the",
+   "start": 154.12,
+   "end": 154.42,
+   "p": 0.998
+  },
+  {
+   "w": "operator's",
+   "start": 154.42,
+   "end": 155.0,
+   "p": 0.842
+  },
+  {
+   "w": "money.",
+   "start": 155.0,
+   "end": 155.26,
+   "p": 0.999
+  },
+  {
+   "w": "The",
+   "start": 155.66,
+   "end": 155.82,
+   "p": 0.99
+  },
+  {
+   "w": "biggest",
+   "start": 155.82,
+   "end": 156.12,
+   "p": 0.997
+  },
+  {
+   "w": "slice",
+   "start": 156.12,
+   "end": 156.54,
+   "p": 0.998
+  },
+  {
+   "w": "is",
+   "start": 156.54,
+   "end": 156.84,
+   "p": 0.996
+  },
+  {
+   "w": "the",
+   "start": 156.84,
+   "end": 157.06,
+   "p": 0.998
+  },
+  {
+   "w": "product.",
+   "start": 157.06,
+   "end": 157.46,
+   "p": 0.999
+  },
+  {
+   "w": "Roughly",
+   "start": 157.96,
+   "end": 158.38,
+   "p": 0.996
+  },
+  {
+   "w": "half",
+   "start": 158.38,
+   "end": 158.56,
+   "p": 0.989
+  },
+  {
+   "w": "the",
+   "start": 158.56,
+   "end": 158.86,
+   "p": 0.989
+  },
+  {
+   "w": "pre",
+   "start": 158.86,
+   "end": 159.02,
+   "p": 0.82
+  },
+  {
+   "w": "-tax",
+   "start": 159.02,
+   "end": 159.28,
+   "p": 0.986
+  },
+  {
+   "w": "price,",
+   "start": 159.28,
+   "end": 159.74,
+   "p": 0.996
+  },
+  {
+   "w": "about",
+   "start": 160.04,
+   "end": 160.28,
+   "p": 0.996
+  },
+  {
+   "w": "94",
+   "start": 160.28,
+   "end": 160.76,
+   "p": 0.715
+  },
+  {
+   "w": "cents,",
+   "start": 160.76,
+   "end": 161.26,
+   "p": 0.99
+  },
+  {
+   "w": "goes",
+   "start": 161.5,
+   "end": 161.82,
+   "p": 0.997
+  },
+  {
+   "w": "to",
+   "start": 161.82,
+   "end": 162.08,
+   "p": 0.999
+  },
+  {
+   "w": "whoever",
+   "start": 162.08,
+   "end": 162.44,
+   "p": 0.985
+  },
+  {
+   "w": "supplied",
+   "start": 162.44,
+   "end": 162.98,
+   "p": 0.995
+  },
+  {
+   "w": "the",
+   "start": 162.98,
+   "end": 163.18,
+   "p": 0.999
+  },
+  {
+   "w": "drink.",
+   "start": 163.18,
+   "end": 163.52,
+   "p": 0.999
+  },
+  {
+   "w": "Then",
+   "start": 163.84,
+   "end": 164.22,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 164.22,
+   "end": 164.52,
+   "p": 0.457
+  },
+  {
+   "w": "tech",
+   "start": 164.52,
+   "end": 164.7,
+   "p": 0.997
+  },
+  {
+   "w": "companies",
+   "start": 164.7,
+   "end": 165.08,
+   "p": 0.995
+  },
+  {
+   "w": "take",
+   "start": 165.08,
+   "end": 165.4,
+   "p": 0.994
+  },
+  {
+   "w": "theirs.",
+   "start": 165.4,
+   "end": 165.82,
+   "p": 0.989
+  },
+  {
+   "w": "Card",
+   "start": 166.28,
+   "end": 166.5,
+   "p": 0.987
+  },
+  {
+   "w": "processing",
+   "start": 166.5,
+   "end": 167.04,
+   "p": 0.977
+  },
+  {
+   "w": "costs",
+   "start": 167.04,
+   "end": 167.42,
+   "p": 0.958
+  },
+  {
+   "w": "about",
+   "start": 167.42,
+   "end": 167.72,
+   "p": 0.997
+  },
+  {
+   "w": "nine",
+   "start": 167.72,
+   "end": 168.0,
+   "p": 0.197
+  },
+  {
+   "w": "cents,",
+   "start": 168.0,
+   "end": 168.42,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 168.42,
+   "end": 168.84,
+   "p": 0.673
+  },
+  {
+   "w": "the",
+   "start": 168.84,
+   "end": 168.96,
+   "p": 0.967
+  },
+  {
+   "w": "card",
+   "start": 168.96,
+   "end": 169.24,
+   "p": 0.976
+  },
+  {
+   "w": "reader",
+   "start": 169.24,
+   "end": 169.5,
+   "p": 0.992
+  },
+  {
+   "w": "and",
+   "start": 169.5,
+   "end": 169.74,
+   "p": 0.975
+  },
+  {
+   "w": "software",
+   "start": 169.74,
+   "end": 170.22,
+   "p": 0.994
+  },
+  {
+   "w": "subscription",
+   "start": 170.22,
+   "end": 170.8,
+   "p": 0.995
+  },
+  {
+   "w": "about",
+   "start": 170.8,
+   "end": 171.22,
+   "p": 0.606
+  },
+  {
+   "w": "four",
+   "start": 171.22,
+   "end": 171.5,
+   "p": 0.494
+  },
+  {
+   "w": "more.",
+   "start": 171.5,
+   "end": 171.84,
+   "p": 0.995
+  },
+  {
+   "w": "The",
+   "start": 172.32,
+   "end": 172.4,
+   "p": 0.864
+  },
+  {
+   "w": "building",
+   "start": 172.4,
+   "end": 172.7,
+   "p": 0.993
+  },
+  {
+   "w": "takes",
+   "start": 172.7,
+   "end": 173.08,
+   "p": 0.995
+  },
+  {
+   "w": "its",
+   "start": 173.08,
+   "end": 173.3,
+   "p": 0.849
+  },
+  {
+   "w": "10%.",
+   "start": 173.3,
+   "end": 174.16,
+   "p": 0.633
+  },
+  {
+   "w": "That's",
+   "start": 174.16,
+   "end": 174.66,
+   "p": 0.985
+  },
+  {
+   "w": "20",
+   "start": 174.66,
+   "end": 174.86,
+   "p": 0.891
+  },
+  {
+   "w": "cents.",
+   "start": 174.86,
+   "end": 175.24,
+   "p": 0.932
+  },
+  {
+   "w": "That",
+   "start": 175.78,
+   "end": 175.96,
+   "p": 0.988
+  },
+  {
+   "w": "leaves",
+   "start": 175.96,
+   "end": 176.24,
+   "p": 0.996
+  },
+  {
+   "w": "the",
+   "start": 176.24,
+   "end": 176.46,
+   "p": 0.998
+  },
+  {
+   "w": "operator",
+   "start": 176.46,
+   "end": 176.86,
+   "p": 0.996
+  },
+  {
+   "w": "about",
+   "start": 176.86,
+   "end": 177.24,
+   "p": 0.993
+  },
+  {
+   "w": "62",
+   "start": 177.24,
+   "end": 177.94,
+   "p": 0.888
+  },
+  {
+   "w": "cents",
+   "start": 177.94,
+   "end": 178.46,
+   "p": 0.987
+  },
+  {
+   "w": "before",
+   "start": 178.46,
+   "end": 179.02,
+   "p": 0.756
+  },
+  {
+   "w": "paying",
+   "start": 179.02,
+   "end": 179.36,
+   "p": 0.999
+  },
+  {
+   "w": "for",
+   "start": 179.36,
+   "end": 179.62,
+   "p": 0.998
+  },
+  {
+   "w": "gas,",
+   "start": 179.62,
+   "end": 179.98,
+   "p": 0.992
+  },
+  {
+   "w": "labor,",
+   "start": 180.36,
+   "end": 180.64,
+   "p": 0.97
+  },
+  {
+   "w": "repairs,",
+   "start": 180.96,
+   "end": 181.38,
+   "p": 0.987
+  },
+  {
+   "w": "insurance,",
+   "start": 181.82,
+   "end": 182.16,
+   "p": 0.997
+  },
+  {
+   "w": "and",
+   "start": 182.52,
+   "end": 182.74,
+   "p": 0.997
+  },
+  {
+   "w": "income",
+   "start": 182.74,
+   "end": 183.08,
+   "p": 0.996
+  },
+  {
+   "w": "tax.",
+   "start": 183.08,
+   "end": 183.52,
+   "p": 0.995
+  },
+  {
+   "w": "Every",
+   "start": 184.04,
+   "end": 184.32,
+   "p": 0.988
+  },
+  {
+   "w": "restock",
+   "start": 184.32,
+   "end": 184.86,
+   "p": 0.998
+  },
+  {
+   "w": "means",
+   "start": 184.86,
+   "end": 185.18,
+   "p": 0.999
+  },
+  {
+   "w": "driving",
+   "start": 185.18,
+   "end": 185.64,
+   "p": 0.998
+  },
+  {
+   "w": "out,",
+   "start": 185.64,
+   "end": 186.02,
+   "p": 0.997
+  },
+  {
+   "w": "hauling",
+   "start": 186.28,
+   "end": 186.52,
+   "p": 0.997
+  },
+  {
+   "w": "cases,",
+   "start": 186.52,
+   "end": 186.98,
+   "p": 0.996
+  },
+  {
+   "w": "and",
+   "start": 187.2,
+   "end": 187.46,
+   "p": 0.998
+  },
+  {
+   "w": "doing",
+   "start": 187.46,
+   "end": 187.68,
+   "p": 0.999
+  },
+  {
+   "w": "it",
+   "start": 187.68,
+   "end": 187.92,
+   "p": 0.999
+  },
+  {
+   "w": "all",
+   "start": 187.92,
+   "end": 188.18,
+   "p": 0.992
+  },
+  {
+   "w": "again",
+   "start": 188.18,
+   "end": 188.58,
+   "p": 0.999
+  },
+  {
+   "w": "next",
+   "start": 188.58,
+   "end": 188.94,
+   "p": 0.991
+  },
+  {
+   "w": "week.",
+   "start": 188.94,
+   "end": 189.28,
+   "p": 0.999
+  },
+  {
+   "w": "Those",
+   "start": 189.82,
+   "end": 190.06,
+   "p": 0.99
+  },
+  {
+   "w": "costs",
+   "start": 190.06,
+   "end": 190.44,
+   "p": 0.989
+  },
+  {
+   "w": "come",
+   "start": 190.44,
+   "end": 190.66,
+   "p": 0.997
+  },
+  {
+   "w": "out",
+   "start": 190.66,
+   "end": 190.84,
+   "p": 0.998
+  },
+  {
+   "w": "of",
+   "start": 190.84,
+   "end": 190.94,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 190.94,
+   "end": 191.08,
+   "p": 0.994
+  },
+  {
+   "w": "62",
+   "start": 191.08,
+   "end": 191.5,
+   "p": 0.982
+  },
+  {
+   "w": "cents",
+   "start": 191.5,
+   "end": 191.86,
+   "p": 0.993
+  },
+  {
+   "w": "too.",
+   "start": 191.86,
+   "end": 192.24,
+   "p": 0.593
+  },
+  {
+   "w": "Run",
+   "start": 192.66,
+   "end": 192.82,
+   "p": 0.991
+  },
+  {
+   "w": "the",
+   "start": 192.82,
+   "end": 193.04,
+   "p": 0.999
+  },
+  {
+   "w": "full",
+   "start": 193.04,
+   "end": 193.24,
+   "p": 0.997
+  },
+  {
+   "w": "numbers",
+   "start": 193.24,
+   "end": 193.64,
+   "p": 0.998
+  },
+  {
+   "w": "on",
+   "start": 193.64,
+   "end": 193.86,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 193.86,
+   "end": 194.0,
+   "p": 0.995
+  },
+  {
+   "w": "machine",
+   "start": 194.0,
+   "end": 194.34,
+   "p": 0.998
+  },
+  {
+   "w": "selling",
+   "start": 194.34,
+   "end": 194.7,
+   "p": 0.994
+  },
+  {
+   "w": "$900",
+   "start": 194.7,
+   "end": 195.3,
+   "p": 0.935
+  },
+  {
+   "w": "a",
+   "start": 195.3,
+   "end": 195.82,
+   "p": 0.95
+  },
+  {
+   "w": "month,",
+   "start": 195.82,
+   "end": 196.16,
+   "p": 1.0
+  },
+  {
+   "w": "and",
+   "start": 196.16,
+   "end": 196.58,
+   "p": 0.752
+  },
+  {
+   "w": "the",
+   "start": 196.58,
+   "end": 196.76,
+   "p": 0.997
+  },
+  {
+   "w": "same",
+   "start": 196.76,
+   "end": 197.04,
+   "p": 0.996
+  },
+  {
+   "w": "supplier",
+   "start": 197.04,
+   "end": 197.54,
+   "p": 0.997
+  },
+  {
+   "w": "estimates",
+   "start": 197.54,
+   "end": 198.1,
+   "p": 0.965
+  },
+  {
+   "w": "the",
+   "start": 198.1,
+   "end": 198.42,
+   "p": 0.989
+  },
+  {
+   "w": "operator",
+   "start": 198.42,
+   "end": 198.86,
+   "p": 0.995
+  },
+  {
+   "w": "keeps",
+   "start": 198.86,
+   "end": 199.22,
+   "p": 0.997
+  },
+  {
+   "w": "about",
+   "start": 199.22,
+   "end": 199.54,
+   "p": 0.998
+  },
+  {
+   "w": "197.",
+   "start": 199.54,
+   "end": 200.44,
+   "p": 0.874
+  },
+  {
+   "w": "That's",
+   "start": 201.18,
+   "end": 201.62,
+   "p": 0.985
+  },
+  {
+   "w": "roughly",
+   "start": 201.62,
+   "end": 201.92,
+   "p": 0.995
+  },
+  {
+   "w": "a",
+   "start": 201.92,
+   "end": 202.22,
+   "p": 0.99
+  },
+  {
+   "w": "22",
+   "start": 202.22,
+   "end": 202.68,
+   "p": 0.972
+  },
+  {
+   "w": "%",
+   "start": 202.68,
+   "end": 203.04,
+   "p": 0.805
+  },
+  {
+   "w": "margin",
+   "start": 203.04,
+   "end": 203.5,
+   "p": 0.982
+  },
+  {
+   "w": "at",
+   "start": 203.5,
+   "end": 203.94,
+   "p": 0.679
+  },
+  {
+   "w": "a",
+   "start": 203.94,
+   "end": 204.12,
+   "p": 0.998
+  },
+  {
+   "w": "decent",
+   "start": 204.12,
+   "end": 204.36,
+   "p": 0.996
+  },
+  {
+   "w": "location,",
+   "start": 204.36,
+   "end": 204.94,
+   "p": 1.0
+  },
+  {
+   "w": "and",
+   "start": 205.24,
+   "end": 205.48,
+   "p": 0.992
+  },
+  {
+   "w": "it's",
+   "start": 205.48,
+   "end": 205.84,
+   "p": 0.99
+  },
+  {
+   "w": "before",
+   "start": 205.84,
+   "end": 206.08,
+   "p": 0.993
+  },
+  {
+   "w": "the",
+   "start": 206.08,
+   "end": 206.36,
+   "p": 0.998
+  },
+  {
+   "w": "operator",
+   "start": 206.36,
+   "end": 206.76,
+   "p": 0.997
+  },
+  {
+   "w": "pays",
+   "start": 206.76,
+   "end": 207.14,
+   "p": 0.999
+  },
+  {
+   "w": "themselves",
+   "start": 207.14,
+   "end": 207.58,
+   "p": 0.993
+  },
+  {
+   "w": "anything",
+   "start": 207.58,
+   "end": 208.16,
+   "p": 0.992
+  },
+  {
+   "w": "for",
+   "start": 208.16,
+   "end": 208.46,
+   "p": 0.999
+  },
+  {
+   "w": "their",
+   "start": 208.46,
+   "end": 208.6,
+   "p": 0.998
+  },
+  {
+   "w": "time.",
+   "start": 208.6,
+   "end": 208.98,
+   "p": 1.0
+  },
+  {
+   "w": "And",
+   "start": 209.32,
+   "end": 209.52,
+   "p": 0.984
+  },
+  {
+   "w": "the",
+   "start": 209.52,
+   "end": 209.68,
+   "p": 0.994
+  },
+  {
+   "w": "better",
+   "start": 209.68,
+   "end": 209.9,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 209.9,
+   "end": 210.12,
+   "p": 0.995
+  },
+  {
+   "w": "location,",
+   "start": 210.12,
+   "end": 210.62,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 210.9,
+   "end": 211.0,
+   "p": 0.998
+  },
+  {
+   "w": "bigger",
+   "start": 211.0,
+   "end": 211.38,
+   "p": 0.999
+  },
+  {
+   "w": "it's",
+   "start": 211.38,
+   "end": 211.76,
+   "p": 0.809
+  },
+  {
+   "w": "cut.",
+   "start": 211.76,
+   "end": 211.98,
+   "p": 0.999
+  },
+  {
+   "w": "Some",
+   "start": 212.48,
+   "end": 212.7,
+   "p": 0.996
+  },
+  {
+   "w": "public",
+   "start": 212.7,
+   "end": 213.02,
+   "p": 0.992
+  },
+  {
+   "w": "contracts",
+   "start": 213.02,
+   "end": 213.58,
+   "p": 0.996
+  },
+  {
+   "w": "go",
+   "start": 213.58,
+   "end": 213.82,
+   "p": 0.998
+  },
+  {
+   "w": "far",
+   "start": 213.82,
+   "end": 214.2,
+   "p": 0.998
+  },
+  {
+   "w": "past",
+   "start": 214.2,
+   "end": 214.6,
+   "p": 0.985
+  },
+  {
+   "w": "10%.",
+   "start": 214.6,
+   "end": 215.6,
+   "p": 0.95
+  },
+  {
+   "w": "One",
+   "start": 215.6,
+   "end": 215.98,
+   "p": 0.965
+  },
+  {
+   "w": "California",
+   "start": 215.98,
+   "end": 216.58,
+   "p": 0.995
+  },
+  {
+   "w": "community",
+   "start": 216.58,
+   "end": 217.08,
+   "p": 0.468
+  },
+  {
+   "w": "college",
+   "start": 217.08,
+   "end": 217.42,
+   "p": 0.994
+  },
+  {
+   "w": "district,",
+   "start": 217.42,
+   "end": 217.98,
+   "p": 0.996
+  },
+  {
+   "w": "Riverside,",
+   "start": 218.3,
+   "end": 218.66,
+   "p": 0.996
+  },
+  {
+   "w": "gets",
+   "start": 218.94,
+   "end": 219.22,
+   "p": 0.994
+  },
+  {
+   "w": "33",
+   "start": 219.22,
+   "end": 219.86,
+   "p": 0.992
+  },
+  {
+   "w": "%",
+   "start": 219.86,
+   "end": 220.4,
+   "p": 0.986
+  },
+  {
+   "w": "of",
+   "start": 220.4,
+   "end": 220.64,
+   "p": 0.997
+  },
+  {
+   "w": "gross",
+   "start": 220.64,
+   "end": 220.94,
+   "p": 0.997
+  },
+  {
+   "w": "sales,",
+   "start": 220.94,
+   "end": 221.44,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 221.56,
+   "end": 221.98,
+   "p": 0.987
+  },
+  {
+   "w": "that",
+   "start": 221.98,
+   "end": 222.16,
+   "p": 0.994
+  },
+  {
+   "w": "airport",
+   "start": 222.16,
+   "end": 222.54,
+   "p": 0.925
+  },
+  {
+   "w": "from",
+   "start": 222.54,
+   "end": 222.8,
+   "p": 0.974
+  },
+  {
+   "w": "the",
+   "start": 222.8,
+   "end": 222.96,
+   "p": 0.999
+  },
+  {
+   "w": "start",
+   "start": 222.96,
+   "end": 223.16,
+   "p": 1.0
+  },
+  {
+   "w": "of",
+   "start": 223.16,
+   "end": 223.3,
+   "p": 0.998
+  },
+  {
+   "w": "this",
+   "start": 223.3,
+   "end": 223.44,
+   "p": 0.996
+  },
+  {
+   "w": "video,",
+   "start": 223.44,
+   "end": 223.78,
+   "p": 1.0
+  },
+  {
+   "w": "its",
+   "start": 223.78,
+   "end": 224.4,
+   "p": 0.549
+  },
+  {
+   "w": "deal",
+   "start": 224.4,
+   "end": 224.7,
+   "p": 0.996
+  },
+  {
+   "w": "is",
+   "start": 224.7,
+   "end": 224.96,
+   "p": 0.995
+  },
+  {
+   "w": "bigger",
+   "start": 224.96,
+   "end": 225.3,
+   "p": 0.995
+  },
+  {
+   "w": "still.",
+   "start": 225.3,
+   "end": 225.8,
+   "p": 0.98
+  },
+  {
+   "w": "Card",
+   "start": 226.5,
+   "end": 226.5,
+   "p": 0.797
+  },
+  {
+   "w": "payments",
+   "start": 226.5,
+   "end": 226.84,
+   "p": 0.977
+  },
+  {
+   "w": "do",
+   "start": 226.84,
+   "end": 227.2,
+   "p": 0.992
+  },
+  {
+   "w": "help",
+   "start": 227.2,
+   "end": 227.5,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 227.5,
+   "end": 227.72,
+   "p": 0.993
+  },
+  {
+   "w": "operator",
+   "start": 227.72,
+   "end": 228.16,
+   "p": 0.993
+  },
+  {
+   "w": "in",
+   "start": 228.16,
+   "end": 228.4,
+   "p": 0.992
+  },
+  {
+   "w": "one",
+   "start": 228.4,
+   "end": 228.7,
+   "p": 0.995
+  },
+  {
+   "w": "way.",
+   "start": 228.7,
+   "end": 229.0,
+   "p": 0.996
+  },
+  {
+   "w": "In",
+   "start": 229.46,
+   "end": 229.48,
+   "p": 0.956
+  },
+  {
+   "w": "2025,",
+   "start": 229.48,
+   "end": 230.24,
+   "p": 0.984
+  },
+  {
+   "w": "people",
+   "start": 230.78,
+   "end": 230.94,
+   "p": 0.988
+  },
+  {
+   "w": "paying",
+   "start": 230.94,
+   "end": 231.28,
+   "p": 0.995
+  },
+  {
+   "w": "by",
+   "start": 231.28,
+   "end": 231.52,
+   "p": 0.997
+  },
+  {
+   "w": "card",
+   "start": 231.52,
+   "end": 231.9,
+   "p": 0.987
+  },
+  {
+   "w": "or",
+   "start": 231.9,
+   "end": 232.16,
+   "p": 0.994
+  },
+  {
+   "w": "phone",
+   "start": 232.16,
+   "end": 232.6,
+   "p": 0.998
+  },
+  {
+   "w": "spent",
+   "start": 232.6,
+   "end": 233.08,
+   "p": 0.942
+  },
+  {
+   "w": "an",
+   "start": 233.08,
+   "end": 233.3,
+   "p": 0.987
+  },
+  {
+   "w": "average",
+   "start": 233.3,
+   "end": 233.58,
+   "p": 0.996
+  },
+  {
+   "w": "of",
+   "start": 233.58,
+   "end": 233.86,
+   "p": 0.994
+  },
+  {
+   "w": "$2",
+   "start": 233.86,
+   "end": 234.18,
+   "p": 0.958
+  },
+  {
+   "w": ".45",
+   "start": 234.18,
+   "end": 235.3,
+   "p": 0.986
+  },
+  {
+   "w": "per",
+   "start": 235.3,
+   "end": 235.96,
+   "p": 0.932
+  },
+  {
+   "w": "purchase",
+   "start": 235.96,
+   "end": 236.5,
+   "p": 0.996
+  },
+  {
+   "w": "at",
+   "start": 236.5,
+   "end": 236.76,
+   "p": 0.982
+  },
+  {
+   "w": "vending",
+   "start": 236.76,
+   "end": 237.12,
+   "p": 0.988
+  },
+  {
+   "w": "machines",
+   "start": 237.12,
+   "end": 237.58,
+   "p": 0.997
+  },
+  {
+   "w": "on",
+   "start": 237.58,
+   "end": 238.0,
+   "p": 0.987
+  },
+  {
+   "w": "Cantaloupe's",
+   "start": 238.0,
+   "end": 238.62,
+   "p": 0.753
+  },
+  {
+   "w": "payment",
+   "start": 238.62,
+   "end": 238.84,
+   "p": 0.996
+  },
+  {
+   "w": "network",
+   "start": 238.84,
+   "end": 239.42,
+   "p": 0.997
+  },
+  {
+   "w": "versus",
+   "start": 239.42,
+   "end": 239.94,
+   "p": 0.528
+  },
+  {
+   "w": "$1",
+   "start": 239.94,
+   "end": 240.6,
+   "p": 0.992
+  },
+  {
+   "w": ".57",
+   "start": 240.6,
+   "end": 241.52,
+   "p": 0.997
+  },
+  {
+   "w": "in",
+   "start": 241.52,
+   "end": 242.18,
+   "p": 0.981
+  },
+  {
+   "w": "cash.",
+   "start": 242.18,
+   "end": 242.66,
+   "p": 0.998
+  },
+  {
+   "w": "Card",
+   "start": 243.1,
+   "end": 243.32,
+   "p": 0.99
+  },
+  {
+   "w": "fees",
+   "start": 243.32,
+   "end": 243.58,
+   "p": 0.998
+  },
+  {
+   "w": "cost",
+   "start": 243.58,
+   "end": 243.92,
+   "p": 0.99
+  },
+  {
+   "w": "a",
+   "start": 243.92,
+   "end": 244.1,
+   "p": 0.998
+  },
+  {
+   "w": "few",
+   "start": 244.1,
+   "end": 244.24,
+   "p": 0.999
+  },
+  {
+   "w": "cents,",
+   "start": 244.24,
+   "end": 244.68,
+   "p": 0.999
+  },
+  {
+   "w": "but",
+   "start": 244.96,
+   "end": 245.12,
+   "p": 0.991
+  },
+  {
+   "w": "card",
+   "start": 245.12,
+   "end": 245.44,
+   "p": 0.997
+  },
+  {
+   "w": "customers",
+   "start": 245.44,
+   "end": 245.88,
+   "p": 0.995
+  },
+  {
+   "w": "spend",
+   "start": 245.88,
+   "end": 246.32,
+   "p": 0.966
+  },
+  {
+   "w": "more,",
+   "start": 246.32,
+   "end": 246.66,
+   "p": 1.0
+  },
+  {
+   "w": "and",
+   "start": 247.04,
+   "end": 247.18,
+   "p": 0.996
+  },
+  {
+   "w": "78",
+   "start": 247.18,
+   "end": 247.8,
+   "p": 0.985
+  },
+  {
+   "w": "%",
+   "start": 247.8,
+   "end": 248.2,
+   "p": 0.896
+  },
+  {
+   "w": "of",
+   "start": 248.2,
+   "end": 248.46,
+   "p": 0.998
+  },
+  {
+   "w": "vending",
+   "start": 248.46,
+   "end": 248.8,
+   "p": 0.942
+  },
+  {
+   "w": "sales",
+   "start": 248.8,
+   "end": 249.18,
+   "p": 0.997
+  },
+  {
+   "w": "on",
+   "start": 249.18,
+   "end": 249.5,
+   "p": 0.998
+  },
+  {
+   "w": "that",
+   "start": 249.5,
+   "end": 249.74,
+   "p": 0.994
+  },
+  {
+   "w": "network",
+   "start": 249.74,
+   "end": 250.16,
+   "p": 0.999
+  },
+  {
+   "w": "were",
+   "start": 250.16,
+   "end": 250.48,
+   "p": 0.99
+  },
+  {
+   "w": "cashless.",
+   "start": 250.48,
+   "end": 251.1,
+   "p": 0.987
+  },
+  {
+   "w": "So",
+   "start": 251.1,
+   "end": 251.68,
+   "p": 0.568
+  },
+  {
+   "w": "the",
+   "start": 251.68,
+   "end": 251.92,
+   "p": 0.885
+  },
+  {
+   "w": "operator",
+   "start": 251.92,
+   "end": 252.38,
+   "p": 0.984
+  },
+  {
+   "w": "ends",
+   "start": 252.38,
+   "end": 252.76,
+   "p": 0.993
+  },
+  {
+   "w": "up",
+   "start": 252.76,
+   "end": 253.0,
+   "p": 0.991
+  },
+  {
+   "w": "with",
+   "start": 253.0,
+   "end": 253.16,
+   "p": 0.995
+  },
+  {
+   "w": "a",
+   "start": 253.16,
+   "end": 253.32,
+   "p": 0.983
+  },
+  {
+   "w": "thin",
+   "start": 253.32,
+   "end": 253.62,
+   "p": 0.993
+  },
+  {
+   "w": "slice",
+   "start": 253.62,
+   "end": 254.06,
+   "p": 0.995
+  },
+  {
+   "w": "of",
+   "start": 254.06,
+   "end": 254.32,
+   "p": 0.995
+  },
+  {
+   "w": "each",
+   "start": 254.32,
+   "end": 254.62,
+   "p": 0.998
+  },
+  {
+   "w": "soda.",
+   "start": 254.62,
+   "end": 255.0,
+   "p": 0.996
+  },
+  {
+   "w": "The",
+   "start": 255.54,
+   "end": 255.58,
+   "p": 0.968
+  },
+  {
+   "w": "bigger",
+   "start": 255.58,
+   "end": 255.88,
+   "p": 0.99
+  },
+  {
+   "w": "money",
+   "start": 255.88,
+   "end": 256.16,
+   "p": 0.995
+  },
+  {
+   "w": "in",
+   "start": 256.16,
+   "end": 256.42,
+   "p": 0.985
+  },
+  {
+   "w": "vending",
+   "start": 256.42,
+   "end": 256.64,
+   "p": 0.897
+  },
+  {
+   "w": "goes",
+   "start": 256.64,
+   "end": 257.04,
+   "p": 0.992
+  },
+  {
+   "w": "to",
+   "start": 257.04,
+   "end": 257.28,
+   "p": 0.994
+  },
+  {
+   "w": "three",
+   "start": 257.28,
+   "end": 257.58,
+   "p": 0.724
+  },
+  {
+   "w": "kinds",
+   "start": 257.58,
+   "end": 257.96,
+   "p": 0.989
+  },
+  {
+   "w": "of",
+   "start": 257.96,
+   "end": 258.14,
+   "p": 0.997
+  },
+  {
+   "w": "players.",
+   "start": 258.14,
+   "end": 258.58,
+   "p": 0.998
+  },
+  {
+   "w": "Winner",
+   "start": 259.58,
+   "end": 259.68,
+   "p": 0.887
+  },
+  {
+   "w": "number",
+   "start": 259.68,
+   "end": 259.96,
+   "p": 0.959
+  },
+  {
+   "w": "one",
+   "start": 259.96,
+   "end": 260.3,
+   "p": 0.979
+  },
+  {
+   "w": "is",
+   "start": 260.3,
+   "end": 260.56,
+   "p": 0.982
+  },
+  {
+   "w": "the",
+   "start": 260.56,
+   "end": 260.74,
+   "p": 0.991
+  },
+  {
+   "w": "location.",
+   "start": 260.74,
+   "end": 261.22,
+   "p": 0.992
+  },
+  {
+   "w": "That",
+   "start": 261.82,
+   "end": 261.98,
+   "p": 0.983
+  },
+  {
+   "w": "airport",
+   "start": 261.98,
+   "end": 262.4,
+   "p": 0.845
+  },
+  {
+   "w": "is",
+   "start": 262.4,
+   "end": 262.7,
+   "p": 0.997
+  },
+  {
+   "w": "Los",
+   "start": 262.7,
+   "end": 263.02,
+   "p": 0.982
+  },
+  {
+   "w": "Angeles",
+   "start": 263.02,
+   "end": 263.44,
+   "p": 0.997
+  },
+  {
+   "w": "International.",
+   "start": 263.44,
+   "end": 264.1,
+   "p": 0.953
+  },
+  {
+   "w": "In",
+   "start": 264.62,
+   "end": 264.72,
+   "p": 0.991
+  },
+  {
+   "w": "2023,",
+   "start": 264.72,
+   "end": 265.62,
+   "p": 0.996
+  },
+  {
+   "w": "its",
+   "start": 265.96,
+   "end": 266.12,
+   "p": 0.848
+  },
+  {
+   "w": "board",
+   "start": 266.12,
+   "end": 266.44,
+   "p": 0.986
+  },
+  {
+   "w": "approved",
+   "start": 266.44,
+   "end": 266.92,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 266.92,
+   "end": 267.12,
+   "p": 0.99
+  },
+  {
+   "w": "vending",
+   "start": 267.12,
+   "end": 267.38,
+   "p": 0.953
+  },
+  {
+   "w": "deal",
+   "start": 267.38,
+   "end": 267.72,
+   "p": 0.996
+  },
+  {
+   "w": "where",
+   "start": 267.72,
+   "end": 268.0,
+   "p": 0.931
+  },
+  {
+   "w": "the",
+   "start": 268.0,
+   "end": 268.24,
+   "p": 0.997
+  },
+  {
+   "w": "operator",
+   "start": 268.24,
+   "end": 268.72,
+   "p": 0.998
+  },
+  {
+   "w": "pays",
+   "start": 268.72,
+   "end": 269.06,
+   "p": 0.998
+  },
+  {
+   "w": "59",
+   "start": 269.06,
+   "end": 269.7,
+   "p": 0.957
+  },
+  {
+   "w": ".5",
+   "start": 269.7,
+   "end": 270.48,
+   "p": 0.992
+  },
+  {
+   "w": "%",
+   "start": 270.48,
+   "end": 270.92,
+   "p": 0.802
+  },
+  {
+   "w": "of",
+   "start": 270.92,
+   "end": 271.14,
+   "p": 0.991
+  },
+  {
+   "w": "gross",
+   "start": 271.14,
+   "end": 271.46,
+   "p": 0.998
+  },
+  {
+   "w": "sales,",
+   "start": 271.46,
+   "end": 271.92,
+   "p": 0.999
+  },
+  {
+   "w": "or",
+   "start": 272.28,
+   "end": 272.52,
+   "p": 0.986
+  },
+  {
+   "w": "$100",
+   "start": 272.52,
+   "end": 273.24,
+   "p": 0.941
+  },
+  {
+   "w": "per",
+   "start": 273.24,
+   "end": 273.88,
+   "p": 0.972
+  },
+  {
+   "w": "machine",
+   "start": 273.88,
+   "end": 274.34,
+   "p": 0.998
+  },
+  {
+   "w": "per",
+   "start": 274.34,
+   "end": 274.68,
+   "p": 0.798
+  },
+  {
+   "w": "month,",
+   "start": 274.68,
+   "end": 275.08,
+   "p": 0.999
+  },
+  {
+   "w": "whichever",
+   "start": 275.34,
+   "end": 275.6,
+   "p": 0.959
+  },
+  {
+   "w": "is",
+   "start": 275.6,
+   "end": 275.88,
+   "p": 0.999
+  },
+  {
+   "w": "more.",
+   "start": 275.88,
+   "end": 276.14,
+   "p": 1.0
+  },
+  {
+   "w": "Even",
+   "start": 276.14,
+   "end": 276.8,
+   "p": 0.89
+  },
+  {
+   "w": "the",
+   "start": 276.8,
+   "end": 277.04,
+   "p": 0.996
+  },
+  {
+   "w": "runner",
+   "start": 277.04,
+   "end": 277.2,
+   "p": 0.924
+  },
+  {
+   "w": "-up",
+   "start": 277.2,
+   "end": 277.44,
+   "p": 0.936
+  },
+  {
+   "w": "bid",
+   "start": 277.44,
+   "end": 277.74,
+   "p": 0.996
+  },
+  {
+   "w": "from",
+   "start": 277.74,
+   "end": 278.12,
+   "p": 0.802
+  },
+  {
+   "w": "Compass",
+   "start": 278.12,
+   "end": 278.54,
+   "p": 0.971
+  },
+  {
+   "w": "Group's",
+   "start": 278.54,
+   "end": 279.0,
+   "p": 0.862
+  },
+  {
+   "w": "Canteen",
+   "start": 279.0,
+   "end": 279.48,
+   "p": 0.749
+  },
+  {
+   "w": "offered",
+   "start": 279.48,
+   "end": 280.08,
+   "p": 0.968
+  },
+  {
+   "w": "51",
+   "start": 280.08,
+   "end": 280.74,
+   "p": 0.99
+  },
+  {
+   "w": ".6%.",
+   "start": 280.74,
+   "end": 282.3,
+   "p": 0.898
+  },
+  {
+   "w": "The",
+   "start": 282.3,
+   "end": 282.62,
+   "p": 0.984
+  },
+  {
+   "w": "operator",
+   "start": 282.62,
+   "end": 283.1,
+   "p": 0.982
+  },
+  {
+   "w": "runs",
+   "start": 283.1,
+   "end": 283.56,
+   "p": 0.998
+  },
+  {
+   "w": "and",
+   "start": 283.56,
+   "end": 283.94,
+   "p": 0.995
+  },
+  {
+   "w": "maintains",
+   "start": 283.94,
+   "end": 284.42,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 284.42,
+   "end": 284.68,
+   "p": 0.997
+  },
+  {
+   "w": "machines.",
+   "start": 284.68,
+   "end": 285.1,
+   "p": 0.999
+  },
+  {
+   "w": "The",
+   "start": 285.62,
+   "end": 285.74,
+   "p": 0.992
+  },
+  {
+   "w": "airport",
+   "start": 285.74,
+   "end": 286.16,
+   "p": 0.967
+  },
+  {
+   "w": "just",
+   "start": 286.16,
+   "end": 286.62,
+   "p": 0.994
+  },
+  {
+   "w": "collects",
+   "start": 286.62,
+   "end": 287.04,
+   "p": 0.999
+  },
+  {
+   "w": "for",
+   "start": 287.04,
+   "end": 287.24,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 287.24,
+   "end": 287.4,
+   "p": 0.994
+  },
+  {
+   "w": "floor",
+   "start": 287.4,
+   "end": 287.56,
+   "p": 0.656
+  },
+  {
+   "w": "space.",
+   "start": 287.56,
+   "end": 287.98,
+   "p": 0.994
+  },
+  {
+   "w": "Winner",
+   "start": 288.66,
+   "end": 288.78,
+   "p": 0.2
+  },
+  {
+   "w": "number",
+   "start": 288.78,
+   "end": 289.08,
+   "p": 0.609
+  },
+  {
+   "w": "two",
+   "start": 289.08,
+   "end": 289.44,
+   "p": 0.726
+  },
+  {
+   "w": "is",
+   "start": 289.44,
+   "end": 289.84,
+   "p": 0.992
+  },
+  {
+   "w": "scale.",
+   "start": 289.84,
+   "end": 290.24,
+   "p": 0.8
+  },
+  {
+   "w": "Driving",
+   "start": 290.84,
+   "end": 291.1,
+   "p": 0.991
+  },
+  {
+   "w": "between",
+   "start": 291.1,
+   "end": 291.56,
+   "p": 0.998
+  },
+  {
+   "w": "machines",
+   "start": 291.56,
+   "end": 292.08,
+   "p": 0.998
+  },
+  {
+   "w": "is",
+   "start": 292.08,
+   "end": 292.3,
+   "p": 0.998
+  },
+  {
+   "w": "one",
+   "start": 292.3,
+   "end": 292.46,
+   "p": 0.999
+  },
+  {
+   "w": "of",
+   "start": 292.46,
+   "end": 292.6,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 292.6,
+   "end": 292.8,
+   "p": 0.999
+  },
+  {
+   "w": "biggest",
+   "start": 292.8,
+   "end": 293.06,
+   "p": 0.999
+  },
+  {
+   "w": "costs",
+   "start": 293.06,
+   "end": 293.56,
+   "p": 0.963
+  },
+  {
+   "w": "in",
+   "start": 293.56,
+   "end": 293.84,
+   "p": 0.997
+  },
+  {
+   "w": "vending,",
+   "start": 293.84,
+   "end": 294.14,
+   "p": 0.989
+  },
+  {
+   "w": "so",
+   "start": 294.6,
+   "end": 294.74,
+   "p": 0.978
+  },
+  {
+   "w": "an",
+   "start": 294.74,
+   "end": 294.98,
+   "p": 0.986
+  },
+  {
+   "w": "operator",
+   "start": 294.98,
+   "end": 295.42,
+   "p": 0.999
+  },
+  {
+   "w": "with",
+   "start": 295.42,
+   "end": 295.66,
+   "p": 0.998
+  },
+  {
+   "w": "100",
+   "start": 295.66,
+   "end": 296.06,
+   "p": 0.227
+  },
+  {
+   "w": "machines",
+   "start": 296.06,
+   "end": 296.64,
+   "p": 0.998
+  },
+  {
+   "w": "packed",
+   "start": 296.64,
+   "end": 296.94,
+   "p": 0.995
+  },
+  {
+   "w": "into",
+   "start": 296.94,
+   "end": 297.24,
+   "p": 0.995
+  },
+  {
+   "w": "one",
+   "start": 297.24,
+   "end": 297.6,
+   "p": 0.988
+  },
+  {
+   "w": "area",
+   "start": 297.6,
+   "end": 298.1,
+   "p": 0.999
+  },
+  {
+   "w": "beats",
+   "start": 298.1,
+   "end": 298.56,
+   "p": 0.908
+  },
+  {
+   "w": "someone",
+   "start": 298.56,
+   "end": 299.0,
+   "p": 0.998
+  },
+  {
+   "w": "with",
+   "start": 299.0,
+   "end": 299.22,
+   "p": 0.998
+  },
+  {
+   "w": "10",
+   "start": 299.22,
+   "end": 299.5,
+   "p": 0.918
+  },
+  {
+   "w": "machines",
+   "start": 299.5,
+   "end": 299.98,
+   "p": 0.996
+  },
+  {
+   "w": "scattered",
+   "start": 299.98,
+   "end": 300.42,
+   "p": 0.994
+  },
+  {
+   "w": "across",
+   "start": 300.42,
+   "end": 300.84,
+   "p": 0.999
+  },
+  {
+   "w": "a",
+   "start": 300.84,
+   "end": 301.04,
+   "p": 0.746
+  },
+  {
+   "w": "city.",
+   "start": 301.04,
+   "end": 301.32,
+   "p": 1.0
+  },
+  {
+   "w": "Big",
+   "start": 301.76,
+   "end": 301.98,
+   "p": 0.996
+  },
+  {
+   "w": "operators",
+   "start": 301.98,
+   "end": 302.48,
+   "p": 0.994
+  },
+  {
+   "w": "also",
+   "start": 302.48,
+   "end": 303.02,
+   "p": 0.999
+  },
+  {
+   "w": "buy",
+   "start": 303.02,
+   "end": 303.24,
+   "p": 0.995
+  },
+  {
+   "w": "products",
+   "start": 303.24,
+   "end": 303.68,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 303.68,
+   "end": 304.02,
+   "p": 0.999
+  },
+  {
+   "w": "bulk",
+   "start": 304.02,
+   "end": 304.26,
+   "p": 1.0
+  },
+  {
+   "w": "and",
+   "start": 304.26,
+   "end": 304.62,
+   "p": 0.929
+  },
+  {
+   "w": "can",
+   "start": 304.62,
+   "end": 304.82,
+   "p": 0.994
+  },
+  {
+   "w": "bid",
+   "start": 304.82,
+   "end": 305.12,
+   "p": 0.997
+  },
+  {
+   "w": "on",
+   "start": 305.12,
+   "end": 305.4,
+   "p": 0.998
+  },
+  {
+   "w": "huge",
+   "start": 305.4,
+   "end": 305.8,
+   "p": 0.992
+  },
+  {
+   "w": "contracts.",
+   "start": 305.8,
+   "end": 306.5,
+   "p": 0.997
+  },
+  {
+   "w": "The",
+   "start": 306.9,
+   "end": 306.98,
+   "p": 0.991
+  },
+  {
+   "w": "biggest",
+   "start": 306.98,
+   "end": 307.26,
+   "p": 0.996
+  },
+  {
+   "w": "of",
+   "start": 307.26,
+   "end": 307.5,
+   "p": 0.998
+  },
+  {
+   "w": "them",
+   "start": 307.5,
+   "end": 307.62,
+   "p": 0.994
+  },
+  {
+   "w": "all",
+   "start": 307.62,
+   "end": 308.0,
+   "p": 0.996
+  },
+  {
+   "w": "is",
+   "start": 308.0,
+   "end": 308.44,
+   "p": 0.985
+  },
+  {
+   "w": "Canteen,",
+   "start": 308.44,
+   "end": 308.94,
+   "p": 0.898
+  },
+  {
+   "w": "owned",
+   "start": 309.26,
+   "end": 309.52,
+   "p": 0.988
+  },
+  {
+   "w": "by",
+   "start": 309.52,
+   "end": 309.72,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 309.72,
+   "end": 309.86,
+   "p": 0.984
+  },
+  {
+   "w": "food",
+   "start": 309.86,
+   "end": 310.1,
+   "p": 0.989
+  },
+  {
+   "w": "service",
+   "start": 310.1,
+   "end": 310.38,
+   "p": 0.597
+  },
+  {
+   "w": "giant",
+   "start": 310.38,
+   "end": 310.82,
+   "p": 0.998
+  },
+  {
+   "w": "Compass",
+   "start": 310.82,
+   "end": 311.26,
+   "p": 0.877
+  },
+  {
+   "w": "Group.",
+   "start": 311.26,
+   "end": 311.52,
+   "p": 0.934
+  },
+  {
+   "w": "It",
+   "start": 312.06,
+   "end": 312.14,
+   "p": 0.996
+  },
+  {
+   "w": "started",
+   "start": 312.14,
+   "end": 312.48,
+   "p": 0.993
+  },
+  {
+   "w": "in",
+   "start": 312.48,
+   "end": 312.72,
+   "p": 0.998
+  },
+  {
+   "w": "Chicago",
+   "start": 312.72,
+   "end": 313.18,
+   "p": 0.992
+  },
+  {
+   "w": "in",
+   "start": 313.18,
+   "end": 313.52,
+   "p": 0.987
+  },
+  {
+   "w": "1929",
+   "start": 313.52,
+   "end": 314.38,
+   "p": 0.996
+  },
+  {
+   "w": "with",
+   "start": 314.38,
+   "end": 314.88,
+   "p": 0.9
+  },
+  {
+   "w": "five",
+   "start": 314.88,
+   "end": 315.28,
+   "p": 0.462
+  },
+  {
+   "w": "-cent",
+   "start": 315.28,
+   "end": 315.56,
+   "p": 0.727
+  },
+  {
+   "w": "candy",
+   "start": 315.56,
+   "end": 315.92,
+   "p": 0.982
+  },
+  {
+   "w": "bar",
+   "start": 315.92,
+   "end": 316.12,
+   "p": 0.965
+  },
+  {
+   "w": "machines.",
+   "start": 316.12,
+   "end": 316.6,
+   "p": 0.998
+  },
+  {
+   "w": "Today,",
+   "start": 317.12,
+   "end": 317.46,
+   "p": 0.998
+  },
+  {
+   "w": "Compass",
+   "start": 317.8,
+   "end": 318.04,
+   "p": 0.991
+  },
+  {
+   "w": "Group",
+   "start": 318.04,
+   "end": 318.26,
+   "p": 0.962
+  },
+  {
+   "w": "describes",
+   "start": 318.26,
+   "end": 318.78,
+   "p": 0.998
+  },
+  {
+   "w": "Canteen",
+   "start": 318.78,
+   "end": 319.42,
+   "p": 0.992
+  },
+  {
+   "w": "as",
+   "start": 319.42,
+   "end": 319.68,
+   "p": 0.994
+  },
+  {
+   "w": "the",
+   "start": 319.68,
+   "end": 319.86,
+   "p": 0.871
+  },
+  {
+   "w": "largest",
+   "start": 319.86,
+   "end": 320.36,
+   "p": 0.815
+  },
+  {
+   "w": "unattended",
+   "start": 320.36,
+   "end": 321.08,
+   "p": 0.961
+  },
+  {
+   "w": "retail",
+   "start": 321.08,
+   "end": 321.54,
+   "p": 0.991
+  },
+  {
+   "w": "provider",
+   "start": 321.54,
+   "end": 321.98,
+   "p": 0.998
+  },
+  {
+   "w": "in",
+   "start": 321.98,
+   "end": 322.24,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 322.24,
+   "end": 322.38,
+   "p": 0.995
+  },
+  {
+   "w": "United",
+   "start": 322.38,
+   "end": 322.7,
+   "p": 0.994
+  },
+  {
+   "w": "States,",
+   "start": 322.7,
+   "end": 323.26,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 323.72,
+   "end": 323.94,
+   "p": 0.994
+  },
+  {
+   "w": "label",
+   "start": 323.94,
+   "end": 324.2,
+   "p": 0.999
+  },
+  {
+   "w": "that",
+   "start": 324.2,
+   "end": 324.42,
+   "p": 0.999
+  },
+  {
+   "w": "covers",
+   "start": 324.42,
+   "end": 324.78,
+   "p": 0.999
+  },
+  {
+   "w": "far",
+   "start": 324.78,
+   "end": 325.2,
+   "p": 0.99
+  },
+  {
+   "w": "more",
+   "start": 325.2,
+   "end": 325.56,
+   "p": 1.0
+  },
+  {
+   "w": "than",
+   "start": 325.56,
+   "end": 325.8,
+   "p": 0.997
+  },
+  {
+   "w": "vending",
+   "start": 325.8,
+   "end": 326.08,
+   "p": 0.999
+  },
+  {
+   "w": "machines.",
+   "start": 326.08,
+   "end": 326.62,
+   "p": 0.999
+  },
+  {
+   "w": "And",
+   "start": 326.98,
+   "end": 327.22,
+   "p": 0.99
+  },
+  {
+   "w": "the",
+   "start": 327.22,
+   "end": 327.4,
+   "p": 0.993
+  },
+  {
+   "w": "big",
+   "start": 327.4,
+   "end": 327.58,
+   "p": 0.995
+  },
+  {
+   "w": "players",
+   "start": 327.58,
+   "end": 328.0,
+   "p": 0.999
+  },
+  {
+   "w": "keep",
+   "start": 328.0,
+   "end": 328.4,
+   "p": 0.994
+  },
+  {
+   "w": "getting",
+   "start": 328.4,
+   "end": 328.74,
+   "p": 0.999
+  },
+  {
+   "w": "bigger.",
+   "start": 328.74,
+   "end": 329.14,
+   "p": 0.999
+  },
+  {
+   "w": "In",
+   "start": 329.46,
+   "end": 329.66,
+   "p": 0.996
+  },
+  {
+   "w": "2025,",
+   "start": 329.66,
+   "end": 330.44,
+   "p": 0.993
+  },
+  {
+   "w": "the",
+   "start": 330.9,
+   "end": 331.02,
+   "p": 0.987
+  },
+  {
+   "w": "Alabama",
+   "start": 331.02,
+   "end": 331.56,
+   "p": 0.987
+  },
+  {
+   "w": "bottler",
+   "start": 331.56,
+   "end": 332.02,
+   "p": 0.971
+  },
+  {
+   "w": "Buffalo",
+   "start": 332.02,
+   "end": 332.52,
+   "p": 0.835
+  },
+  {
+   "w": "Rock",
+   "start": 332.52,
+   "end": 332.86,
+   "p": 0.976
+  },
+  {
+   "w": "sold",
+   "start": 332.86,
+   "end": 333.26,
+   "p": 0.191
+  },
+  {
+   "w": "its",
+   "start": 333.26,
+   "end": 333.5,
+   "p": 0.967
+  },
+  {
+   "w": "vending",
+   "start": 333.5,
+   "end": 333.78,
+   "p": 0.801
+  },
+  {
+   "w": "business,",
+   "start": 333.78,
+   "end": 334.28,
+   "p": 0.996
+  },
+  {
+   "w": "almost",
+   "start": 334.78,
+   "end": 335.06,
+   "p": 0.981
+  },
+  {
+   "w": "700",
+   "start": 335.06,
+   "end": 335.76,
+   "p": 0.967
+  },
+  {
+   "w": "micro",
+   "start": 335.76,
+   "end": 336.24,
+   "p": 0.499
+  },
+  {
+   "w": "markets",
+   "start": 336.24,
+   "end": 336.58,
+   "p": 0.733
+  },
+  {
+   "w": "and",
+   "start": 336.58,
+   "end": 337.18,
+   "p": 0.551
+  },
+  {
+   "w": "more",
+   "start": 337.18,
+   "end": 337.36,
+   "p": 0.995
+  },
+  {
+   "w": "than",
+   "start": 337.36,
+   "end": 337.62,
+   "p": 0.992
+  },
+  {
+   "w": "7",
+   "start": 337.62,
+   "end": 338.02,
+   "p": 0.968
+  },
+  {
+   "w": ",600",
+   "start": 338.02,
+   "end": 338.76,
+   "p": 0.75
+  },
+  {
+   "w": "vending",
+   "start": 338.76,
+   "end": 339.2,
+   "p": 0.956
+  },
+  {
+   "w": "locations",
+   "start": 339.2,
+   "end": 339.86,
+   "p": 0.998
+  },
+  {
+   "w": "to",
+   "start": 339.86,
+   "end": 340.42,
+   "p": 0.793
+  },
+  {
+   "w": "Canteen",
+   "start": 340.42,
+   "end": 340.94,
+   "p": 0.932
+  },
+  {
+   "w": "and",
+   "start": 340.94,
+   "end": 341.2,
+   "p": 0.989
+  },
+  {
+   "w": "its",
+   "start": 341.2,
+   "end": 341.38,
+   "p": 0.956
+  },
+  {
+   "w": "franchise",
+   "start": 341.38,
+   "end": 341.78,
+   "p": 0.986
+  },
+  {
+   "w": "partners.",
+   "start": 341.78,
+   "end": 342.46,
+   "p": 0.997
+  },
+  {
+   "w": "The",
+   "start": 342.9,
+   "end": 343.08,
+   "p": 0.692
+  },
+  {
+   "w": "third",
+   "start": 343.08,
+   "end": 343.34,
+   "p": 0.957
+  },
+  {
+   "w": "winner",
+   "start": 343.34,
+   "end": 343.68,
+   "p": 0.995
+  },
+  {
+   "w": "runs",
+   "start": 343.68,
+   "end": 344.1,
+   "p": 0.96
+  },
+  {
+   "w": "the",
+   "start": 344.1,
+   "end": 344.32,
+   "p": 0.998
+  },
+  {
+   "w": "payments.",
+   "start": 344.32,
+   "end": 344.74,
+   "p": 0.974
+  },
+  {
+   "w": "Every",
+   "start": 345.3,
+   "end": 345.54,
+   "p": 0.983
+  },
+  {
+   "w": "tap",
+   "start": 345.54,
+   "end": 345.88,
+   "p": 0.869
+  },
+  {
+   "w": "sends",
+   "start": 345.88,
+   "end": 346.14,
+   "p": 0.991
+  },
+  {
+   "w": "a",
+   "start": 346.14,
+   "end": 346.32,
+   "p": 0.997
+  },
+  {
+   "w": "few",
+   "start": 346.32,
+   "end": 346.54,
+   "p": 0.998
+  },
+  {
+   "w": "cents",
+   "start": 346.54,
+   "end": 346.82,
+   "p": 0.991
+  },
+  {
+   "w": "to",
+   "start": 346.82,
+   "end": 347.1,
+   "p": 0.998
+  },
+  {
+   "w": "whoever",
+   "start": 347.1,
+   "end": 347.4,
+   "p": 0.994
+  },
+  {
+   "w": "runs",
+   "start": 347.4,
+   "end": 347.78,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 347.78,
+   "end": 347.98,
+   "p": 0.995
+  },
+  {
+   "w": "card",
+   "start": 347.98,
+   "end": 348.2,
+   "p": 0.992
+  },
+  {
+   "w": "reader.",
+   "start": 348.2,
+   "end": 348.46,
+   "p": 0.993
+  },
+  {
+   "w": "Cantaloupe,",
+   "start": 349.12,
+   "end": 349.56,
+   "p": 0.95
+  },
+  {
+   "w": "one",
+   "start": 349.76,
+   "end": 349.86,
+   "p": 0.997
+  },
+  {
+   "w": "of",
+   "start": 349.86,
+   "end": 349.98,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 349.98,
+   "end": 350.14,
+   "p": 0.999
+  },
+  {
+   "w": "biggest,",
+   "start": 350.14,
+   "end": 350.54,
+   "p": 0.999
+  },
+  {
+   "w": "tracked",
+   "start": 350.88,
+   "end": 351.04,
+   "p": 0.988
+  },
+  {
+   "w": "more",
+   "start": 351.04,
+   "end": 351.26,
+   "p": 0.998
+  },
+  {
+   "w": "than",
+   "start": 351.26,
+   "end": 351.58,
+   "p": 0.993
+  },
+  {
+   "w": "600",
+   "start": 351.58,
+   "end": 352.14,
+   "p": 0.981
+  },
+  {
+   "w": ",000",
+   "start": 352.14,
+   "end": 352.8,
+   "p": 0.976
+  },
+  {
+   "w": "connected",
+   "start": 352.8,
+   "end": 353.22,
+   "p": 0.981
+  },
+  {
+   "w": "machines",
+   "start": 353.22,
+   "end": 353.72,
+   "p": 0.997
+  },
+  {
+   "w": "and",
+   "start": 353.72,
+   "end": 354.02,
+   "p": 0.995
+  },
+  {
+   "w": "kiosks",
+   "start": 354.02,
+   "end": 354.66,
+   "p": 0.994
+  },
+  {
+   "w": "across",
+   "start": 354.66,
+   "end": 355.1,
+   "p": 0.994
+  },
+  {
+   "w": "the",
+   "start": 355.1,
+   "end": 355.42,
+   "p": 0.997
+  },
+  {
+   "w": "US",
+   "start": 355.42,
+   "end": 355.68,
+   "p": 0.739
+  },
+  {
+   "w": "and",
+   "start": 355.68,
+   "end": 356.02,
+   "p": 0.995
+  },
+  {
+   "w": "Canada",
+   "start": 356.02,
+   "end": 356.44,
+   "p": 0.996
+  },
+  {
+   "w": "in",
+   "start": 356.44,
+   "end": 356.8,
+   "p": 0.994
+  },
+  {
+   "w": "2025.",
+   "start": 356.8,
+   "end": 357.52,
+   "p": 0.994
+  },
+  {
+   "w": "Together,",
+   "start": 358.14,
+   "end": 358.56,
+   "p": 0.998
+  },
+  {
+   "w": "they",
+   "start": 358.88,
+   "end": 359.02,
+   "p": 0.998
+  },
+  {
+   "w": "handled",
+   "start": 359.02,
+   "end": 359.34,
+   "p": 0.985
+  },
+  {
+   "w": "about",
+   "start": 359.34,
+   "end": 359.64,
+   "p": 0.997
+  },
+  {
+   "w": "$4",
+   "start": 359.64,
+   "end": 359.98,
+   "p": 0.866
+  },
+  {
+   "w": ".6",
+   "start": 359.98,
+   "end": 360.62,
+   "p": 0.991
+  },
+  {
+   "w": "billion",
+   "start": 360.62,
+   "end": 361.1,
+   "p": 0.953
+  },
+  {
+   "w": "in",
+   "start": 361.1,
+   "end": 361.76,
+   "p": 0.895
+  },
+  {
+   "w": "sales.",
+   "start": 361.76,
+   "end": 362.24,
+   "p": 0.998
+  },
+  {
+   "w": "Cantaloupe",
+   "start": 362.88,
+   "end": 363.26,
+   "p": 0.928
+  },
+  {
+   "w": "earns",
+   "start": 363.26,
+   "end": 363.5,
+   "p": 0.947
+  },
+  {
+   "w": "a",
+   "start": 363.5,
+   "end": 363.72,
+   "p": 0.996
+  },
+  {
+   "w": "cut",
+   "start": 363.72,
+   "end": 363.9,
+   "p": 0.992
+  },
+  {
+   "w": "of",
+   "start": 363.9,
+   "end": 364.1,
+   "p": 0.983
+  },
+  {
+   "w": "each",
+   "start": 364.1,
+   "end": 364.44,
+   "p": 0.994
+  },
+  {
+   "w": "card",
+   "start": 364.44,
+   "end": 364.74,
+   "p": 0.991
+  },
+  {
+   "w": "sale",
+   "start": 364.74,
+   "end": 365.1,
+   "p": 0.997
+  },
+  {
+   "w": "plus",
+   "start": 365.1,
+   "end": 365.64,
+   "p": 0.414
+  },
+  {
+   "w": "monthly",
+   "start": 365.64,
+   "end": 366.0,
+   "p": 0.983
+  },
+  {
+   "w": "fees",
+   "start": 366.0,
+   "end": 366.46,
+   "p": 0.988
+  },
+  {
+   "w": "without",
+   "start": 366.46,
+   "end": 367.04,
+   "p": 0.758
+  },
+  {
+   "w": "stocking",
+   "start": 367.04,
+   "end": 367.6,
+   "p": 0.951
+  },
+  {
+   "w": "a",
+   "start": 367.6,
+   "end": 367.9,
+   "p": 0.993
+  },
+  {
+   "w": "single",
+   "start": 367.9,
+   "end": 368.3,
+   "p": 0.995
+  },
+  {
+   "w": "snack.",
+   "start": 368.3,
+   "end": 368.82,
+   "p": 0.983
+  },
+  {
+   "w": "And",
+   "start": 369.32,
+   "end": 369.4,
+   "p": 0.915
+  },
+  {
+   "w": "Cantaloupe",
+   "start": 369.4,
+   "end": 369.96,
+   "p": 0.981
+  },
+  {
+   "w": "itself",
+   "start": 369.96,
+   "end": 370.46,
+   "p": 0.983
+  },
+  {
+   "w": "just",
+   "start": 370.46,
+   "end": 370.92,
+   "p": 0.991
+  },
+  {
+   "w": "changed",
+   "start": 370.92,
+   "end": 371.32,
+   "p": 0.994
+  },
+  {
+   "w": "hands.",
+   "start": 371.32,
+   "end": 371.76,
+   "p": 0.998
+  },
+  {
+   "w": "In",
+   "start": 372.3,
+   "end": 372.34,
+   "p": 0.989
+  },
+  {
+   "w": "May,",
+   "start": 372.34,
+   "end": 372.62,
+   "p": 0.97
+  },
+  {
+   "w": "2026,",
+   "start": 372.92,
+   "end": 373.66,
+   "p": 0.895
+  },
+  {
+   "w": "a",
+   "start": 373.96,
+   "end": 374.1,
+   "p": 0.286
+  },
+  {
+   "w": "rival,",
+   "start": 374.1,
+   "end": 374.48,
+   "p": 0.976
+  },
+  {
+   "w": "365",
+   "start": 374.86,
+   "end": 375.52,
+   "p": 0.985
+  },
+  {
+   "w": "retail",
+   "start": 375.52,
+   "end": 376.02,
+   "p": 0.351
+  },
+  {
+   "w": "markets,",
+   "start": 376.02,
+   "end": 376.56,
+   "p": 0.993
+  },
+  {
+   "w": "finished",
+   "start": 376.98,
+   "end": 377.24,
+   "p": 0.994
+  },
+  {
+   "w": "buying",
+   "start": 377.24,
+   "end": 377.6,
+   "p": 0.999
+  },
+  {
+   "w": "it",
+   "start": 377.6,
+   "end": 377.82,
+   "p": 0.997
+  },
+  {
+   "w": "for",
+   "start": 377.82,
+   "end": 378.02,
+   "p": 0.996
+  },
+  {
+   "w": "about",
+   "start": 378.02,
+   "end": 378.28,
+   "p": 0.993
+  },
+  {
+   "w": "$848",
+   "start": 378.28,
+   "end": 379.54,
+   "p": 0.949
+  },
+  {
+   "w": "million.",
+   "start": 379.54,
+   "end": 380.1,
+   "p": 0.911
+  },
+  {
+   "w": "Regulators",
+   "start": 381.06,
+   "end": 381.58,
+   "p": 0.99
+  },
+  {
+   "w": "only",
+   "start": 381.58,
+   "end": 382.04,
+   "p": 0.996
+  },
+  {
+   "w": "let",
+   "start": 382.04,
+   "end": 382.22,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 382.22,
+   "end": 382.38,
+   "p": 0.998
+  },
+  {
+   "w": "deal",
+   "start": 382.38,
+   "end": 382.58,
+   "p": 0.999
+  },
+  {
+   "w": "through",
+   "start": 382.58,
+   "end": 382.96,
+   "p": 0.996
+  },
+  {
+   "w": "after",
+   "start": 382.96,
+   "end": 383.44,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 383.44,
+   "end": 383.66,
+   "p": 0.998
+  },
+  {
+   "w": "company",
+   "start": 383.66,
+   "end": 383.92,
+   "p": 0.998
+  },
+  {
+   "w": "agreed",
+   "start": 383.92,
+   "end": 384.34,
+   "p": 0.996
+  },
+  {
+   "w": "to",
+   "start": 384.34,
+   "end": 384.62,
+   "p": 0.999
+  },
+  {
+   "w": "sell",
+   "start": 384.62,
+   "end": 384.88,
+   "p": 0.998
+  },
+  {
+   "w": "off",
+   "start": 384.88,
+   "end": 385.16,
+   "p": 0.959
+  },
+  {
+   "w": "a",
+   "start": 385.16,
+   "end": 385.32,
+   "p": 0.992
+  },
+  {
+   "w": "competing",
+   "start": 385.32,
+   "end": 385.82,
+   "p": 0.998
+  },
+  {
+   "w": "kiosk",
+   "start": 385.82,
+   "end": 386.38,
+   "p": 0.993
+  },
+  {
+   "w": "business.",
+   "start": 386.38,
+   "end": 386.82,
+   "p": 0.997
+  },
+  {
+   "w": "But",
+   "start": 387.3,
+   "end": 387.46,
+   "p": 0.995
+  },
+  {
+   "w": "some",
+   "start": 387.46,
+   "end": 387.72,
+   "p": 0.994
+  },
+  {
+   "w": "of",
+   "start": 387.72,
+   "end": 387.88,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 387.88,
+   "end": 388.06,
+   "p": 0.999
+  },
+  {
+   "w": "biggest",
+   "start": 388.06,
+   "end": 388.36,
+   "p": 0.998
+  },
+  {
+   "w": "changes",
+   "start": 388.36,
+   "end": 388.78,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 388.78,
+   "end": 388.98,
+   "p": 0.999
+  },
+  {
+   "w": "this",
+   "start": 388.98,
+   "end": 389.14,
+   "p": 0.997
+  },
+  {
+   "w": "industry",
+   "start": 389.14,
+   "end": 389.64,
+   "p": 0.998
+  },
+  {
+   "w": "are",
+   "start": 389.64,
+   "end": 389.96,
+   "p": 0.995
+  },
+  {
+   "w": "happening",
+   "start": 389.96,
+   "end": 390.34,
+   "p": 0.999
+  },
+  {
+   "w": "inside",
+   "start": 390.34,
+   "end": 390.9,
+   "p": 0.999
+  },
+  {
+   "w": "offices.",
+   "start": 390.9,
+   "end": 391.54,
+   "p": 0.998
+  },
+  {
+   "w": "Big",
+   "start": 391.54,
+   "end": 392.34,
+   "p": 0.771
+  },
+  {
+   "w": "operators",
+   "start": 392.34,
+   "end": 392.96,
+   "p": 0.958
+  },
+  {
+   "w": "are",
+   "start": 392.96,
+   "end": 393.3,
+   "p": 0.997
+  },
+  {
+   "w": "adding",
+   "start": 393.3,
+   "end": 393.7,
+   "p": 0.995
+  },
+  {
+   "w": "micro",
+   "start": 393.7,
+   "end": 394.04,
+   "p": 0.381
+  },
+  {
+   "w": "markets.",
+   "start": 394.04,
+   "end": 394.38,
+   "p": 0.423
+  },
+  {
+   "w": "A",
+   "start": 395.06,
+   "end": 395.12,
+   "p": 0.904
+  },
+  {
+   "w": "micro",
+   "start": 395.12,
+   "end": 395.48,
+   "p": 0.938
+  },
+  {
+   "w": "market",
+   "start": 395.48,
+   "end": 395.8,
+   "p": 0.975
+  },
+  {
+   "w": "is",
+   "start": 395.8,
+   "end": 396.06,
+   "p": 0.996
+  },
+  {
+   "w": "an",
+   "start": 396.06,
+   "end": 396.28,
+   "p": 0.983
+  },
+  {
+   "w": "unlocked",
+   "start": 396.28,
+   "end": 396.76,
+   "p": 0.994
+  },
+  {
+   "w": "mini",
+   "start": 396.76,
+   "end": 397.06,
+   "p": 0.967
+  },
+  {
+   "w": "store",
+   "start": 397.06,
+   "end": 397.4,
+   "p": 0.808
+  },
+  {
+   "w": "with",
+   "start": 397.4,
+   "end": 397.68,
+   "p": 0.965
+  },
+  {
+   "w": "open",
+   "start": 397.68,
+   "end": 398.04,
+   "p": 0.993
+  },
+  {
+   "w": "shelves,",
+   "start": 398.04,
+   "end": 398.46,
+   "p": 0.997
+  },
+  {
+   "w": "fresh",
+   "start": 398.82,
+   "end": 398.96,
+   "p": 0.994
+  },
+  {
+   "w": "food",
+   "start": 398.96,
+   "end": 399.34,
+   "p": 0.995
+  },
+  {
+   "w": "and",
+   "start": 399.34,
+   "end": 399.66,
+   "p": 0.459
+  },
+  {
+   "w": "a",
+   "start": 399.66,
+   "end": 399.92,
+   "p": 0.986
+  },
+  {
+   "w": "self",
+   "start": 399.92,
+   "end": 400.12,
+   "p": 0.997
+  },
+  {
+   "w": "-checkout",
+   "start": 400.12,
+   "end": 400.56,
+   "p": 0.81
+  },
+  {
+   "w": "kiosk.",
+   "start": 400.56,
+   "end": 401.18,
+   "p": 0.997
+  },
+  {
+   "w": "People",
+   "start": 401.52,
+   "end": 401.76,
+   "p": 0.99
+  },
+  {
+   "w": "spend",
+   "start": 401.76,
+   "end": 402.1,
+   "p": 0.997
+  },
+  {
+   "w": "more",
+   "start": 402.1,
+   "end": 402.36,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 402.36,
+   "end": 402.54,
+   "p": 0.977
+  },
+  {
+   "w": "them.",
+   "start": 402.54,
+   "end": 402.76,
+   "p": 0.998
+  },
+  {
+   "w": "In",
+   "start": 403.16,
+   "end": 403.28,
+   "p": 0.976
+  },
+  {
+   "w": "2025,",
+   "start": 403.28,
+   "end": 404.08,
+   "p": 0.985
+  },
+  {
+   "w": "the",
+   "start": 404.52,
+   "end": 404.68,
+   "p": 0.992
+  },
+  {
+   "w": "average",
+   "start": 404.68,
+   "end": 405.08,
+   "p": 0.996
+  },
+  {
+   "w": "vending",
+   "start": 405.08,
+   "end": 405.44,
+   "p": 0.956
+  },
+  {
+   "w": "purchase",
+   "start": 405.44,
+   "end": 405.86,
+   "p": 0.991
+  },
+  {
+   "w": "on",
+   "start": 405.86,
+   "end": 406.26,
+   "p": 0.994
+  },
+  {
+   "w": "Cantaloupe's",
+   "start": 406.26,
+   "end": 406.86,
+   "p": 0.865
+  },
+  {
+   "w": "network",
+   "start": 406.86,
+   "end": 407.1,
+   "p": 0.969
+  },
+  {
+   "w": "was",
+   "start": 407.1,
+   "end": 407.52,
+   "p": 0.991
+  },
+  {
+   "w": "$2",
+   "start": 407.52,
+   "end": 407.96,
+   "p": 0.942
+  },
+  {
+   "w": ".01.",
+   "start": 407.96,
+   "end": 408.76,
+   "p": 0.934
+  },
+  {
+   "w": "At",
+   "start": 409.48,
+   "end": 409.72,
+   "p": 0.996
+  },
+  {
+   "w": "micro",
+   "start": 409.72,
+   "end": 410.12,
+   "p": 0.956
+  },
+  {
+   "w": "markets,",
+   "start": 410.12,
+   "end": 410.52,
+   "p": 0.989
+  },
+  {
+   "w": "it",
+   "start": 410.76,
+   "end": 410.86,
+   "p": 0.996
+  },
+  {
+   "w": "was",
+   "start": 410.86,
+   "end": 411.0,
+   "p": 0.999
+  },
+  {
+   "w": "$3",
+   "start": 411.0,
+   "end": 411.62,
+   "p": 0.994
+  },
+  {
+   "w": ".02.",
+   "start": 411.62,
+   "end": 412.34,
+   "p": 0.995
+  },
+  {
+   "w": "At",
+   "start": 413.04,
+   "end": 413.38,
+   "p": 0.996
+  },
+  {
+   "w": "smart",
+   "start": 413.38,
+   "end": 413.68,
+   "p": 0.971
+  },
+  {
+   "w": "stores,",
+   "start": 413.68,
+   "end": 414.06,
+   "p": 0.981
+  },
+  {
+   "w": "the",
+   "start": 414.4,
+   "end": 414.58,
+   "p": 0.993
+  },
+  {
+   "w": "locked",
+   "start": 414.58,
+   "end": 414.88,
+   "p": 0.98
+  },
+  {
+   "w": "smart",
+   "start": 414.88,
+   "end": 415.24,
+   "p": 0.969
+  },
+  {
+   "w": "fridges",
+   "start": 415.24,
+   "end": 415.54,
+   "p": 0.994
+  },
+  {
+   "w": "and",
+   "start": 415.54,
+   "end": 415.94,
+   "p": 0.991
+  },
+  {
+   "w": "cabinets",
+   "start": 415.94,
+   "end": 416.34,
+   "p": 0.994
+  },
+  {
+   "w": "you",
+   "start": 416.34,
+   "end": 416.54,
+   "p": 0.992
+  },
+  {
+   "w": "open",
+   "start": 416.54,
+   "end": 416.86,
+   "p": 0.985
+  },
+  {
+   "w": "with",
+   "start": 416.86,
+   "end": 417.04,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 417.04,
+   "end": 417.24,
+   "p": 0.975
+  },
+  {
+   "w": "card",
+   "start": 417.24,
+   "end": 417.42,
+   "p": 0.984
+  },
+  {
+   "w": "tap,",
+   "start": 417.42,
+   "end": 417.76,
+   "p": 0.97
+  },
+  {
+   "w": "it",
+   "start": 418.04,
+   "end": 418.28,
+   "p": 0.99
+  },
+  {
+   "w": "was",
+   "start": 418.28,
+   "end": 418.4,
+   "p": 0.999
+  },
+  {
+   "w": "$4",
+   "start": 418.4,
+   "end": 419.0,
+   "p": 0.997
+  },
+  {
+   "w": ".49.",
+   "start": 419.0,
+   "end": 420.02,
+   "p": 0.999
+  },
+  {
+   "w": "Micro",
+   "start": 420.86,
+   "end": 421.22,
+   "p": 0.44
+  },
+  {
+   "w": "markets",
+   "start": 421.22,
+   "end": 421.62,
+   "p": 0.786
+  },
+  {
+   "w": "on",
+   "start": 421.62,
+   "end": 421.86,
+   "p": 0.997
+  },
+  {
+   "w": "that",
+   "start": 421.86,
+   "end": 422.12,
+   "p": 0.995
+  },
+  {
+   "w": "network",
+   "start": 422.12,
+   "end": 422.52,
+   "p": 0.968
+  },
+  {
+   "w": "sold",
+   "start": 422.52,
+   "end": 422.88,
+   "p": 0.974
+  },
+  {
+   "w": "more",
+   "start": 422.88,
+   "end": 423.08,
+   "p": 0.997
+  },
+  {
+   "w": "than",
+   "start": 423.08,
+   "end": 423.24,
+   "p": 0.992
+  },
+  {
+   "w": "a",
+   "start": 423.24,
+   "end": 423.48,
+   "p": 0.899
+  },
+  {
+   "w": "billion",
+   "start": 423.48,
+   "end": 423.78,
+   "p": 0.978
+  },
+  {
+   "w": "dollars",
+   "start": 423.78,
+   "end": 424.28,
+   "p": 0.989
+  },
+  {
+   "w": "worth",
+   "start": 424.28,
+   "end": 424.48,
+   "p": 0.908
+  },
+  {
+   "w": "of",
+   "start": 424.48,
+   "end": 424.74,
+   "p": 0.998
+  },
+  {
+   "w": "goods",
+   "start": 424.74,
+   "end": 425.0,
+   "p": 0.994
+  },
+  {
+   "w": "in",
+   "start": 425.0,
+   "end": 425.22,
+   "p": 0.995
+  },
+  {
+   "w": "2025,",
+   "start": 425.22,
+   "end": 426.02,
+   "p": 0.964
+  },
+  {
+   "w": "up",
+   "start": 426.62,
+   "end": 426.72,
+   "p": 0.986
+  },
+  {
+   "w": "13%.",
+   "start": 426.72,
+   "end": 428.04,
+   "p": 0.833
+  },
+  {
+   "w": "Smart",
+   "start": 428.04,
+   "end": 428.66,
+   "p": 0.978
+  },
+  {
+   "w": "stores",
+   "start": 428.66,
+   "end": 428.9,
+   "p": 0.81
+  },
+  {
+   "w": "grew",
+   "start": 428.9,
+   "end": 429.3,
+   "p": 0.996
+  },
+  {
+   "w": "from",
+   "start": 429.3,
+   "end": 429.52,
+   "p": 0.999
+  },
+  {
+   "w": "71",
+   "start": 429.52,
+   "end": 430.06,
+   "p": 0.975
+  },
+  {
+   "w": "locations",
+   "start": 430.06,
+   "end": 430.82,
+   "p": 0.998
+  },
+  {
+   "w": "to",
+   "start": 430.82,
+   "end": 431.18,
+   "p": 0.984
+  },
+  {
+   "w": "572",
+   "start": 431.18,
+   "end": 432.6,
+   "p": 0.995
+  },
+  {
+   "w": "in",
+   "start": 432.6,
+   "end": 432.96,
+   "p": 0.987
+  },
+  {
+   "w": "a",
+   "start": 432.96,
+   "end": 433.22,
+   "p": 0.999
+  },
+  {
+   "w": "single",
+   "start": 433.22,
+   "end": 433.48,
+   "p": 0.999
+  },
+  {
+   "w": "year.",
+   "start": 433.48,
+   "end": 434.06,
+   "p": 0.999
+  },
+  {
+   "w": "Though",
+   "start": 434.2,
+   "end": 434.42,
+   "p": 0.979
+  },
+  {
+   "w": "together,",
+   "start": 434.42,
+   "end": 434.86,
+   "p": 0.883
+  },
+  {
+   "w": "they",
+   "start": 435.16,
+   "end": 435.24,
+   "p": 0.997
+  },
+  {
+   "w": "still",
+   "start": 435.24,
+   "end": 435.56,
+   "p": 0.997
+  },
+  {
+   "w": "sold",
+   "start": 435.56,
+   "end": 435.96,
+   "p": 0.994
+  },
+  {
+   "w": "only",
+   "start": 435.96,
+   "end": 436.34,
+   "p": 0.995
+  },
+  {
+   "w": "about",
+   "start": 436.34,
+   "end": 436.66,
+   "p": 0.998
+  },
+  {
+   "w": "$6",
+   "start": 436.66,
+   "end": 437.06,
+   "p": 0.675
+  },
+  {
+   "w": "million.",
+   "start": 437.06,
+   "end": 437.42,
+   "p": 0.876
+  },
+  {
+   "w": "Vending",
+   "start": 438.36,
+   "end": 438.76,
+   "p": 0.974
+  },
+  {
+   "w": "machines",
+   "start": 438.76,
+   "end": 439.08,
+   "p": 0.986
+  },
+  {
+   "w": "still",
+   "start": 439.08,
+   "end": 439.6,
+   "p": 0.996
+  },
+  {
+   "w": "bring",
+   "start": 439.6,
+   "end": 439.9,
+   "p": 0.988
+  },
+  {
+   "w": "in",
+   "start": 439.9,
+   "end": 440.12,
+   "p": 0.997
+  },
+  {
+   "w": "far",
+   "start": 440.12,
+   "end": 440.46,
+   "p": 0.994
+  },
+  {
+   "w": "more",
+   "start": 440.46,
+   "end": 440.74,
+   "p": 0.999
+  },
+  {
+   "w": "money",
+   "start": 440.74,
+   "end": 441.02,
+   "p": 0.999
+  },
+  {
+   "w": "in",
+   "start": 441.02,
+   "end": 441.24,
+   "p": 0.994
+  },
+  {
+   "w": "total,",
+   "start": 441.24,
+   "end": 441.6,
+   "p": 0.999
+  },
+  {
+   "w": "about",
+   "start": 441.96,
+   "end": 442.26,
+   "p": 0.994
+  },
+  {
+   "w": "$3",
+   "start": 442.26,
+   "end": 442.62,
+   "p": 0.922
+  },
+  {
+   "w": ".3",
+   "start": 442.62,
+   "end": 443.22,
+   "p": 0.994
+  },
+  {
+   "w": "billion",
+   "start": 443.22,
+   "end": 443.74,
+   "p": 0.986
+  },
+  {
+   "w": "on",
+   "start": 443.74,
+   "end": 444.4,
+   "p": 0.932
+  },
+  {
+   "w": "that",
+   "start": 444.4,
+   "end": 444.7,
+   "p": 0.997
+  },
+  {
+   "w": "network",
+   "start": 444.7,
+   "end": 445.08,
+   "p": 0.998
+  },
+  {
+   "w": "in",
+   "start": 445.08,
+   "end": 445.36,
+   "p": 0.994
+  },
+  {
+   "w": "2025.",
+   "start": 445.36,
+   "end": 446.3,
+   "p": 0.995
+  },
+  {
+   "w": "But",
+   "start": 446.3,
+   "end": 446.9,
+   "p": 0.661
+  },
+  {
+   "w": "the",
+   "start": 446.9,
+   "end": 447.04,
+   "p": 0.975
+  },
+  {
+   "w": "fastest",
+   "start": 447.04,
+   "end": 447.52,
+   "p": 0.982
+  },
+  {
+   "w": "growth",
+   "start": 447.52,
+   "end": 447.98,
+   "p": 0.998
+  },
+  {
+   "w": "is",
+   "start": 447.98,
+   "end": 448.28,
+   "p": 0.984
+  },
+  {
+   "w": "in",
+   "start": 448.28,
+   "end": 448.44,
+   "p": 0.994
+  },
+  {
+   "w": "these",
+   "start": 448.44,
+   "end": 448.64,
+   "p": 0.965
+  },
+  {
+   "w": "newer",
+   "start": 448.64,
+   "end": 449.02,
+   "p": 0.992
+  },
+  {
+   "w": "formats,",
+   "start": 449.02,
+   "end": 449.66,
+   "p": 0.996
+  },
+  {
+   "w": "where",
+   "start": 449.9,
+   "end": 450.16,
+   "p": 0.978
+  },
+  {
+   "w": "people",
+   "start": 450.16,
+   "end": 450.46,
+   "p": 0.997
+  },
+  {
+   "w": "spend",
+   "start": 450.46,
+   "end": 450.78,
+   "p": 0.994
+  },
+  {
+   "w": "more",
+   "start": 450.78,
+   "end": 451.14,
+   "p": 0.997
+  },
+  {
+   "w": "on",
+   "start": 451.14,
+   "end": 451.4,
+   "p": 0.992
+  },
+  {
+   "w": "every",
+   "start": 451.4,
+   "end": 451.82,
+   "p": 0.994
+  },
+  {
+   "w": "visit.",
+   "start": 451.82,
+   "end": 452.24,
+   "p": 0.998
+  },
+  {
+   "w": "But",
+   "start": 452.74,
+   "end": 452.84,
+   "p": 0.982
+  },
+  {
+   "w": "the",
+   "start": 452.84,
+   "end": 453.04,
+   "p": 0.982
+  },
+  {
+   "w": "passive",
+   "start": 453.04,
+   "end": 453.32,
+   "p": 0.97
+  },
+  {
+   "w": "income",
+   "start": 453.32,
+   "end": 453.78,
+   "p": 0.986
+  },
+  {
+   "w": "videos",
+   "start": 453.78,
+   "end": 454.2,
+   "p": 0.98
+  },
+  {
+   "w": "skip",
+   "start": 454.2,
+   "end": 454.56,
+   "p": 0.992
+  },
+  {
+   "w": "almost",
+   "start": 454.56,
+   "end": 454.94,
+   "p": 0.993
+  },
+  {
+   "w": "all",
+   "start": 454.94,
+   "end": 455.3,
+   "p": 0.995
+  },
+  {
+   "w": "of",
+   "start": 455.3,
+   "end": 455.48,
+   "p": 0.981
+  },
+  {
+   "w": "this.",
+   "start": 455.48,
+   "end": 455.82,
+   "p": 0.987
+  },
+  {
+   "w": "So",
+   "start": 456.18,
+   "end": 456.34,
+   "p": 0.982
+  },
+  {
+   "w": "here's",
+   "start": 456.34,
+   "end": 456.68,
+   "p": 0.934
+  },
+  {
+   "w": "what",
+   "start": 456.68,
+   "end": 456.88,
+   "p": 0.994
+  },
+  {
+   "w": "one",
+   "start": 456.88,
+   "end": 457.14,
+   "p": 0.968
+  },
+  {
+   "w": "beginner",
+   "start": 457.14,
+   "end": 457.46,
+   "p": 0.996
+  },
+  {
+   "w": "says",
+   "start": 457.46,
+   "end": 457.8,
+   "p": 0.98
+  },
+  {
+   "w": "their",
+   "start": 457.8,
+   "end": 458.0,
+   "p": 0.981
+  },
+  {
+   "w": "first",
+   "start": 458.0,
+   "end": 458.38,
+   "p": 0.988
+  },
+  {
+   "w": "six",
+   "start": 458.38,
+   "end": 458.66,
+   "p": 0.693
+  },
+  {
+   "w": "months",
+   "start": 458.66,
+   "end": 458.94,
+   "p": 0.986
+  },
+  {
+   "w": "looked",
+   "start": 458.94,
+   "end": 459.24,
+   "p": 0.911
+  },
+  {
+   "w": "like.",
+   "start": 459.24,
+   "end": 459.6,
+   "p": 0.998
+  },
+  {
+   "w": "They",
+   "start": 459.94,
+   "end": 460.1,
+   "p": 0.981
+  },
+  {
+   "w": "posted",
+   "start": 460.1,
+   "end": 460.42,
+   "p": 0.968
+  },
+  {
+   "w": "their",
+   "start": 460.42,
+   "end": 460.62,
+   "p": 0.996
+  },
+  {
+   "w": "numbers",
+   "start": 460.62,
+   "end": 460.96,
+   "p": 0.993
+  },
+  {
+   "w": "on",
+   "start": 460.96,
+   "end": 461.3,
+   "p": 0.998
+  },
+  {
+   "w": "Reddit.",
+   "start": 461.3,
+   "end": 461.52,
+   "p": 0.756
+  },
+  {
+   "w": "They",
+   "start": 461.96,
+   "end": 462.06,
+   "p": 0.914
+  },
+  {
+   "w": "spent",
+   "start": 462.06,
+   "end": 462.36,
+   "p": 0.961
+  },
+  {
+   "w": "$3",
+   "start": 462.36,
+   "end": 462.74,
+   "p": 0.911
+  },
+  {
+   "w": ",200",
+   "start": 462.74,
+   "end": 463.26,
+   "p": 0.816
+  },
+  {
+   "w": "on",
+   "start": 463.26,
+   "end": 464.0,
+   "p": 0.957
+  },
+  {
+   "w": "two",
+   "start": 464.0,
+   "end": 464.36,
+   "p": 0.921
+  },
+  {
+   "w": "refurbished",
+   "start": 464.36,
+   "end": 465.0,
+   "p": 0.987
+  },
+  {
+   "w": "machines",
+   "start": 465.0,
+   "end": 465.56,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 465.56,
+   "end": 465.98,
+   "p": 0.749
+  },
+  {
+   "w": "another",
+   "start": 465.98,
+   "end": 466.26,
+   "p": 0.994
+  },
+  {
+   "w": "400",
+   "start": 466.26,
+   "end": 466.92,
+   "p": 0.085
+  },
+  {
+   "w": "on",
+   "start": 466.92,
+   "end": 467.26,
+   "p": 0.993
+  },
+  {
+   "w": "snacks",
+   "start": 467.26,
+   "end": 467.7,
+   "p": 0.998
+  },
+  {
+   "w": "and",
+   "start": 467.7,
+   "end": 468.06,
+   "p": 0.987
+  },
+  {
+   "w": "drinks.",
+   "start": 468.06,
+   "end": 468.42,
+   "p": 0.998
+  },
+  {
+   "w": "One",
+   "start": 468.88,
+   "end": 469.1,
+   "p": 0.986
+  },
+  {
+   "w": "machine",
+   "start": 469.1,
+   "end": 469.46,
+   "p": 0.986
+  },
+  {
+   "w": "sits",
+   "start": 469.46,
+   "end": 469.78,
+   "p": 0.997
+  },
+  {
+   "w": "in",
+   "start": 469.78,
+   "end": 469.94,
+   "p": 0.99
+  },
+  {
+   "w": "an",
+   "start": 469.94,
+   "end": 470.14,
+   "p": 0.993
+  },
+  {
+   "w": "office",
+   "start": 470.14,
+   "end": 470.34,
+   "p": 0.998
+  },
+  {
+   "w": "with",
+   "start": 470.34,
+   "end": 470.6,
+   "p": 0.997
+  },
+  {
+   "w": "about",
+   "start": 470.6,
+   "end": 470.84,
+   "p": 0.996
+  },
+  {
+   "w": "50",
+   "start": 470.84,
+   "end": 471.24,
+   "p": 0.952
+  },
+  {
+   "w": "employees.",
+   "start": 471.24,
+   "end": 471.8,
+   "p": 0.999
+  },
+  {
+   "w": "The",
+   "start": 472.26,
+   "end": 472.48,
+   "p": 0.995
+  },
+  {
+   "w": "other",
+   "start": 472.48,
+   "end": 472.8,
+   "p": 0.999
+  },
+  {
+   "w": "is",
+   "start": 472.8,
+   "end": 473.06,
+   "p": 0.99
+  },
+  {
+   "w": "in",
+   "start": 473.06,
+   "end": 473.2,
+   "p": 0.962
+  },
+  {
+   "w": "an",
+   "start": 473.2,
+   "end": 473.5,
+   "p": 0.992
+  },
+  {
+   "w": "auto",
+   "start": 473.5,
+   "end": 473.66,
+   "p": 0.994
+  },
+  {
+   "w": "repair",
+   "start": 473.66,
+   "end": 473.94,
+   "p": 0.683
+  },
+  {
+   "w": "shop.",
+   "start": 473.94,
+   "end": 474.42,
+   "p": 0.999
+  },
+  {
+   "w": "The",
+   "start": 474.42,
+   "end": 474.94,
+   "p": 0.847
+  },
+  {
+   "w": "office",
+   "start": 474.94,
+   "end": 475.24,
+   "p": 0.982
+  },
+  {
+   "w": "machine",
+   "start": 475.24,
+   "end": 475.68,
+   "p": 0.992
+  },
+  {
+   "w": "brings",
+   "start": 475.68,
+   "end": 476.02,
+   "p": 0.987
+  },
+  {
+   "w": "in",
+   "start": 476.02,
+   "end": 476.2,
+   "p": 0.994
+  },
+  {
+   "w": "about",
+   "start": 476.2,
+   "end": 476.44,
+   "p": 0.982
+  },
+  {
+   "w": "$280",
+   "start": 476.44,
+   "end": 477.32,
+   "p": 0.915
+  },
+  {
+   "w": "to",
+   "start": 477.32,
+   "end": 477.6,
+   "p": 0.506
+  },
+  {
+   "w": "$350",
+   "start": 477.6,
+   "end": 478.5,
+   "p": 0.996
+  },
+  {
+   "w": "a",
+   "start": 478.5,
+   "end": 479.12,
+   "p": 0.948
+  },
+  {
+   "w": "month.",
+   "start": 479.12,
+   "end": 479.46,
+   "p": 1.0
+  },
+  {
+   "w": "The",
+   "start": 479.88,
+   "end": 479.94,
+   "p": 0.974
+  },
+  {
+   "w": "repair",
+   "start": 479.94,
+   "end": 480.26,
+   "p": 0.996
+  },
+  {
+   "w": "shop",
+   "start": 480.26,
+   "end": 480.62,
+   "p": 0.998
+  },
+  {
+   "w": "does",
+   "start": 480.62,
+   "end": 480.88,
+   "p": 0.995
+  },
+  {
+   "w": "120",
+   "start": 480.88,
+   "end": 481.7,
+   "p": 0.346
+  },
+  {
+   "w": "to",
+   "start": 481.7,
+   "end": 482.04,
+   "p": 0.98
+  },
+  {
+   "w": "180.",
+   "start": 482.04,
+   "end": 482.78,
+   "p": 0.998
+  },
+  {
+   "w": "After",
+   "start": 483.34,
+   "end": 483.6,
+   "p": 0.978
+  },
+  {
+   "w": "gas,",
+   "start": 483.6,
+   "end": 484.06,
+   "p": 0.995
+  },
+  {
+   "w": "restocking",
+   "start": 484.36,
+   "end": 484.84,
+   "p": 0.993
+  },
+  {
+   "w": "and",
+   "start": 484.84,
+   "end": 485.26,
+   "p": 0.459
+  },
+  {
+   "w": "repairs,",
+   "start": 485.26,
+   "end": 485.78,
+   "p": 0.995
+  },
+  {
+   "w": "they",
+   "start": 486.22,
+   "end": 486.34,
+   "p": 0.964
+  },
+  {
+   "w": "say",
+   "start": 486.34,
+   "end": 486.58,
+   "p": 0.985
+  },
+  {
+   "w": "they",
+   "start": 486.58,
+   "end": 486.78,
+   "p": 0.99
+  },
+  {
+   "w": "keep",
+   "start": 486.78,
+   "end": 487.0,
+   "p": 0.997
+  },
+  {
+   "w": "about",
+   "start": 487.0,
+   "end": 487.26,
+   "p": 0.988
+  },
+  {
+   "w": "130",
+   "start": 487.26,
+   "end": 488.1,
+   "p": 0.207
+  },
+  {
+   "w": "to",
+   "start": 488.1,
+   "end": 488.38,
+   "p": 0.988
+  },
+  {
+   "w": "$150",
+   "start": 488.38,
+   "end": 489.24,
+   "p": 0.772
+  },
+  {
+   "w": "a",
+   "start": 489.24,
+   "end": 489.78,
+   "p": 0.985
+  },
+  {
+   "w": "month.",
+   "start": 489.78,
+   "end": 490.08,
+   "p": 1.0
+  },
+  {
+   "w": "We",
+   "start": 490.48,
+   "end": 490.62,
+   "p": 0.992
+  },
+  {
+   "w": "can't",
+   "start": 490.62,
+   "end": 490.9,
+   "p": 0.993
+  },
+  {
+   "w": "check",
+   "start": 490.9,
+   "end": 491.12,
+   "p": 0.997
+  },
+  {
+   "w": "those",
+   "start": 491.12,
+   "end": 491.38,
+   "p": 0.993
+  },
+  {
+   "w": "numbers,",
+   "start": 491.38,
+   "end": 491.84,
+   "p": 0.999
+  },
+  {
+   "w": "but",
+   "start": 492.08,
+   "end": 492.34,
+   "p": 0.995
+  },
+  {
+   "w": "they",
+   "start": 492.34,
+   "end": 492.56,
+   "p": 0.993
+  },
+  {
+   "w": "fit",
+   "start": 492.56,
+   "end": 492.74,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 492.74,
+   "end": 492.94,
+   "p": 0.995
+  },
+  {
+   "w": "supplier's",
+   "start": 492.94,
+   "end": 493.52,
+   "p": 0.825
+  },
+  {
+   "w": "own",
+   "start": 493.52,
+   "end": 493.74,
+   "p": 0.997
+  },
+  {
+   "w": "ranges.",
+   "start": 493.74,
+   "end": 494.18,
+   "p": 0.994
+  },
+  {
+   "w": "Their",
+   "start": 494.74,
+   "end": 494.9,
+   "p": 0.966
+  },
+  {
+   "w": "verdict",
+   "start": 494.9,
+   "end": 495.28,
+   "p": 0.999
+  },
+  {
+   "w": "was",
+   "start": 495.28,
+   "end": 495.58,
+   "p": 0.997
+  },
+  {
+   "w": "simple.",
+   "start": 495.58,
+   "end": 495.98,
+   "p": 0.993
+  },
+  {
+   "w": "It's",
+   "start": 496.34,
+   "end": 496.62,
+   "p": 0.957
+  },
+  {
+   "w": "not",
+   "start": 496.62,
+   "end": 496.8,
+   "p": 0.999
+  },
+  {
+   "w": "as",
+   "start": 496.8,
+   "end": 496.96,
+   "p": 0.994
+  },
+  {
+   "w": "passive",
+   "start": 496.96,
+   "end": 497.4,
+   "p": 0.997
+  },
+  {
+   "w": "as",
+   "start": 497.4,
+   "end": 497.68,
+   "p": 0.998
+  },
+  {
+   "w": "people",
+   "start": 497.68,
+   "end": 497.98,
+   "p": 0.98
+  },
+  {
+   "w": "make",
+   "start": 497.98,
+   "end": 498.22,
+   "p": 0.997
+  },
+  {
+   "w": "it",
+   "start": 498.22,
+   "end": 498.38,
+   "p": 0.998
+  },
+  {
+   "w": "sound.",
+   "start": 498.38,
+   "end": 498.72,
+   "p": 0.999
+  },
+  {
+   "w": "Now",
+   "start": 499.2,
+   "end": 499.46,
+   "p": 0.992
+  },
+  {
+   "w": "do",
+   "start": 499.46,
+   "end": 499.76,
+   "p": 0.56
+  },
+  {
+   "w": "the",
+   "start": 499.76,
+   "end": 500.0,
+   "p": 0.998
+  },
+  {
+   "w": "math",
+   "start": 500.0,
+   "end": 500.2,
+   "p": 0.999
+  },
+  {
+   "w": "on",
+   "start": 500.2,
+   "end": 500.44,
+   "p": 0.997
+  },
+  {
+   "w": "an",
+   "start": 500.44,
+   "end": 500.68,
+   "p": 0.996
+  },
+  {
+   "w": "ordinary",
+   "start": 500.68,
+   "end": 501.1,
+   "p": 0.996
+  },
+  {
+   "w": "location.",
+   "start": 501.1,
+   "end": 501.7,
+   "p": 1.0
+  },
+  {
+   "w": "One",
+   "start": 501.7,
+   "end": 502.4,
+   "p": 0.863
+  },
+  {
+   "w": "supplier",
+   "start": 502.4,
+   "end": 502.86,
+   "p": 0.994
+  },
+  {
+   "w": "estimates",
+   "start": 502.86,
+   "end": 503.44,
+   "p": 0.981
+  },
+  {
+   "w": "a",
+   "start": 503.44,
+   "end": 503.74,
+   "p": 0.987
+  },
+  {
+   "w": "typical",
+   "start": 503.74,
+   "end": 504.1,
+   "p": 0.998
+  },
+  {
+   "w": "site",
+   "start": 504.1,
+   "end": 504.44,
+   "p": 0.997
+  },
+  {
+   "w": "nets",
+   "start": 504.44,
+   "end": 504.72,
+   "p": 0.98
+  },
+  {
+   "w": "about",
+   "start": 504.72,
+   "end": 505.02,
+   "p": 0.985
+  },
+  {
+   "w": "20",
+   "start": 505.02,
+   "end": 505.48,
+   "p": 0.273
+  },
+  {
+   "w": "to",
+   "start": 505.48,
+   "end": 505.74,
+   "p": 0.879
+  },
+  {
+   "w": "$175",
+   "start": 505.74,
+   "end": 506.78,
+   "p": 0.548
+  },
+  {
+   "w": "a",
+   "start": 506.78,
+   "end": 507.44,
+   "p": 0.925
+  },
+  {
+   "w": "month.",
+   "start": 507.44,
+   "end": 507.76,
+   "p": 1.0
+  },
+  {
+   "w": "At",
+   "start": 508.08,
+   "end": 508.28,
+   "p": 0.995
+  },
+  {
+   "w": "that",
+   "start": 508.28,
+   "end": 508.54,
+   "p": 0.998
+  },
+  {
+   "w": "rate,",
+   "start": 508.54,
+   "end": 508.86,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 509.16,
+   "end": 509.32,
+   "p": 0.984
+  },
+  {
+   "w": "$3",
+   "start": 509.32,
+   "end": 509.52,
+   "p": 0.737
+  },
+  {
+   "w": ",500",
+   "start": 509.52,
+   "end": 510.2,
+   "p": 0.995
+  },
+  {
+   "w": "combo",
+   "start": 510.2,
+   "end": 510.88,
+   "p": 0.983
+  },
+  {
+   "w": "machine",
+   "start": 510.88,
+   "end": 511.36,
+   "p": 0.996
+  },
+  {
+   "w": "takes",
+   "start": 511.36,
+   "end": 511.8,
+   "p": 0.989
+  },
+  {
+   "w": "anywhere",
+   "start": 511.8,
+   "end": 512.28,
+   "p": 0.997
+  },
+  {
+   "w": "from",
+   "start": 512.28,
+   "end": 512.58,
+   "p": 0.996
+  },
+  {
+   "w": "about",
+   "start": 512.58,
+   "end": 512.84,
+   "p": 0.992
+  },
+  {
+   "w": "20",
+   "start": 512.84,
+   "end": 513.2,
+   "p": 0.956
+  },
+  {
+   "w": "months",
+   "start": 513.2,
+   "end": 513.56,
+   "p": 0.996
+  },
+  {
+   "w": "to",
+   "start": 513.56,
+   "end": 513.96,
+   "p": 0.969
+  },
+  {
+   "w": "more",
+   "start": 513.96,
+   "end": 514.14,
+   "p": 0.995
+  },
+  {
+   "w": "than",
+   "start": 514.14,
+   "end": 514.34,
+   "p": 0.997
+  },
+  {
+   "w": "14",
+   "start": 514.34,
+   "end": 514.92,
+   "p": 0.99
+  },
+  {
+   "w": "years",
+   "start": 514.92,
+   "end": 515.54,
+   "p": 0.994
+  },
+  {
+   "w": "just",
+   "start": 515.54,
+   "end": 516.08,
+   "p": 0.962
+  },
+  {
+   "w": "to",
+   "start": 516.08,
+   "end": 516.3,
+   "p": 0.999
+  },
+  {
+   "w": "pay",
+   "start": 516.3,
+   "end": 516.48,
+   "p": 0.999
+  },
+  {
+   "w": "for",
+   "start": 516.48,
+   "end": 516.68,
+   "p": 0.997
+  },
+  {
+   "w": "itself.",
+   "start": 516.68,
+   "end": 517.18,
+   "p": 0.999
+  },
+  {
+   "w": "And",
+   "start": 517.4,
+   "end": 517.7,
+   "p": 0.984
+  },
+  {
+   "w": "that's",
+   "start": 517.7,
+   "end": 518.06,
+   "p": 0.993
+  },
+  {
+   "w": "if",
+   "start": 518.06,
+   "end": 518.22,
+   "p": 0.991
+  },
+  {
+   "w": "nothing",
+   "start": 518.22,
+   "end": 518.7,
+   "p": 0.986
+  },
+  {
+   "w": "breaks.",
+   "start": 518.7,
+   "end": 519.16,
+   "p": 0.994
+  },
+  {
+   "w": "Things",
+   "start": 519.76,
+   "end": 520.04,
+   "p": 0.994
+  },
+  {
+   "w": "do",
+   "start": 520.04,
+   "end": 520.3,
+   "p": 0.969
+  },
+  {
+   "w": "break.",
+   "start": 520.3,
+   "end": 520.7,
+   "p": 0.998
+  },
+  {
+   "w": "That",
+   "start": 521.1,
+   "end": 521.36,
+   "p": 0.993
+  },
+  {
+   "w": "same",
+   "start": 521.36,
+   "end": 521.74,
+   "p": 0.996
+  },
+  {
+   "w": "operator",
+   "start": 521.74,
+   "end": 522.24,
+   "p": 0.995
+  },
+  {
+   "w": "says",
+   "start": 522.24,
+   "end": 522.6,
+   "p": 0.991
+  },
+  {
+   "w": "they",
+   "start": 522.6,
+   "end": 522.88,
+   "p": 0.988
+  },
+  {
+   "w": "dealt",
+   "start": 522.88,
+   "end": 523.1,
+   "p": 0.993
+  },
+  {
+   "w": "with",
+   "start": 523.1,
+   "end": 523.28,
+   "p": 0.999
+  },
+  {
+   "w": "a",
+   "start": 523.28,
+   "end": 523.52,
+   "p": 0.991
+  },
+  {
+   "w": "jammed",
+   "start": 523.52,
+   "end": 523.78,
+   "p": 0.946
+  },
+  {
+   "w": "bill",
+   "start": 523.78,
+   "end": 524.04,
+   "p": 0.965
+  },
+  {
+   "w": "acceptor",
+   "start": 524.04,
+   "end": 524.76,
+   "p": 0.932
+  },
+  {
+   "w": "and",
+   "start": 524.76,
+   "end": 525.1,
+   "p": 0.943
+  },
+  {
+   "w": "an",
+   "start": 525.1,
+   "end": 525.28,
+   "p": 0.983
+  },
+  {
+   "w": "attempted",
+   "start": 525.28,
+   "end": 525.72,
+   "p": 0.997
+  },
+  {
+   "w": "break",
+   "start": 525.72,
+   "end": 526.06,
+   "p": 0.994
+  },
+  {
+   "w": "-in",
+   "start": 526.06,
+   "end": 526.28,
+   "p": 0.933
+  },
+  {
+   "w": "within",
+   "start": 526.28,
+   "end": 526.58,
+   "p": 0.988
+  },
+  {
+   "w": "their",
+   "start": 526.58,
+   "end": 526.84,
+   "p": 0.992
+  },
+  {
+   "w": "first",
+   "start": 526.84,
+   "end": 527.18,
+   "p": 0.997
+  },
+  {
+   "w": "six",
+   "start": 527.18,
+   "end": 527.5,
+   "p": 0.719
+  },
+  {
+   "w": "months.",
+   "start": 527.5,
+   "end": 527.98,
+   "p": 0.999
+  },
+  {
+   "w": "Part",
+   "start": 527.98,
+   "end": 528.62,
+   "p": 0.854
+  },
+  {
+   "w": "Then",
+   "start": 529.02,
+   "end": 529.12,
+   "p": 0.883
+  },
+  {
+   "w": "there's",
+   "start": 529.12,
+   "end": 529.7,
+   "p": 0.864
+  },
+  {
+   "w": "debt.",
+   "start": 529.7,
+   "end": 529.96,
+   "p": 0.942
+  },
+  {
+   "w": "Personal",
+   "start": 530.46,
+   "end": 530.76,
+   "p": 0.916
+  },
+  {
+   "w": "finance",
+   "start": 530.76,
+   "end": 531.18,
+   "p": 0.902
+  },
+  {
+   "w": "host",
+   "start": 531.18,
+   "end": 531.68,
+   "p": 0.994
+  },
+  {
+   "w": "George",
+   "start": 531.68,
+   "end": 532.16,
+   "p": 0.655
+  },
+  {
+   "w": "Camel",
+   "start": 532.16,
+   "end": 532.54,
+   "p": 0.482
+  },
+  {
+   "w": "looked",
+   "start": 532.54,
+   "end": 532.96,
+   "p": 0.934
+  },
+  {
+   "w": "at",
+   "start": 532.96,
+   "end": 533.2,
+   "p": 0.996
+  },
+  {
+   "w": "one",
+   "start": 533.2,
+   "end": 533.4,
+   "p": 0.918
+  },
+  {
+   "w": "creator's",
+   "start": 533.4,
+   "end": 534.04,
+   "p": 0.93
+  },
+  {
+   "w": "breakdown",
+   "start": 534.04,
+   "end": 534.36,
+   "p": 0.988
+  },
+  {
+   "w": "of",
+   "start": 534.36,
+   "end": 534.7,
+   "p": 0.99
+  },
+  {
+   "w": "what",
+   "start": 534.7,
+   "end": 534.9,
+   "p": 0.998
+  },
+  {
+   "w": "it",
+   "start": 534.9,
+   "end": 535.06,
+   "p": 0.997
+  },
+  {
+   "w": "costs",
+   "start": 535.06,
+   "end": 535.32,
+   "p": 0.717
+  },
+  {
+   "w": "to",
+   "start": 535.32,
+   "end": 535.56,
+   "p": 0.999
+  },
+  {
+   "w": "start,",
+   "start": 535.56,
+   "end": 535.96,
+   "p": 1.0
+  },
+  {
+   "w": "about",
+   "start": 536.38,
+   "end": 536.56,
+   "p": 0.979
+  },
+  {
+   "w": "$3",
+   "start": 536.56,
+   "end": 536.96,
+   "p": 0.937
+  },
+  {
+   "w": ",330.",
+   "start": 536.96,
+   "end": 538.38,
+   "p": 0.995
+  },
+  {
+   "w": "And",
+   "start": 539.02,
+   "end": 539.46,
+   "p": 0.969
+  },
+  {
+   "w": "his",
+   "start": 539.46,
+   "end": 539.66,
+   "p": 0.998
+  },
+  {
+   "w": "advice",
+   "start": 539.66,
+   "end": 540.0,
+   "p": 0.999
+  },
+  {
+   "w": "was",
+   "start": 540.0,
+   "end": 540.44,
+   "p": 0.998
+  },
+  {
+   "w": "blunt.",
+   "start": 540.44,
+   "end": 540.88,
+   "p": 0.995
+  },
+  {
+   "w": "Save",
+   "start": 541.38,
+   "end": 541.6,
+   "p": 0.534
+  },
+  {
+   "w": "it",
+   "start": 541.6,
+   "end": 541.78,
+   "p": 0.997
+  },
+  {
+   "w": "in",
+   "start": 541.78,
+   "end": 541.98,
+   "p": 0.997
+  },
+  {
+   "w": "cash.",
+   "start": 541.98,
+   "end": 542.32,
+   "p": 0.999
+  },
+  {
+   "w": "Don't",
+   "start": 542.74,
+   "end": 543.0,
+   "p": 0.998
+  },
+  {
+   "w": "borrow",
+   "start": 543.0,
+   "end": 543.28,
+   "p": 0.999
+  },
+  {
+   "w": "it",
+   "start": 543.28,
+   "end": 543.52,
+   "p": 0.998
+  },
+  {
+   "w": "or",
+   "start": 543.52,
+   "end": 543.76,
+   "p": 0.882
+  },
+  {
+   "w": "put",
+   "start": 543.76,
+   "end": 543.96,
+   "p": 1.0
+  },
+  {
+   "w": "it",
+   "start": 543.96,
+   "end": 544.1,
+   "p": 0.998
+  },
+  {
+   "w": "on",
+   "start": 544.1,
+   "end": 544.22,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 544.22,
+   "end": 544.38,
+   "p": 0.998
+  },
+  {
+   "w": "credit",
+   "start": 544.38,
+   "end": 544.54,
+   "p": 1.0
+  },
+  {
+   "w": "card.",
+   "start": 544.54,
+   "end": 544.86,
+   "p": 0.999
+  },
+  {
+   "w": "It's",
+   "start": 545.16,
+   "end": 545.46,
+   "p": 0.997
+  },
+  {
+   "w": "easy",
+   "start": 545.46,
+   "end": 545.72,
+   "p": 1.0
+  },
+  {
+   "w": "to",
+   "start": 545.72,
+   "end": 545.9,
+   "p": 1.0
+  },
+  {
+   "w": "see",
+   "start": 545.9,
+   "end": 546.06,
+   "p": 0.999
+  },
+  {
+   "w": "why.",
+   "start": 546.06,
+   "end": 546.46,
+   "p": 0.999
+  },
+  {
+   "w": "Put",
+   "start": 546.7,
+   "end": 546.88,
+   "p": 0.998
+  },
+  {
+   "w": "it",
+   "start": 546.88,
+   "end": 547.0,
+   "p": 0.999
+  },
+  {
+   "w": "on",
+   "start": 547.0,
+   "end": 547.12,
+   "p": 0.999
+  },
+  {
+   "w": "a",
+   "start": 547.12,
+   "end": 547.32,
+   "p": 0.998
+  },
+  {
+   "w": "card",
+   "start": 547.32,
+   "end": 547.6,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 547.6,
+   "end": 547.9,
+   "p": 0.558
+  },
+  {
+   "w": "the",
+   "start": 547.9,
+   "end": 548.14,
+   "p": 0.998
+  },
+  {
+   "w": "interest",
+   "start": 548.14,
+   "end": 548.46,
+   "p": 0.997
+  },
+  {
+   "w": "starts",
+   "start": 548.46,
+   "end": 548.88,
+   "p": 0.998
+  },
+  {
+   "w": "before",
+   "start": 548.88,
+   "end": 549.32,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 549.32,
+   "end": 549.54,
+   "p": 0.998
+  },
+  {
+   "w": "machine",
+   "start": 549.54,
+   "end": 549.86,
+   "p": 0.989
+  },
+  {
+   "w": "sells",
+   "start": 549.86,
+   "end": 550.24,
+   "p": 0.997
+  },
+  {
+   "w": "a",
+   "start": 550.24,
+   "end": 550.5,
+   "p": 0.999
+  },
+  {
+   "w": "single",
+   "start": 550.5,
+   "end": 550.96,
+   "p": 0.999
+  },
+  {
+   "w": "soda.",
+   "start": 550.96,
+   "end": 551.36,
+   "p": 0.998
+  },
+  {
+   "w": "If",
+   "start": 551.74,
+   "end": 551.9,
+   "p": 0.994
+  },
+  {
+   "w": "you'd",
+   "start": 551.9,
+   "end": 552.16,
+   "p": 0.996
+  },
+  {
+   "w": "rather",
+   "start": 552.16,
+   "end": 552.38,
+   "p": 0.999
+  },
+  {
+   "w": "buy",
+   "start": 552.38,
+   "end": 552.64,
+   "p": 0.989
+  },
+  {
+   "w": "a",
+   "start": 552.64,
+   "end": 552.86,
+   "p": 0.998
+  },
+  {
+   "w": "route",
+   "start": 552.86,
+   "end": 553.02,
+   "p": 0.975
+  },
+  {
+   "w": "that",
+   "start": 553.02,
+   "end": 553.22,
+   "p": 0.902
+  },
+  {
+   "w": "already",
+   "start": 553.22,
+   "end": 553.66,
+   "p": 0.998
+  },
+  {
+   "w": "exists,",
+   "start": 553.66,
+   "end": 554.24,
+   "p": 0.917
+  },
+  {
+   "w": "the",
+   "start": 554.58,
+   "end": 554.74,
+   "p": 0.993
+  },
+  {
+   "w": "usual",
+   "start": 554.74,
+   "end": 555.12,
+   "p": 0.999
+  },
+  {
+   "w": "yardstick",
+   "start": 555.12,
+   "end": 555.7,
+   "p": 0.966
+  },
+  {
+   "w": "is",
+   "start": 555.7,
+   "end": 555.96,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 555.96,
+   "end": 556.22,
+   "p": 0.996
+  },
+  {
+   "w": "multiple",
+   "start": 556.22,
+   "end": 556.54,
+   "p": 0.994
+  },
+  {
+   "w": "of",
+   "start": 556.54,
+   "end": 556.84,
+   "p": 0.998
+  },
+  {
+   "w": "what",
+   "start": 556.84,
+   "end": 557.06,
+   "p": 0.999
+  },
+  {
+   "w": "it",
+   "start": 557.06,
+   "end": 557.2,
+   "p": 0.995
+  },
+  {
+   "w": "earns",
+   "start": 557.2,
+   "end": 557.44,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 557.44,
+   "end": 557.7,
+   "p": 0.995
+  },
+  {
+   "w": "owner",
+   "start": 557.7,
+   "end": 557.94,
+   "p": 0.996
+  },
+  {
+   "w": "each",
+   "start": 557.94,
+   "end": 558.3,
+   "p": 0.996
+  },
+  {
+   "w": "year",
+   "start": 558.3,
+   "end": 558.8,
+   "p": 0.999
+  },
+  {
+   "w": "before",
+   "start": 558.8,
+   "end": 559.32,
+   "p": 0.337
+  },
+  {
+   "w": "they",
+   "start": 559.32,
+   "end": 559.62,
+   "p": 0.998
+  },
+  {
+   "w": "pay",
+   "start": 559.62,
+   "end": 559.82,
+   "p": 0.998
+  },
+  {
+   "w": "themselves.",
+   "start": 559.82,
+   "end": 560.44,
+   "p": 0.999
+  },
+  {
+   "w": "BizBuy",
+   "start": 560.98,
+   "end": 561.34,
+   "p": 0.865
+  },
+  {
+   "w": "sells",
+   "start": 561.34,
+   "end": 561.7,
+   "p": 0.984
+  },
+  {
+   "w": "figures",
+   "start": 561.7,
+   "end": 562.14,
+   "p": 0.996
+  },
+  {
+   "w": "for",
+   "start": 562.14,
+   "end": 562.42,
+   "p": 0.999
+  },
+  {
+   "w": "vending",
+   "start": 562.42,
+   "end": 562.76,
+   "p": 0.855
+  },
+  {
+   "w": "businesses",
+   "start": 562.76,
+   "end": 563.3,
+   "p": 0.987
+  },
+  {
+   "w": "sold",
+   "start": 563.3,
+   "end": 563.82,
+   "p": 0.984
+  },
+  {
+   "w": "between",
+   "start": 563.82,
+   "end": 564.2,
+   "p": 0.999
+  },
+  {
+   "w": "2021",
+   "start": 564.2,
+   "end": 565.0,
+   "p": 0.995
+  },
+  {
+   "w": "and",
+   "start": 565.0,
+   "end": 565.38,
+   "p": 0.985
+  },
+  {
+   "w": "2025,",
+   "start": 565.38,
+   "end": 566.34,
+   "p": 0.997
+  },
+  {
+   "w": "put",
+   "start": 566.72,
+   "end": 566.84,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 566.84,
+   "end": 567.04,
+   "p": 0.991
+  },
+  {
+   "w": "middle",
+   "start": 567.04,
+   "end": 567.24,
+   "p": 0.999
+  },
+  {
+   "w": "at",
+   "start": 567.24,
+   "end": 567.5,
+   "p": 0.996
+  },
+  {
+   "w": "about",
+   "start": 567.5,
+   "end": 567.74,
+   "p": 0.999
+  },
+  {
+   "w": "two",
+   "start": 567.74,
+   "end": 568.06,
+   "p": 0.842
+  },
+  {
+   "w": "times",
+   "start": 568.06,
+   "end": 568.52,
+   "p": 0.995
+  },
+  {
+   "w": "those",
+   "start": 568.52,
+   "end": 568.78,
+   "p": 0.998
+  },
+  {
+   "w": "earnings",
+   "start": 568.78,
+   "end": 569.28,
+   "p": 0.997
+  },
+  {
+   "w": "with",
+   "start": 569.28,
+   "end": 569.72,
+   "p": 0.544
+  },
+  {
+   "w": "a",
+   "start": 569.72,
+   "end": 569.92,
+   "p": 0.964
+  },
+  {
+   "w": "typical",
+   "start": 569.92,
+   "end": 570.24,
+   "p": 0.999
+  },
+  {
+   "w": "sale",
+   "start": 570.24,
+   "end": 570.58,
+   "p": 0.996
+  },
+  {
+   "w": "price",
+   "start": 570.58,
+   "end": 570.94,
+   "p": 0.999
+  },
+  {
+   "w": "of",
+   "start": 570.94,
+   "end": 571.18,
+   "p": 0.998
+  },
+  {
+   "w": "about",
+   "start": 571.18,
+   "end": 571.46,
+   "p": 0.996
+  },
+  {
+   "w": "$83",
+   "start": 571.46,
+   "end": 571.98,
+   "p": 0.931
+  },
+  {
+   "w": ",500.",
+   "start": 571.98,
+   "end": 573.32,
+   "p": 0.993
+  },
+  {
+   "w": "Asking",
+   "start": 574.2,
+   "end": 574.58,
+   "p": 0.991
+  },
+  {
+   "w": "prices",
+   "start": 574.58,
+   "end": 574.94,
+   "p": 0.996
+  },
+  {
+   "w": "often",
+   "start": 574.94,
+   "end": 575.48,
+   "p": 0.998
+  },
+  {
+   "w": "run",
+   "start": 575.48,
+   "end": 575.72,
+   "p": 0.998
+  },
+  {
+   "w": "higher.",
+   "start": 575.72,
+   "end": 576.16,
+   "p": 0.999
+  },
+  {
+   "w": "One",
+   "start": 576.62,
+   "end": 576.8,
+   "p": 0.987
+  },
+  {
+   "w": "Chicago",
+   "start": 576.8,
+   "end": 577.3,
+   "p": 0.997
+  },
+  {
+   "w": "area",
+   "start": 577.3,
+   "end": 577.72,
+   "p": 0.827
+  },
+  {
+   "w": "route",
+   "start": 577.72,
+   "end": 578.02,
+   "p": 0.99
+  },
+  {
+   "w": "with",
+   "start": 578.02,
+   "end": 578.26,
+   "p": 0.997
+  },
+  {
+   "w": "12",
+   "start": 578.26,
+   "end": 578.64,
+   "p": 0.951
+  },
+  {
+   "w": "machines",
+   "start": 578.64,
+   "end": 579.24,
+   "p": 0.999
+  },
+  {
+   "w": "is",
+   "start": 579.24,
+   "end": 579.7,
+   "p": 0.995
+  },
+  {
+   "w": "listed",
+   "start": 579.7,
+   "end": 580.02,
+   "p": 0.999
+  },
+  {
+   "w": "at",
+   "start": 580.02,
+   "end": 580.42,
+   "p": 0.998
+  },
+  {
+   "w": "$138",
+   "start": 580.42,
+   "end": 581.22,
+   "p": 0.995
+  },
+  {
+   "w": ",000.",
+   "start": 581.22,
+   "end": 582.6,
+   "p": 0.997
+  },
+  {
+   "w": "The",
+   "start": 582.6,
+   "end": 583.12,
+   "p": 0.768
+  },
+  {
+   "w": "seller",
+   "start": 583.12,
+   "end": 583.4,
+   "p": 0.997
+  },
+  {
+   "w": "estimates",
+   "start": 583.4,
+   "end": 584.04,
+   "p": 0.985
+  },
+  {
+   "w": "it",
+   "start": 584.04,
+   "end": 584.26,
+   "p": 0.978
+  },
+  {
+   "w": "nets",
+   "start": 584.26,
+   "end": 584.52,
+   "p": 0.98
+  },
+  {
+   "w": "about",
+   "start": 584.52,
+   "end": 584.8,
+   "p": 0.995
+  },
+  {
+   "w": "49",
+   "start": 584.8,
+   "end": 585.38,
+   "p": 0.419
+  },
+  {
+   "w": ",000",
+   "start": 585.38,
+   "end": 585.88,
+   "p": 0.943
+  },
+  {
+   "w": "a",
+   "start": 585.88,
+   "end": 586.08,
+   "p": 0.987
+  },
+  {
+   "w": "year.",
+   "start": 586.08,
+   "end": 586.38,
+   "p": 0.999
+  },
+  {
+   "w": "So",
+   "start": 586.68,
+   "end": 586.8,
+   "p": 0.954
+  },
+  {
+   "w": "that's",
+   "start": 586.8,
+   "end": 587.1,
+   "p": 0.935
+  },
+  {
+   "w": "nearly",
+   "start": 587.1,
+   "end": 587.38,
+   "p": 0.996
+  },
+  {
+   "w": "three",
+   "start": 587.38,
+   "end": 587.8,
+   "p": 0.696
+  },
+  {
+   "w": "times",
+   "start": 587.8,
+   "end": 588.28,
+   "p": 0.979
+  },
+  {
+   "w": "earnings.",
+   "start": 588.28,
+   "end": 588.76,
+   "p": 0.993
+  },
+  {
+   "w": "Those",
+   "start": 589.3,
+   "end": 589.48,
+   "p": 0.983
+  },
+  {
+   "w": "are",
+   "start": 589.48,
+   "end": 589.7,
+   "p": 0.998
+  },
+  {
+   "w": "asking",
+   "start": 589.7,
+   "end": 590.14,
+   "p": 0.986
+  },
+  {
+   "w": "prices",
+   "start": 590.14,
+   "end": 590.64,
+   "p": 0.995
+  },
+  {
+   "w": "and",
+   "start": 590.64,
+   "end": 591.16,
+   "p": 0.921
+  },
+  {
+   "w": "seller",
+   "start": 591.16,
+   "end": 591.52,
+   "p": 0.99
+  },
+  {
+   "w": "reported",
+   "start": 591.52,
+   "end": 591.96,
+   "p": 0.8
+  },
+  {
+   "w": "numbers,",
+   "start": 591.96,
+   "end": 592.5,
+   "p": 0.997
+  },
+  {
+   "w": "not",
+   "start": 592.78,
+   "end": 593.22,
+   "p": 0.987
+  },
+  {
+   "w": "audited",
+   "start": 593.22,
+   "end": 593.8,
+   "p": 0.996
+  },
+  {
+   "w": "results.",
+   "start": 593.8,
+   "end": 594.3,
+   "p": 0.998
+  },
+  {
+   "w": "A",
+   "start": 594.8,
+   "end": 594.88,
+   "p": 0.979
+  },
+  {
+   "w": "careful",
+   "start": 594.88,
+   "end": 595.26,
+   "p": 0.994
+  },
+  {
+   "w": "buyer",
+   "start": 595.26,
+   "end": 595.62,
+   "p": 0.995
+  },
+  {
+   "w": "asks",
+   "start": 595.62,
+   "end": 596.1,
+   "p": 0.989
+  },
+  {
+   "w": "for",
+   "start": 596.1,
+   "end": 596.34,
+   "p": 0.998
+  },
+  {
+   "w": "every",
+   "start": 596.34,
+   "end": 596.76,
+   "p": 0.974
+  },
+  {
+   "w": "machine",
+   "start": 596.76,
+   "end": 597.08,
+   "p": 0.875
+  },
+  {
+   "w": "sales",
+   "start": 597.08,
+   "end": 597.6,
+   "p": 0.571
+  },
+  {
+   "w": "records",
+   "start": 597.6,
+   "end": 598.02,
+   "p": 0.974
+  },
+  {
+   "w": "before",
+   "start": 598.02,
+   "end": 598.48,
+   "p": 0.98
+  },
+  {
+   "w": "believing",
+   "start": 598.48,
+   "end": 599.0,
+   "p": 0.997
+  },
+  {
+   "w": "any",
+   "start": 599.0,
+   "end": 599.4,
+   "p": 0.997
+  },
+  {
+   "w": "of",
+   "start": 599.4,
+   "end": 599.6,
+   "p": 0.999
+  },
+  {
+   "w": "them.",
+   "start": 599.6,
+   "end": 599.84,
+   "p": 0.999
+  },
+  {
+   "w": "And",
+   "start": 600.14,
+   "end": 600.38,
+   "p": 0.979
+  },
+  {
+   "w": "none",
+   "start": 600.38,
+   "end": 600.58,
+   "p": 0.996
+  },
+  {
+   "w": "of",
+   "start": 600.58,
+   "end": 600.78,
+   "p": 0.998
+  },
+  {
+   "w": "this",
+   "start": 600.78,
+   "end": 600.98,
+   "p": 0.996
+  },
+  {
+   "w": "is",
+   "start": 600.98,
+   "end": 601.22,
+   "p": 0.994
+  },
+  {
+   "w": "new.",
+   "start": 601.22,
+   "end": 601.58,
+   "p": 0.997
+  },
+  {
+   "w": "In",
+   "start": 601.98,
+   "end": 602.08,
+   "p": 0.991
+  },
+  {
+   "w": "1998,",
+   "start": 602.08,
+   "end": 602.96,
+   "p": 0.993
+  },
+  {
+   "w": "the",
+   "start": 603.36,
+   "end": 603.5,
+   "p": 0.976
+  },
+  {
+   "w": "Federal",
+   "start": 603.5,
+   "end": 603.82,
+   "p": 0.932
+  },
+  {
+   "w": "Trade",
+   "start": 603.82,
+   "end": 604.18,
+   "p": 0.994
+  },
+  {
+   "w": "Commission",
+   "start": 604.18,
+   "end": 604.58,
+   "p": 0.99
+  },
+  {
+   "w": "and",
+   "start": 604.58,
+   "end": 604.94,
+   "p": 0.967
+  },
+  {
+   "w": "10",
+   "start": 604.94,
+   "end": 605.22,
+   "p": 0.752
+  },
+  {
+   "w": "states",
+   "start": 605.22,
+   "end": 605.7,
+   "p": 0.941
+  },
+  {
+   "w": "announced",
+   "start": 605.7,
+   "end": 606.2,
+   "p": 0.993
+  },
+  {
+   "w": "Operation",
+   "start": 606.2,
+   "end": 607.04,
+   "p": 0.618
+  },
+  {
+   "w": "Vend",
+   "start": 607.04,
+   "end": 607.38,
+   "p": 0.51
+  },
+  {
+   "w": "Up",
+   "start": 607.38,
+   "end": 607.6,
+   "p": 0.306
+  },
+  {
+   "w": "Broke.",
+   "start": 607.6,
+   "end": 608.06,
+   "p": 0.734
+  },
+  {
+   "w": "It",
+   "start": 608.32,
+   "end": 608.44,
+   "p": 0.991
+  },
+  {
+   "w": "was",
+   "start": 608.44,
+   "end": 608.58,
+   "p": 0.999
+  },
+  {
+   "w": "a",
+   "start": 608.58,
+   "end": 608.78,
+   "p": 0.995
+  },
+  {
+   "w": "sweep",
+   "start": 608.78,
+   "end": 609.02,
+   "p": 0.993
+  },
+  {
+   "w": "of",
+   "start": 609.02,
+   "end": 609.28,
+   "p": 0.992
+  },
+  {
+   "w": "40",
+   "start": 609.28,
+   "end": 609.66,
+   "p": 0.933
+  },
+  {
+   "w": "enforcement",
+   "start": 609.66,
+   "end": 610.24,
+   "p": 0.993
+  },
+  {
+   "w": "actions",
+   "start": 610.24,
+   "end": 610.8,
+   "p": 0.998
+  },
+  {
+   "w": "against",
+   "start": 610.8,
+   "end": 611.18,
+   "p": 0.588
+  },
+  {
+   "w": "companies",
+   "start": 611.18,
+   "end": 611.56,
+   "p": 0.919
+  },
+  {
+   "w": "selling",
+   "start": 611.56,
+   "end": 611.98,
+   "p": 0.996
+  },
+  {
+   "w": "vending",
+   "start": 611.98,
+   "end": 612.34,
+   "p": 0.856
+  },
+  {
+   "w": "business",
+   "start": 612.34,
+   "end": 612.84,
+   "p": 0.984
+  },
+  {
+   "w": "opportunities.",
+   "start": 612.84,
+   "end": 613.48,
+   "p": 0.991
+  },
+  {
+   "w": "The",
+   "start": 614.2,
+   "end": 614.24,
+   "p": 0.975
+  },
+  {
+   "w": "pitch",
+   "start": 614.24,
+   "end": 614.5,
+   "p": 0.989
+  },
+  {
+   "w": "back",
+   "start": 614.5,
+   "end": 614.76,
+   "p": 0.936
+  },
+  {
+   "w": "then",
+   "start": 614.76,
+   "end": 615.04,
+   "p": 0.992
+  },
+  {
+   "w": "was",
+   "start": 615.04,
+   "end": 615.34,
+   "p": 0.97
+  },
+  {
+   "w": "easy",
+   "start": 615.34,
+   "end": 615.76,
+   "p": 0.941
+  },
+  {
+   "w": "routes",
+   "start": 615.76,
+   "end": 616.12,
+   "p": 0.996
+  },
+  {
+   "w": "and",
+   "start": 616.12,
+   "end": 616.46,
+   "p": 0.983
+  },
+  {
+   "w": "big",
+   "start": 616.46,
+   "end": 616.74,
+   "p": 0.978
+  },
+  {
+   "w": "money.",
+   "start": 616.74,
+   "end": 617.12,
+   "p": 0.998
+  },
+  {
+   "w": "The",
+   "start": 617.64,
+   "end": 617.72,
+   "p": 0.983
+  },
+  {
+   "w": "FTC",
+   "start": 617.72,
+   "end": 618.2,
+   "p": 0.989
+  },
+  {
+   "w": "warned",
+   "start": 618.2,
+   "end": 618.68,
+   "p": 0.999
+  },
+  {
+   "w": "that",
+   "start": 618.68,
+   "end": 619.0,
+   "p": 0.995
+  },
+  {
+   "w": "some",
+   "start": 619.0,
+   "end": 619.3,
+   "p": 0.967
+  },
+  {
+   "w": "sellers",
+   "start": 619.3,
+   "end": 619.76,
+   "p": 0.996
+  },
+  {
+   "w": "paid",
+   "start": 619.76,
+   "end": 620.06,
+   "p": 0.986
+  },
+  {
+   "w": "fake",
+   "start": 620.06,
+   "end": 620.44,
+   "p": 0.909
+  },
+  {
+   "w": "references,",
+   "start": 620.44,
+   "end": 621.04,
+   "p": 0.984
+  },
+  {
+   "w": "people",
+   "start": 621.6,
+   "end": 621.82,
+   "p": 0.974
+  },
+  {
+   "w": "it",
+   "start": 621.82,
+   "end": 621.98,
+   "p": 0.981
+  },
+  {
+   "w": "called",
+   "start": 621.98,
+   "end": 622.28,
+   "p": 0.994
+  },
+  {
+   "w": "singers",
+   "start": 622.28,
+   "end": 622.82,
+   "p": 0.087
+  },
+  {
+   "w": "to",
+   "start": 622.82,
+   "end": 623.44,
+   "p": 0.156
+  },
+  {
+   "w": "vouch",
+   "start": 623.44,
+   "end": 623.72,
+   "p": 0.986
+  },
+  {
+   "w": "for",
+   "start": 623.72,
+   "end": 623.94,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 623.94,
+   "end": 624.08,
+   "p": 0.995
+  },
+  {
+   "w": "profits.",
+   "start": 624.08,
+   "end": 624.56,
+   "p": 0.997
+  },
+  {
+   "w": "The",
+   "start": 625.12,
+   "end": 625.24,
+   "p": 0.989
+  },
+  {
+   "w": "ads",
+   "start": 625.24,
+   "end": 625.58,
+   "p": 0.987
+  },
+  {
+   "w": "have",
+   "start": 625.58,
+   "end": 625.76,
+   "p": 0.992
+  },
+  {
+   "w": "moved",
+   "start": 625.76,
+   "end": 626.04,
+   "p": 0.999
+  },
+  {
+   "w": "from",
+   "start": 626.04,
+   "end": 626.28,
+   "p": 0.999
+  },
+  {
+   "w": "newspapers",
+   "start": 626.28,
+   "end": 626.82,
+   "p": 0.992
+  },
+  {
+   "w": "to",
+   "start": 626.82,
+   "end": 627.26,
+   "p": 0.996
+  },
+  {
+   "w": "TikTok",
+   "start": 627.26,
+   "end": 627.66,
+   "p": 0.765
+  },
+  {
+   "w": "and",
+   "start": 627.66,
+   "end": 628.3,
+   "p": 0.469
+  },
+  {
+   "w": "the",
+   "start": 628.3,
+   "end": 628.46,
+   "p": 0.998
+  },
+  {
+   "w": "math",
+   "start": 628.46,
+   "end": 628.66,
+   "p": 0.997
+  },
+  {
+   "w": "behind",
+   "start": 628.66,
+   "end": 629.02,
+   "p": 0.999
+  },
+  {
+   "w": "them",
+   "start": 629.02,
+   "end": 629.3,
+   "p": 0.997
+  },
+  {
+   "w": "is",
+   "start": 629.3,
+   "end": 629.6,
+   "p": 0.996
+  },
+  {
+   "w": "the",
+   "start": 629.6,
+   "end": 629.78,
+   "p": 0.998
+  },
+  {
+   "w": "same.",
+   "start": 629.78,
+   "end": 630.1,
+   "p": 0.999
+  },
+  {
+   "w": "Back",
+   "start": 630.66,
+   "end": 630.78,
+   "p": 0.976
+  },
+  {
+   "w": "to",
+   "start": 630.78,
+   "end": 630.98,
+   "p": 0.998
+  },
+  {
+   "w": "your",
+   "start": 630.98,
+   "end": 631.1,
+   "p": 0.99
+  },
+  {
+   "w": "$2.",
+   "start": 631.1,
+   "end": 631.46,
+   "p": 0.746
+  },
+  {
+   "w": "The",
+   "start": 631.96,
+   "end": 632.3,
+   "p": 0.9
+  },
+  {
+   "w": "supplier",
+   "start": 632.3,
+   "end": 632.74,
+   "p": 0.99
+  },
+  {
+   "w": "takes",
+   "start": 632.74,
+   "end": 633.12,
+   "p": 0.997
+  },
+  {
+   "w": "the",
+   "start": 633.12,
+   "end": 633.34,
+   "p": 0.996
+  },
+  {
+   "w": "biggest",
+   "start": 633.34,
+   "end": 633.6,
+   "p": 0.998
+  },
+  {
+   "w": "slice.",
+   "start": 633.6,
+   "end": 634.06,
+   "p": 0.998
+  },
+  {
+   "w": "The",
+   "start": 634.52,
+   "end": 634.72,
+   "p": 0.996
+  },
+  {
+   "w": "building",
+   "start": 634.72,
+   "end": 635.06,
+   "p": 0.996
+  },
+  {
+   "w": "takes",
+   "start": 635.06,
+   "end": 635.46,
+   "p": 0.998
+  },
+  {
+   "w": "its",
+   "start": 635.46,
+   "end": 635.68,
+   "p": 0.974
+  },
+  {
+   "w": "cut",
+   "start": 635.68,
+   "end": 635.94,
+   "p": 0.993
+  },
+  {
+   "w": "and",
+   "start": 635.94,
+   "end": 636.48,
+   "p": 0.647
+  },
+  {
+   "w": "the",
+   "start": 636.48,
+   "end": 636.66,
+   "p": 0.999
+  },
+  {
+   "w": "best",
+   "start": 636.66,
+   "end": 636.88,
+   "p": 0.998
+  },
+  {
+   "w": "buildings",
+   "start": 636.88,
+   "end": 637.32,
+   "p": 0.994
+  },
+  {
+   "w": "take",
+   "start": 637.32,
+   "end": 637.68,
+   "p": 0.989
+  },
+  {
+   "w": "most",
+   "start": 637.68,
+   "end": 637.94,
+   "p": 0.998
+  },
+  {
+   "w": "of",
+   "start": 637.94,
+   "end": 638.16,
+   "p": 0.992
+  },
+  {
+   "w": "it.",
+   "start": 638.16,
+   "end": 638.3,
+   "p": 0.997
+  },
+  {
+   "w": "The",
+   "start": 638.3,
+   "end": 638.84,
+   "p": 0.959
+  },
+  {
+   "w": "payment",
+   "start": 638.84,
+   "end": 639.12,
+   "p": 0.99
+  },
+  {
+   "w": "companies",
+   "start": 639.12,
+   "end": 639.56,
+   "p": 0.994
+  },
+  {
+   "w": "take",
+   "start": 639.56,
+   "end": 639.84,
+   "p": 0.989
+  },
+  {
+   "w": "a",
+   "start": 639.84,
+   "end": 640.0,
+   "p": 0.996
+  },
+  {
+   "w": "little",
+   "start": 640.0,
+   "end": 640.22,
+   "p": 0.999
+  },
+  {
+   "w": "from",
+   "start": 640.22,
+   "end": 640.48,
+   "p": 0.996
+  },
+  {
+   "w": "every",
+   "start": 640.48,
+   "end": 640.88,
+   "p": 0.996
+  },
+  {
+   "w": "tap",
+   "start": 640.88,
+   "end": 641.24,
+   "p": 0.984
+  },
+  {
+   "w": "and",
+   "start": 641.24,
+   "end": 641.82,
+   "p": 0.395
+  },
+  {
+   "w": "the",
+   "start": 641.82,
+   "end": 642.02,
+   "p": 0.994
+  },
+  {
+   "w": "operator",
+   "start": 642.02,
+   "end": 642.44,
+   "p": 0.995
+  },
+  {
+   "w": "keeps",
+   "start": 642.44,
+   "end": 642.84,
+   "p": 0.989
+  },
+  {
+   "w": "what's",
+   "start": 642.84,
+   "end": 643.16,
+   "p": 0.983
+  },
+  {
+   "w": "left",
+   "start": 643.16,
+   "end": 643.46,
+   "p": 0.999
+  },
+  {
+   "w": "if",
+   "start": 643.46,
+   "end": 644.0,
+   "p": 0.43
+  },
+  {
+   "w": "the",
+   "start": 644.0,
+   "end": 644.18,
+   "p": 0.996
+  },
+  {
+   "w": "location",
+   "start": 644.18,
+   "end": 644.58,
+   "p": 0.997
+  },
+  {
+   "w": "is",
+   "start": 644.58,
+   "end": 644.8,
+   "p": 0.998
+  },
+  {
+   "w": "good",
+   "start": 644.8,
+   "end": 645.1,
+   "p": 0.999
+  },
+  {
+   "w": "and",
+   "start": 645.1,
+   "end": 645.52,
+   "p": 0.969
+  },
+  {
+   "w": "nothing",
+   "start": 645.52,
+   "end": 645.8,
+   "p": 0.997
+  },
+  {
+   "w": "breaks.",
+   "start": 645.8,
+   "end": 646.28,
+   "p": 0.996
+  },
+  {
+   "w": "The",
+   "start": 646.92,
+   "end": 646.98,
+   "p": 0.987
+  },
+  {
+   "w": "people",
+   "start": 646.98,
+   "end": 647.28,
+   "p": 0.998
+  },
+  {
+   "w": "who",
+   "start": 647.28,
+   "end": 647.54,
+   "p": 0.995
+  },
+  {
+   "w": "win",
+   "start": 647.54,
+   "end": 647.78,
+   "p": 0.984
+  },
+  {
+   "w": "in",
+   "start": 647.78,
+   "end": 648.1,
+   "p": 0.928
+  },
+  {
+   "w": "vending",
+   "start": 648.1,
+   "end": 648.38,
+   "p": 0.935
+  },
+  {
+   "w": "own",
+   "start": 648.38,
+   "end": 648.8,
+   "p": 0.836
+  },
+  {
+   "w": "the",
+   "start": 648.8,
+   "end": 649.0,
+   "p": 0.998
+  },
+  {
+   "w": "location,",
+   "start": 649.0,
+   "end": 649.52,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 649.96,
+   "end": 650.04,
+   "p": 0.989
+  },
+  {
+   "w": "scale",
+   "start": 650.04,
+   "end": 650.46,
+   "p": 0.999
+  },
+  {
+   "w": "or",
+   "start": 650.46,
+   "end": 651.02,
+   "p": 0.622
+  },
+  {
+   "w": "the",
+   "start": 651.02,
+   "end": 651.32,
+   "p": 0.992
+  },
+  {
+   "w": "technology.",
+   "start": 651.32,
+   "end": 651.88,
+   "p": 0.999
+  },
+  {
+   "w": "The",
+   "start": 652.48,
+   "end": 652.6,
+   "p": 0.994
+  },
+  {
+   "w": "machine",
+   "start": 652.6,
+   "end": 652.88,
+   "p": 0.983
+  },
+  {
+   "w": "itself",
+   "start": 652.88,
+   "end": 653.4,
+   "p": 0.994
+  },
+  {
+   "w": "is",
+   "start": 653.4,
+   "end": 653.74,
+   "p": 0.997
+  },
+  {
+   "w": "just",
+   "start": 653.74,
+   "end": 654.08,
+   "p": 0.998
+  },
+  {
+   "w": "the",
+   "start": 654.08,
+   "end": 654.28,
+   "p": 0.985
+  },
+  {
+   "w": "box",
+   "start": 654.28,
+   "end": 654.56,
+   "p": 0.998
+  },
+  {
+   "w": "in",
+   "start": 654.56,
+   "end": 654.78,
+   "p": 0.999
+  },
+  {
+   "w": "the",
+   "start": 654.78,
+   "end": 654.92,
+   "p": 0.999
+  },
+  {
+   "w": "middle.",
+   "start": 654.92,
+   "end": 655.16,
+   "p": 1.0
+  },
+  {
+   "w": "So",
+   "start": 655.62,
+   "end": 655.84,
+   "p": 0.985
+  },
+  {
+   "w": "if",
+   "start": 655.84,
+   "end": 656.2,
+   "p": 0.535
+  },
+  {
+   "w": "you're",
+   "start": 656.2,
+   "end": 656.42,
+   "p": 0.971
+  },
+  {
+   "w": "ever",
+   "start": 656.42,
+   "end": 656.66,
+   "p": 0.995
+  },
+  {
+   "w": "looking",
+   "start": 656.66,
+   "end": 656.94,
+   "p": 0.999
+  },
+  {
+   "w": "at",
+   "start": 656.94,
+   "end": 657.12,
+   "p": 0.996
+  },
+  {
+   "w": "a",
+   "start": 657.12,
+   "end": 657.3,
+   "p": 0.997
+  },
+  {
+   "w": "route",
+   "start": 657.3,
+   "end": 657.42,
+   "p": 0.991
+  },
+  {
+   "w": "for",
+   "start": 657.42,
+   "end": 657.68,
+   "p": 0.998
+  },
+  {
+   "w": "sale,",
+   "start": 657.68,
+   "end": 657.98,
+   "p": 0.999
+  },
+  {
+   "w": "ask",
+   "start": 658.26,
+   "end": 658.66,
+   "p": 0.993
+  },
+  {
+   "w": "which",
+   "start": 658.66,
+   "end": 658.96,
+   "p": 0.985
+  },
+  {
+   "w": "of",
+   "start": 658.96,
+   "end": 659.12,
+   "p": 0.997
+  },
+  {
+   "w": "those",
+   "start": 659.12,
+   "end": 659.34,
+   "p": 0.989
+  },
+  {
+   "w": "three",
+   "start": 659.34,
+   "end": 659.7,
+   "p": 0.926
+  },
+  {
+   "w": "it",
+   "start": 659.7,
+   "end": 660.0,
+   "p": 0.989
+  },
+  {
+   "w": "actually",
+   "start": 660.0,
+   "end": 660.58,
+   "p": 0.997
+  },
+  {
+   "w": "owns.",
+   "start": 660.58,
+   "end": 661.04,
+   "p": 0.995
+  },
+  {
+   "w": "Would",
+   "start": 661.56,
+   "end": 661.74,
+   "p": 0.991
+  },
+  {
+   "w": "you",
+   "start": 661.74,
+   "end": 661.88,
+   "p": 0.999
+  },
+  {
+   "w": "still",
+   "start": 661.88,
+   "end": 662.1,
+   "p": 0.997
+  },
+  {
+   "w": "buy",
+   "start": 662.1,
+   "end": 662.4,
+   "p": 0.999
+  },
+  {
+   "w": "one",
+   "start": 662.4,
+   "end": 662.66,
+   "p": 0.999
+  },
+  {
+   "w": "after",
+   "start": 662.66,
+   "end": 662.94,
+   "p": 0.996
+  },
+  {
+   "w": "seeing",
+   "start": 662.94,
+   "end": 663.26,
+   "p": 0.999
+  },
+  {
+   "w": "these",
+   "start": 663.26,
+   "end": 663.54,
+   "p": 0.997
+  },
+  {
+   "w": "numbers?",
+   "start": 663.54,
+   "end": 663.94,
+   "p": 0.999
+  },
+  {
+   "w": "And",
+   "start": 664.34,
+   "end": 664.54,
+   "p": 0.945
+  },
+  {
+   "w": "if",
+   "start": 664.54,
+   "end": 664.7,
+   "p": 0.988
+  },
+  {
+   "w": "you",
+   "start": 664.7,
+   "end": 664.86,
+   "p": 0.997
+  },
+  {
+   "w": "own",
+   "start": 664.86,
+   "end": 665.06,
+   "p": 0.998
+  },
+  {
+   "w": "a",
+   "start": 665.06,
+   "end": 665.2,
+   "p": 0.998
+  },
+  {
+   "w": "route,",
+   "start": 665.2,
+   "end": 665.42,
+   "p": 0.996
+  },
+  {
+   "w": "tell",
+   "start": 665.42,
+   "end": 665.86,
+   "p": 0.067
+  },
+  {
+   "w": "me",
+   "start": 665.86,
+   "end": 666.02,
+   "p": 0.996
+  },
+  {
+   "w": "what",
+   "start": 666.02,
+   "end": 666.2,
+   "p": 0.974
+  },
+  {
+   "w": "your",
+   "start": 666.2,
+   "end": 666.5,
+   "p": 0.958
+  },
+  {
+   "w": "real",
+   "start": 666.5,
+   "end": 666.76,
+   "p": 0.982
+  },
+  {
+   "w": "numbers",
+   "start": 666.76,
+   "end": 667.12,
+   "p": 0.971
+  },
+  {
+   "w": "look",
+   "start": 667.12,
+   "end": 667.32,
+   "p": 0.978
+  },
+  {
+   "w": "like",
+   "start": 667.32,
+   "end": 667.56,
+   "p": 0.996
+  },
+  {
+   "w": "in",
+   "start": 667.56,
+   "end": 667.74,
+   "p": 0.992
+  },
+  {
+   "w": "the",
+   "start": 667.74,
+   "end": 667.88,
+   "p": 0.993
+  },
+  {
+   "w": "comments.",
+   "start": 667.88,
+   "end": 668.32,
+   "p": 0.995
+  },
+  {
+   "w": "Next",
+   "start": 669.02,
+   "end": 669.18,
+   "p": 0.969
+  },
+  {
+   "w": "time,",
+   "start": 669.18,
+   "end": 669.5,
+   "p": 0.982
+  },
+  {
+   "w": "the",
+   "start": 669.78,
+   "end": 669.82,
+   "p": 0.891
+  },
+  {
+   "w": "car",
+   "start": 669.82,
+   "end": 670.04,
+   "p": 0.859
+  },
+  {
+   "w": "wash.",
+   "start": 670.04,
+   "end": 670.42,
+   "p": 0.844
+  },
+  {
+   "w": "What",
+   "start": 670.98,
+   "end": 671.06,
+   "p": 0.967
+  },
+  {
+   "w": "one",
+   "start": 671.06,
+   "end": 671.4,
+   "p": 0.967
+  },
+  {
+   "w": "wash",
+   "start": 671.4,
+   "end": 671.74,
+   "p": 0.99
+  },
+  {
+   "w": "really",
+   "start": 671.74,
+   "end": 672.14,
+   "p": 0.989
+  },
+  {
+   "w": "costs,",
+   "start": 672.14,
+   "end": 672.72,
+   "p": 0.985
+  },
+  {
+   "w": "who",
+   "start": 673.12,
+   "end": 673.24,
+   "p": 0.991
+  },
+  {
+   "w": "gets",
+   "start": 673.24,
+   "end": 673.46,
+   "p": 0.989
+  },
+  {
+   "w": "paid",
+   "start": 673.46,
+   "end": 673.86,
+   "p": 0.996
+  },
+  {
+   "w": "and",
+   "start": 673.86,
+   "end": 674.34,
+   "p": 0.333
+  },
+  {
+   "w": "why",
+   "start": 674.34,
+   "end": 674.68,
+   "p": 0.995
+  },
+  {
+   "w": "big",
+   "start": 674.68,
+   "end": 674.96,
+   "p": 0.996
+  },
+  {
+   "w": "investors",
+   "start": 674.96,
+   "end": 675.5,
+   "p": 0.994
+  },
+  {
+   "w": "keep",
+   "start": 675.5,
+   "end": 675.92,
+   "p": 0.996
+  },
+  {
+   "w": "buying",
+   "start": 675.92,
+   "end": 676.26,
+   "p": 0.998
+  },
+  {
+   "w": "them.",
+   "start": 676.26,
+   "end": 676.58,
+   "p": 0.994
+  },
+  {
+   "w": "Subscribe",
+   "start": 677.06,
+   "end": 677.46,
+   "p": 0.985
+  },
+  {
+   "w": "so",
+   "start": 677.46,
+   "end": 677.84,
+   "p": 0.713
+  },
+  {
+   "w": "you",
+   "start": 677.84,
+   "end": 677.96,
+   "p": 0.994
+  },
+  {
+   "w": "don't",
+   "start": 677.96,
+   "end": 678.24,
+   "p": 0.991
+  },
+  {
+   "w": "miss",
+   "start": 678.24,
+   "end": 678.36,
+   "p": 0.998
+  },
+  {
+   "w": "it.",
+   "start": 678.36,
+   "end": 678.56,
+   "p": 0.996
+  }
+ ],
+ "note": "Shifted from voiceover.mp3 timings; removed the read-out part headings at 259.0-263.0 and 532.4-536.6."
+}
