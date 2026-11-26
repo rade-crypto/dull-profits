@@ -103,6 +103,9 @@ def resolve(ep: Path):
             return pcs[-1][0], pcs[-1][1] + L
         return None
     for i, s in enumerate(shots):
+        if s.get("kind") == "D" and not s.get("bg") and i:
+            s["bg"], s["soft"], s["dim"] = "prev", 14.0, 0.42
+    for i, s in enumerate(shots):
         prev = shots[i - 1] if i else None
         b = s.get("bg")
         if b and prev:
@@ -119,6 +122,7 @@ def resolve(ep: Path):
     for i, s in enumerate(shots):
         nxt = shots[i + 1] if i + 1 < len(shots) else None
         if s.get("scene"):
+            s["scene"]["hasBg"] = bool(s.get("bg") or s.get("clip") or s.get("clips"))
             s["scene"]["exit"] = not (nxt and nxt.get("carry"))
             s["scene"]["kind"] = s["kind"]
             if s.get("carry"):

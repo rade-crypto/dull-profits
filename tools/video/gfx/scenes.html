@@ -248,7 +248,7 @@ const SCENES = {
     });
     if (p.costs) { // operating-cost chips that bite into the owner's slice
       const g = geo[geo.length - 1];
-      p.costs.forEach((c, i) => anim(el(`<div class="abs shadow" style="left:${g.x}px;top:${Y + H + 36 + i * 62}px;color:var(--ink);font:500 46px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
+      p.costs.forEach((c, i) => anim(el(`<div class="abs shadow" style="left:${g.x}px;top:${Y + H + (p.costsDy ?? 36) + i * (p.costsGap ?? 62)}px;color:var(--ink);font:500 46px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
     }
     if (p.tally) { // Owner's tally, top right, counts down as slices leave
       const box = el(`<div class="abs" style="right:116px;top:70px;text-align:right"><div class="kicker">${p.tally.label}</div><div class="h shadow" style="font-size:150px">$2.00</div></div>`);
@@ -352,8 +352,8 @@ const SCENES = {
   },
 
   // Deal File: a retyped document excerpt on a dark desk, highlighter sweeps on cue.
-  doc(p) {
-    el(`<svg class="abs" width="1920" height="1080" style="left:0;top:0"><defs><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0"/></filter></defs><rect width="1920" height="1080" fill="#0A111D"/><rect width="1920" height="1080" filter="url(#n)"/></svg>`);
+  doc(p, sc) {
+    if (!sc || !sc.hasBg) el(`<svg class="abs" width="1920" height="1080" style="left:0;top:0"><defs><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0"/></filter></defs><rect width="1920" height="1080" fill="#0A111D"/><rect width="1920" height="1080" filter="url(#n)"/></svg>`);
     const paper = el(`<div class="abs paper" style="left:${p.x ?? 250}px;top:${p.y ?? 150}px;width:${p.w ?? 1420}px;padding:60px 80px;transform:rotate(${p.rot ?? -1.2}deg)">
       <div style="font:700 46px 'Libre Franklin';color:#111827;margin-bottom:30px">${p.header}</div>
       <div style="font-size:${Math.max(48, p.size || 50)}px;line-height:1.55">${p.html}</div></div>`);
@@ -506,8 +506,8 @@ const SCENES = {
 
   // End screen: the wordmark only. YouTube places its own end-screen video tiles on top.
   end(p) {
-    el(`<div class="abs" style="inset:0;background:var(--bg)"></div>`);
-    const w = el(`<div class="abs" style="left:0;width:1920px;top:${p.y ?? 300}px;text-align:center"><div style="display:inline-block">
+    if (!p.see) el(`<div class="abs" style="inset:0;background:var(--bg)"></div>`);   // see: the footage behind stays visible
+    const w = el(`<div class="abs ${p.see ? 'shadow' : ''}" style="left:0;width:1920px;top:${p.y ?? 300}px;text-align:center"><div style="display:inline-block">
       <div class="h" style="font-size:150px;letter-spacing:0">Net to Owner</div>
       <div style="height:5px;background:#FFFFFF;margin-top:22px"></div><div style="height:5px;background:#FFFFFF;margin-top:9px"></div></div></div>`);
     anim(w, { anim: 'fade', at: 0, dur: 0.8 });
@@ -631,7 +631,7 @@ Object.assign(SCENES, {
       anim(tw, { anim: 'fade', at: p.total.cue ?? at }); anim(tw.querySelector('.hl'), { anim: 'hl', at: cue(p.total.cue ?? at) + 0.3, dur: 0.7 });
     }
     if (p.note) anim(el(`<div style="font:500 46px ${F};margin-top:26px;color:#111827">${p.note.text}</div>`, r), { anim: 'fade', at: p.note.cue ?? at });
-    if (p.source) srcLine(p.source, at, 940 - 0, 140);
+    if (p.source) srcLine(p.source, at, 850, 140);
   },
   // T12 — comparison bars, wide, value in serif at the bar's end.
   bars(p) {
@@ -668,7 +668,7 @@ Object.assign(SCENES, {
       const w = blk(`<div class="h" style="font-size:120px;white-space:nowrap">${it.value}</div><div style="font:500 48px ${F};margin-top:12px">${it.sub}</div>`, 1080, j ? 560 : 220);
       anim(w, { anim: 'up', at: it.cue });
     });
-    if (p.source) srcLine(p.source, p.a.cue, 900, 1080);
+    if (p.source) srcLine(p.source, p.a.cue, 850, 1080);
   },
   // T14 / T35 — two columns: then vs now, cash vs card.
   versus(p) {
@@ -677,7 +677,7 @@ Object.assign(SCENES, {
       w.className += ' shadow'; anim(w, { anim: 'up', at: it.cue });
     });
     anim(blk('', 958, (p.y ?? 290) - 20, 'width:4px;height:560px;background:rgba(255,255,255,.6)'), { anim: 'growY', at: p.a.cue, dur: 0.6, origin: 'center top' });
-    if (p.source) srcLine(p.source, p.b.cue, 900, 140);
+    if (p.source) srcLine(p.source, p.b.cue, 850, 140);
   },
   // T15 — the pitch: each line replaces the last and gets struck through in highlighter yellow.
   strike(p) {
@@ -709,7 +709,7 @@ Object.assign(SCENES, {
       const b = el(`<div>${it.value ? `<div style="font:600 54px ${F}">${it.label}</div>` : `<div class="h" style="font-size:${p.labelSize || 120}px;white-space:nowrap">${it.label}</div>`}${it.value ? `<div class="h" style="font-size:${p.size || 150}px;margin-top:24px;white-space:nowrap">${it.value}</div>` : ''}${it.sub ? `<div style="font:500 48px ${F};margin-top:20px">${it.sub}</div>` : ''}</div>`, w);
       anim(r, { anim: 'grow', at: it.cue, dur: 0.5 }); anim(b, { anim: 'up', at: cue(it.cue) + 0.12 });
     });
-    if (p.source) srcLine(p.source, firstCue(p), 900);
+    if (p.source) srcLine(p.source, firstCue(p), 850);
   },
   // T18 — dense vs scattered: 100 machines in one area against 10 across a city.
   density(p) {
@@ -740,7 +740,7 @@ Object.assign(SCENES, {
     anim(blk('', 140 + 1420 - 18, 260 + 110 - 18, 'width:36px;height:36px;border-radius:50%;background:#fff'), { anim: 'pop', at: cue(p.b.cue) + 1.3 });
     anim(blk(`<div class="h shadow" style="font-size:120px">${p.a.value}</div><div class="shadow" style="font:500 48px ${F}">${p.a.sub}</div>`, 300, 590), { anim: 'up', at: p.a.cue });
     anim(blk(`<div class="h shadow" style="font-size:120px">${p.b.value}</div><div class="shadow" style="font:500 48px ${F}">${p.b.sub}</div>`, 1300, 400, 'text-align:center'), { anim: 'up', at: cue(p.b.cue) + 1.2 });
-    if (p.source) srcLine(p.source, p.b.cue, 900);
+    if (p.source) srcLine(p.source, p.b.cue, 850);
   },
   // T21 — the equation, built term by term as it's said.
   equation(p) {
@@ -750,7 +750,7 @@ Object.assign(SCENES, {
       if (i) anim(el(`<div class="h" style="font-size:140px;opacity:.85">${p.ops[i - 1]}</div>`, w), { anim: 'fade', at: t.cue });
       anim(el(`<div style="text-align:center"><div class="h" style="font-size:${p.size || 170}px;white-space:nowrap;${t.hl ? 'color:var(--hl)' : ''}">${t.value}</div><div style="font:500 48px ${F};margin-top:20px">${t.sub || '&nbsp;'}</div></div>`, w), { anim: 'up', at: t.cue });
     });
-    if (p.source) srcLine(p.source, p.terms[0].cue, 900);
+    if (p.source) srcLine(p.source, p.terms[0].cue, 850);
   },
   // T22 — ring chart with the number counting in the middle.
   ring(p) {
@@ -796,17 +796,28 @@ const H2M = h => `matrix3d(${h[0]},${h[3]},0,${h[6]},${h[1]},${h[4]},0,${h[7]},0
 Object.assign(SCENES, {
   // T15b — a kicker and lines that stack, each on its cue (claims, names). No strikes, no judgment.
   stack(p) {
-    const x = p.x ?? 116, y = p.y ?? 150, size = p.size || 110;
-    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 56px ${F}">${p.kicker}</div>`, x, y), { anim: 'up', at: p.kickerAt ?? 0, dist: 32 });
+    const x = p.x ?? 116, y = p.y ?? 150, size = p.size || 110, col = p.color || '#fff', sh = col === '#fff' ? 'shadow' : '';
+    const R = p.align === 'right' ? 'transform:translateX(-100%);text-align:right' : '';   // right: x is the right edge
+    if (p.kicker) anim(blk(`<div class="${sh}" style="font:600 56px ${F};color:${col};white-space:nowrap">${p.kicker}</div>`, x, y, R), { anim: 'up', at: p.kickerAt ?? 0, dist: 32 });
     p.lines.forEach((l, i) => {
-      const b = blk(`<div class="h shadow" style="font-size:${l.size || size}px;white-space:nowrap;line-height:1.12">${l.text}</div>`, x, y + (p.first ?? 80) + i * (p.gap ?? 140));
+      const b = blk(`<div class="h ${sh}" style="font-size:${l.size || size}px;white-space:nowrap;line-height:1.12;color:${col}">${l.text}</div>`, x, y + (p.first ?? 80) + i * (p.gap ?? 140), R);
       if (p.mask) maskRise(b.firstElementChild, cue(l.at)); else anim(b, { anim: 'up', at: l.at });
     });
   },
   // T33 + T4 — the US map fills with small operators, zooms through to one suburb, and hands over to the playing aerial
   // underneath, where pins drop on houses and the route loop draws, tracked to the ground (track = per-frame homographies).
   usmap(p, sc) {
-    const D = sc.dur || 10, ch = p.chicago, zoomAt = cue(p.zoomAt), rev = cue(p.revealAt);
+    const D = sc.dur || 10;
+    if (p.states) usmapMap(p, D);
+    if (p.value) { const col = p.color || '#fff', w = blk('', 116, p.y ?? 56, `color:${col}`); if (col === '#fff') w.className += ' shadow';   // a route's price, in the sky
+      anim(el(`<div class="h" style="font-size:${p.size || 120}px;white-space:nowrap">${p.value}</div>`, w), { anim: 'up', at: p.valueAt });
+      if (p.label) anim(el(`<div style="font:600 ${p.labelSize || 56}px ${F};margin-top:12px">${p.label}</div>`, w), { anim: 'up', dist: 32, at: p.labelAt ?? 0 }); }
+    // tracked layer on the footage
+    usmapRoute(p, D);
+  },
+});
+function usmapMap(p, D) {
+    const ch = p.chicago, zoomAt = cue(p.zoomAt), rev = cue(p.revealAt);
     const map = el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;background:var(--bg);transform-origin:${ch[0]}px ${ch[1]}px"></div>`, ROOT);
     ROOT.insertBefore(map, ROOT.firstChild);
     const svg = el(`<svg class="abs" style="left:0;top:0;overflow:visible" width="1920" height="1080"><g class="st">${p.states.map(d => `<path d="${d}" fill="#13213A" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2" stroke-linejoin="round"/>`).join('')}</g><g class="dots"></g></svg>`, map);
@@ -823,7 +834,8 @@ Object.assign(SCENES, {
       const z = E.in(clamp((t - zoomAt) / (rev + 0.35 - zoomAt)));
       map.style.transform = `scale(${(1 + 0.04 * clamp(t / Math.max(1, zoomAt)) + 3 * z).toFixed(4)})`;
       map.style.opacity = 1 - E.outCubic(clamp((t - rev) / 0.35)); } });
-    // tracked layer on the footage
+}
+function usmapRoute(p, D) {
     const host = el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:0 0"></div>`, GLASS);
     const tr = p.track;
     if (tr) anim(host, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
@@ -848,7 +860,8 @@ Object.assign(SCENES, {
       anim(pin, { anim: 'pop', at, dur: 0.35, from: 0.6 });
       const ring = blk(`<div style="width:48px;height:48px;border-radius:50%;border:4px solid #FFE14D;box-sizing:border-box;opacity:0"></div>`, q[0] - 24, q[1] - 24); host.appendChild(ring);
       anim(ring, { anim: 'fn', at, dur: 0.9, ease: false, fn: pp => { ring.style.opacity = pp > 0 && pp < 1 ? 0.8 * (1 - E.outCubic(pp)) : 0; ring.style.transform = `scale(${1 + 1.4 * E.outCubic(pp)})`; } }); });
-  },
+}
+Object.assign(SCENES, {
   // T26 — machine line drawings that draw themselves, each with its name and price (prices count up on the word).
   machines(p) {
     const base = p.base ?? 600, X = p.xs || [116, 660, 1220];
