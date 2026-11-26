@@ -68,7 +68,12 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   Samples 10–13 = **VoxCPM2** (openbmb/VoxCPM2, Apache-2.0, 2B, 48 kHz, voice design from a text description in
   parentheses before the line; `/opt/tts/vox-env`, CPU ~3x slower than real time). Owner: 10–13 "not good, all ai".
   Samples 14–16 = VoxCPM2 **cloned from real volunteer voices** in `kyutai/tts-voices/voice-donations/` (CC0, donated
-  for AI voice use): 14 = donor `Youf`, 15 = `Midl`, 16 = `Jere` (deep, fluent English males). Awaiting the owner's pick. Keep Chatterbox's built-in Perth watermark on (needs `setuptools<81`).
+  for AI voice use): 14 = donor `Youf`, 15 = `Midl`, 16 = `Jere` (deep, fluent English males). Owner: "they're all bad".
+  Owner's verdict on all 16: robotic/flat, accent off, audio sounds fake, wrong energy. Wants it to "just sound good"
+  (calm explainer or conversational, either is fine). So now: LIVELY references (high pitch variation), native-sounding
+  English, natural delivery, and a YouTube voice chain (EQ, compression, de-ess, −14 LUFS).
+  Samples 17–19 = **Microsoft VibeVoice-1.5B** (MIT, `/opt/tts/vv-env`, fast on CPU) with lively donors Youf/Lake/Self;
+  20 = VoxCPM2 controllable cloning (Lake) + "(engaging, confident explainer…)" style. Awaiting the owner's verdict. Keep Chatterbox's built-in Perth watermark on (needs `setuptools<81`).
   Tools: `tools/voiceover/` (Kokoro-82M and Phonon 31M, both Apache-2.0, CPU). Run `setup.sh` first, since a fresh container has no venv.
   `render.py` makes the VO plus captions.srt, chapters.txt and timings.json. `qa_asr.py` proofreads it with Whisper.
   Don't use Phonon 40M models (non-commercial), Coqui XTTS, F5-TTS, Fish, or ElevenLabs' free tier (no commercial rights).
