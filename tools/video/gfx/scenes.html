@@ -1,6 +1,8 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
 <style>
+@font-face{font-family:'Source Serif 4';src:url(fonts/SourceSerif4-latin.woff2) format('woff2');font-weight:200 900}
+.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-1px}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1920px;height:1080px;background:transparent;overflow:hidden}
 body{color:var(--ink);font-family:Inter,sans-serif;font-variant-numeric:tabular-nums;position:relative;
@@ -16,7 +18,7 @@ body{color:var(--ink);font-family:Inter,sans-serif;font-variant-numeric:tabular-
 .src b{color:var(--ink2);font-weight:700}
 .shadow{text-shadow:0 4px 30px rgba(0,0,0,.6)}
 .card{background:var(--panel);border-radius:22px;padding:40px 48px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.paper{background:#EDE9E0;color:#22252B;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'DejaVu Serif',Georgia,serif}
+.paper{background:#EDE9E0;color:#22252B;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'Source Serif 4',Georgia,serif;font-weight:400}
 .hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:4px}
 </style></head>
 <body><div id="stage"></div>
@@ -135,7 +137,7 @@ const SCENES = {
   // Quote card: big quoted phrase, optional attribution and strike-through.
   quote(p) {
     dim(p.at ?? 0, p.dim ?? 0.6);
-    const q = el(`<div class="abs" style="left:116px;top:${p.y ?? 330}px;max-width:1690px"><div class="h shadow" style="font-size:${p.size || 150}px;letter-spacing:-3px">${p.text}</div></div>`);
+    const q = el(`<div class="abs" style="left:116px;top:${p.y ?? 330}px;max-width:1690px"><div class="serif shadow" style="font-size:${p.size || 150}px;line-height:1.08">${p.text}</div></div>`);
     anim(q, { anim: 'up', at: p.at });
     if (p.by) anim(el(`<div class="abs sub shadow" style="left:122px;top:${(p.y ?? 330) + q.getBoundingClientRect().height + 28}px;max-width:1680px">${p.by}</div>`), { anim: 'fade', at: p.byAt ?? p.at });
     if (p.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${(p.y ?? 330) + (p.size || 150) * 0.52}px;width:${q.firstElementChild.getBoundingClientRect().width + 30}px;height:14px;background:var(--hl);border-radius:7px"></div>`), { anim: 'grow', at: p.strikeAt, dur: 0.5 });
@@ -375,7 +377,7 @@ const SCENES = {
     dim(0, p.dim ?? 0.62);
     let y = p.y ?? 220;
     p.lines.forEach(l => {
-      const q = el(`<div class="abs h shadow" style="left:116px;top:${y}px;font-size:${p.size || 120}px;letter-spacing:-3px;white-space:nowrap">${l.text}</div>`);
+      const q = el(`<div class="abs serif shadow" style="left:116px;top:${y}px;font-size:${p.size || 120}px;line-height:1.08;white-space:nowrap">${l.text}</div>`);
       anim(q, { anim: 'up', at: l.at });
       if (l.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${y + (p.size || 120) * 0.5}px;width:${q.getBoundingClientRect().width + 30}px;height:12px;background:var(--hl);border-radius:6px"></div>`), { anim: 'grow', at: l.strikeAt, dur: 0.45 });
       y += (p.size || 120) * 1.25;

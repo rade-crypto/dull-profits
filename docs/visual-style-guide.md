@@ -78,6 +78,9 @@ are deliberately neutral and highlight colors. Always label slices with text as 
 **Example frames** at real 1920×1080 size: `docs/visual-examples/` (sources in `docs/visual-examples/src`).
 
 ## Type
+- **Two fonts (Nov 26, 2026):** **Inter / Inter Display** for numbers, labels and charts (clearest on a TV, tabular figures);
+  **Source Serif 4** (the logo's font) for quotes, the "pitch" lines and the Deal File documents. Same pairing as financial
+  papers: serif for words with weight, sans for data. All on-screen text is white (#F2EFE8); no grey text.
 - **Inter** (Google Fonts, free for commercial use) with **tabular numbers** turned on, so counters don't jiggle.
   Use IBM Plex Mono for SOURCE tags.
 - On a 1920×1080 canvas: key numbers **120–200 px**, labels **48–56 px**, nothing below **36 px**.
