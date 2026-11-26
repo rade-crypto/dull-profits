@@ -794,6 +794,17 @@ Object.assign(SCENES, {
 // ================================================================================================
 const H2M = h => `matrix3d(${h[0]},${h[3]},0,${h[6]},${h[1]},${h[4]},0,${h[7]},0,0,1,0,${h[2]},${h[5]},0,${h[8]})`;
 Object.assign(SCENES, {
+  // T15c — claims shown the way YouTube channels do it: one at a time, big bold sans, the hype words in yellow,
+  // each rolling out as the next one is said.
+  claim(p) {
+    const x = p.x ?? 116, y = p.y ?? 300, size = p.size || 110, R = p.align === 'right';
+    p.items.forEach((it, i) => {
+      const nxt = p.items[i + 1], out = nxt ? { out: cue(nxt.at) - 0.12, outDur: 0.3 } : {};
+      const w = blk(`<div class="shadow" style="font:800 ${size}px ${F};line-height:1.04;letter-spacing:-1.5px;white-space:nowrap;${R ? 'text-align:right' : ''}">${it.html.replace(/\[([^\]]+)\]/g, '<span style="color:#FFE14D">$1</span>')}</div>`,
+        x, y, R ? 'transform:translateX(-100%)' : '');
+      anim(w, Object.assign({ anim: 'up', at: it.at, dist: 40 }, out));
+    });
+  },
   // T15b — a kicker and lines that stack, each on its cue (claims, names). No strikes, no judgment.
   stack(p) {
     const x = p.x ?? 116, y = p.y ?? 150, size = p.size || 110, col = p.color || '#fff', sh = col === '#fff' ? 'shadow' : '';

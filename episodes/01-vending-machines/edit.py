@@ -73,8 +73,8 @@ P1 = ("n-drinks-machine-night.mp4", 0.5)   # a stocked machine (swap for a lit o
 P3 = ("c04-coin-into-slot.mp4", 1.0)            # the cash
 C1 = ("c01-office-lobby.mp4", 2.0, "#0B1422")              # food service at work
 R1 = ("n-loading-cargo-truck.mp4", 9.0)         # restocking
-R2 = ("c12-coins-in-hand.mp4", 20.0)            # pulling cash
-R3 = ("c02-repair-closeup.mp4", 4.0)            # fixing
+R2 = ("px-counting-money-office.mp4", 4.0)       # pulling cash (Pexels)
+R3 = ("px-man-working-machine.mp4", 1.0)         # fixing (Pexels)
 
 
 def B(at, bg, scene, **kw):
@@ -99,11 +99,11 @@ SHOTS = [
          scene=sc("num", at="@59.5%", count=[0, 59.5], fmt="pct1", label="of every sale goes to the building", y=110)),
     ftg("Online, vending machines", "c11-phone-night-viewer.mp4", 2.0),
     # Fix A: how it's pitched, over the things it describes. No strike-through: the verdict comes later, from evidence.
-    dict(at="as easy passive income", kind="GF", clip=P1[0], **{"in": P1[1]},                                          # T15b
-         scene=sc("stack", x=1804, align="right", y=380, size=84, first=78, gap=112, kicker="How it's pitched online", kickerAt=0.1, lines=[
-             dict(text="“Easy passive income.”", at="@easy"),
-             dict(text="“Stock it once a week.”", at="@Stock a machine"),
-             dict(text="“Let the cash pile up.”", at="@let the cash")])),
+    dict(at="as easy passive income", kind="GF", clip=P1[0], **{"in": P1[1]},                                          # T15c
+         scene=sc("claim", x=1804, align="right", y=470, size=100, items=[
+             dict(html="Easy<br>[passive income]", at="@easy"),
+             dict(html="Stock it<br>[once a week]", at="@Stock a machine"),
+             dict(html="Let the cash<br>[pile up]", at="@let the cash")])),
     B("So we check the real numbers", ("c10-checking-sales-records.mp4", 2.0),                                       # T8 papers
       sc("papers", items=[dict(title="Payment data", sub="Cantaloupe, 2025", cue="@payment data"),
                           dict(title="Public contracts", sub="LAX board, 2023", cue="@public contracts"),
@@ -119,7 +119,7 @@ SHOTS = [
       sc("num", x=116, y=230, size=200, items=[dict(at="@$7 billion", text="$7 billion", kicker="US vending operators' sales, 2025", kickerAt="@US vending",
                                                     pre="More than", preAt="@more than", source="IBISWorld", sourceAt="@according to")])),
     # Fix C: the giants over food service at work, then the map of small operators
-    B("The biggest names are food service giants", ("c08-grab-and-go-cooler.mp4", 9.0),                                # T16
+    B("The biggest names are food service giants", ("px-students-cafeteria.mp4", 2.0),                                # T16
       sc("stack", x=116, y=150, size=150, gap=170, mask=True, kicker="Food service giants", kickerAt="@food service giants",
          lines=[dict(text="Compass Group", at="@Compass"), dict(text="Aramark", at="@Aramark")])),
     # Fix C + D: the map fills with dots, zooms through to one suburb and dissolves into the playing aerial; pins drop on
@@ -191,7 +191,8 @@ SHOTS = [
          total=dict(label="Operator keeps", value="$197", cue="@keeps about"),
          note=dict(text="About 22%, before paying themselves", cue="@22 %"), source=SRC_VMFS)),
     ftg("and it's before the operator pays", "c02-driver-paperwork.mp4", 15.4),
-    dict(at="And the better the location", kind="D", bg=[("prev", 0, 2.5), ("n-docs-review-senior.mp4", 6.0)], soft=14.0, dim=0.42,                                                                  # T8
+    ftg("And the better the location", "px-college-hallway.mp4", 1.0),
+    dict(at="Some public contracts", kind="D", bg=[("prev", 0, 5.0), ("px-students-hallway-4k.mp4", 2.0)], soft=14.0, dim=0.42,                                                                  # T8
          scene=dict(type="doc", params=dict(header="Riverside Community College District vending agreement, 2022",
                     html='(5) Commission Proposal - The Vendor guarantees commission of <span class="hl" data-cue="@33%">33% on gross sales</span>, and a signing bonus in the amount of $5,000 ...'))),
     B("and that airport from the start", ("n-airport-low-angle.mp4", 0.8),                                           # T12
@@ -233,7 +234,7 @@ SHOTS = [
     B("so an operator with 100 machines", "prev",                                          # T18
       sc("density", a=dict(label="100 machines, one area", cue="@100 machines"), b=dict(label="10 machines, a whole city", cue="@10 machines"))),
     ftg("Big operators also buy", "c06-warehouse-drink-racks.mp4", 2.0),
-    B("The biggest of them all", ("c12-office-tower.mp4", 2.0),                                                       # T16
+    B("The biggest of them all", ("px-crowd-office-entrance.mp4", 0.0),                                                       # T16
       sc("company", at="@Canteen", name="Canteen", lines=[dict(text="Owned by Compass Group", cue="@Compass Group")])),
     dict(at="It started in Chicago", kind="GF", clip="c06-archival-1933-street.mp4", **{"in": 2.0},                   # T1 on archive film
          scene=sc("num", at="@1929", text="1929", kicker="Chicago", label="5¢ candy bar machines", labelAt="@five", y=300)),
@@ -301,7 +302,7 @@ SHOTS = [
       sc("receipt", title="Each month", lines=[dict(label="Office machine", value="$280–350", cue=0),
                                                dict(label="Repair shop", value="$120–180", cue=0)],
          total=dict(label="Kept", value="$130–150", cue="@they say they keep"), note=dict(text="after gas, restocking and repairs", cue="@they say they keep")), carry=True),
-    ftg("We can't check those numbers", "c09-auto-repair-shop.mp4", 4.0),
+    ftg("We can't check those numbers", "px-receipts-accounting.mp4", 2.0),
     B("Their verdict was simple", ("c06-chicago-skyline.mp4", 10.0),                                             # T24
       sc("quote", at="@It's not as passive", size=120, text="It's not as passive as people make it sound.", name="A beginner operator", role="Reddit", nameDy=300), dim=0.42),
     B("Now do the math", ("c10-chicago-suburbs-aerial.mp4", 40.0),                                                            # T1 on its own background

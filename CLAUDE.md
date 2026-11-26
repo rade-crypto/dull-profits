@@ -83,6 +83,7 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   undermines credibility. AI images only for abstract or illustrative use. Never rip news or other creators' clips.
 - **Owner (Nov 26, 2026): use Pexels when Magnific hits its download limit, and in general whenever Pexels has footage
   that fits better or looks better.** Pexels API key is a network secret on the environment (host api.pexels.com).
+- **Pexels downloads work without a key:** `https://www.pexels.com/download/video/<id>/` redirects to the file on videos.pexels.com. Find ids by web search (site pages are behind a bot check). Files are named `px-*.mp4`.
 - Footage sources: **Magnific stock via MCP (downloads confirmed free)**; raw files go in `episodes/*/footage/`, which is
   gitignored (stock licenses forbid redistributing raw files, and the repo is public). Also Mixkit (free, no key, reachable, but no vending-machine clips),
   Pexels (free key, not set up), archive.org Prelinger (public-domain archive film).
