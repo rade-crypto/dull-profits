@@ -96,8 +96,13 @@ def main():
     for s in shots:
         src = s.get("clip") or (s.get("clips") or [[None]])[0][0]
         t_in = s.get("in") if s.get("clip") else (s["clips"][0][1] if s.get("clips") else 0)
-        if src:
-            frame(ep / "footage" / src, (t_in or 0) + min(2.0, s["dur"] / 2), out / f"bg-{s['n']:02d}.jpg")
+        if src:  # the shot's built background (mirroring, multi-clip) near its end; raw clip if not built yet
+            import proxies
+            built = ep / "render" / "player" / "shots" / f"{proxies.shot_key(s)}.mp4"
+            if built.exists():
+                frame(built, max(0.0, s["dur"] - 0.4), out / f"bg-{s['n']:02d}.jpg")
+            else:
+                frame(ep / "footage" / src, (t_in or 0) + min(2.0, s["dur"] / 2), out / f"bg-{s['n']:02d}.jpg")
     jobs = [dict(n=s["n"], bg=str(out / f"bg-{s['n']:02d}.jpg") if (s.get("clip") or s.get("clips")) else None, scene=s.get("scene"),
                  t=s.get("still_t", s["dur"]), out=str(out / f"{s['n']:02d}.png")) for s in shots]
     (out / "jobs.json").write_text(json.dumps(jobs))

@@ -25,14 +25,17 @@ def dur_of(f):
 
 def shot_key(s):
     """Stable file name for a shot's background: changes only when its footage or length changes."""
-    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")], sort_keys=True)
+    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
 def pieces_of(s):
+    """(file, in, seconds or None, options). Options: flip (mirror so a person sits clear of the text panel),
+    until (last usable second of the source, to stop before a cut inside a stock clip)."""
+    base = {"flip": True} if s.get("flip") else {}
     if s.get("clips"):
-        return [(p[0], p[1], p[2] if len(p) > 2 else None) for p in s["clips"]]
-    return [(s["clip"], s.get("in") or 0.0, None)]
+        return [(p[0], p[1], p[2] if len(p) > 2 else None, dict(base, **(p[3] if len(p) > 3 else {}))) for p in s["clips"]]
+    return [(s["clip"], s.get("in") or 0.0, None, base)]
 
 
 def make_bg(ep, s, out, crf=28):
@@ -43,13 +46,13 @@ def make_bg(ep, s, out, crf=28):
     fixed = sum(L for L in lens[:-1] if L) if n > 1 else 0
     lens[-1] = dur - fixed + XF * (n - 1) if n > 1 else dur
     cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
-    for i, ((f, t_in, _), L) in enumerate(zip(ps, lens)):
+    for i, ((f, t_in, _, opt), L) in enumerate(zip(ps, lens)):
         clip = ep / "footage" / f
-        avail = max(0.5, dur_of(clip) - t_in - 0.05)
+        avail = max(0.5, min(dur_of(clip), opt.get("until", 1e9)) - t_in - 0.05)
         slow = min(max(1.0, L / avail), 1.5)
         cmd += ["-ss", f"{t_in:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
         chains.append(f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
-                      f"crop=1920:1080,setsar=1,format=yuv420p,eq=saturation=0.86:contrast=1.03,"
+                      f"crop=1920:1080,setsar=1,{'hflip,' if opt.get('flip') else ''}format=yuv420p,eq=saturation=0.86:contrast=1.03,"
                       f"tpad=stop_mode=clone:stop_duration={L + 1:.2f},trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
     last, off = "p0", 0.0
     for i in range(1, n):

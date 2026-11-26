@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'LF';src:url(../../tools/video/gfx/fonts/LibreFranklin-400.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:'LCD';src:url(../../tools/video/gfx/fonts/LibreCaslonDisplay-400.woff2) format('woff2')}
+@font-face{font-family:'LCT';src:url(../../tools/video/gfx/fonts/LibreCaslonText-400.woff2) format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#000;font-family:'LF';color:#fff}
+.f{position:relative;width:1920px;height:1080px;overflow:hidden;margin-bottom:20px;background-size:cover;background-position:center}
+.a{position:absolute}.num{font-family:'LCD';line-height:1;letter-spacing:-1px}
+.sh{text-shadow:0 2px 12px rgba(0,0,0,.6),0 6px 40px rgba(0,0,0,.55)}
+.lab{font:600 50px 'LF'}.sm{font:500 46px 'LF'}
+.dot{width:26px;height:26px;border-radius:50%;background:#FFE14D;box-shadow:0 0 0 8px rgba(255,225,77,.28)}
+.pin{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#FFE14D;border:4px solid #0B1422}
+</style></head><body>
+
+<!-- 1 Number in the clean space of the shot -->
+<div class="f" id="t1" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-05.jpg)">
+  <div class="a num sh" style="left:120px;top:110px;font-size:250px">59.5%</div>
+  <div class="a lab sh" style="left:128px;top:380px">of every sale goes to the airport</div>
+</div>
+
+<!-- 2 Callout on the real object -->
+<div class="f" id="t2" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-46.jpg)">
+  <div class="a dot" style="left:1010px;top:330px"></div>
+  <svg class="a" style="left:0;top:0" width="1920" height="1080"><path d="M1023 343 L1480 870 L1590 870" stroke="#0B1422" stroke-width="4" fill="none"/></svg>
+  <div class="a" style="left:1600px;top:820px;color:#0B1422"><div style="font:600 50px 'LF'">Card fees</div><div class="num" style="font-size:130px;margin-top:4px">9¢</div></div>
+</div>
+
+<!-- 3 Price tag pinned to the scene -->
+<div class="f" id="t3" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-30.jpg)">
+  <div class="a dot" style="left:880px;top:420px"></div>
+  <svg class="a" style="left:0;top:0" width="1920" height="1080"><path d="M893 433 L700 300 L560 300" stroke="#0B1422" stroke-width="4" fill="none"/></svg>
+  <div class="a" style="left:120px;top:120px;color:#0B1422"><div style="font:600 50px 'LF'">Average card purchase</div><div class="num" style="font-size:170px;margin-top:8px">$2.45</div></div>
+</div>
+
+<!-- 4 Pins and route drawn on the aerial -->
+<div class="f" id="t4" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-71.jpg)">
+  <svg class="a" style="left:0;top:0" width="1920" height="1080"><path d="M520 640 L760 560 L1030 610 L1290 700 L1460 860 L1120 930 L760 880 L560 780 Z" stroke="#FFE14D" stroke-width="7" stroke-dasharray="22 14" fill="none"/></svg>
+  <div class="a pin" style="left:505px;top:610px"></div><div class="a pin" style="left:745px;top:530px"></div><div class="a pin" style="left:1015px;top:580px"></div><div class="a pin" style="left:1275px;top:670px"></div><div class="a pin" style="left:1445px;top:830px"></div><div class="a pin" style="left:1105px;top:900px"></div><div class="a pin" style="left:745px;top:850px"></div><div class="a pin" style="left:545px;top:750px"></div>
+  <div class="a sh" style="left:120px;top:110px"><div class="lab">One route, 12 machines</div><div class="num" style="font-size:150px;margin-top:8px">$138,000</div></div>
+</div>
+
+<!-- 5 The Split as a band across the bottom of the footage -->
+<div class="f" id="t5" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-02.jpg)">
+  <div class="a sh num" style="left:120px;top:110px;font-size:170px">$2.00</div>
+  <div class="a" style="left:120px;top:720px;width:1680px;height:96px;display:flex;gap:5px">
+    <div style="flex:11;background:#B65A86"></div><div style="flex:94;background:#4F7EC2"></div><div style="flex:13;background:#B88E30"></div><div style="flex:20;background:#16998A"></div><div style="flex:62;background:#fff;color:#0B1422;font:600 50px 'LF';display:flex;align-items:center;justify-content:center">Owner 62¢</div>
+  </div>
+  <div class="a sm sh" style="left:120px;top:640px">Tax 11¢</div><div class="a sm sh" style="left:520px;top:640px">Drink company 94¢</div><div class="a sm sh" style="left:1000px;top:640px">Cards 13¢</div><div class="a sm sh" style="left:1270px;top:640px">Building 20¢</div>
+</div>
+
+<!-- 6 Split screen: footage left, chart right -->
+<div class="f" id="t6" style="background:#0B1422">
+  <div class="a" style="left:0;top:0;width:900px;height:1080px;background:url(../../episodes/01-vending-machines/render/stills/bg-28.jpg) 60% center/cover"></div>
+  <div class="a" style="left:1000px;top:250px;width:800px">
+    <div class="lab" style="margin-bottom:50px">The location's cut</div>
+    <div class="sm">Typical office</div><div style="display:flex;align-items:center;gap:22px;margin:10px 0 40px"><div style="width:90px;height:50px;background:#16998A"></div><div style="font:600 58px 'LF'">10%</div></div>
+    <div class="sm">Riverside college</div><div style="display:flex;align-items:center;gap:22px;margin:10px 0 40px"><div style="width:300px;height:50px;background:#16998A"></div><div style="font:600 58px 'LF'">33%</div></div>
+    <div class="sm">LAX</div><div style="display:flex;align-items:center;gap:22px;margin:10px 0 0"><div style="width:540px;height:50px;background:#16998A"></div><div style="font:600 58px 'LF'">59.5%</div></div>
+  </div>
+</div>
+
+<!-- 7 Running tally in the corner while the story plays -->
+<div class="f" id="t7" style="background-image:url(../../episodes/01-vending-machines/render/stills/bg-24.jpg)">
+  <div class="a" style="left:120px;top:90px;text-align:left;color:#0B1422"><div style="font:600 50px 'LF'">Operator keeps</div><div class="num" style="font-size:150px;margin-top:6px">62¢</div>
+  <div style="margin:18px 0 0 0;width:420px;height:16px;background:rgba(11,20,34,.25)"><div style="width:31%;height:100%;background:#0B1422"></div></div></div>
+</div>
+
+<!-- 8 Deal File: the real document, highlighted -->
+<div class="f" id="t8" style="background-image:url(../../episodes/01-vending-machines/render/stills/35.png)"></div>
+</body></html>
