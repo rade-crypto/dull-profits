@@ -310,7 +310,7 @@ const SCENES = {
   post(p, sc) {
     if (!sc.opaque) dim(0, 0.85);
     const c = el(`<div class="abs card" style="left:260px;top:150px;width:1400px;padding:40px 0 0 0;border-top:6px solid #FFFFFF">
-      <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px"><div style="width:64px;height:64px;border-radius:0;background:var(--grid)"></div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${p.meta}</div></div>
+      ${p.meta ? `<div style="font:500 38px 'Libre Franklin';margin-bottom:24px">${p.meta}</div>` : ''}
       <div style="font:800 58px 'Libre Franklin';margin-bottom:22px">${p.title}</div><div style="font:500 44px 'Libre Franklin';color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
     anim(c, { anim: 'up', at: 0 });
     if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 40px 'Libre Franklin';color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });

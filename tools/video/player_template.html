@@ -1,0 +1,225 @@
+<title>Episode 1 Preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one column. The 1920x1080 frame is scaled to the screen width; controls sit under it.
+   Single dark look on purpose (it's a video monitor), colors set explicitly. */
+:root{color-scheme:dark;--ui-bg:#070C15;--ui-fg:#FFFFFF;--ui-dim:#A9B4C4;--ui-line:#22304A;--ui-hl:#FFE14D}
+body{background:var(--ui-bg);color:var(--ui-fg)}
+.wrap{max-width:1280px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.top h1{font:400 30px 'Libre Caslon Display',Georgia,serif;margin:0}
+.status{font:500 15px 'Libre Franklin',system-ui,sans-serif;color:var(--ui-dim);min-width:0}
+.screen{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;background:#000;overflow:hidden;cursor:crosshair}
+.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:hidden}
+#frame{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.controls button{font:600 15px 'Libre Franklin',system-ui,sans-serif;background:transparent;color:var(--ui-fg);border:1px solid var(--ui-fg);padding:10px 20px;cursor:pointer}
+.controls button.primary{background:var(--ui-fg);color:var(--ui-bg)}
+.controls button:disabled{opacity:.4;cursor:default}
+.controls button:focus-visible,.controls input:focus-visible{outline:2px solid var(--ui-hl);outline-offset:2px}
+.controls input[type=range]{flex:1 1 200px;min-width:0;accent-color:#FFFFFF}
+.time{font:500 15px 'Libre Franklin',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ui-dim)}
+.bar{height:3px;background:var(--ui-line)}
+.bar i{display:block;height:100%;width:0;background:var(--ui-fg)}
+.note{font:400 14px 'Libre Franklin',system-ui,sans-serif;color:var(--ui-dim);max-width:70ch;line-height:1.5;margin:0}
+.controls button.icon{padding:10px 14px}
+.notes{display:grid;gap:10px;border-top:1px solid var(--ui-line);padding-top:14px}
+.notes h2{font:400 22px 'Libre Caslon Display',Georgia,serif;margin:0}
+.add{display:grid;grid-template-columns:1fr auto;gap:8px}
+.add textarea{font:400 15px 'Libre Franklin',system-ui,sans-serif;background:#0D1626;color:var(--ui-fg);border:1px solid var(--ui-line);padding:10px;min-height:64px;resize:vertical;min-width:0}
+.add button{font:600 15px 'Libre Franklin',system-ui,sans-serif;background:var(--ui-fg);color:var(--ui-bg);border:0;padding:10px 16px;cursor:pointer;align-self:start}
+.add textarea:focus-visible,.add button:focus-visible,.list button:focus-visible{outline:2px solid var(--ui-hl);outline-offset:2px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.list li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid var(--ui-line)}
+.list .at{font:600 14px 'Libre Franklin',system-ui,sans-serif;font-variant-numeric:tabular-nums;background:transparent;color:var(--ui-fg);border:1px solid var(--ui-line);padding:4px 8px;cursor:pointer}
+.list .txt{font:400 15px 'Libre Franklin',system-ui,sans-serif;line-height:1.45;white-space:pre-wrap;min-width:0;overflow-wrap:anywhere}
+.list .del{font:500 13px 'Libre Franklin',system-ui,sans-serif;background:transparent;color:var(--ui-dim);border:0;cursor:pointer;padding:4px}
+.empty{font:400 14px 'Libre Franklin',system-ui,sans-serif;color:var(--ui-dim);margin:0}
+@media (prefers-reduced-motion: reduce){.bar i{transition:none}}
+</style>
+<style id="scene-css">/*SCENE_CSS*/</style>
+
+<div class="wrap">
+  <div class="top">
+    <h1>Net to Owner, Episode 1</h1>
+    <span class="status" id="status" role="status">Loading…</span>
+  </div>
+  <div class="screen" id="screen">
+    <video id="va" muted playsinline preload="auto"></video>
+    <video id="vb" muted playsinline preload="auto"></video>
+    <div class="frame" id="frame"><div id="stage"></div></div>
+  </div>
+  <div class="controls">
+    <button id="back" class="icon" type="button" aria-label="Back 5 seconds">&minus;5s</button>
+    <button id="play" class="primary" type="button">Play</button>
+    <button id="fwd" class="icon" type="button" aria-label="Forward 5 seconds">+5s</button>
+    <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Position in the video">
+    <span class="time" id="time">0:00 / 0:00</span>
+  </div>
+  <p class="note" id="hint" hidden>Click anywhere on the picture to leave a note on that spot. Choose Send to Claude and it comes straight to me while you keep watching.</p>
+  <section class="notes" id="notes" aria-labelledby="notes-h" hidden>
+    <h2 id="notes-h">Notes</h2>
+    <div class="add">
+      <textarea id="note" placeholder="What should change here?" aria-label="Note for this moment"></textarea>
+      <button id="addnote" type="button">Add at 0:00</button>
+    </div>
+    <p class="empty" id="empty">No notes yet. Pause where something should change, type it, and add it. Each note keeps its time.</p>
+    <ul class="list" id="list"></ul>
+  </section>
+  <audio id="audio" src="audio.mp3" preload="auto"></audio>
+</div>
+
+<script id="engine">
+/*SCENE_JS*/
+</script>
+<script>
+const EDIT = /*EDIT_JSON*/null;
+const $ = id => document.getElementById(id);
+const W = 1920;
+const shots = EDIT.shots, TOTAL = EDIT.duration;
+shots.forEach(s => { s.src = s.clip ? `shots/s${String(s.n).padStart(2, '0')}.mp4` : null; });
+const audio = $('audio'), vids = [$('va'), $('vb')], stage = $('stage');
+let cur = -1, front = 0, playing = false, scrubbing = false;
+const say = t => { $('status').textContent = t; };
+const clock = t => { t = Math.max(0, t); return `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`; };
+
+function fit() { $('frame').style.transform = `scale(${$('screen').clientWidth / W})`; }
+new ResizeObserver(fit).observe($('screen')); fit();
+
+function shotAt(t) { let lo = 0, hi = shots.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (shots[m].start <= t + 1e-6) lo = m; else hi = m - 1; } return lo; }
+
+function enter(i, t) {
+  cur = i; const s = shots[i];
+  if (s.src) {
+    if (vids[1 - front].dataset.src === s.src) front = 1 - front;
+    else if (vids[front].dataset.src !== s.src) { vids[front].dataset.src = s.src; vids[front].src = s.src; }
+    const v = vids[front], back = vids[1 - front];
+    v.style.visibility = 'visible'; back.style.visibility = 'hidden'; back.pause();
+    try { v.currentTime = Math.max(0, t - s.start); } catch (e) {}
+    if (playing) v.play().catch(() => {});
+    const next = shots.slice(i + 1).find(x => x.src);
+    if (next && back.dataset.src !== next.src) { back.dataset.src = next.src; back.src = next.src; back.load(); }
+  } else {
+    vids.forEach(v => { v.pause(); v.style.visibility = 'hidden'; });
+  }
+  if (s.scene) setup(s.scene); else { stage.innerHTML = ''; stage.style.background = ''; }
+}
+
+function tick() {
+  const t = audio.currentTime, i = shotAt(t), s = shots[i];
+  if (i !== cur) enter(i, t);
+  if (s.scene) draw(t - s.start);
+  if (s.src) {
+    const v = vids[front], want = t - s.start;
+    if (Math.abs(v.currentTime - want) > 0.25) { try { v.currentTime = want; } catch (e) {} }
+    if (playing && v.paused) v.play().catch(() => {});
+    if (!playing && !v.paused) v.pause();
+  }
+  $('time').textContent = `${clock(t)} / ${clock(TOTAL)}`;
+  $('addnote').textContent = `Add at ${clock(t)}`;
+  if (!scrubbing) $('seek').value = Math.round(t / TOTAL * 1000);
+  if (ca && performance.now() - lastPlace > 250) { lastPlace = performance.now(); placePins(); }
+  requestAnimationFrame(tick);
+}
+
+function jump(t) { audio.currentTime = Math.min(TOTAL - 0.05, Math.max(0, t)); cur = -1; }
+$('play').onclick = () => {
+  playing = !playing;
+  if (playing) audio.play().catch(() => { playing = false; $('play').textContent = 'Play'; }); else audio.pause();
+  $('play').textContent = playing ? 'Pause' : 'Play';
+};
+$('back').onclick = () => jump(audio.currentTime - 5);
+$('fwd').onclick = () => jump(audio.currentTime + 5);
+audio.addEventListener('ended', () => { playing = false; $('play').textContent = 'Play'; });
+$('seek').addEventListener('input', () => { scrubbing = true; jump($('seek').value / 1000 * TOTAL); });
+$('seek').addEventListener('change', () => { scrubbing = false; });
+document.addEventListener('keydown', e => {
+  if (e.target.closest('textarea, input')) return;
+  if (e.code === 'Space') { e.preventDefault(); $('play').click(); }
+  if (e.code === 'ArrowLeft') jump(audio.currentTime - 5);
+  if (e.code === 'ArrowRight') jump(audio.currentTime + 5);
+});
+
+// ---- notes (saved for Claude to read; falls back to this browser only) ----
+let notes = [], db = null;
+function renderNotes() {
+  const list = $('list'); list.replaceChildren();
+  $('empty').hidden = notes.length > 0;
+  [...notes].sort((a, b) => a.t - b.t).forEach(n => {
+    const li = document.createElement('li');
+    const at = document.createElement('button'); at.className = 'at'; at.type = 'button'; at.textContent = clock(n.t);
+    at.setAttribute('aria-label', `Go to ${clock(n.t)}`); at.onclick = () => jump(n.t);
+    const txt = document.createElement('div'); txt.className = 'txt'; txt.textContent = n.text;
+    const del = document.createElement('button'); del.className = 'del'; del.type = 'button'; del.textContent = 'Delete';
+    del.onclick = async () => { if (db && n.id) { try { await db.collection('notes').doc(n.id).delete(); } catch (e) { say('Couldn’t delete that note.'); } } else { notes = notes.filter(x => x !== n); saveLocal(); renderNotes(); } };
+    li.append(at, txt, del); list.append(li);
+  });
+}
+function saveLocal() { try { localStorage.setItem('ep1-notes', JSON.stringify(notes)); } catch (e) {} }
+$('addnote').onclick = async () => {
+  const text = $('note').value.trim(); if (!text) { $('note').focus(); return; }
+  const n = { t: Math.round(audio.currentTime * 10) / 10, text, created: new Date().toISOString() };
+  $('note').value = '';
+  if (db) { try { await db.collection('notes').add(n); say(`Note saved at ${clock(n.t)}`); } catch (e) { say('Couldn’t save the note. Try again.'); $('note').value = text; } }
+  else { notes.push(n); saveLocal(); renderNotes(); say('Note saved in this browser only.'); }
+};
+async function notesFallback() {
+  $('notes').hidden = false;
+  try { notes = JSON.parse(localStorage.getItem('ep1-notes') || '[]'); } catch (e) { notes = []; }
+  renderNotes();
+  db = window.claude && window.claude.use ? await window.claude.use('db') : null;
+  if (!db) return;
+  const timer = setTimeout(() => say('Notes can’t be reached right now.'), 10000);
+  db.collection('notes').orderBy('t').onSnapshot(snap => {
+    if (!snap.metadata.fromCache) clearTimeout(timer);
+    notes = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderNotes();
+  }, () => { clearTimeout(timer); say('Notes are unavailable right now.'); });
+}
+
+// ---- click-on-the-picture notes (artifact comments, pinned to a time and a spot) ----
+let ca = null, threadList = [], lastPlace = 0;
+const tenths = t => `${clock(t)}.${Math.floor((t % 1) * 10)}`;
+function parseAnchor(a) {
+  const m = /^at (\d+):(\d\d)\.(\d), (\d+)% across, (\d+)% down/.exec(a || '');
+  return m ? { t: +m[1] * 60 + +m[2] + +m[3] / 10, x: +m[4], y: +m[5] } : null;
+}
+function placePins() {
+  if (!ca) return;
+  const r = $('screen').getBoundingClientRect(), now = audio.currentTime, map = {};
+  threadList.forEach(th => {
+    const a = parseAnchor(th.anchor);
+    map[th.id] = a && Math.abs(now - a.t) <= 2 ? { x: r.left + window.scrollX + a.x / 100 * r.width, y: r.top + window.scrollY + a.y / 100 * r.height } : null;
+  });
+  ca.placed(map);
+}
+$('screen').addEventListener('click', async ev => {
+  if (!ca) { if (!$('notes').hidden) $('note').focus(); return; }
+  if (playing) $('play').click();
+  const r = $('screen').getBoundingClientRect();
+  const x = Math.round((ev.clientX - r.left) / r.width * 100), y = Math.round((ev.clientY - r.top) / r.height * 100);
+  const t = audio.currentTime, s = shots[shotAt(t)];
+  const what = s.scene ? `graphic "${s.scene.type}"` : `footage ${s.clip}`;
+  try {
+    await ca.compose(`at ${tenths(t)}, ${x}% across, ${y}% down, shot ${s.n}`, { x: ev.pageX, y: ev.pageY },
+      { label: `${clock(t)}, shot ${s.n}`, detail: `Shot ${s.n} (${what}), ${x}% across, ${y}% down` });
+  } catch (e) { say('Couldn’t open a note here.'); }
+});
+window.addEventListener('resize', placePins);
+(async () => {
+  const comments = window.claude && window.claude.use ? await window.claude.use('comments') : null;
+  if (!comments || typeof comments.customAnchors !== 'function') { notesFallback(); return; }
+  try {
+    ca = await comments.customAnchors({
+      mode: () => {},
+      threads: list => { threadList = list; placePins(); },
+      reveal: id => { const a = parseAnchor((threadList.find(x => x.id === id) || {}).anchor); if (a) { jump(a.t); setTimeout(placePins, 200); } },
+    });
+    $('hint').hidden = false; placePins();
+  } catch (e) { notesFallback(); }
+})();
+
+say('Press Play. Space plays and pauses, arrow keys skip 5 seconds.');
+$('time').textContent = `0:00 / ${clock(TOTAL)}`;
+requestAnimationFrame(tick);
+</script>
