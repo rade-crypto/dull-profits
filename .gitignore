@@ -5,3 +5,6 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+
+# Raw stock footage: licensed for use in our videos, not for redistribution (repo is public)
+episodes/*/footage/
