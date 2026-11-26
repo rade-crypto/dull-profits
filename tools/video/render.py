@@ -39,12 +39,14 @@ def main():
     ap.add_argument("--out", default="episode.mp4")
     ap.add_argument("--music", default="music/Meditation_Impromptu_02.mp3")
     ap.add_argument("--music-db", type=float, default=-31.0, help="music loudness before ducking (LUFS)")
+    ap.add_argument("--redo", default="", help="with an existing render/work: only re-render these shot numbers, e.g. 85 or 3,7")
     args = ap.parse_args()
     ep = Path(args.episode).resolve()
     work = ep / "render" / "work"
-    if work.exists():
+    redo = {int(x) for x in args.redo.split(",") if x.strip()}
+    if work.exists() and not redo:
         shutil.rmtree(work)
-    work.mkdir(parents=True)
+    work.mkdir(parents=True, exist_ok=True)
     shots, _ = resolve(ep)
     end_t = args.until or shots[-1]["end"]
     shots = [s for s in shots if s["start"] < end_t - 0.01]
@@ -55,7 +57,10 @@ def main():
 
     # 1) graphics
     jobs = [dict(scene=s["scene"], frames=s["frames"], fps=FPS, dir=str(work / f"g{s['n']:02d}"), transparent=bool(s.get("clip")))
-            for s in shots if s.get("scene")]
+            for s in shots if s.get("scene") and (not redo or s["n"] in redo)]
+    for j in jobs:
+        if redo and Path(j["dir"]).exists():
+            shutil.rmtree(j["dir"])
     (work / "gfx.json").write_text(json.dumps(jobs))
     if jobs:
         run(["node", str(HERE / "render_gfx.js"), str(work / "gfx.json"), str(HERE / "gfx" / "scenes.html")])
@@ -65,6 +70,9 @@ def main():
     for s in shots:
         n, dur = s["n"], s["frames"] / FPS
         out = work / f"s{n:02d}.mp4"
+        if redo and n not in redo and out.exists():
+            segs.append(out)
+            continue
         cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
         if s.get("clip"):
             clip = ep / "footage" / s["clip"]
@@ -104,7 +112,8 @@ def main():
           f"[m][v2]sidechaincompress=threshold=0.03:ratio=5:attack=40:release=700[md];"
           f"[v1][md]amix=inputs=2:duration=first:normalize=0,apad=pad_dur=5,loudnorm=I=-14:TP=-1:LRA=11,aresample=48000,atrim=0:{total:.3f}[a]")
     audio = work / "audio.m4a"
-    run(["ffmpeg", "-v", "error", "-y", "-i", str(voice), "-i", str(music), "-filter_complex", fc, "-map", "[a]",
+    if not (redo and audio.exists()):
+      run(["ffmpeg", "-v", "error", "-y", "-i", str(voice), "-i", str(music), "-filter_complex", fc, "-map", "[a]",
          "-c:a", "aac", "-b:a", "192k", "-ar", "48000", str(audio)])
     out = ep / "render" / args.out
     run(["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(audio), "-map", "0:v", "-map", "1:a", "-c", "copy",
