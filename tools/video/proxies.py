@@ -113,7 +113,7 @@ def _piece_chain(i, clip, t_in, L, avail, opt, s, soft=False, crf=28):
                            f"Chain another clip or start earlier.")
     return slow, (f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),{_retime(clip, slow, soft, crf)},"
                   f"setsar=1,{'hflip,' if opt.get('flip') else ''}format=yuv420p,eq=saturation=0.86:contrast=1.03,"
-                  f"trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
+                  f"trim=duration={L:.3f},setpts=PTS-STARTPTS,fps={FPS},settb=1/{FPS}[p{i}]")   # one timebase for every piece (xfade needs it)
 
 
 def _join(chains, lens, joins):
@@ -211,7 +211,13 @@ def one(ep, s):
     out = ep / "render" / "player" / "shots" / f"{shot_key(s)}.mp4"
     if out.exists():
         return s["n"]
-    return make_bg(ep, s, out)
+    tmp = out.with_name(out.stem + ".part.mp4")   # never leave a broken file under the final name
+    try:
+        make_bg(ep, s, tmp)
+        tmp.replace(out)
+    finally:
+        tmp.unlink(missing_ok=True)
+    return s["n"]
 
 
 def main():
