@@ -17,7 +17,7 @@ Audience: roughly 40–65+, has capital, might actually buy or sell one; many wa
 ## Magnific is for B-ROLL ONLY (owner's standing rule)
 **Use Magnific only to search and download stock footage/photos for B-roll.** Never use it for voiceover, music,
 images, video generation or anything else. **The voiceover is made by Claude locally with free open-source models.**
-(Samples 1–4 in `voice-samples/` were wrongly made on Magnific for 144 credits. Don't repeat that.)
+(144 credits were once wrongly spent on Magnific voice samples. Don't repeat that.)
 
 ## ⛔ NEVER spend Magnific credits (owner's standing rule)
 Every generation or processing job through the Magnific MCP costs credits, even ones the owner's plan treats as
@@ -57,30 +57,14 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 ## Episode 1: vending machines (`episodes/01-vending-machines/`)
 - `script-v2.md` / `narration-v2.md` is the current, fact-checked script (~12.5 min). `fact-check.md` lists every change and source.
   **Four facts still need a browser check before publishing** (listed in fact-check.md).
-- **Voiceover is NOT approved.** The owner rejected the local Phonon "Trevor" sample ("vo is bad") and said don't generate
-  the full VO yet. Four Magnific (ElevenLabs v4) narrator samples are in `episodes/01-vending-machines/voice-samples/`:
-  Jake Miller (id 438), Owen Combs Huff (993), Callum Thornbury (1006), Nico Cochran House (1090). Samples 1 and 4 have
-  identical size and length, so check they aren't the same file before sending. The owner hasn't heard them yet.
-  **Voice must be made locally (free).** Samples 5–6 (Qwen3-TTS VoiceDesign) were rejected as "AI sounding".
-  Priority is the most human-sounding free local model. Samples 7–9 = Chatterbox (MIT, `/opt/tts/cb-env`, CPU ~3x slower
-  than real time; Turbo ~1.5x): 7 = Chatterbox with sample 6 as voice reference, 8 = Turbo with the same reference,
-  9 = Chatterbox default voice. Owner: 7–9 "not good".
-  Samples 10–13 = **VoxCPM2** (openbmb/VoxCPM2, Apache-2.0, 2B, 48 kHz, voice design from a text description in
-  parentheses before the line; `/opt/tts/vox-env`, CPU ~3x slower than real time). Owner: 10–13 "not good, all ai".
-  Samples 14–16 = VoxCPM2 **cloned from real volunteer voices** in `kyutai/tts-voices/voice-donations/` (CC0, donated
-  for AI voice use): 14 = donor `Youf`, 15 = `Midl`, 16 = `Jere` (deep, fluent English males). Owner: "they're all bad".
-  Owner's verdict on all 16: robotic/flat, accent off, audio sounds fake, wrong energy. Wants it to "just sound good"
-  (calm explainer or conversational, either is fine). So now: LIVELY references (high pitch variation), native-sounding
-  English, natural delivery, and a YouTube voice chain (EQ, compression, de-ess, −14 LUFS).
-  Samples 17–19 = **Microsoft VibeVoice-1.5B** (MIT, `/opt/tts/vv-env`, fast on CPU) with lively donors Youf/Lake/Self;
-  20 = VoxCPM2 controllable cloning (Lake) + "(engaging, confident explainer…)" style. Awaiting the owner's verdict. Keep Chatterbox's built-in Perth watermark on (needs `setuptools<81`).
-  Tools: `tools/voiceover/` (Kokoro-82M and Phonon 31M, both Apache-2.0, CPU). Run `setup.sh` first, since a fresh container has no venv.
-  `render.py` makes the VO plus captions.srt, chapters.txt and timings.json. `qa_asr.py` proofreads it with Whisper.
-  Don't use Phonon 40M models (non-commercial), Coqui XTTS, F5-TTS, Fish, or ElevenLabs' free tier (no commercial rights).
+- **Voiceover: the owner generates it themselves in ElevenLabs** from `voiceover-script.txt` (numbers spelled out,
+  3 parts under 4,500 characters each). Claude does NOT make voiceovers anymore. After 20 rejected samples from
+  Magnific, Qwen3-TTS, Chatterbox, VoxCPM2 and VibeVoice, all local voice tools and samples were deleted.
+  When the owner provides the audio file, get word timings from it (e.g. faster-whisper) and build the video around it.
 
 ## Next steps
 1. Confirm the Magnific MCP tools work. Find out what they offer (stock video? images? AI video?) and their credit cost.
-2. Resolve the voice with the owner (short samples first).
+2. Wait for the owner's ElevenLabs voiceover file, then time everything to it.
 3. Build the video pipeline: timings.json → shot list → fetch footage (Magnific/Mixkit/Pexels) → render motion graphics
    (HTML/SVG → frames via headless Chromium, as in `docs/visual-examples/src`) → compose with ffmpeg
    (darken/blur footage under graphics) → music bed at about −26 LUFS (YouTube Audio Library / CC-BY) → captions → MP4.
