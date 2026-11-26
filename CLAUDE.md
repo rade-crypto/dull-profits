@@ -9,6 +9,8 @@ Audience: roughly 40–65+, has capital, might actually buy or sell one; many wa
   Don't hand the owner editing instructions instead.
 - Keep replies short and direct. The owner often can't see text written between tool calls, so put answers in
   the final message, and send images/audio/video with SendUserFile.
+- **Send scripts/documents so they open in the side panel, not as a download:** write them as `.md` and send with
+  SendUserFile `display: "render"`. Never use `display: "attach"` for things the owner should read.
 - **The channel always uses AI voices.** Never suggest the owner record their own voice, hire a voice actor, or
   anything like that. More generally, don't recommend things the owner didn't ask for; just do the task.
 - The owner uses a **Magnific** account (Freepik rebranded as Magnific, Apr 2026) through the official MCP connector
@@ -57,7 +59,7 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 ## Episode 1: vending machines (`episodes/01-vending-machines/`)
 - `script-v2.md` / `narration-v2.md` is the current, fact-checked script (~12.5 min). `fact-check.md` lists every change and source.
   **Four facts still need a browser check before publishing** (listed in fact-check.md).
-- **Voiceover: the owner generates it themselves in ElevenLabs** from `voiceover-script.txt` (numbers spelled out,
+- **Voiceover: the owner generates it themselves in ElevenLabs** from `voiceover-script.md` (numbers spelled out,
   3 parts under 4,500 characters each). Claude does NOT make voiceovers anymore. After 20 rejected samples from
   Magnific, Qwen3-TTS, Chatterbox, VoxCPM2 and VibeVoice, all local voice tools and samples were deleted.
   When the owner provides the audio file, get word timings from it (e.g. faster-whisper) and build the video around it.

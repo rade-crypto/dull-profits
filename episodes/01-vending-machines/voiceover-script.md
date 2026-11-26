@@ -1,8 +1,9 @@
-DULL PROFITS - EPISODE 1 - VOICEOVER SCRIPT
+# Dull Profits · Episode 1 · Voiceover script
+
 About 1801 words, about 12 minutes. Paste each part into the voice tool. Numbers are written out on purpose so they're read correctly.
 Pronunciation: "Kamel" = CAM-ul (like the animal).
 
-===== PART 1 of 3 (4,197 characters) =====
+## PART 1 of 3 (4,197 characters)
 
 You tap your phone, and a soda drops. Two dollars. Before the owner of this machine keeps a single cent, five other players get paid.
 
@@ -52,7 +53,7 @@ Card payments do help the operator in one way. In twenty twenty-five, people pay
 
 So the operator ends up with a thin slice of each soda. The bigger money in vending goes to three kinds of players.
 
-===== PART 2 of 3 (4,284 characters) =====
+## PART 2 of 3 (4,284 characters)
 
 Winner number one is the location. That airport is Los Angeles International. In twenty twenty-three, its board approved a vending deal where the operator pays fifty-nine point five percent of gross sales, or one hundred dollars per machine per month, whichever is more. Even the runner-up bid, from Compass Group's Canteen, offered fifty-one point six percent. The operator runs and maintains the machines. The airport just collects for the floor space.
 
@@ -84,7 +85,7 @@ Now do the math on an ordinary location. One supplier estimates a typical site n
 
 Things do break. That same operator says they dealt with a jammed bill acceptor and an attempted break-in within their first six months.
 
-===== PART 3 of 3 (2,366 characters) =====
+## PART 3 of 3 (2,366 characters)
 
 Then there's debt. Personal finance host George Kamel looked at one creator's breakdown of what it costs to start, about three thousand three hundred thirty dollars, and his advice was blunt. Save it in cash. Don't borrow it or put it on a credit card. It's easy to see why. Put it on a card, and the interest starts before the machine sells a single soda.
 
