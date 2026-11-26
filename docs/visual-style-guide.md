@@ -3,24 +3,40 @@
 Based on `research/channel-strategy-and-visuals.md`, which covers 11 comparable channels, TV-viewing data and license checks.
 
 ## The approach in one line
-**Documents and diagrams, not cinematic B-roll.** Most of the screen is graphics you build and real source documents.
-Stock footage gives the eye a rest. This costs nothing, avoids copyright claims, builds trust with skeptical older viewers, and is
-the best defense against YouTube's "inauthentic / template content" demonetization, because every graphic is unique to its episode.
-
-Closest models: **Wall Street Millennial** (filings on screen, cheap to make, high revenue per video) and **Modern MBA**
-(slide-style diagrams that build piece by piece). Tone model: **ColdFusion** (calm, restrained). Avoid the MagnatesMedia
-style (dramatic music, founder faces). It's the wrong tone for this audience.
+**Real footage on screen most of the time, with clean graphics on top whenever a number matters.**
+The channels this one is modeled on keep real footage on screen. (Corrected after the owner watched them: the first
+version of this guide said graphics-first, based on written descriptions rather than the videos themselves.)
+Graphics carry the numbers. Footage carries the feeling that this is a real business in the real world.
 
 ## Screen-time mix (per 10–14 min episode)
 | Share | What | Examples in Ep 1 |
 |---|---|---|
-| 40–50% | **Your own data graphics** | The Split, price tags, bars, P&L table, route maps |
-| 20–25% | **"Deal File" source documents** | LAX board report, Riverside contract, FTC 1998 release, Cantaloupe report |
-| 25–35% | **Stock or archive B-roll** (unbranded) | Card tap, route van, break room, 1950s vending footage |
-| 0–5% | AI images | Abstract only. Never fake "real" places, people or documents |
+| 55–65% | **Real footage** | Your own phone clips, free stock, archive film, Google Earth flyovers |
+| 20–30% | **Graphics**, mostly *on top of* darkened footage | The Split over a shot of a real machine; full-screen only for the 3–4 biggest numbers |
+| 10–15% | **"Deal File" source documents** | LAX board report, Riverside contract, FTC 1998 release |
+| 0% | AI images | None. Real footage is the point |
+
+**Combining them:** when a graphic sits on footage, darken the footage 40–60% and add a slight blur, so text stays readable on a TV.
+
+## Getting real footage for $0
+1. **Shoot your own clips on a phone (the best option).** Vending machines, laundromats and car washes are everywhere.
+   - Film in 4K, 5–10 second clips, slow pans, phone held steady or on a cheap tripod.
+   - No faces, and don't linger on brand logos.
+   - Ask before filming inside a private business. Airports and hospitals often restrict filming, so check first.
+   - Your own footage is also the strongest proof of original content under YouTube's "inauthentic content" policy.
+   - **Ep 1 shot list:** card tap on a machine · a soda dropping · a spiral coil turning · restocking a machine ·
+     a van pulling up · an office break room · micro-market shelves and self-checkout · a public airport concourse.
+2. **Free stock:** Pexels, Pixabay, Coverr, Mixkit. Search "vending machine", "break room", "delivery van",
+   "airport terminal". Free for monetized use; blur any visible brand logos.
+3. **Archive film:** the Prelinger Archives on the Internet Archive (many items are public domain). Use 1950s vending and
+   automat footage for the Canteen 1929 history beat, and check each item's rights.
+4. **Google Earth Studio (free):** real aerial flyovers of LAX, a car-wash strip, an industrial park. It requires an on-screen
+   "Google Earth" credit; check its current terms before publishing.
+5. **Company press kits:** some companies publish footage for press use, but terms are often editorial-only. Skip unless the terms clearly allow it.
+6. **Never** rip clips from news broadcasts or other YouTubers. That's the fastest route to copyright claims and "reused content" demonetization.
 
 ## The two signature devices (the brand)
-**1. The Split.** Every episode follows one real transaction: a $2 soda, a $15 car wash, a $4.75 laundromat load.
+**1. The Split.** Ideally overlaid on real footage of the machine or business. Every episode follows one real transaction: a $2 soda, a $15 car wash, a $4.75 laundromat load.
 A horizontal money bar slices into labeled segments, and each slice drops into a labeled bin.
 A small **Owner's Tally** in the top-right corner counts down as each slice leaves.
 Ep 1: `$2.00 → $1.89 (tax) → $0.95 (supplier) → $0.86 (card) → $0.82 (software) → $0.62 (location)`. Hold the final frame 4+ seconds.
@@ -65,7 +81,7 @@ are deliberately neutral and highlight colors. Always label slices with text as 
 | Edit | **DaVinci Resolve** (free) on Win/Mac, or **Kdenlive** | The free Linux build of Resolve can't use H.264/AAC media, so use Kdenlive on Linux |
 | Graphics | **Canva Free**, Inkscape | Don't use Canva's "Popular Music" in monetized videos |
 | Animated charts | **Motion Canvas** or Manim (both MIT, free) | Or ask me to generate The Split programmatically from this repo |
-| Stock video | Pexels, Pixabay, Coverr | Unbranded clips only. Blur any visible soda or candy logos |
+| Footage | Your phone first, then Pexels, Pixabay, Coverr, Mixkit | Unbranded clips only. Blur any visible soda or candy logos |
 | Archive | Prelinger / Internet Archive, US federal works | Check each item's rights. City and state documents (LAX) aren't automatically public domain, but showing an excerpt with a highlight to report on it is standard |
 | Maps | QGIS + Natural Earth (public domain) | OpenStreetMap needs "© OpenStreetMap contributors" on screen |
 | Music / SFX | YouTube Audio Library, Freesound **CC0 only** | Pixabay music can trigger Content ID claims, so keep the license PDFs |
