@@ -18,12 +18,12 @@ LAX_NIGHT_BLUR = [(1520, 800, 310, 150), (770, 990, 190, 80)]
 LAX_DAY_BLUR = [(1350, 690, 260, 130), (970, 1000, 260, 80)]
 
 SPLIT = [  # The $2 soda, per the supplier's model (6% tax, 10% commission, mostly card)
-    dict(key="tax", label="GOVERNMENT", amount="11¢", cents=11, row=1, align="left"),
-    dict(key="sup", label="DRINK COMPANY", amount="94¢", cents=94, row=0),
-    dict(key="pay", label="CARD PROCESSOR", amount="9¢", cents=9, row=1),
-    dict(key="pay", label="SOFTWARE", amount="4¢", cents=4, row=-1),
-    dict(key="loc", label="THE BUILDING", amount="20¢", cents=20, row=0, align="left"),
-    dict(key="own", cents=62, inside="OWNER ?"),
+    dict(key="tax", label="Government", amount="11¢", cents=11, row=1, align="left"),
+    dict(key="sup", label="Drink company", amount="94¢", cents=94, row=0),
+    dict(key="pay", label="Card processor", amount="9¢", cents=9, row=1),
+    dict(key="pay", label="Software", amount="4¢", cents=4, row=-1),
+    dict(key="loc", label="The building", amount="20¢", cents=20, row=0, align="left"),
+    dict(key="own", cents=62, inside="Owner ?"),
 ]
 
 
@@ -36,7 +36,7 @@ def split(names_cues, amounts=False, labels=True, **kw):
         if not amounts:
             d.pop("amount", None)
         elif s["key"] == "own":
-            d["inside"] = "OWNER 62¢"
+            d["inside"] = "Owner 62¢"
         sl.append(d)
     return dict(type="split", params=dict(slices=sl, **kw))
 
@@ -161,7 +161,7 @@ SHOTS = [
          scene=dict(type="bignum", params=dict(at=0, count=[0, 78], fmt="pct0", size=300, y=280, lines=[
              dict(text="of sales were cashless")], source=SRC_CANT))),
     dict(at="So the operator ends up", kind="GF", clip="c05-traveler-vending-snack.mp4", **{"in": 6.0},
-         scene=dict(type="cards", params=dict(y=380, h=220, valueSize=100, items=[
+         scene=dict(type="cards", params=dict(y=380, h=220, valueSize=110, items=[
              dict(label="", value="Location", key="loc", cue="@three kinds"),
              dict(label="", value="Scale", key="sup", cue="@three kinds"),
              dict(label="", value="Payments", key="pay", cue="@three kinds")]))),
@@ -294,7 +294,7 @@ SHOTS = [
          scene=split([0, 0, 0, 0, 0, 0], amounts=True, wholeAt=0, splitAt=0, dim=0.8, y=390,
                      tally=dict(label="Operator keeps", at=0, steps=[dict(cents=138, cue=0)]))),
     dict(at="The people who win", kind="GF", clip="c02-combo-machine.mp4", **{"in": 1.0},
-         scene=dict(type="cards", params=dict(y=380, h=220, valueSize=78, items=[
+         scene=dict(type="cards", params=dict(y=380, h=220, valueSize=100, items=[
              dict(label="", value="Location", key="loc", cue="@the location"),
              dict(label="", value="Scale", key="sup", cue="@the scale"),
              dict(label="", value="Technology", key="pay", cue="@the technology")]))),

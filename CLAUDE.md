@@ -64,12 +64,15 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 - Visual approach (`docs/visual-style-guide.md`): **stock footage + custom motion graphics**, about 60% footage,
   25% graphics mostly overlaid on darkened footage, and 15% "Deal File" source documents.
   Signature devices: **The Split** (a money bar sliced into tax/supplier/payments/location/owner) and **The Deal File** (a real document with a highlighter sweep).
-  **Palette and fonts (changed Nov 26, 2026; the owner said cream/orange/charcoal + serif/Inter looked like Claude's own look and
-  an over-used combo):** ink-navy bg `#0E1726`, white text `#FFFFFF` (never grey text), slices: tax teal `#1E9E9A`,
-  supplier blue `#3D7FE0`, payments gold `#C08A0E`, location magenta `#D04A8A`, **owner green `#1FA94F`**, cost chips
-  `#C9D1DC`, highlighter `#FFE14D`, document paper `#F7F8F5`. Passes the dataviz validator (dark, on #0E1726).
-  Fonts: **Libre Franklin** (numbers, labels) and **Libre Caslon** (logo, quotes, documents), files in `tools/video/gfx/fonts/`.
-  Don't use Inter, cream/terracotta, or warm charcoal. Old example frames in `docs/visual-examples/` use the old palette.
+  **Look (changed Nov 26, 2026; owner: the old cream/orange/charcoal + serif/Inter look was Claude's own and over-used, rounded
+  boxes looked like Claude too, and it should feel premium but readable):** deep navy bg `#0B1422`, white text (never grey),
+  slices: tax rose `#B65A86`, supplier blue `#4F7EC2`, payments ochre `#B88E30`, location teal `#16998A`, **owner = white**
+  (navy text on it), highlighter `#FFE14D`, document paper `#F7F8F5` (passes the dataviz validator on #0B1422).
+  **Square corners only** (no rounded boxes, no pills, no card panels or drop shadows): thin colored rules, hairlines
+  like a financial statement. Footage darkened with a left-to-right gradient (text side dark, footage visible on the
+  right) and graded slightly (saturation 0.86). Fonts: **Libre Caslon Display** for hero numbers, quotes and the logo,
+  **Libre Caslon Text** for documents, **Libre Franklin** 500/600 for labels and chart values (sentence case).
+  Files in `tools/video/gfx/fonts/`. Never use Inter, cream/terracotta, warm charcoal or rounded UI shapes.
   TV rules: key numbers 120–200 px, nothing under 36 px, bottom 15% clear, 4–8 s shots.
 - **No realistic AI-generated footage** of real places or people. It would need YouTube's synthetic-content label and
   undermines credibility. AI images only for abstract or illustrative use. Never rip news or other creators' clips.

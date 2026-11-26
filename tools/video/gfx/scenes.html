@@ -9,20 +9,20 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1920px;height:1080px;background:transparent;overflow:hidden}
 body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numeric:tabular-nums;position:relative;
-  --bg:#0E1726;--bg2:#0A111D;--panel:#16233A;--ink:#FFFFFF;--ink2:#FFFFFF;--muted:#FFFFFF;--grid:#2A3A55;
-  --tax:#1E9E9A;--sup:#3D7FE0;--pay:#C08A0E;--loc:#D04A8A;--own:#1FA94F;--cost:#C9D1DC;--hl:#FFE14D}
+  --bg:#0B1422;--bg2:#08101C;--panel:#132037;--ink:#FFFFFF;--ink2:#FFFFFF;--muted:#FFFFFF;--grid:#2A3A55;
+  --tax:#B65A86;--sup:#4F7EC2;--pay:#B88E30;--loc:#16998A;--own:#FFFFFF;--cost:#C9D1DC;--hl:#FFE14D}
 #stage{position:absolute;inset:0}
 .abs{position:absolute}
-.h{font-family:'Libre Franklin',sans-serif;font-weight:900;letter-spacing:-2px;line-height:1}
-.kicker{font:700 46px 'Libre Franklin';color:var(--ink)}
-.label{font:700 44px 'Libre Franklin';color:var(--ink)}
+.h{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;letter-spacing:-1px;line-height:1;font-variant-numeric:lining-nums}
+.kicker{font:500 42px 'Libre Franklin';letter-spacing:.3px;color:var(--ink)}
+.label{font:500 42px 'Libre Franklin';color:var(--ink)}
 .sub{font:500 48px 'Libre Franklin';color:var(--ink2);line-height:1.3}
 .src{position:absolute;left:116px;top:868px;font:500 36px 'Libre Franklin';color:var(--muted);opacity:.9}
 .src b{color:var(--ink2);font-weight:700}
 .shadow{text-shadow:0 4px 30px rgba(0,0,0,.6)}
-.card{background:var(--panel);border-radius:22px;padding:40px 48px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.card{background:transparent;padding:34px 0 0 0}
 .paper{background:#F7F8F5;color:#111827;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'Libre Caslon Text',Georgia,serif;font-weight:400}
-.hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:4px}
+.hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:0}
 </style></head>
 <body><div id="stage"></div>
 <script>
@@ -64,7 +64,7 @@ window.draw = t => TWEENS.map(tw => apply(tw, t)).join('|');
 window.setup = (scene) => { CUES = scene.cues || {}; TWEENS = []; S.innerHTML = ''; if (scene.opaque) document.body.style.background = 'var(--bg)'; SCENES[scene.type](scene.params || {}, scene); draw(0); };
 
 // Shared pieces ----------------------------------------------------------------------------------
-function dim(at = 0, max = 0.62) { return anim(el('<div class="abs" style="inset:0;background:#0A111D"></div>'), { anim: 'dim', at, max, dur: 0.6 }); }
+function dim(at = 0, max = 0.62) { return anim(el('<div class="abs" style="inset:0;background:linear-gradient(90deg,#08101C 0%,#08101C 38%,rgba(8,16,28,.62) 100%)"></div>'), { anim: 'dim', at, max: Math.min(1, max + 0.18), dur: 0.6 }); }
 function source(text, at = 0) { return anim(el(`<div class="src">Source: ${text}</div>`), { at: cue(at) + 0.8, anim: 'fade', dur: 0.6, out: cue(at) + 5.5, outDur: 0.6 }); }
 function kicker(text, at = 0, x = 116, y = 96) { return anim(el(`<div class="abs kicker" style="left:${x}px;top:${y}px">${text}</div>`), { at, anim: 'fade' }); }
 
@@ -72,9 +72,9 @@ function kicker(text, at = 0, x = 116, y = 96) { return anim(el(`<div class="abs
 function machineIcon(kind, scale = 1) {
   const dims = { countertop: [110, 120], combo: [150, 260], elevator: [190, 280] }[kind] || [150, 260];
   const [w, h] = dims.map(v => v * scale);
-  return `<svg width="${w}" height="${h}" style="display:block;margin-top:26px"><rect x="3" y="3" width="${w - 6}" height="${h - 6}" rx="10" fill="none" stroke="var(--ink2)" stroke-width="5"/>
-    <rect x="${w * .12}" y="${h * .1}" width="${w * .52}" height="${h * .62}" rx="5" fill="#343944"/><rect x="${w * .72}" y="${h * .14}" width="${w * .16}" height="${h * .3}" rx="4" fill="var(--ink2)"/>
-    <rect x="${w * .12}" y="${h * .8}" width="${w * .52}" height="${h * .09}" rx="4" fill="#343944"/></svg>`;
+  return `<svg width="${w}" height="${h}" style="display:block;margin-top:26px"><rect x="3" y="3" width="${w - 6}" height="${h - 6}" rx="0" fill="none" stroke="var(--ink2)" stroke-width="5"/>
+    <rect x="${w * .12}" y="${h * .1}" width="${w * .52}" height="${h * .62}" rx="0" fill="#343944"/><rect x="${w * .72}" y="${h * .14}" width="${w * .16}" height="${h * .3}" rx="0" fill="var(--ink2)"/>
+    <rect x="${w * .12}" y="${h * .8}" width="${w * .52}" height="${h * .09}" rx="0" fill="#343944"/></svg>`;
 }
 
 // Scenes -----------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ const SCENES = {
   // The Split: a $2.00 bar that splits into labeled slices. Modes: 'intro' (names only) or 'full' (cents + tally).
   split(p) {
     if (p.dimAt !== undefined || p.dim) dim(p.dimAt ?? 0, p.dim ?? 0.7);
-    const X = 116, W = 1688, Y = p.y ?? 470, H = 150, GAP = 8;
+    const X = 116, W = 1688, Y = p.y ?? 470, H = 104, GAP = 6;
     const sl = p.slices; // [{key,label,cents,cue}]
     const total = sl.reduce((a, s) => a + s.cents, 0);
     const unit = (W - GAP * (sl.length - 1)) / total;
@@ -102,11 +102,11 @@ const SCENES = {
     if (p.title) anim(el(`<div class="abs h shadow" style="left:116px;top:150px;font-size:${p.titleSize || 200}px">${p.title}</div>`), { anim: 'up', at: p.titleAt ?? 0 });
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
     // Whole bar (before the split): cream with the total
-    const whole = el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:${H}px;border-radius:20px;background:var(--own);display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 64px 'Libre Franklin'">${p.wholeLabel || ''}</div>`);
+    const whole = el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:${H}px;border-radius:0;background:var(--own);display:flex;align-items:center;justify-content:center;color:var(--bg);font:600 50px 'Libre Franklin'">${p.wholeLabel || ''}</div>`);
     anim(whole, { anim: 'wipe', at: p.wholeAt ?? 0, dur: 0.7, out: p.splitAt, outDur: 0.35 });
     const segs = sl.map((s, i) => {
       const g = geo[i];
-      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:16px;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 58px 'Libre Franklin'">${s.inside || ''}</div>`);
+      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:0;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:600 46px 'Libre Franklin'">${s.inside || ''}</div>`);
       anim(seg, { anim: 'fn', at: p.splitAt, dur: 0.6, fn: (pp) => { seg.style.opacity = pp > 0 ? 1 : 0; seg.style.transform = `scaleX(${0.85 + 0.15 * pp})`; seg.style.filter = s.cue ? '' : ''; } });
       if (s.cue && s.key !== 'own') { // dim slices until named, then brighten
         anim(seg, { anim: 'fn', at: s.cue, dur: 0.35, fn: (pp) => { seg.style.filter = `saturate(${0.25 + 0.75 * pp}) brightness(${0.55 + 0.45 * pp})`; } });
@@ -120,13 +120,13 @@ const SCENES = {
         const tx = align === 'left' ? 'translateX(0)' : (align === 'right' ? 'translateX(-100%)' : 'translateX(-50%)');
         const line = el(`<div class="abs" style="left:${cx - 2}px;top:${row < 0 ? ly + 104 : Y + H + 8}px;width:4px;height:${row < 0 ? Y - ly - 112 : ly - Y - H - 14}px;background:var(--${s.key})"></div>`);
         const lab = el(`<div class="abs" style="left:${lx}px;top:${ly}px;transform:${tx};white-space:nowrap;text-align:${align}">
-            <div class="label shadow">${s.label}</div>${s.amount ? `<div class="h shadow" style="font-size:60px;margin-top:6px;letter-spacing:-1px">${s.amount}</div>` : ''}</div>`);
+            <div class="label shadow">${s.label}</div>${s.amount ? `<div class="shadow" style="font:600 52px 'Libre Franklin';margin-top:6px;font-variant-numeric:tabular-nums">${s.amount}</div>` : ''}</div>`);
         anim(line, { anim: 'growY', at: s.cue, dur: 0.35 }); anim(lab, { anim: 'up', at: s.cue, dur: 0.45 });
       }
     });
     if (p.costs) { // operating-cost chips that bite into the owner's slice
       const g = geo[geo.length - 1];
-      p.costs.forEach((c, i) => anim(el(`<div class="abs" style="left:${g.x + (i % 2) * 260}px;top:${Y + H + 40 + Math.floor(i / 2) * 86}px;padding:10px 22px;border-radius:12px;background:var(--cost);color:var(--bg);font:800 40px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
+      p.costs.forEach((c, i) => anim(el(`<div class="abs shadow" style="left:${g.x}px;top:${Y + H + 36 + i * 62}px;color:var(--ink);font:500 42px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
     }
     if (p.tally) { // Owner's tally, top right, counts down as slices leave
       const box = el(`<div class="abs" style="right:116px;top:70px;text-align:right"><div class="kicker">${p.tally.label}</div><div class="h shadow" style="font-size:150px">$2.00</div></div>`);
@@ -143,7 +143,7 @@ const SCENES = {
     const q = el(`<div class="abs" style="left:116px;top:${p.y ?? 330}px;max-width:1690px"><div class="serif shadow" style="font-size:${p.size || 150}px;line-height:1.08">${p.text}</div></div>`);
     anim(q, { anim: 'up', at: p.at });
     if (p.by) anim(el(`<div class="abs sub shadow" style="left:122px;top:${(p.y ?? 330) + q.getBoundingClientRect().height + 28}px;max-width:1680px">${p.by}</div>`), { anim: 'fade', at: p.byAt ?? p.at });
-    if (p.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${(p.y ?? 330) + (p.size || 150) * 0.52}px;width:${q.firstElementChild.getBoundingClientRect().width + 30}px;height:14px;background:var(--hl);border-radius:7px"></div>`), { anim: 'grow', at: p.strikeAt, dur: 0.5 });
+    if (p.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${(p.y ?? 330) + (p.size || 150) * 0.52}px;width:${q.firstElementChild.getBoundingClientRect().width + 30}px;height:14px;background:var(--hl);border-radius:0"></div>`), { anim: 'grow', at: p.strikeAt, dur: 0.5 });
     if (p.source) source(p.source, p.at);
   },
 
@@ -154,7 +154,7 @@ const SCENES = {
     p.items.forEach((it, i) => {
       const y = 210 + i * 210;
       const c = el(`<div class="abs card" style="left:116px;top:${y}px;width:1300px;height:170px;display:flex;align-items:center;gap:40px;padding:0 48px">
-        <div style="width:16px;height:96px;border-radius:8px;background:var(--${it.key || 'hl'})"></div>
+        <div style="width:16px;height:96px;border-radius:0;background:var(--${it.key || 'hl'})"></div>
         <div><div style="font:800 60px 'Libre Franklin'">${it.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2);margin-top:6px">${it.sub || ''}</div></div></div>`);
       anim(c, { anim: 'up', at: it.cue });
     });
@@ -165,7 +165,7 @@ const SCENES = {
     if (p.dim !== false) dim(0, p.dim ?? 0.75);
     if (p.kicker) anim(el(`<div class="abs kicker" style="left:116px;top:390px">${p.kicker}</div>`), { anim: 'fade', at: 0 });
     anim(el(`<div class="abs h shadow" style="left:116px;top:450px;font-size:${p.size || 150}px;letter-spacing:-3px">${p.title}</div>`), { anim: 'up', at: 0.1 });
-    if (p.rule) anim(el(`<div class="abs" style="left:120px;top:${450 + (p.size || 150) + 50}px;width:360px;height:10px;border-radius:5px;background:var(--${p.rule})"></div>`), { anim: 'grow', at: 0.35, dur: 0.6 });
+    if (p.rule) anim(el(`<div class="abs" style="left:120px;top:${450 + (p.size || 150) + 50}px;width:360px;height:10px;border-radius:0;background:var(--${p.rule})"></div>`), { anim: 'grow', at: 0.35, dur: 0.6 });
   },
 
   // Row of cards: price tags, stat tiles, comparisons, the three winners.
@@ -178,7 +178,7 @@ const SCENES = {
       const x = 116 + i * (W + gap);
       const icon = it.icon ? machineIcon(it.icon) : '';
       const c = el(`<div class="abs card" style="left:${x}px;top:${top}px;width:${W}px;height:${H}px;padding:44px 44px;overflow:hidden">
-        <div style="position:absolute;left:0;top:0;right:0;height:12px;background:var(--${it.key || 'grid'})"></div>
+        <div style="position:absolute;left:0;top:0;right:0;height:3px;background:var(--${it.key || 'grid'})"></div>
         <div class="kicker" style="color:var(--ink2)">${it.label}</div>
         ${icon}
         <div class="h" style="font-size:${it.size || p.valueSize || 130}px;margin-top:${icon ? 10 : 40}px;letter-spacing:-3px">${it.value || ''}</div>
@@ -203,13 +203,13 @@ const SCENES = {
       const lab = el(`<div class="abs" style="left:${LX}px;top:${y}px;width:${LW}px;height:96px;display:flex;flex-direction:column;justify-content:center"><div class="label" style="font-size:46px">${it.label}</div>${it.sub ? `<div style="font:500 34px 'Libre Franklin';color:var(--ink2)">${it.sub}</div>` : ''}</div>`);
       anim(lab, { anim: 'fade', at: it.cue });
       if (it.locked) {
-        const b = el(`<div class="abs" style="left:${BX}px;top:${y + 8}px;width:${BW * 0.6}px;height:80px;border:4px dashed var(--muted);border-radius:12px;display:flex;align-items:center;justify-content:center;font:900 60px 'Libre Franklin';color:var(--muted)">?</div>`);
+        const b = el(`<div class="abs" style="left:${BX}px;top:${y + 20}px;width:${BW * 0.6}px;height:52px;border:4px dashed var(--muted);border-radius:0;display:flex;align-items:center;justify-content:center;font:900 60px 'Libre Franklin';color:var(--muted)">?</div>`);
         anim(b, { anim: 'fade', at: it.cue }); return;
       }
-      if (it.from_ !== undefined) anim(el(`<div class="abs" style="left:${BX}px;top:${y + 8}px;width:${BW * f0}px;height:80px;border-radius:12px;background:var(--${it.key});opacity:.35"></div>`), { anim: 'grow', at: it.cue, dur: 0.6 });
-      const bar = el(`<div class="abs" style="left:${BX + BW * f0}px;top:${y + 8}px;width:${Math.max(6, BW * (f - f0))}px;height:80px;border-radius:12px;background:var(--${it.key})"></div>`);
+      if (it.from_ !== undefined) anim(el(`<div class="abs" style="left:${BX}px;top:${y + 20}px;width:${BW * f0}px;height:52px;border-radius:0;background:var(--${it.key});opacity:.35"></div>`), { anim: 'grow', at: it.cue, dur: 0.6 });
+      const bar = el(`<div class="abs" style="left:${BX + BW * f0}px;top:${y + 20}px;width:${Math.max(6, BW * (f - f0))}px;height:52px;border-radius:0;background:var(--${it.key})"></div>`);
       anim(bar, { anim: 'grow', at: it.cue, dur: 0.7 });
-      const v = el(`<div class="abs h shadow" style="left:${BX + BW * f + 24}px;top:${y + 4}px;font-size:${p.valueSize || 84}px;letter-spacing:-1px;white-space:nowrap">${it.text}</div>`);
+      const v = el(`<div class="abs shadow" style="left:${BX + BW * f + 24}px;top:${y - 4}px;font:600 ${p.valueSize || 64}px 'Libre Franklin';white-space:nowrap;font-variant-numeric:tabular-nums">${it.text}</div>`);
       anim(v, { anim: 'fade', at: it.cue + 0.4 });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:${top + p.items.length * rowH + 10}px;font-size:40px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
@@ -221,13 +221,13 @@ const SCENES = {
     if (!sc.opaque) dim(0, p.dim ?? 0.82);
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
     const W = p.w ?? 1300, x = p.x ?? 116, y = p.y ?? 190;
-    const card = el(`<div class="abs card" style="left:${x}px;top:${y}px;width:${W}px;padding:40px 56px"></div>`);
+    const card = el(`<div class="abs card" style="left:${x}px;top:${y}px;width:${W}px;padding:0"></div>`);
     anim(card, { anim: 'fade', at: p.at ?? 0 });
     if (p.title) el(`<div style="font:800 56px 'Libre Franklin';margin-bottom:18px">${p.title}</div>`, card);
     p.lines.forEach(l => {
-      const row = el(`<div style="display:flex;justify-content:space-between;align-items:baseline;padding:${l.total ? '26px 0 6px' : '16px 0'};${l.total ? 'border-top:4px solid var(--grid);margin-top:10px' : ''}">
-        <div style="font:${l.total ? 800 : 600} ${l.total ? 56 : 48}px 'Libre Franklin';color:${l.total ? 'var(--ink)' : 'var(--ink2)'}">${l.dot ? `<span style="display:inline-block;width:22px;height:22px;border-radius:5px;background:var(--${l.dot});margin-right:18px"></span>` : ''}${l.label}</div>
-        <div class="h" style="white-space:nowrap;margin-left:30px;font-size:${l.total ? 96 : 64}px;letter-spacing:-1px;color:${l.key ? `var(--${l.key})` : 'var(--ink)'}">${l.value || ''}</div></div>`, card);
+      const row = el(`<div style="display:flex;justify-content:space-between;align-items:baseline;padding:${l.total ? '26px 0 6px' : '16px 0'};${l.total ? 'border-top:3px solid #FFFFFF;margin-top:10px' : 'border-bottom:1px solid rgba(255,255,255,.22)'}">
+        <div style="font:${l.total ? 800 : 600} ${l.total ? 56 : 48}px 'Libre Franklin';color:${l.total ? 'var(--ink)' : 'var(--ink2)'}">${l.dot ? `<span style="display:inline-block;width:22px;height:22px;border-radius:0;background:var(--${l.dot});margin-right:18px"></span>` : ''}${l.label}</div>
+        <div style="white-space:nowrap;margin-left:30px;font:${l.total ? 600 : 500} ${l.total ? 80 : 54}px 'Libre Franklin';font-variant-numeric:tabular-nums;color:${l.key ? `var(--${l.key})` : 'var(--ink)'}">${l.value || ''}</div></div>`, card);
       anim(row, { anim: 'up', at: l.cue ?? 0 });
     });
     if (p.note) anim(el(`<div style="font:500 38px 'Libre Franklin';color:var(--muted);margin-top:22px">${p.note}</div>`, card), { anim: 'fade', at: p.noteAt ?? 0 });
@@ -254,10 +254,10 @@ const SCENES = {
     box(p.src, 116, p.srcAt ?? 0);
     box(p.dst, 1804 - W, p.dstAt ?? 0.3);
     const ar = el(`<div class="abs" style="left:${116 + W + 30}px;top:${y + 90}px;width:${1804 - W - 116 - W - 60}px;text-align:center">
-       <div style="height:10px;background:var(--hl);border-radius:5px;position:relative;margin-top:24px"><div style="position:absolute;right:-6px;top:-17px;border-left:34px solid var(--hl);border-top:22px solid transparent;border-bottom:22px solid transparent"></div></div>
+       <div style="height:10px;background:var(--hl);border-radius:0;position:relative;margin-top:24px"><div style="position:absolute;right:-6px;top:-17px;border-left:34px solid var(--hl);border-top:22px solid transparent;border-bottom:22px solid transparent"></div></div>
        <div style="font:800 38px 'Libre Franklin';margin-top:22px;line-height:1.2">${p.arrowLabel || ''}</div></div>`);
     anim(ar, { anim: 'wipe', at: p.arrowAt ?? 0.4, dur: 0.6 });
-    (p.facts || []).forEach((f, i) => anim(el(`<div class="abs" style="left:116px;top:${y + 300 + i * 100}px;font:700 56px 'Libre Franklin'"><span style="display:inline-block;width:20px;height:20px;border-radius:5px;background:var(--${f.key || 'hl'});margin-right:24px;vertical-align:middle"></span>${f.text}</div>`), { anim: 'up', at: f.cue }));
+    (p.facts || []).forEach((f, i) => anim(el(`<div class="abs" style="left:116px;top:${y + 300 + i * 100}px;font:700 56px 'Libre Franklin'"><span style="display:inline-block;width:20px;height:20px;border-radius:0;background:var(--${f.key || 'hl'});margin-right:24px;vertical-align:middle"></span>${f.text}</div>`), { anim: 'up', at: f.cue }));
     if (p.source) source(p.source, p.sourceAt ?? 0);
   },
 
@@ -268,10 +268,10 @@ const SCENES = {
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
     const X = 116, W = 1688, Y = 520, yrs = p.years || 15;
     let ticks = ''; for (let i = 0; i <= yrs; i++) ticks += `<div class="abs" style="left:${X + W * i / yrs - 1}px;top:${Y + 70}px;width:3px;height:${i % 5 ? 18 : 34}px;background:var(--grid)"></div>` + (i % 5 === 0 ? `<div class="abs" style="left:${X + W * i / yrs}px;top:${Y + 112}px;transform:translateX(-50%);font:600 38px 'Libre Franklin';color:var(--ink2)">${i} yr</div>` : '');
-    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:70px;border-radius:12px;background:var(--panel)"></div>`); el(`<div>${ticks}</div>`);
+    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:70px;border-radius:0;background:var(--panel)"></div>`); el(`<div>${ticks}</div>`);
     p.marks.forEach(m => {
       const fx = X + W * Math.min(m.years, yrs) / yrs;
-      anim(el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${fx - X}px;height:70px;border-radius:12px;background:var(--${m.key});opacity:${m.op ?? 1}"></div>`), { anim: 'grow', at: m.cue, dur: 0.8 });
+      anim(el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${fx - X}px;height:70px;border-radius:0;background:var(--${m.key});opacity:${m.op ?? 1}"></div>`), { anim: 'grow', at: m.cue, dur: 0.8 });
       anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:84px;white-space:nowrap">${m.label}</div><div style="font:600 36px 'Libre Franklin';color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:740px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
@@ -284,11 +284,11 @@ const SCENES = {
     if (p.kicker) kicker(p.kicker, 0);
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
     const X = 116, W = 1688, Y = 560, mx = p.max || 4;
-    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:10px;border-radius:5px;background:var(--grid)"></div>`);
+    el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:10px;border-radius:0;background:var(--grid)"></div>`);
     for (let i = 0; i <= mx; i++) el(`<div class="abs" style="left:${X + W * i / mx}px;top:${Y + 40}px;transform:translateX(-50%);font:700 44px 'Libre Franklin';color:var(--muted)">${i}×</div>`);
     p.marks.forEach(m => {
       const fx = X + W * m.x / mx;
-      anim(el(`<div class="abs" style="left:${fx - 18}px;top:${Y - 13}px;width:36px;height:36px;border-radius:18px;background:var(--${m.key});box-shadow:0 0 0 8px rgba(0,0,0,.3)"></div>`), { anim: 'pop', at: m.cue });
+      anim(el(`<div class="abs" style="left:${fx - 18}px;top:${Y - 13}px;width:36px;height:36px;border-radius:0;background:var(--${m.key});box-shadow:0 0 0 8px rgba(0,0,0,.3)"></div>`), { anim: 'pop', at: m.cue });
       anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 120 : Y - 230}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:96px;color:var(--${m.key})">${m.label}</div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:700px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
@@ -301,7 +301,7 @@ const SCENES = {
     if (p.kicker) kicker(p.kicker, 0);
     if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 68px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: 0 });
     p.items.forEach((it, i) => {
-      const r = el(`<div class="abs" style="left:116px;top:${(p.y ?? 330) + i * (p.rowH ?? 130)}px;display:flex;align-items:center;gap:36px"><div style="width:${p.box ?? 78}px;height:${p.box ?? 78}px;border:6px solid var(--${it.key || 'ink2'});border-radius:14px;flex:none"></div><div style="font:700 ${p.font ?? 62}px 'Libre Franklin'">${it.text}</div></div>`);
+      const r = el(`<div class="abs" style="left:116px;top:${(p.y ?? 330) + i * (p.rowH ?? 130)}px;display:flex;align-items:center;gap:36px"><div style="width:${p.box ?? 78}px;height:${p.box ?? 78}px;border:6px solid var(--${it.key || 'ink2'});border-radius:0;flex:none"></div><div style="font:700 ${p.font ?? 62}px 'Libre Franklin'">${it.text}</div></div>`);
       anim(r, { anim: 'up', at: it.cue });
     });
   },
@@ -309,8 +309,8 @@ const SCENES = {
   // Retyped forum post (no site UI).
   post(p, sc) {
     if (!sc.opaque) dim(0, 0.85);
-    const c = el(`<div class="abs card" style="left:260px;top:150px;width:1400px;padding:50px 64px">
-      <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px"><div style="width:64px;height:64px;border-radius:32px;background:var(--grid)"></div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${p.meta}</div></div>
+    const c = el(`<div class="abs card" style="left:260px;top:150px;width:1400px;padding:40px 0 0 0;border-top:6px solid #FFFFFF">
+      <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px"><div style="width:64px;height:64px;border-radius:0;background:var(--grid)"></div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${p.meta}</div></div>
       <div style="font:800 58px 'Libre Franklin';margin-bottom:22px">${p.title}</div><div style="font:500 44px 'Libre Franklin';color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
     anim(c, { anim: 'up', at: 0 });
     if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 40px 'Libre Franklin';color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });
@@ -323,7 +323,7 @@ const SCENES = {
     if (p.kicker) kicker(p.kicker, 0);
     p.big.forEach((b, i) => anim(el(`<div class="abs card" style="left:116px;top:${200 + i * 300}px;width:640px;height:260px;display:flex;flex-direction:column;justify-content:center;border-left:14px solid var(--${b.key})"><div style="font:900 64px 'Libre Franklin'">${b.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2)">${b.sub || ''}</div></div>`), { anim: 'up', at: b.cue }));
     const g = el(`<div class="abs" style="left:840px;top:200px;width:964px;height:560px;display:grid;grid-template-columns:repeat(24,1fr);gap:8px"></div>`);
-    let cells = ''; for (let i = 0; i < 24 * 13; i++) cells += `<div style="height:35px;border-radius:5px;background:var(--${p.smallKey || 'grid'});opacity:${0.55 + 0.45 * ((i * 37) % 11) / 10}"></div>`;
+    let cells = ''; for (let i = 0; i < 24 * 13; i++) cells += `<div style="height:35px;border-radius:0;background:var(--${p.smallKey || 'grid'});opacity:${0.55 + 0.45 * ((i * 37) % 11) / 10}"></div>`;
     g.innerHTML = cells; anim(g, { anim: 'wipe', at: p.smallCue, dur: 1.0 });
     anim(el(`<div class="abs" style="left:840px;top:790px;font:800 52px 'Libre Franklin'">${p.smallLabel}</div>`), { anim: 'fade', at: p.smallCue + 0.4 });
     if (p.note) anim(el(`<div class="abs" style="left:116px;top:800px;font:500 34px 'Libre Franklin';color:var(--muted)">${p.note}</div>`), { anim: 'fade', at: 0 });
@@ -339,7 +339,7 @@ const SCENES = {
       let len = 0; for (let i = 0; i < pts.length; i++) { const a = pts[i], b = pts[(i + 1) % pts.length]; len += Math.hypot((a[0] - b[0]) * w, (a[1] - b[1]) * h); }
       const svg = el(`<svg class="abs" style="left:${x}px;top:${y}px" width="${w}" height="${h}">
         <defs><pattern id="g${x}" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#1B2A45" stroke-width="2"/></pattern></defs>
-        <rect width="${w}" height="${h}" rx="22" fill="#13203A"/><rect width="${w}" height="${h}" rx="22" fill="url(#g${x})"/>
+        <rect width="${w}" height="${h}" rx="0" fill="#13203A"/><rect width="${w}" height="${h}" rx="0" fill="url(#g${x})"/>
         <path class="route" d="${d}" fill="none" style="stroke:var(--${key})" stroke-width="8" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/>
         ${pts.map(q => `<circle cx="${q[0] * w}" cy="${q[1] * h}" r="16" style="fill:var(--ink)"/>`).join('')}</svg>`);
       const path = svg.querySelector('path.route');
@@ -363,7 +363,7 @@ const SCENES = {
       <div style="font:700 30px 'Libre Franklin';letter-spacing:2px;color:#6B6F78">CLASSIFIEDS · 1998</div>
       <div style="border:4px solid #22252B;margin-top:24px;padding:30px;text-align:center"><div style="font:900 64px 'DejaVu Serif',serif;line-height:1.05">${p.adHead}</div><div style="font:400 36px 'DejaVu Serif',serif;margin-top:20px;line-height:1.35">${p.adBody}</div></div></div>`);
     anim(ad, { anim: 'up', at: p.adCue ?? 0 });
-    const ph = el(`<div class="abs" style="left:1180px;top:110px;width:400px;height:760px;border-radius:56px;background:#0B0C0F;border:10px solid #3A3F49;padding:30px 24px;display:flex;flex-direction:column;justify-content:flex-end">
+    const ph = el(`<div class="abs" style="left:1180px;top:110px;width:400px;height:760px;border-radius:0;background:#0B0C0F;border:10px solid #3A3F49;padding:30px 24px;display:flex;flex-direction:column;justify-content:flex-end">
       <div style="font:800 46px 'Libre Franklin';line-height:1.15">${p.feedHead}</div><div style="font:500 30px 'Libre Franklin';color:var(--ink2);margin-top:16px">${p.feedBody}</div></div>`);
     anim(ph, { anim: 'up', at: p.feedCue ?? 0.4 });
     anim(el(`<div class="abs" style="left:116px;top:860px;font:600 32px 'Libre Franklin';color:var(--muted);letter-spacing:1px;text-transform:uppercase">Illustration, not real ads</div>`), { anim: 'fade', at: 0 });
@@ -382,7 +382,7 @@ const SCENES = {
     p.lines.forEach(l => {
       const q = el(`<div class="abs serif shadow" style="left:116px;top:${y}px;font-size:${p.size || 120}px;line-height:1.08;white-space:nowrap">${l.text}</div>`);
       anim(q, { anim: 'up', at: l.at });
-      if (l.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${y + (p.size || 120) * 0.5}px;width:${q.getBoundingClientRect().width + 30}px;height:12px;background:var(--hl);border-radius:6px"></div>`), { anim: 'grow', at: l.strikeAt, dur: 0.45 });
+      if (l.strikeAt !== undefined) anim(el(`<div class="abs" style="left:100px;top:${y + (p.size || 120) * 0.5}px;width:${q.getBoundingClientRect().width + 30}px;height:6px;background:var(--hl);border-radius:0"></div>`), { anim: 'grow', at: l.strikeAt, dur: 0.45 });
       y += (p.size || 120) * 1.25;
     });
   },

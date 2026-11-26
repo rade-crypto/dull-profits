@@ -81,7 +81,7 @@ def main():
             slow = min(max(1.0, dur / avail), 1.5)
             cmd += ["-ss", f"{t_in:.3f}", "-i", str(clip)]
             bg = (f"[0:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
-                  f"crop=1920:1080,setsar=1,tpad=stop_mode=clone:stop_duration={dur + 1:.2f}")
+                  f"crop=1920:1080,setsar=1,eq=saturation=0.86:contrast=1.03,tpad=stop_mode=clone:stop_duration={dur + 1:.2f}")
             for i, (x, y, w, h) in enumerate(s.get("blur", [])):
                 bg += f"[b{i}];[b{i}]split[m{i}][c{i}];[c{i}]crop={w}:{h}:{x}:{y},boxblur=luma_radius=24:luma_power=2:chroma_radius=10:chroma_power=2[z{i}];[m{i}][z{i}]overlay={x}:{y}"
             chains.append(bg + "[bg]")
