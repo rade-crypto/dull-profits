@@ -106,14 +106,14 @@ def main():
     total = sum(s["frames"] for s in shots) / FPS
     voice = ep / "voiceover" / "voiceover-clean.wav"
     music = ep / args.music
-    fc = (f"[0:a]atrim=0:{total:.3f},asetpts=PTS-STARTPTS,aresample=48000,apad=pad_dur=5,loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,asplit[v1][v2];"
+    fc = (f"[0:a]atrim=0:{total:.3f},asetpts=PTS-STARTPTS,aresample=48000,apad=whole_dur={total + 3:.3f},loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,asplit[v1][v2];"
           f"[1:a]atrim=0:{total + 5:.3f},asetpts=PTS-STARTPTS,aresample=48000,loudnorm=I={args.music_db}:LRA=7,aresample=48000,"
           f"afade=t=in:d=2,afade=t=out:st={max(0, total - 3):.3f}:d=3[m];"
           f"[m][v2]sidechaincompress=threshold=0.03:ratio=5:attack=40:release=700[md];"
           f"[v1][md]amix=inputs=2:duration=first:normalize=0,apad=pad_dur=5,loudnorm=I=-14:TP=-1:LRA=11,aresample=48000,atrim=0:{total:.3f}[a]")
     audio = work / "audio.m4a"
     if not (redo and audio.exists()):
-      run(["ffmpeg", "-v", "error", "-y", "-i", str(voice), "-i", str(music), "-filter_complex", fc, "-map", "[a]",
+      run(["ffmpeg", "-v", "error", "-y", "-i", str(voice), "-stream_loop", "-1", "-i", str(music), "-filter_complex", fc, "-map", "[a]",
          "-c:a", "aac", "-b:a", "192k", "-ar", "48000", str(audio)])
     out = ep / "render" / args.out
     run(["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(audio), "-map", "0:v", "-map", "1:a", "-c", "copy",

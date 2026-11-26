@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@60,600&family=IBM+Plex+Serif:wght@500&display=swap">
+<style>
+body{margin:0;background:#111;color:#F2EFE8;font-family:Inter,sans-serif;width:1800px}
+.row{display:flex;align-items:center;gap:40px;padding:40px 50px;border-bottom:1px solid #222}
+.tag{width:150px;font:800 30px Inter;color:#F2EFE8}
+.wm{width:1100px;height:300px;background:#1C1F24;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.pfp{width:300px;height:300px;border-radius:50%;background:#1C1F24;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.dbl{border-bottom:3px solid #F2EFE8;padding-bottom:7px;position:relative}
+.dbl::after{content:"";position:absolute;left:0;right:0;bottom:-11px;border-bottom:3px solid #F2EFE8}
+/* A: serif, title case, double underline (the bottom line in accounting) */
+.a{font-family:'Source Serif 4',serif;font-weight:600;font-size:118px;letter-spacing:-1px}
+.a-p{font-family:'Source Serif 4',serif;font-weight:600;font-size:190px;line-height:1}
+/* B: serif small caps ledger */
+.b{font-family:'IBM Plex Serif',serif;font-weight:500;font-size:84px;letter-spacing:14px}
+.b-p{font-family:'IBM Plex Serif',serif;font-weight:500;font-size:84px;letter-spacing:8px}
+/* C: quiet sans */
+.c{font:600 112px Inter;letter-spacing:-2px}
+.c u{text-decoration:none;border-bottom:8px solid #F2EFE8;padding-bottom:4px}
+.c-p{font:700 200px Inter;letter-spacing:-6px}
+</style></head><body>
+<div class="row"><div class="tag">A</div><div class="wm"><span class="a dbl">Net to Owner</span></div><div class="pfp"><span class="a-p dbl">N</span></div></div>
+<div class="row"><div class="tag">B</div><div class="wm"><span class="b dbl">NET TO OWNER</span></div><div class="pfp"><span class="b-p dbl">NTO</span></div></div>
+<div class="row"><div class="tag">C</div><div class="wm"><span class="c">Net to <u>Owner</u></span></div><div class="pfp"><span class="c-p">N</span></div></div>
+</body></html>
