@@ -45,7 +45,11 @@ def resolve(ep: Path):
 
     def rel(phrase, s0):
         # Whisper word starts run a little early; graphics land just after the word begins.
-        return round(max(0.0, tl.at(phrase, after=s0 - 0.05) - s0 + CUE_DELAY), 3)
+        # "@phrase+0.4" lands 0.4 s after the phrase (for staggered builds).
+        m = re.match(r"^(.*?)\+(\d+(?:\.\d+)?)$", phrase)
+        off = float(m[2]) if m else 0.0
+        phrase = m[1] if m else phrase
+        return round(max(0.0, tl.at(phrase, after=s0 - 0.05) - s0 + CUE_DELAY + off), 3)
 
     def fix(v, s0):
         if isinstance(v, str) and v.startswith("@"):
@@ -58,7 +62,23 @@ def resolve(ep: Path):
             return [fix(x, s0) for x in v]
         return v
 
+    img_dir = ep / "render" / "player" / "img"
+    def still(v):
+        # scene param img=(clip, t): a frame of the clip saved as a jpg the page can load
+        f, tt = v
+        import hashlib
+        out = img_dir / (hashlib.sha1(f"{f}@{tt}".encode()).hexdigest()[:12] + ".jpg")
+        if not out.exists():
+            img_dir.mkdir(parents=True, exist_ok=True)
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{tt:.3f}", "-i", str(ep / "footage" / f), "-frames:v", "1", "-vf",
+                            "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,eq=saturation=0.86:contrast=1.03", "-q:v", "2", str(out)], check=True)
+        return out.resolve().as_uri()
+
     for s in shots:
+        if s.get("scene") and isinstance(s["scene"].get("params", {}).get("img"), (list, tuple)):
+            s["scene"]["params"]["img"] = still(s["scene"]["params"]["img"])
+        if s.get("scene"):
+            s["scene"]["dur"] = s["dur"]
         if s.get("scene"):
             s["scene"] = fix(s["scene"], s["start"])
         vo = " ".join(w["w"] for w in tl.words if s["start"] - 0.01 <= w["start"] < s["end"] - 0.01)
@@ -94,7 +114,7 @@ def main():
         a, b = (int(x) for x in args.only.split("-"))
         shots = [s for s in shots if a <= s["n"] <= b]
     for s in shots:
-        src = s.get("clip") or (s.get("clips") or [[None]])[0][0]
+        src = s.get("clip") or (s.get("clips") or [[None]])[0][0] or (s.get("bg") or [None])[0]
         t_in = s.get("in") if s.get("clip") else (s["clips"][0][1] if s.get("clips") else 0)
         if src:  # the shot's built background (mirroring, multi-clip) near its end; raw clip if not built yet
             import proxies
@@ -103,7 +123,7 @@ def main():
                 frame(built, max(0.0, s["dur"] - 0.4), out / f"bg-{s['n']:02d}.jpg")
             else:
                 frame(ep / "footage" / src, (t_in or 0) + min(2.0, s["dur"] / 2), out / f"bg-{s['n']:02d}.jpg")
-    jobs = [dict(n=s["n"], bg=str(out / f"bg-{s['n']:02d}.jpg") if (s.get("clip") or s.get("clips")) else None, scene=s.get("scene"),
+    jobs = [dict(n=s["n"], bg=str(out / f"bg-{s['n']:02d}.jpg") if (s.get("clip") or s.get("clips") or s.get("bg")) else None, scene=s.get("scene"),
                  t=s.get("still_t", s["dur"]), out=str(out / f"{s['n']:02d}.png")) for s in shots]
     (out / "jobs.json").write_text(json.dumps(jobs))
     subprocess.run(["node", str(HERE / "stills.js"), str(out / "jobs.json"), str(HERE / "gfx" / "scenes.html")], check=True)
@@ -115,7 +135,7 @@ def main():
             continue
         cells = "".join(
             f"""<div class="cell"><img src="file://{out}/{s['n']:02d}.png"><div class="cap"><span class="t">{mmss(s['start'])}</span>
-            <span class="k k{s['kind']}">{dict(F='FOOTAGE', GF='GRAPHIC ON FOOTAGE', G='GRAPHIC', D='DEAL FILE')[s['kind']]}</span>
+            <span class="k k{s['kind']}">{dict(F='FOOTAGE', GF='GRAPHIC ON FOOTAGE', B='GRAPHIC ON IMAGE', G='GRAPHIC', D='DEAL FILE')[s['kind']]}</span>
             <span class="n">#{s['n']}</span><div class="vo">“{s['vo']}”</div>{f'<div class="note">{s["note"]}</div>' if s.get('note') else ''}</div></div>"""
             for s in cs)
         html = f"""<!doctype html><html><head><meta charset="utf-8"><style>

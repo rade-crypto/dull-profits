@@ -25,7 +25,8 @@ def dur_of(f):
 
 def shot_key(s):
     """Stable file name for a shot's background: changes only when its footage or length changes."""
-    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else []), sort_keys=True)
+    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else [])
+                      + ([s["bg"]] if s.get("bg") else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
@@ -38,7 +39,31 @@ def pieces_of(s):
     return [(s["clip"], s.get("in") or 0.0, None, base)]
 
 
+def has_bg(s):
+    return bool(s.get("clip") or s.get("clips") or s.get("bg"))
+
+
+def make_still_bg(ep, s, out, crf):
+    """A graphic's own background: one frame of a clip, blurred and darkened, drifting slowly sideways."""
+    f, t = s["bg"][0], s["bg"][1]
+    dim = s["bg"][2] if len(s["bg"]) > 2 else 0.42
+    dur = s["dur"]
+    vf = (f"scale=2208:1242:force_original_aspect_ratio=increase,crop=2208:1242,boxblur=luma_radius=22:luma_power=2:chroma_radius=12:chroma_power=2,"
+          f"colorchannelmixer=rr={dim}:gg={dim}:bb={dim},eq=saturation=0.75,"
+          f"crop=1920:1080:x='(iw-1920)*(0.15+0.7*t/{dur:.3f})':y=(ih-1080)/2,fps={FPS},format=yuv420p")
+    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.3f}", "-i", str(ep / "footage" / f), "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"]
+    png = subprocess.run(cmd, capture_output=True, check=True).stdout
+    r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-framerate", str(FPS), "-f", "image2pipe", "-i", "-", "-vf", vf, "-t", f"{dur:.3f}",
+                        "-c:v", "libx264", "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p",
+                        "-movflags", "+faststart", "-an", str(out)], input=png, capture_output=True)
+    if r.returncode:
+        raise RuntimeError(f"shot {s['n']}: {r.stderr[-1500:].decode(errors='ignore')}")
+    return s["n"]
+
+
 def make_bg(ep, s, out, crf=28):
+    if s.get("bg"):
+        return make_still_bg(ep, s, out, crf)
     dur = s["dur"]
     ps = pieces_of(s)
     n = len(ps)
@@ -85,7 +110,7 @@ def main():
     ep = Path(sys.argv[1]).resolve()
     edit = json.load(open(ep / "render" / "player" / "edit.json"))
     only = {int(x) for x in sys.argv[2].split(",")} if len(sys.argv) > 2 else None
-    shots = [s for s in edit["shots"] if (s.get("clip") or s.get("clips")) and (not only or s["n"] in only)]
+    shots = [s for s in edit["shots"] if has_bg(s) and (not only or s["n"] in only)]
     with ThreadPoolExecutor(4) as ex:
         for n in ex.map(lambda s: one(ep, s), shots):
             print("proxy", n, flush=True)

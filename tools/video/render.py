@@ -57,7 +57,7 @@ def main():
         s["frames"] = s["f1"] - s["f0"]
 
     # 1) graphics
-    jobs = [dict(scene=s["scene"], frames=s["frames"], fps=FPS, dir=str(work / f"g{s['n']:02d}"), transparent=bool(s.get("clip") or s.get("clips")))
+    jobs = [dict(scene=s["scene"], frames=s["frames"], fps=FPS, dir=str(work / f"g{s['n']:02d}"), transparent=bool(s.get("clip") or s.get("clips") or s.get("bg")))
             for s in shots if s.get("scene") and (not redo or s["n"] in redo)]
     for j in jobs:
         if redo and Path(j["dir"]).exists():
@@ -75,7 +75,7 @@ def main():
             segs.append(out)
             continue
         cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
-        if s.get("clip") or s.get("clips"):
+        if s.get("clip") or s.get("clips") or s.get("bg"):
             bg = work / f"bg{n:02d}.mp4"
             make_bg(ep, dict(s, dur=dur), bg, crf=16)
             cmd += ["-i", str(bg)]

@@ -37,8 +37,8 @@ from proxies import shot_key  # noqa: E402
 shots, _ = resolve(ep)
 edit = {"shots": [], "duration": shots[-1]["end"]}
 for s in shots:
-    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "scene")}
-    if d["clip"] or d["clips"]:
+    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene")}
+    if d["clip"] or d["clips"] or d["bg"]:
         d["key"] = shot_key(d)
     edit["shots"].append(d)
 (P / "edit.json").write_text(json.dumps(edit))
@@ -46,7 +46,7 @@ logo = "data:image/png;base64," + b64(ep.parents[1] / "brand" / "wordmark.png")
 for s in edit["shots"]:
     if s.get("scene") and s["scene"].get("type") == "end":
         s["scene"]["params"]["logo"] = logo
-data = json.dumps(edit).replace("<", "\\u003c")
+data = json.dumps(edit).replace((P / "img").resolve().as_uri() + "/", "img/").replace("<", "\\u003c")
 
 page = (HERE / "player_template.html").read_text()
 page = page.replace("/*SCENE_CSS*/", css).replace("/*SCENE_JS*/", js).replace("/*EDIT_JSON*/null", data)

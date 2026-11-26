@@ -67,6 +67,7 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   rainbow-bar logo looked unserious.
 - Visual approach (`docs/visual-style-guide.md`): **stock footage + custom motion graphics**, about 60% footage,
   25% graphics mostly overlaid on darkened footage, and 15% "Deal File" source documents.
+  **Graphics templates: `docs/templates/README.md`** (50 designs, rules, which ones the engine has). Use them for every episode.
   Signature devices: **The Split** (a money bar sliced into tax/supplier/payments/location/owner) and **The Deal File** (a real document with a highlighter sweep).
   **Look (changed Nov 26, 2026; owner: the old cream/orange/charcoal + serif/Inter look was Claude's own and over-used, rounded
   boxes looked like Claude too, and it should feel premium but readable):** deep navy bg `#0B1422`, white text (never grey),
