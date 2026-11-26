@@ -64,7 +64,9 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   **Voice must be made locally (free).** Samples 5–6 (Qwen3-TTS VoiceDesign) were rejected as "AI sounding".
   Priority is the most human-sounding free local model. Samples 7–9 = Chatterbox (MIT, `/opt/tts/cb-env`, CPU ~3x slower
   than real time; Turbo ~1.5x): 7 = Chatterbox with sample 6 as voice reference, 8 = Turbo with the same reference,
-  9 = Chatterbox default voice. Awaiting the owner's pick. Keep Chatterbox's built-in Perth watermark on (needs `setuptools<81`).
+  9 = Chatterbox default voice. Owner: 7–9 "not good".
+  Samples 10–13 = **VoxCPM2** (openbmb/VoxCPM2, Apache-2.0, 2B, 48 kHz, voice design from a text description in
+  parentheses before the line; `/opt/tts/vox-env`, CPU ~3x slower than real time). Awaiting the owner's pick. Keep Chatterbox's built-in Perth watermark on (needs `setuptools<81`).
   Tools: `tools/voiceover/` (Kokoro-82M and Phonon 31M, both Apache-2.0, CPU). Run `setup.sh` first, since a fresh container has no venv.
   `render.py` makes the VO plus captions.srt, chapters.txt and timings.json. `qa_asr.py` proofreads it with Whisper.
   Don't use Phonon 40M models (non-commercial), Coqui XTTS, F5-TTS, Fish, or ElevenLabs' free tier (no commercial rights).
