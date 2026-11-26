@@ -1,38 +1,22 @@
 <!doctype html><html><head><meta charset="utf-8">
-<style>body{margin:0;background:#111} svg{display:block} text{font-family:'Inter Display','Inter',sans-serif;font-weight:900}</style></head>
-<body>
-<!-- Net to Owner brand marks. The bar under the name is The Split: everyone else's slices under "NET TO",
-     the cream owner's slice under "OWNER". Rendered to PNG by render.js. -->
-<svg id="c1" xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800"><rect width="800" height="800" fill="#1C1F24"/><clipPath id="k1"><rect x="130" y="330" width="357.4" height="140" rx="70"/></clipPath>
-<g clip-path="url(#k1)"><rect x="130" y="330" width="29.5" height="140" fill="#6B7280"/><rect x="158.5" y="330" width="244.5" height="140" fill="#4C8DD6"/><rect x="401.9" y="330" width="34.7" height="140" fill="#D1679E"/><rect x="435.6" y="330" width="52.8" height="140" fill="#DB8230"/></g>
-<rect x="509.4" y="304" width="160.6" height="140" rx="70" fill="#F2EFE8"/></svg>
-<svg id="c2" xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800"><rect width="800" height="800" fill="#1C1F24"/><path d="M390,410 L622.4,502.0 A250,250 0 1 1 390.0,160.0 Z" fill="#DB8230"/><circle cx="390" cy="410" r="200" fill="none" stroke="#1C1F24" stroke-width="10" opacity=".35"/><path transform="translate(28.1,-19.1)" d="M390,410 L390.0,160.0 A250,250 0 0 1 622.4,502.0 Z" fill="#F2EFE8"/></svg>
-<svg id="c3" xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800"></svg>
-<svg id="wm" xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400"></svg>
-<svg id="ban" xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440"></svg>
-<script>
-const NS = 'http://www.w3.org/2000/svg', BG = '#1C1F24', INK = '#F2EFE8';
-const SLICES = [['#6B7280', 11], ['#4C8DD6', 94], ['#D1679E', 13], ['#DB8230', 20]];
-function add(svg, tag, attrs, text) { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (text) n.textContent = text; svg.appendChild(n); return n; }
-// Draw "NET TO OWNER" centred at (cx, baseline) with the split bar under it.
-function mark(svg, W, H, cx, base, size, barY, barH, gap, tagline) {
-  add(svg, 'rect', { width: W, height: H, fill: BG });
-  const a = add(svg, 'text', { x: 0, y: base, 'font-size': size, 'letter-spacing': size * 0.02, fill: INK }, 'NET TO');
-  const b = add(svg, 'text', { x: 0, y: base, 'font-size': size, 'letter-spacing': size * 0.02, fill: INK }, 'OWNER');
-  const wa = a.getBBox().width, wb = b.getBBox().width, sp = size * 0.26, x0 = cx - (wa + sp + wb) / 2;
-  a.setAttribute('x', x0); b.setAttribute('x', x0 + wa + sp);
-  const clip = add(svg, 'clipPath', { id: svg.id + 'k' }); add(clip, 'rect', { x: x0, y: barY, width: wa, height: barH, rx: barH / 2 });
-  const g = add(svg, 'g', { 'clip-path': `url(#${svg.id}k)` });
-  const tot = SLICES.reduce((s, x) => s + x[1], 0); let x = x0;
-  SLICES.forEach(([c, v]) => { const w = wa * v / tot; add(g, 'rect', { x, y: barY, width: w + 1, height: barH, fill: c }); x += w; });
-  add(svg, 'rect', { x: x0 + wa + sp, y: barY, width: wb, height: barH, rx: barH / 2, fill: INK });
-  if (tagline) add(svg, 'text', { x: cx, y: barY + barH + size * 0.7, 'text-anchor': 'middle', 'font-size': size * 0.33, style: "font-family:Inter,sans-serif;font-weight:500", fill: INK }, tagline);
-}
-document.fonts.ready.then(() => {
-  mark(document.getElementById('wm'), 1600, 400, 800, 225, 150, 268, 30);
-  mark(document.getElementById('ban'), 2560, 1440, 1280, 690, 140, 728, 28, 0, 'The real numbers behind unglamorous businesses');
-  const c3 = document.getElementById('c3'); add(c3, 'rect', { width: 800, height: 800, fill: BG });
-  add(c3, 'text', { x: 400, y: 470, 'text-anchor': 'middle', 'font-size': 300, 'letter-spacing': -6, fill: INK }, 'NtO');
-  document.body.dataset.ready = '1';
-});
-</script></body></html>
+<!-- Net to Owner brand (direction A, Nov 26 2026): Source Serif 4 SemiBold (OFL), cream on charcoal, with an
+     accountant's double underline (the mark for a final net figure). Rendered to PNG by render.js. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@60,600&display=swap">
+<style>
+body{margin:0;background:#111}
+.art{background:#1C1F24;color:#F2EFE8;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
+.name{font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-.01em;line-height:1;position:relative}
+.dbl{display:inline-block;position:relative}
+.dbl::before,.dbl::after{content:"";position:absolute;left:0;right:0;background:#F2EFE8}
+#wm{width:1600px;height:400px} #wm .name{font-size:150px} #wm .dbl{padding-bottom:38px}
+#wm .dbl::before{bottom:14px;height:5px} #wm .dbl::after{bottom:0;height:5px}
+#ban{width:2560px;height:1440px} #ban .name{font-size:150px} #ban .dbl{padding-bottom:38px}
+#ban .dbl::before{bottom:14px;height:5px} #ban .dbl::after{bottom:0;height:5px}
+#ban .tag{font:400 48px Inter,sans-serif;margin-top:48px;color:#F2EFE8}
+#pfp{width:800px;height:800px} #pfp .name{font-size:470px;margin-top:-30px} #pfp .dbl{padding-bottom:70px}
+#pfp .dbl::before{bottom:34px;height:16px} #pfp .dbl::after{bottom:0;height:16px}
+</style></head><body>
+<div id="wm" class="art"><span class="dbl"><span class="name">Net to Owner</span></span></div>
+<div id="ban" class="art"><span class="dbl"><span class="name">Net to Owner</span></span><div class="tag">The real numbers behind unglamorous businesses</div></div>
+<div id="pfp" class="art"><span class="dbl"><span class="name">N</span></span></div>
+</body></html>

@@ -56,8 +56,11 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 - Name: **Net to Owner** (chosen Nov 26, 2026, replacing Dull Profits). YouTube **@nettoowner** and **nettoowner.com** were free
   on Nov 26, 2026 (not yet claimed; X and Instagram not checked from here). "Net to owner" is the line in business-for-sale
   listings for what the owner keeps, so it hints at buying/selling without saying it and matches The Split's last slice.
-  Logo: `NET TO OWNER` in white with the split bar under it (colored slices under NET TO, the cream owner slice under OWNER).
-- Logo: `brand/`. Recommended profile picture: `profile-coin.png`. Wordmark and banner are there too.
+- Logo (direction A, chosen Nov 26, 2026): "Net to Owner" in **Source Serif 4 SemiBold** (Google Fonts, OFL), cream
+  `#F2EFE8` on charcoal `#1C1F24`, with an accountant's **double underline** (the mark for a final net figure). Files in
+  `brand/`: `profile-picture.png` (serif N, double underline), `wordmark.png`, `youtube-banner.png`; source `brand/src/brand.html`.
+  The colored Split palette is for data inside videos only, not for the brand marks. Owner felt the first bold-caps +
+  rainbow-bar logo looked unserious.
 - Visual approach (`docs/visual-style-guide.md`): **stock footage + custom motion graphics**, about 60% footage,
   25% graphics mostly overlaid on darkened footage, and 15% "Deal File" source documents.
   Signature devices: **The Split** (a money bar sliced into tax/supplier/payments/location/owner) and **The Deal File** (a real document with a highlighter sweep).
