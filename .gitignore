@@ -12,3 +12,6 @@ episodes/*/footage/
 # Voiceover audio and rendered video: large, and unpublished episodes stay private (repo is public)
 episodes/*/voiceover/*.mp3
 episodes/*/render/
+
+# Music beds (CC-BY files; credits are in episodes/*/music/CREDITS.md)
+episodes/*/music/*.mp3

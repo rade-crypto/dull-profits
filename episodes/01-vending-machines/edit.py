@@ -7,8 +7,8 @@ scene  graphic (tools/video/gfx/scenes.html). Strings starting with "@" are phra
        (seconds from shot start) when that phrase is spoken, so each number appears as it's said.
 """
 
-SRC_VMFS = "VMFS USA revenue-split model and price list, 2026"
-SRC_CANT = "Cantaloupe Micropayment Trends Report 2026 (2025 data)"
+SRC_VMFS = "VMFS USA, 2026"
+SRC_CANT = "Cantaloupe, 2025 data"
 
 SPLIT = [  # The $2 soda, per the supplier's model (6% tax, 10% commission, mostly card)
     dict(key="tax", label="GOVERNMENT", amount="11¢", cents=11, row=1, align="left"),
@@ -60,6 +60,7 @@ SHOTS = [
          note="The Split: the bar breaks into 5 players; each lights up as it's named. Owner's slice stays blank."),
     dict(at="At one of the busiest airports", kind="F", clip="c05-lax-plane-landing-sunset.mp4", **{"in": 4.0}),
     dict(at="the building takes", kind="GF", clip="c05-lax-dusk-overview.mp4", **{"in": 3.0},
+         blur=[(1520, 800, 310, 150), (770, 990, 190, 80)], 
          scene=dict(type="bignum", params=dict(at="@59.5%", count=[0, 59.5], fmt="pct1", size=300, y=250,
                                                lines=[dict(text="of every sale goes to the building"),
                                                       dict(text="The full deal, later in this video", at="@We'll get to that deal")]))),
@@ -81,7 +82,7 @@ SHOTS = [
     dict(at="places them in other people's buildings", kind="F", clip="c02-office-vending.mp4", **{"in": 3.0}),
     dict(at="In 2025, US vending operators", kind="GF", clip="c02-van-aerial-road.mp4", **{"in": 1.0},
          scene=dict(type="bignum", params=dict(at="@$7 billion", text="$7B+", size=280, y=260, lines=[
-             dict(text="brought in by US vending operators in 2025")], source="IBISWorld, Vending Machine Operators in the US"))),
+             dict(text="brought in by US vending operators in 2025")], source="IBISWorld, 2025"))),
     dict(at="The biggest names are food service giants", kind="GF", clip="c02-van-aerial-road.mp4", **{"in": 4.0},
          scene=dict(type="tiles", params=dict(kicker="Who runs America's vending machines", big=[
              dict(title="Compass Group", sub="owns Canteen", key="sup", cue="@Compass"),
@@ -97,7 +98,7 @@ SHOTS = [
              dict(label="Countertop", value="$1,900", icon="countertop", key="sup", cue="@countertop"),
              dict(label="Combo snack + drink", value="$3,450", icon="combo", key="sup", cue="@combo"),
              dict(label="Elevator", value="$8,650", icon="elevator", key="sup", cue="@An elevator machine")],
-             source="VMFS USA starting prices, 2026"))),
+             source="VMFS USA, 2026"))),
     dict(at="Then there's the deal with the location", kind="F", clip="c08-office-break-room.mp4", **{"in": 1.0}),
     dict(at="Busy places know", kind="GF", clip="c08-office-break-room.mp4", **{"in": 5.0},
          scene=dict(type="bignum", params=dict(at="@five to 20%", text="5–20%", size=280, y=260, lines=[
@@ -135,12 +136,13 @@ SHOTS = [
              dict(label="Sales", value="$900", cue="@$900"),
              dict(label="Operator keeps", value="$197", cue="@keeps about", total=True)],
              note="22% margin. Before the owner's own time, any loan and income tax.", noteAt="@22%",
-             source="VMFS USA estimate, typical location, 10% commission"))),
+             source="VMFS USA, 2026"))),
     dict(at="And the better the location", kind="D",
          scene=dict(type="doc", params=dict(header="Riverside Community College District · vending agreement, 2022–2027 · excerpt",
                     html='(5) Commission Proposal - The Vendor guarantees commission of <span class="hl" data-cue="0">33% on gross sales</span>, and a signing bonus in the amount of $5,000 ...',
                     source="Riverside CCD vending services agreement, Aug 2022"))),
     dict(at="and that airport from the start", kind="GF", clip="c05-lax-dusk-overview.mp4", **{"in": 8.0},
+         blur=[(1520, 800, 310, 150), (770, 990, 190, 80)], 
          scene=dict(type="bars", params=dict(kicker="The location's cut of every sale", max=70, labelW=520, items=[
              dict(label="The $2 soda model", value=10, text="10%", key="loc", cue=0),
              dict(label="Riverside college", value=33, text="33%", key="loc", cue=0.3),
@@ -164,6 +166,7 @@ SHOTS = [
 
     # ---------------------------------------------------------------- 5 · Winner 1: the location
     dict(at="Winner number one", kind="GF", clip="c05-lax-dusk-overview.mp4", **{"in": 12.0},
+         blur=[(1520, 800, 310, 150), (770, 990, 190, 80)], 
          scene=dict(type="chapter", params=dict(kicker="Winner 1", title="The location", rule="loc"))),
     dict(at="That airport is Los Angeles", kind="F", clip="c05-lax-theme-building-day.mp4", **{"in": 2.0},
          note="Blur the small Delta billboard, lower right."),
@@ -176,7 +179,7 @@ SHOTS = [
              dict(label="First Class Vending", sub="won", value=59.5, text="59.5%", key="loc", cue=0),
              dict(label="Canteen", sub="Compass Group", value=51.6, text="51.6%", key="sup", cue="@Canteen"),
              dict(label="Gilly Vending", value=42.0, text="42.0%", key="tax", cue="@Canteen")],
-             source="LAWA board report; bids received Sept 19, 2022"))),
+             source="LAX board report, 2023"))),
     dict(at="The operator runs and maintains", kind="F", clip="c05-traveler-vending-snack.mp4", **{"in": 1.0}),
     dict(at="The airport just collects", kind="F", clip="06-airport-terminal-4k.mp4", **{"in": 1.0}),
 
@@ -191,16 +194,16 @@ SHOTS = [
     dict(at="The biggest of them all", kind="F", clip="c06-chicago-skyline.mp4", **{"in": 2.0}),
     dict(at="It started in Chicago", kind="GF", clip="c06-archival-1933-street.mp4", **{"in": 2.0},
          scene=dict(type="bignum", params=dict(at=0, text="1929", size=240, y=300, dim=0.5, lines=[
-             dict(text="Canteen starts in Chicago, selling 5¢ candy bars from machines")], source="Canteen company history"))),
+             dict(text="Canteen starts in Chicago, selling 5¢ candy bars from machines")], source="Canteen"))),
     dict(at="Today, Compass Group describes", kind="GF", clip="c01-office-lobby.mp4", **{"in": 4.0},
          scene=dict(type="quote", params=dict(at=0, size=110, y=300, byOffset=270,
                     text="“The largest unattended retail provider in the United States.”", by="Compass Group, describing Canteen",
-                    source="Compass Group USA"))),
+                    source="Compass Group"))),
     dict(at="And the big players keep getting bigger", kind="GF", clip="c06-trucks-docks-aerial.mp4", **{"in": 8.0},
          scene=dict(type="flow", params=dict(kicker="2025", src=dict(title="Buffalo Rock", sub="Alabama bottler"), dst=dict(title="Canteen", sub="and its franchise partners"), arrowLabel="sold its vending business",
                     facts=[dict(text="~700 micro markets", cue="@700", key="sup"),
                            dict(text="7,600+ vending locations", cue="@7,600", key="sup")],
-                    source="VendingMarketWatch; Business Alabama, 2025"))),
+                    source="VendingMarketWatch, 2025"))),
 
     # ---------------------------------------------------------------- 7 · Winner 3: payments
     dict(at="The third winner", kind="GF", clip="c01-card-reader-tap.mp4", **{"in": 2.0},
@@ -217,7 +220,7 @@ SHOTS = [
          scene=dict(type="flow", params=dict(kicker="May 2026", src=dict(title="365 Retail Markets", sub="a rival"), dst=dict(title="Cantaloupe", sub="payment network"), arrowLabel="bought", facts=[
              dict(text="About $848 million, all cash", cue="@$848 million", key="pay"),
              dict(text="Approved after it agreed to sell a competing kiosk business", cue="@Regulators", key="tax")],
-             source="Cantaloupe/365 release (SEC filing); FTC, June 2026"))),
+             source="SEC filing; FTC, 2026"))),
 
     # ---------------------------------------------------------------- 8 · Micro markets
     dict(at="But some of the biggest changes", kind="F", clip="c09-busy-office.mp4", **{"in": 4.0}),
@@ -249,7 +252,7 @@ SHOTS = [
          scene=dict(type="post", opaque=True, params=dict(meta="An operator's post · r/passive_income · Jan 2026",
                     title="Vending machine side hustle: 6-month update",
                     body="$3,200 on two refurbished machines, plus $400 of snacks and drinks. One sits in an office with about 50 employees, the other in an auto repair shop.",
-                    tag="Self-reported. We couldn't verify these numbers.", source="Reported by Benzinga, Jan 31 2026"))),
+                    tag="Self-reported. We couldn't verify these numbers.", source="Benzinga, Jan 2026"))),
     dict(at="One machine sits in an office", kind="F", clip="c09-busy-office.mp4", **{"in": 14.0}),
     dict(at="The other is in an auto repair shop", kind="F", clip="c09-mechanic-under-lift.mp4", **{"in": 1.0}),
     dict(at="The office machine brings in", kind="GF", clip="c09-auto-repair-shop.mp4", **{"in": 2.0},
@@ -265,14 +268,14 @@ SHOTS = [
          scene=dict(type="payback", opaque=True, params=dict(title="Paying off a $3,500 machine at a typical site", years=15, marks=[
              dict(years=14.6, label="14+ years", sub="if it nets $20 a month", key="loc", op=0.55, align="right", cue="@14 years"),
              dict(years=1.67, label="20 months", sub="if it nets $175 a month", key="own", cue="@20 months")],
-             note="And that's if nothing breaks.", noteAt="@if nothing breaks", source="VMFS USA: a typical site nets $20–175 a month"))),
+             note="And that's if nothing breaks.", noteAt="@if nothing breaks", source="VMFS USA, 2026"))),
     dict(at="Things do break", kind="F", clip="c04-dollar-bill-acceptor.mp4", **{"in": 2.5}),
     dict(at="and an attempted break-in", kind="F", clip="c09-security-camera.mp4", **{"in": 2.0}),
     dict(at="Then there's debt", kind="F", clip="c09-credit-card-overdue.mp4", **{"in": 2.0}),
     dict(at="looked at one creator's breakdown", kind="GF", clip="c09-calculator-hands.mp4", **{"in": 2.0},
          scene=dict(type="quote", params=dict(at="@And his advice", size=110, y=300, byOffset=280,
                     text="His advice: save it in cash. Don't borrow it.",
-                    by="George Kamel, on a $3,330 start-up budget (as reported by 24/7 Wall St.)", source="24/7 Wall St., May 2026"))),
+                    by="George Kamel, on a $3,330 start-up budget (as reported by 24/7 Wall St.)", source="24/7 Wall St., 2026"))),
     dict(at="Put it on a card", kind="F", clip="c09-credit-card-overdue.mp4", **{"in": 7.0}),
 
     # ---------------------------------------------------------------- 10 · Buying a route
@@ -280,13 +283,13 @@ SHOTS = [
     dict(at="BizBuy sells figures", kind="GF", clip="c10-spreadsheet-monitor.mp4", **{"in": 2.0},
          scene=dict(type="multiple", params=dict(title="What vending businesses sell for", max=4, marks=[
              dict(x=2.0, label="≈ 2×", sub="yearly owner earnings · typical price $83,500", key="sup", cue="@two times")],
-             note="Owner earnings include the owner's own pay.", noteAt="@two times", source="BizBuySell, vending sales 2021–2025"))),
+             note="Owner earnings include the owner's own pay.", noteAt="@two times", source="BizBuySell, 2021–25"))),
     dict(at="One Chicago area route", kind="F", clip="c10-arlington-heights-aerial.mp4", **{"in": 3.0}),
     dict(at="The seller estimates", kind="GF", clip="c10-chicago-suburbs-aerial.mp4", **{"in": 10.0},
          scene=dict(type="multiple", params=dict(title="One Chicago-area route, 12 machines", max=4, marks=[
              dict(x=2.0, label="≈ 2×", sub="typical sale", key="tax", cue=0),
              dict(x=2.8, label="2.8×", sub="$138,000 asking ÷ $49,000 a year", key="loc", cue="@nearly three times", above=False)],
-             source="The Route Exchange listing; BizBuySell"))),
+             source="The Route Exchange"))),
     dict(at="Those are asking prices", kind="F", clip="c10-calculator-ledger.mp4", **{"in": 1.0}),
     dict(at="A careful buyer asks", kind="F", clip="c10-checking-sales-records.mp4", **{"in": 1.0}),
 
