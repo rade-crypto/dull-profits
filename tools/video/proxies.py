@@ -24,11 +24,32 @@ def dur_of(f):
                                 capture_output=True, text=True, check=True).stdout)
 
 
+_FPS = {}
+def src_fps(f):
+    """Frame rate of a footage file (cached)."""
+    if f not in _FPS:
+        r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=r_frame_rate", "-of", "csv=p=0", str(f)],
+                           capture_output=True, text=True).stdout.strip() or "30/1"
+        a, b = (r.split("/") + ["1"])[:2]
+        _FPS[f] = float(a) / float(b or 1)
+    return _FPS[f]
+
+
+def _sources(s):
+    if s.get("bg") and s["bg"] != "prev":
+        b = s["bg"]; return [x[0] for x in ([b] if not isinstance(b[0], (list, tuple)) else b)]
+    if s.get("clips"):
+        return [x[0] for x in s["clips"]]
+    return [s["clip"]] if s.get("clip") else []
+
+
 def shot_key(s):
     """Stable file name for a shot's background: changes only when its footage, length or look changes."""
+    ep = Path(__file__).resolve().parents[2] / "episodes" / "01-vending-machines" / "footage"
+    low = any(src_fps(ep / f) < 29 for f in _sources(s) if (ep / f).exists())   # 24/25 fps sources are motion-interpolated
     spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else [])
                       + ([s["bg"], s.get("rack"), s.get("soft"), s.get("dim")] if s.get("bg") else [])
-                      + [s.get("rack_open"), s.get("push"), "v3"], sort_keys=True)
+                      + [s.get("rack_open"), s.get("push"), "v3"] + (["mi1"] if low else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
@@ -71,13 +92,27 @@ def push_filter(z, dur):
             f":interpolation=linear:eval=frame")
 
 
-def _piece_chain(i, clip, t_in, L, avail, opt, s):
+def _retime(clip, slow, soft, crf):
+    """Get to 30 fps without repeated frames: footage shot at 24/25 fps would otherwise judder (every 5th-6th frame
+    shown twice). Sharp footage gets motion-compensated in-between frames; softened backgrounds get frame blends.
+    Previews interpolate at 720p (fast); the final render at full size."""
+    if src_fps(clip) / slow >= 29:
+        return f"fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080"
+    if soft:
+        return f"scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,framerate=fps={FPS}"
+    mi = f"minterpolate=fps={FPS}:mi_mode=mci:mc_mode=obmc:me_mode=bilat:me=epzs:mb_size=16:search_param=16"
+    if crf >= 24:
+        return f"scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720,{mi},scale=1920:1080"
+    return f"scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,{mi}"
+
+
+def _piece_chain(i, clip, t_in, L, avail, opt, s, soft=False, crf=28):
     slow = max(1.0, L / avail)
     if slow > MAX_SLOW + 1e-6:
         raise RuntimeError(f"shot {s['n']}: {clip.name} from {t_in}s has {avail:.2f}s, needs {L:.2f}s (would slow {slow:.2f}x). "
                            f"Chain another clip or start earlier.")
-    return slow, (f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),fps={FPS},scale=1920:1080:force_original_aspect_ratio=increase,"
-                  f"crop=1920:1080,setsar=1,{'hflip,' if opt.get('flip') else ''}format=yuv420p,eq=saturation=0.86:contrast=1.03,"
+    return slow, (f"[{i}:v]setpts={slow:.4f}*(PTS-STARTPTS),{_retime(clip, slow, soft, crf)},"
+                  f"setsar=1,{'hflip,' if opt.get('flip') else ''}format=yuv420p,eq=saturation=0.86:contrast=1.03,"
                   f"trim=duration={L:.3f},setpts=PTS-STARTPTS[p{i}]")
 
 
@@ -114,7 +149,7 @@ def make_still_bg(ep, s, out, crf):
         f, t = p[0], p[1]
         clip = ep / "footage" / f
         avail = max(0.3, dur_of(clip) - t - 0.05)
-        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s)
+        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s, soft=True, crf=crf)
         cmd += ["-ss", f"{t:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
         chains.append(ch)
     last = _join(chains, lens, [0] + [XB] * (n - 1))
@@ -146,7 +181,7 @@ def make_bg(ep, s, out, crf=28):
     for i, ((f, t_in, _, opt), L) in enumerate(zip(ps, lens)):
         clip = ep / "footage" / f
         avail = max(0.3, min(dur_of(clip), opt.get("until", 1e9)) - t_in - 0.05)
-        slow, ch = _piece_chain(i, clip, t_in, L, avail, opt, s)
+        slow, ch = _piece_chain(i, clip, t_in, L, avail, opt, s, soft=bool(s.get('rack_open') and False), crf=crf)
         cmd += ["-ss", f"{t_in:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
         chains.append(ch)
     last = _join(chains, lens, joins)
