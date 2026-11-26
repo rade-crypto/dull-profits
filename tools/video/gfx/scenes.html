@@ -1,24 +1,27 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
 <style>
-@font-face{font-family:'Source Serif 4';src:url(fonts/SourceSerif4-latin.woff2) format('woff2');font-weight:200 900}
-.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-1px}
+@font-face{font-family:'Libre Franklin';src:url(fonts/LibreFranklin-400.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:'Libre Caslon Display';src:url(fonts/LibreCaslonDisplay-400.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Libre Caslon Text';src:url(fonts/LibreCaslonText-400.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'Libre Caslon Text';src:url(fonts/LibreCaslonText-700.woff2) format('woff2');font-weight:700}
+.serif{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;letter-spacing:0}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1920px;height:1080px;background:transparent;overflow:hidden}
-body{color:var(--ink);font-family:Inter,sans-serif;font-variant-numeric:tabular-nums;position:relative;
-  --bg:#1C1F24;--bg2:#15171B;--panel:#252932;--ink:#F2EFE8;--ink2:#F2EFE8;--muted:#F2EFE8;--grid:#343944;
-  --tax:#6B7280;--sup:#4C8DD6;--pay:#D1679E;--loc:#DB8230;--own:#F2EFE8;--cost:#C9A227;--hl:#F5D547}
+body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numeric:tabular-nums;position:relative;
+  --bg:#0E1726;--bg2:#0A111D;--panel:#16233A;--ink:#FFFFFF;--ink2:#FFFFFF;--muted:#FFFFFF;--grid:#2A3A55;
+  --tax:#1E9E9A;--sup:#3D7FE0;--pay:#C08A0E;--loc:#D04A8A;--own:#1FA94F;--cost:#C9D1DC;--hl:#FFE14D}
 #stage{position:absolute;inset:0}
 .abs{position:absolute}
-.h{font-family:'Inter Display',Inter,sans-serif;font-weight:900;letter-spacing:-2px;line-height:1}
-.kicker{font:700 46px Inter;color:var(--ink)}
-.label{font:700 44px Inter;color:var(--ink)}
-.sub{font:500 48px Inter;color:var(--ink2);line-height:1.3}
-.src{position:absolute;left:116px;top:868px;font:500 36px Inter;color:var(--muted);opacity:.9}
+.h{font-family:'Libre Franklin',sans-serif;font-weight:900;letter-spacing:-2px;line-height:1}
+.kicker{font:700 46px 'Libre Franklin';color:var(--ink)}
+.label{font:700 44px 'Libre Franklin';color:var(--ink)}
+.sub{font:500 48px 'Libre Franklin';color:var(--ink2);line-height:1.3}
+.src{position:absolute;left:116px;top:868px;font:500 36px 'Libre Franklin';color:var(--muted);opacity:.9}
 .src b{color:var(--ink2);font-weight:700}
 .shadow{text-shadow:0 4px 30px rgba(0,0,0,.6)}
 .card{background:var(--panel);border-radius:22px;padding:40px 48px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.paper{background:#EDE9E0;color:#22252B;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'Source Serif 4',Georgia,serif;font-weight:400}
+.paper{background:#F7F8F5;color:#111827;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'Libre Caslon Text',Georgia,serif;font-weight:400}
 .hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:4px}
 </style></head>
 <body><div id="stage"></div>
@@ -61,7 +64,7 @@ window.draw = t => TWEENS.map(tw => apply(tw, t)).join('|');
 window.setup = (scene) => { CUES = scene.cues || {}; TWEENS = []; S.innerHTML = ''; if (scene.opaque) document.body.style.background = 'var(--bg)'; SCENES[scene.type](scene.params || {}, scene); draw(0); };
 
 // Shared pieces ----------------------------------------------------------------------------------
-function dim(at = 0, max = 0.62) { return anim(el('<div class="abs" style="inset:0;background:#0D0F12"></div>'), { anim: 'dim', at, max, dur: 0.6 }); }
+function dim(at = 0, max = 0.62) { return anim(el('<div class="abs" style="inset:0;background:#0A111D"></div>'), { anim: 'dim', at, max, dur: 0.6 }); }
 function source(text, at = 0) { return anim(el(`<div class="src">Source: ${text}</div>`), { at: cue(at) + 0.8, anim: 'fade', dur: 0.6, out: cue(at) + 5.5, outDur: 0.6 }); }
 function kicker(text, at = 0, x = 116, y = 96) { return anim(el(`<div class="abs kicker" style="left:${x}px;top:${y}px">${text}</div>`), { at, anim: 'fade' }); }
 
@@ -84,7 +87,7 @@ const SCENES = {
     const n = el(`<div class="abs h shadow" style="left:116px;top:${y}px;font-size:${size}px;color:${p.color || 'var(--ink)'}">${p.text || ''}</div>`);
     if (p.count) anim(n, { anim: 'count', at: p.at, dur: p.countDur ?? 1.0, from: p.count[0], to: p.count[1], fmt: p.fmt });
     else anim(n, { anim: 'up', at: p.at });
-    (p.lines || []).forEach((l, i) => anim(el(`<div class="abs shadow" style="left:122px;top:${y + size + 30 + i * 74}px;font:${i ? '500 48px' : '700 60px'} Inter;color:${i ? 'var(--ink2)' : 'var(--ink)'};max-width:1680px">${l.text}</div>`), { anim: 'up', at: l.at ?? p.at }));
+    (p.lines || []).forEach((l, i) => anim(el(`<div class="abs shadow" style="left:122px;top:${y + size + 30 + i * 74}px;font:${i ? '500 48px' : '700 60px'} 'Libre Franklin';color:${i ? 'var(--ink2)' : 'var(--ink)'};max-width:1680px">${l.text}</div>`), { anim: 'up', at: l.at ?? p.at }));
     if (p.source) source(p.source, p.sourceAt ?? p.at);
   },
 
@@ -99,11 +102,11 @@ const SCENES = {
     if (p.title) anim(el(`<div class="abs h shadow" style="left:116px;top:150px;font-size:${p.titleSize || 200}px">${p.title}</div>`), { anim: 'up', at: p.titleAt ?? 0 });
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
     // Whole bar (before the split): cream with the total
-    const whole = el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:${H}px;border-radius:20px;background:var(--own);display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 64px 'Inter Display'">${p.wholeLabel || ''}</div>`);
+    const whole = el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:${H}px;border-radius:20px;background:var(--own);display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 64px 'Libre Franklin'">${p.wholeLabel || ''}</div>`);
     anim(whole, { anim: 'wipe', at: p.wholeAt ?? 0, dur: 0.7, out: p.splitAt, outDur: 0.35 });
     const segs = sl.map((s, i) => {
       const g = geo[i];
-      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:16px;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 58px 'Inter Display'">${s.inside || ''}</div>`);
+      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:16px;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:900 58px 'Libre Franklin'">${s.inside || ''}</div>`);
       anim(seg, { anim: 'fn', at: p.splitAt, dur: 0.6, fn: (pp) => { seg.style.opacity = pp > 0 ? 1 : 0; seg.style.transform = `scaleX(${0.85 + 0.15 * pp})`; seg.style.filter = s.cue ? '' : ''; } });
       if (s.cue && s.key !== 'own') { // dim slices until named, then brighten
         anim(seg, { anim: 'fn', at: s.cue, dur: 0.35, fn: (pp) => { seg.style.filter = `saturate(${0.25 + 0.75 * pp}) brightness(${0.55 + 0.45 * pp})`; } });
@@ -123,7 +126,7 @@ const SCENES = {
     });
     if (p.costs) { // operating-cost chips that bite into the owner's slice
       const g = geo[geo.length - 1];
-      p.costs.forEach((c, i) => anim(el(`<div class="abs" style="left:${g.x + (i % 2) * 260}px;top:${Y + H + 40 + Math.floor(i / 2) * 86}px;padding:10px 22px;border-radius:12px;background:var(--cost);color:var(--bg);font:800 40px Inter">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
+      p.costs.forEach((c, i) => anim(el(`<div class="abs" style="left:${g.x + (i % 2) * 260}px;top:${Y + H + 40 + Math.floor(i / 2) * 86}px;padding:10px 22px;border-radius:12px;background:var(--cost);color:var(--bg);font:800 40px 'Libre Franklin'">− ${c.label}</div>`), { anim: 'up', at: c.cue }));
     }
     if (p.tally) { // Owner's tally, top right, counts down as slices leave
       const box = el(`<div class="abs" style="right:116px;top:70px;text-align:right"><div class="kicker">${p.tally.label}</div><div class="h shadow" style="font-size:150px">$2.00</div></div>`);
@@ -152,7 +155,7 @@ const SCENES = {
       const y = 210 + i * 210;
       const c = el(`<div class="abs card" style="left:116px;top:${y}px;width:1300px;height:170px;display:flex;align-items:center;gap:40px;padding:0 48px">
         <div style="width:16px;height:96px;border-radius:8px;background:var(--${it.key || 'hl'})"></div>
-        <div><div style="font:800 60px Inter">${it.title}</div><div style="font:500 40px Inter;color:var(--ink2);margin-top:6px">${it.sub || ''}</div></div></div>`);
+        <div><div style="font:800 60px 'Libre Franklin'">${it.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2);margin-top:6px">${it.sub || ''}</div></div></div>`);
       anim(c, { anim: 'up', at: it.cue });
     });
   },
@@ -169,7 +172,7 @@ const SCENES = {
   cards(p, sc) {
     if (!sc.opaque) dim(0, p.dim ?? 0.8);
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px Inter;max-width:1690px">${p.title}</div>`), { anim: 'fade', at: p.titleAt ?? 0 });
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: p.titleAt ?? 0 });
     const n = p.items.length, gap = 40, W = (1688 - gap * (n - 1)) / n, top = p.y ?? 300, H = p.h ?? 470;
     p.items.forEach((it, i) => {
       const x = 116 + i * (W + gap);
@@ -179,12 +182,12 @@ const SCENES = {
         <div class="kicker" style="color:var(--ink2)">${it.label}</div>
         ${icon}
         <div class="h" style="font-size:${it.size || p.valueSize || 130}px;margin-top:${icon ? 10 : 40}px;letter-spacing:-3px">${it.value || ''}</div>
-        <div style="font:500 42px Inter;color:var(--ink2);margin-top:16px;line-height:1.25">${it.sub || ''}</div></div>`);
+        <div style="font:500 42px 'Libre Franklin';color:var(--ink2);margin-top:16px;line-height:1.25">${it.sub || ''}</div></div>`);
       if (it.locked) { c.style.background = 'transparent'; c.style.border = '4px dashed var(--grid)'; c.style.boxShadow = 'none'; }
       anim(c, { anim: 'up', at: it.cue });
       if (it.lightAt !== undefined) anim(c, { anim: 'fn', at: it.lightAt, dur: 0.4, fn: (pp) => { c.style.outline = pp > 0 ? `6px solid var(--${it.key})` : 'none'; c.style.outlineOffset = '0px'; } });
     });
-    if (p.center) { const b = el(`<div class="abs" style="left:${960 - 260}px;top:${top + H + 30}px;width:520px;text-align:center;display:flex;flex-direction:column;align-items:center">${machineIcon('combo', 0.55)}<div style="font:800 38px Inter;color:var(--ink2);letter-spacing:3px;margin-top:10px">${p.center.label}</div></div>`); anim(b, { anim: 'up', at: p.center.cue }); }
+    if (p.center) { const b = el(`<div class="abs" style="left:${960 - 260}px;top:${top + H + 30}px;width:520px;text-align:center;display:flex;flex-direction:column;align-items:center">${machineIcon('combo', 0.55)}<div style="font:800 38px 'Libre Franklin';color:var(--ink2);letter-spacing:3px;margin-top:10px">${p.center.label}</div></div>`); anim(b, { anim: 'up', at: p.center.cue }); }
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:${top + H + 40}px;font-size:40px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, p.sourceAt ?? 0);
   },
@@ -193,14 +196,14 @@ const SCENES = {
   bars(p, sc) {
     if (!sc.opaque) dim(0, p.dim ?? 0.82);
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px Inter;max-width:1690px">${p.title}</div>`), { anim: 'fade', at: p.titleAt ?? 0 });
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: p.titleAt ?? 0 });
     const top = p.y ?? 320, rowH = p.rowH ?? 150, LX = 116, LW = p.labelW ?? 560, BX = LX + LW + 30, BW = 1804 - BX - 260;
     p.items.forEach((it, i) => {
       const y = top + i * rowH, f = it.value / p.max, f0 = (it.from_ ?? 0) / p.max;
-      const lab = el(`<div class="abs" style="left:${LX}px;top:${y}px;width:${LW}px;height:96px;display:flex;flex-direction:column;justify-content:center"><div class="label" style="font-size:46px">${it.label}</div>${it.sub ? `<div style="font:500 34px Inter;color:var(--ink2)">${it.sub}</div>` : ''}</div>`);
+      const lab = el(`<div class="abs" style="left:${LX}px;top:${y}px;width:${LW}px;height:96px;display:flex;flex-direction:column;justify-content:center"><div class="label" style="font-size:46px">${it.label}</div>${it.sub ? `<div style="font:500 34px 'Libre Franklin';color:var(--ink2)">${it.sub}</div>` : ''}</div>`);
       anim(lab, { anim: 'fade', at: it.cue });
       if (it.locked) {
-        const b = el(`<div class="abs" style="left:${BX}px;top:${y + 8}px;width:${BW * 0.6}px;height:80px;border:4px dashed var(--muted);border-radius:12px;display:flex;align-items:center;justify-content:center;font:900 60px 'Inter Display';color:var(--muted)">?</div>`);
+        const b = el(`<div class="abs" style="left:${BX}px;top:${y + 8}px;width:${BW * 0.6}px;height:80px;border:4px dashed var(--muted);border-radius:12px;display:flex;align-items:center;justify-content:center;font:900 60px 'Libre Franklin';color:var(--muted)">?</div>`);
         anim(b, { anim: 'fade', at: it.cue }); return;
       }
       if (it.from_ !== undefined) anim(el(`<div class="abs" style="left:${BX}px;top:${y + 8}px;width:${BW * f0}px;height:80px;border-radius:12px;background:var(--${it.key});opacity:.35"></div>`), { anim: 'grow', at: it.cue, dur: 0.6 });
@@ -220,22 +223,22 @@ const SCENES = {
     const W = p.w ?? 1300, x = p.x ?? 116, y = p.y ?? 190;
     const card = el(`<div class="abs card" style="left:${x}px;top:${y}px;width:${W}px;padding:40px 56px"></div>`);
     anim(card, { anim: 'fade', at: p.at ?? 0 });
-    if (p.title) el(`<div style="font:800 56px Inter;margin-bottom:18px">${p.title}</div>`, card);
+    if (p.title) el(`<div style="font:800 56px 'Libre Franklin';margin-bottom:18px">${p.title}</div>`, card);
     p.lines.forEach(l => {
       const row = el(`<div style="display:flex;justify-content:space-between;align-items:baseline;padding:${l.total ? '26px 0 6px' : '16px 0'};${l.total ? 'border-top:4px solid var(--grid);margin-top:10px' : ''}">
-        <div style="font:${l.total ? 800 : 600} ${l.total ? 56 : 48}px Inter;color:${l.total ? 'var(--ink)' : 'var(--ink2)'}">${l.dot ? `<span style="display:inline-block;width:22px;height:22px;border-radius:5px;background:var(--${l.dot});margin-right:18px"></span>` : ''}${l.label}</div>
+        <div style="font:${l.total ? 800 : 600} ${l.total ? 56 : 48}px 'Libre Franklin';color:${l.total ? 'var(--ink)' : 'var(--ink2)'}">${l.dot ? `<span style="display:inline-block;width:22px;height:22px;border-radius:5px;background:var(--${l.dot});margin-right:18px"></span>` : ''}${l.label}</div>
         <div class="h" style="white-space:nowrap;margin-left:30px;font-size:${l.total ? 96 : 64}px;letter-spacing:-1px;color:${l.key ? `var(--${l.key})` : 'var(--ink)'}">${l.value || ''}</div></div>`, card);
       anim(row, { anim: 'up', at: l.cue ?? 0 });
     });
-    if (p.note) anim(el(`<div style="font:500 38px Inter;color:var(--muted);margin-top:22px">${p.note}</div>`, card), { anim: 'fade', at: p.noteAt ?? 0 });
+    if (p.note) anim(el(`<div style="font:500 38px 'Libre Franklin';color:var(--muted);margin-top:22px">${p.note}</div>`, card), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, p.sourceAt ?? 0);
   },
 
   // Deal File: a retyped document excerpt on a dark desk, highlighter sweeps on cue.
   doc(p) {
-    el(`<svg class="abs" width="1920" height="1080" style="left:0;top:0"><defs><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0"/></filter></defs><rect width="1920" height="1080" fill="#15171B"/><rect width="1920" height="1080" filter="url(#n)"/></svg>`);
+    el(`<svg class="abs" width="1920" height="1080" style="left:0;top:0"><defs><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0"/></filter></defs><rect width="1920" height="1080" fill="#0A111D"/><rect width="1920" height="1080" filter="url(#n)"/></svg>`);
     const paper = el(`<div class="abs paper" style="left:${p.x ?? 250}px;top:${p.y ?? 150}px;width:${p.w ?? 1420}px;padding:60px 80px;transform:rotate(${p.rot ?? -1.2}deg)">
-      <div style="font:700 34px Inter;color:#22252B;margin-bottom:30px">${p.header}</div>
+      <div style="font:700 34px 'Libre Franklin';color:#111827;margin-bottom:30px">${p.header}</div>
       <div style="font-size:${p.size || 46}px;line-height:1.55">${p.html}</div></div>`);
     anim(paper, { anim: 'up', at: 0, dur: 0.6 });
     paper.querySelectorAll('.hl').forEach(h => anim(h, { anim: 'hl', at: h.dataset.cue, dur: 0.9 }));
@@ -247,14 +250,14 @@ const SCENES = {
     if (p.kicker) kicker(p.kicker, p.kickerAt ?? 0);
     const y = p.y ?? 250, W = 600;
     const box = (b, x, at) => anim(el(`<div class="abs card" style="left:${x}px;top:${y}px;width:${W}px;height:240px;display:flex;flex-direction:column;justify-content:center">
-       <div style="font:900 64px 'Inter Display';letter-spacing:-1px">${b.title}</div><div style="font:500 40px Inter;color:var(--ink2);margin-top:8px">${b.sub || ''}</div></div>`), { anim: 'up', at });
+       <div style="font:900 64px 'Libre Franklin';letter-spacing:-1px">${b.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2);margin-top:8px">${b.sub || ''}</div></div>`), { anim: 'up', at });
     box(p.src, 116, p.srcAt ?? 0);
     box(p.dst, 1804 - W, p.dstAt ?? 0.3);
     const ar = el(`<div class="abs" style="left:${116 + W + 30}px;top:${y + 90}px;width:${1804 - W - 116 - W - 60}px;text-align:center">
        <div style="height:10px;background:var(--hl);border-radius:5px;position:relative;margin-top:24px"><div style="position:absolute;right:-6px;top:-17px;border-left:34px solid var(--hl);border-top:22px solid transparent;border-bottom:22px solid transparent"></div></div>
-       <div style="font:800 38px Inter;margin-top:22px;line-height:1.2">${p.arrowLabel || ''}</div></div>`);
+       <div style="font:800 38px 'Libre Franklin';margin-top:22px;line-height:1.2">${p.arrowLabel || ''}</div></div>`);
     anim(ar, { anim: 'wipe', at: p.arrowAt ?? 0.4, dur: 0.6 });
-    (p.facts || []).forEach((f, i) => anim(el(`<div class="abs" style="left:116px;top:${y + 300 + i * 100}px;font:700 56px Inter"><span style="display:inline-block;width:20px;height:20px;border-radius:5px;background:var(--${f.key || 'hl'});margin-right:24px;vertical-align:middle"></span>${f.text}</div>`), { anim: 'up', at: f.cue }));
+    (p.facts || []).forEach((f, i) => anim(el(`<div class="abs" style="left:116px;top:${y + 300 + i * 100}px;font:700 56px 'Libre Franklin'"><span style="display:inline-block;width:20px;height:20px;border-radius:5px;background:var(--${f.key || 'hl'});margin-right:24px;vertical-align:middle"></span>${f.text}</div>`), { anim: 'up', at: f.cue }));
     if (p.source) source(p.source, p.sourceAt ?? 0);
   },
 
@@ -262,14 +265,14 @@ const SCENES = {
   payback(p, sc) {
     if (!sc.opaque) dim(0, 0.85);
     if (p.kicker) kicker(p.kicker, 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px Inter">${p.title}</div>`), { anim: 'fade', at: 0 });
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
     const X = 116, W = 1688, Y = 520, yrs = p.years || 15;
-    let ticks = ''; for (let i = 0; i <= yrs; i++) ticks += `<div class="abs" style="left:${X + W * i / yrs - 1}px;top:${Y + 70}px;width:3px;height:${i % 5 ? 18 : 34}px;background:var(--grid)"></div>` + (i % 5 === 0 ? `<div class="abs" style="left:${X + W * i / yrs}px;top:${Y + 112}px;transform:translateX(-50%);font:600 38px Inter;color:var(--ink2)">${i} yr</div>` : '');
+    let ticks = ''; for (let i = 0; i <= yrs; i++) ticks += `<div class="abs" style="left:${X + W * i / yrs - 1}px;top:${Y + 70}px;width:3px;height:${i % 5 ? 18 : 34}px;background:var(--grid)"></div>` + (i % 5 === 0 ? `<div class="abs" style="left:${X + W * i / yrs}px;top:${Y + 112}px;transform:translateX(-50%);font:600 38px 'Libre Franklin';color:var(--ink2)">${i} yr</div>` : '');
     el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:70px;border-radius:12px;background:var(--panel)"></div>`); el(`<div>${ticks}</div>`);
     p.marks.forEach(m => {
       const fx = X + W * Math.min(m.years, yrs) / yrs;
       anim(el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${fx - X}px;height:70px;border-radius:12px;background:var(--${m.key});opacity:${m.op ?? 1}"></div>`), { anim: 'grow', at: m.cue, dur: 0.8 });
-      anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:84px;white-space:nowrap">${m.label}</div><div style="font:600 36px Inter;color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
+      anim(el(`<div class="abs" style="left:${fx}px;top:${Y - 150}px;transform:translateX(${m.align === 'right' ? '-100%' : '-50%'});text-align:${m.align === 'right' ? 'right' : 'center'}"><div class="h shadow" style="font-size:84px;white-space:nowrap">${m.label}</div><div style="font:600 36px 'Libre Franklin';color:var(--ink2);white-space:nowrap">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue + 0.5 });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:740px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, 0);
@@ -279,14 +282,14 @@ const SCENES = {
   multiple(p, sc) {
     if (!sc.opaque) dim(0, 0.85);
     if (p.kicker) kicker(p.kicker, 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px Inter">${p.title}</div>`), { anim: 'fade', at: 0 });
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 64px 'Libre Franklin'">${p.title}</div>`), { anim: 'fade', at: 0 });
     const X = 116, W = 1688, Y = 560, mx = p.max || 4;
     el(`<div class="abs" style="left:${X}px;top:${Y}px;width:${W}px;height:10px;border-radius:5px;background:var(--grid)"></div>`);
-    for (let i = 0; i <= mx; i++) el(`<div class="abs" style="left:${X + W * i / mx}px;top:${Y + 40}px;transform:translateX(-50%);font:700 44px Inter;color:var(--muted)">${i}×</div>`);
+    for (let i = 0; i <= mx; i++) el(`<div class="abs" style="left:${X + W * i / mx}px;top:${Y + 40}px;transform:translateX(-50%);font:700 44px 'Libre Franklin';color:var(--muted)">${i}×</div>`);
     p.marks.forEach(m => {
       const fx = X + W * m.x / mx;
       anim(el(`<div class="abs" style="left:${fx - 18}px;top:${Y - 13}px;width:36px;height:36px;border-radius:18px;background:var(--${m.key});box-shadow:0 0 0 8px rgba(0,0,0,.3)"></div>`), { anim: 'pop', at: m.cue });
-      anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 120 : Y - 230}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:96px;color:var(--${m.key})">${m.label}</div><div style="font:600 38px Inter;color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
+      anim(el(`<div class="abs" style="left:${fx}px;top:${m.above === false ? Y + 120 : Y - 230}px;transform:translateX(-50%);text-align:center;white-space:nowrap"><div class="h shadow" style="font-size:96px;color:var(--${m.key})">${m.label}</div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${m.sub || ''}</div></div>`), { anim: 'up', at: m.cue });
     });
     if (p.note) anim(el(`<div class="abs sub" style="left:116px;top:700px;font-size:42px">${p.note}</div>`), { anim: 'fade', at: p.noteAt ?? 0 });
     if (p.source) source(p.source, 0);
@@ -296,9 +299,9 @@ const SCENES = {
   checklist(p, sc) {
     if (!sc.opaque) dim(0, p.dim ?? 0.82);
     if (p.kicker) kicker(p.kicker, 0);
-    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 68px Inter;max-width:1690px">${p.title}</div>`), { anim: 'fade', at: 0 });
+    if (p.title) anim(el(`<div class="abs shadow" style="left:116px;top:150px;font:800 68px 'Libre Franklin';max-width:1690px">${p.title}</div>`), { anim: 'fade', at: 0 });
     p.items.forEach((it, i) => {
-      const r = el(`<div class="abs" style="left:116px;top:${(p.y ?? 330) + i * (p.rowH ?? 130)}px;display:flex;align-items:center;gap:36px"><div style="width:${p.box ?? 78}px;height:${p.box ?? 78}px;border:6px solid var(--${it.key || 'ink2'});border-radius:14px;flex:none"></div><div style="font:700 ${p.font ?? 62}px Inter">${it.text}</div></div>`);
+      const r = el(`<div class="abs" style="left:116px;top:${(p.y ?? 330) + i * (p.rowH ?? 130)}px;display:flex;align-items:center;gap:36px"><div style="width:${p.box ?? 78}px;height:${p.box ?? 78}px;border:6px solid var(--${it.key || 'ink2'});border-radius:14px;flex:none"></div><div style="font:700 ${p.font ?? 62}px 'Libre Franklin'">${it.text}</div></div>`);
       anim(r, { anim: 'up', at: it.cue });
     });
   },
@@ -307,10 +310,10 @@ const SCENES = {
   post(p, sc) {
     if (!sc.opaque) dim(0, 0.85);
     const c = el(`<div class="abs card" style="left:260px;top:150px;width:1400px;padding:50px 64px">
-      <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px"><div style="width:64px;height:64px;border-radius:32px;background:var(--grid)"></div><div style="font:600 38px Inter;color:var(--ink2)">${p.meta}</div></div>
-      <div style="font:800 58px Inter;margin-bottom:22px">${p.title}</div><div style="font:500 44px Inter;color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
+      <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px"><div style="width:64px;height:64px;border-radius:32px;background:var(--grid)"></div><div style="font:600 38px 'Libre Franklin';color:var(--ink2)">${p.meta}</div></div>
+      <div style="font:800 58px 'Libre Franklin';margin-bottom:22px">${p.title}</div><div style="font:500 44px 'Libre Franklin';color:var(--ink2);line-height:1.45">${p.body}</div></div>`);
     anim(c, { anim: 'up', at: 0 });
-    if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 40px Inter;color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });
+    if (p.tag) anim(el(`<div class="abs" style="left:260px;top:${p.tagY ?? 760}px;font:700 40px 'Libre Franklin';color:var(--hl)">${p.tag}</div>`), { anim: 'fade', at: p.tagAt ?? 0.4 });
     if (p.source) source(p.source, 0);
   },
 
@@ -318,12 +321,12 @@ const SCENES = {
   tiles(p, sc) {
     if (!sc.opaque) dim(0, 0.85);
     if (p.kicker) kicker(p.kicker, 0);
-    p.big.forEach((b, i) => anim(el(`<div class="abs card" style="left:116px;top:${200 + i * 300}px;width:640px;height:260px;display:flex;flex-direction:column;justify-content:center;border-left:14px solid var(--${b.key})"><div style="font:900 64px 'Inter Display'">${b.title}</div><div style="font:500 40px Inter;color:var(--ink2)">${b.sub || ''}</div></div>`), { anim: 'up', at: b.cue }));
+    p.big.forEach((b, i) => anim(el(`<div class="abs card" style="left:116px;top:${200 + i * 300}px;width:640px;height:260px;display:flex;flex-direction:column;justify-content:center;border-left:14px solid var(--${b.key})"><div style="font:900 64px 'Libre Franklin'">${b.title}</div><div style="font:500 40px 'Libre Franklin';color:var(--ink2)">${b.sub || ''}</div></div>`), { anim: 'up', at: b.cue }));
     const g = el(`<div class="abs" style="left:840px;top:200px;width:964px;height:560px;display:grid;grid-template-columns:repeat(24,1fr);gap:8px"></div>`);
     let cells = ''; for (let i = 0; i < 24 * 13; i++) cells += `<div style="height:35px;border-radius:5px;background:var(--${p.smallKey || 'grid'});opacity:${0.55 + 0.45 * ((i * 37) % 11) / 10}"></div>`;
     g.innerHTML = cells; anim(g, { anim: 'wipe', at: p.smallCue, dur: 1.0 });
-    anim(el(`<div class="abs" style="left:840px;top:790px;font:800 52px Inter">${p.smallLabel}</div>`), { anim: 'fade', at: p.smallCue + 0.4 });
-    if (p.note) anim(el(`<div class="abs" style="left:116px;top:800px;font:500 34px Inter;color:var(--muted)">${p.note}</div>`), { anim: 'fade', at: 0 });
+    anim(el(`<div class="abs" style="left:840px;top:790px;font:800 52px 'Libre Franklin'">${p.smallLabel}</div>`), { anim: 'fade', at: p.smallCue + 0.4 });
+    if (p.note) anim(el(`<div class="abs" style="left:116px;top:800px;font:500 34px 'Libre Franklin';color:var(--muted)">${p.note}</div>`), { anim: 'fade', at: 0 });
     if (p.source) source(p.source, 0);
   },
 
@@ -335,21 +338,21 @@ const SCENES = {
       const d = pts.map((q, i) => `${i ? 'L' : 'M'}${q[0] * w},${q[1] * h}`).join(' ') + ' Z';
       let len = 0; for (let i = 0; i < pts.length; i++) { const a = pts[i], b = pts[(i + 1) % pts.length]; len += Math.hypot((a[0] - b[0]) * w, (a[1] - b[1]) * h); }
       const svg = el(`<svg class="abs" style="left:${x}px;top:${y}px" width="${w}" height="${h}">
-        <defs><pattern id="g${x}" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#2A2E36" stroke-width="2"/></pattern></defs>
-        <rect width="${w}" height="${h}" rx="22" fill="#20242A"/><rect width="${w}" height="${h}" rx="22" fill="url(#g${x})"/>
+        <defs><pattern id="g${x}" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#1B2A45" stroke-width="2"/></pattern></defs>
+        <rect width="${w}" height="${h}" rx="22" fill="#13203A"/><rect width="${w}" height="${h}" rx="22" fill="url(#g${x})"/>
         <path class="route" d="${d}" fill="none" style="stroke:var(--${key})" stroke-width="8" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"/>
         ${pts.map(q => `<circle cx="${q[0] * w}" cy="${q[1] * h}" r="16" style="fill:var(--ink)"/>`).join('')}</svg>`);
       const path = svg.querySelector('path.route');
       anim(svg, { anim: 'fade', at, dur: 0.4 });
       anim(path, { anim: 'fn', at: at + 0.3, dur: p.drawDur ?? 2.0, fn: (pp) => path.setAttribute('stroke-dashoffset', len * (1 - pp)) });
-      if (title) anim(el(`<div class="abs" style="left:${x}px;top:${y + h + 24}px;width:${w}px"><div style="font:800 52px Inter">${title}</div><div style="font:500 38px Inter;color:var(--ink2)">${sub || ''}</div></div>`), { anim: 'up', at: at + 0.3 });
+      if (title) anim(el(`<div class="abs" style="left:${x}px;top:${y + h + 24}px;width:${w}px"><div style="font:800 52px 'Libre Franklin'">${title}</div><div style="font:500 38px 'Libre Franklin';color:var(--ink2)">${sub || ''}</div></div>`), { anim: 'up', at: at + 0.3 });
     };
     if (p.mode === 'compare') {
       panel(116, 190, 820, 520, [[.42, .38], [.5, .3], [.6, .36], [.62, .5], [.55, .62], [.45, .6], [.38, .5]], p.a.title, p.a.sub, p.a.cue, 'sup');
       panel(984, 190, 820, 520, [[.08, .15], [.55, .1], [.92, .3], [.8, .85], [.35, .9], [.12, .6]], p.b.title, p.b.sub, p.b.cue, 'loc');
     } else {
       panel(116, 170, 1688, 600, [[.08, .3], [.25, .15], [.45, .22], [.62, .12], [.85, .3], [.9, .7], [.62, .85], [.35, .78], [.15, .7]], null, null, 0, 'sup');
-      (p.steps || []).forEach((s, i) => anim(el(`<div class="abs" style="left:${116 + i * 420}px;top:800px;font:800 52px Inter">${s.text}</div>`), { anim: 'up', at: s.cue }));
+      (p.steps || []).forEach((s, i) => anim(el(`<div class="abs" style="left:${116 + i * 420}px;top:800px;font:800 52px 'Libre Franklin'">${s.text}</div>`), { anim: 'up', at: s.cue }));
     }
   },
 
@@ -357,13 +360,13 @@ const SCENES = {
   versus(p, sc) {
     dim(0, 0.88);
     const ad = el(`<div class="abs paper" style="left:160px;top:150px;width:700px;height:640px;padding:44px;transform:rotate(-2deg)">
-      <div style="font:700 30px Inter;letter-spacing:2px;color:#6B6F78">CLASSIFIEDS · 1998</div>
+      <div style="font:700 30px 'Libre Franklin';letter-spacing:2px;color:#6B6F78">CLASSIFIEDS · 1998</div>
       <div style="border:4px solid #22252B;margin-top:24px;padding:30px;text-align:center"><div style="font:900 64px 'DejaVu Serif',serif;line-height:1.05">${p.adHead}</div><div style="font:400 36px 'DejaVu Serif',serif;margin-top:20px;line-height:1.35">${p.adBody}</div></div></div>`);
     anim(ad, { anim: 'up', at: p.adCue ?? 0 });
     const ph = el(`<div class="abs" style="left:1180px;top:110px;width:400px;height:760px;border-radius:56px;background:#0B0C0F;border:10px solid #3A3F49;padding:30px 24px;display:flex;flex-direction:column;justify-content:flex-end">
-      <div style="font:800 46px Inter;line-height:1.15">${p.feedHead}</div><div style="font:500 30px Inter;color:var(--ink2);margin-top:16px">${p.feedBody}</div></div>`);
+      <div style="font:800 46px 'Libre Franklin';line-height:1.15">${p.feedHead}</div><div style="font:500 30px 'Libre Franklin';color:var(--ink2);margin-top:16px">${p.feedBody}</div></div>`);
     anim(ph, { anim: 'up', at: p.feedCue ?? 0.4 });
-    anim(el(`<div class="abs" style="left:116px;top:860px;font:600 32px Inter;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Illustration, not real ads</div>`), { anim: 'fade', at: 0 });
+    anim(el(`<div class="abs" style="left:116px;top:860px;font:600 32px 'Libre Franklin';color:var(--muted);letter-spacing:1px;text-transform:uppercase">Illustration, not real ads</div>`), { anim: 'fade', at: 0 });
   },
 
   // End screen: the wordmark only. YouTube places its own end-screen video tiles on top.

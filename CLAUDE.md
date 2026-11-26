@@ -56,16 +56,20 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 - Name: **Net to Owner** (chosen Nov 26, 2026, replacing Dull Profits). YouTube **@nettoowner** and **nettoowner.com** were free
   on Nov 26, 2026 (not yet claimed; X and Instagram not checked from here). "Net to owner" is the line in business-for-sale
   listings for what the owner keeps, so it hints at buying/selling without saying it and matches The Split's last slice.
-- Logo (direction A, chosen Nov 26, 2026): "Net to Owner" in **Source Serif 4 SemiBold** (Google Fonts, OFL), cream
-  `#F2EFE8` on charcoal `#1C1F24`, with an accountant's **double underline** (the mark for a final net figure). Files in
+- Logo (direction A, chosen Nov 26, 2026): "Net to Owner" in **Libre Caslon Display**, white on ink navy `#0E1726`,
+  with an accountant's **double underline** (the mark for a final net figure). Files in
   `brand/`: `profile-picture.png` (serif N, double underline), `wordmark.png`, `youtube-banner.png`; source `brand/src/brand.html`.
   The colored Split palette is for data inside videos only, not for the brand marks. Owner felt the first bold-caps +
   rainbow-bar logo looked unserious.
 - Visual approach (`docs/visual-style-guide.md`): **stock footage + custom motion graphics**, about 60% footage,
   25% graphics mostly overlaid on darkened footage, and 15% "Deal File" source documents.
   Signature devices: **The Split** (a money bar sliced into tax/supplier/payments/location/owner) and **The Deal File** (a real document with a highlighter sweep).
-  Locked palette: bg `#1C1F24`, text/owner `#F2EFE8`, supplier `#4C8DD6`, payments `#D1679E`, location `#DB8230`,
-  tax `#6B7280`, costs `#C9A227`, highlighter `#F5D547`. Font: Inter / Inter Display. Example frames: `docs/visual-examples/`.
+  **Palette and fonts (changed Nov 26, 2026; the owner said cream/orange/charcoal + serif/Inter looked like Claude's own look and
+  an over-used combo):** ink-navy bg `#0E1726`, white text `#FFFFFF` (never grey text), slices: tax teal `#1E9E9A`,
+  supplier blue `#3D7FE0`, payments gold `#C08A0E`, location magenta `#D04A8A`, **owner green `#1FA94F`**, cost chips
+  `#C9D1DC`, highlighter `#FFE14D`, document paper `#F7F8F5`. Passes the dataviz validator (dark, on #0E1726).
+  Fonts: **Libre Franklin** (numbers, labels) and **Libre Caslon** (logo, quotes, documents), files in `tools/video/gfx/fonts/`.
+  Don't use Inter, cream/terracotta, or warm charcoal. Old example frames in `docs/visual-examples/` use the old palette.
   TV rules: key numbers 120–200 px, nothing under 36 px, bottom 15% clear, 4–8 s shots.
 - **No realistic AI-generated footage** of real places or people. It would need YouTube's synthetic-content label and
   undermines credibility. AI images only for abstract or illustrative use. Never rip news or other creators' clips.

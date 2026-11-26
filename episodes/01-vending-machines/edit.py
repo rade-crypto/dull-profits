@@ -294,7 +294,7 @@ SHOTS = [
          scene=split([0, 0, 0, 0, 0, 0], amounts=True, wholeAt=0, splitAt=0, dim=0.8, y=390,
                      tally=dict(label="Operator keeps", at=0, steps=[dict(cents=138, cue=0)]))),
     dict(at="The people who win", kind="GF", clip="c02-combo-machine.mp4", **{"in": 1.0},
-         scene=dict(type="cards", params=dict(y=380, h=220, valueSize=88, items=[
+         scene=dict(type="cards", params=dict(y=380, h=220, valueSize=78, items=[
              dict(label="", value="Location", key="loc", cue="@the location"),
              dict(label="", value="Scale", key="sup", cue="@the scale"),
              dict(label="", value="Technology", key="pay", cue="@the technology")]))),
