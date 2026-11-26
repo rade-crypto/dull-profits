@@ -3,7 +3,7 @@
 Based on `research/channel-strategy-and-visuals.md`, which covers 11 comparable channels, TV-viewing data and license checks.
 
 ## The approach in one line
-**Real footage on screen most of the time, with clean graphics on top whenever a number matters.**
+**Stock footage + custom motion graphics.** Real footage on screen most of the time, with motion graphics on top whenever a number matters.
 The channels this one is modeled on keep real footage on screen. (Corrected after the owner watched them: the first
 version of this guide said graphics-first, based on written descriptions rather than the videos themselves.)
 Graphics carry the numbers. Footage carries the feeling that this is a real business in the real world.
@@ -11,23 +11,27 @@ Graphics carry the numbers. Footage carries the feeling that this is a real busi
 ## Screen-time mix (per 10–14 min episode)
 | Share | What | Examples in Ep 1 |
 |---|---|---|
-| 55–65% | **Real footage** | Your own phone clips, free stock, archive film, Google Earth flyovers |
+| 55–65% | **Real footage**: mostly free stock, plus archive film, Google Earth flyovers and (optional) your own phone clips | Card tap, route van, break room, airport concourse |
 | 20–30% | **Graphics**, mostly *on top of* darkened footage | The Split over a shot of a real machine; full-screen only for the 3–4 biggest numbers |
 | 10–15% | **"Deal File" source documents** | LAX board report, Riverside contract, FTC 1998 release |
 | 0% | AI images | None. Real footage is the point |
 
+**Why custom graphics matter:** stock footage alone looks like the generic "template" channels YouTube now demonetizes, and anyone can download the same clips.
+The graphics built from each episode's own numbers make the video original. Never use pre-made graphics templates unchanged.
+
 **Combining them:** when a graphic sits on footage, darken the footage 40–60% and add a slight blur, so text stays readable on a TV.
 
 ## Getting real footage for $0
-1. **Shoot your own clips on a phone (the best option).** Vending machines, laundromats and car washes are everywhere.
+1. **Free stock (your main source):** Pexels, Pixabay, Coverr, Mixkit. Search "vending machine", "break room", "delivery van",
+   "airport terminal". Free for monetized use; blur any visible brand logos. Download a few extra clips per scene so
+   shots don't repeat across episodes.
+2. **Optional: a few of your own phone clips.** Even 5–10% of runtime helps. Vending machines, laundromats and car washes are everywhere.
    - Film in 4K, 5–10 second clips, slow pans, phone held steady or on a cheap tripod.
    - No faces, and don't linger on brand logos.
    - Ask before filming inside a private business. Airports and hospitals often restrict filming, so check first.
-   - Your own footage is also the strongest proof of original content under YouTube's "inauthentic content" policy.
+   - Your own footage is the strongest proof of original content under YouTube's "inauthentic content" policy.
    - **Ep 1 shot list:** card tap on a machine · a soda dropping · a spiral coil turning · restocking a machine ·
      a van pulling up · an office break room · micro-market shelves and self-checkout · a public airport concourse.
-2. **Free stock:** Pexels, Pixabay, Coverr, Mixkit. Search "vending machine", "break room", "delivery van",
-   "airport terminal". Free for monetized use; blur any visible brand logos.
 3. **Archive film:** the Prelinger Archives on the Internet Archive (many items are public domain). Use 1950s vending and
    automat footage for the Canteen 1929 history beat, and check each item's rights.
 4. **Google Earth Studio (free):** real aerial flyovers of LAX, a car-wash strip, an industrial park. It requires an on-screen
