@@ -34,14 +34,17 @@ Ep 1: `$2.00 → $1.89 (tax) → $0.95 (supplier) → $0.86 (card) → $0.82 (so
 | Background | `#1C1F24` charcoal | Every graphic. Avoid full-screen white, which looks harsh on TVs |
 | Text | `#F2EFE8` off-white | At least 7:1 contrast |
 | **Owner (what's left)** | `#F2EFE8` cream, bold outline | Always the same. It's the "you" slice |
-| Location / landlord | `#E8913A` orange | |
+| Location / landlord | `#DB8230` orange | |
 | Supplier / product | `#4C8DD6` blue | |
-| Payments / tech | `#9B7BD4` violet | |
+| Payments / tech | `#D1679E` pink | was violet; changed because violet next to blue failed the colorblind check |
 | Tax / government | `#6B7280` grey | |
 | Operating costs | `#C9A227` mustard | gas, labor, repairs |
 | Highlighter | `#F5D547` | Deal File sweeps only |
 
-Always label slices with text as well as color, since 1 in 12 men is colorblind. Never pair red with green.
+Blue, pink and orange pass a colorblind-separation check (`dataviz` validator, dark mode, on `#1C1F24`). Gray (tax) and cream (owner)
+are deliberately neutral and highlight colors. Always label slices with text as well as color, since 1 in 12 men is colorblind. Never pair red with green.
+
+**Example frames** at real 1920×1080 size: `docs/visual-examples/` (sources in `docs/visual-examples/src`).
 
 ## Type
 - **Inter** (Google Fonts, free for commercial use) with **tabular numbers** turned on, so counters don't jiggle.
