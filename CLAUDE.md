@@ -25,14 +25,12 @@ Every generation or processing job through the Magnific MCP costs credits, even 
 
 ### Stock footage
 - **The owner says Magnific stock footage never costs anything:** they're on a paid plan (Plus) where stock is free and unlimited.
-- **Unresolved conflict, so check before relying on it:** on Nov 26, 2026, `stock_search` through the MCP returned
-  `premium: true, creditCost: 600` for every premium video, and `account_balance` says `unlimitedAppliesHere: false`
-  ("unlimited applies only on the Magnific web app"). Stock via the website is likely free for the owner, but the
-  MCP route may charge 600 credits per premium clip.
-- **Until it's confirmed free through the MCP:** before the first `stock_download` / `stock_to_creation`, tell the owner
-  the 600-credit label and get their OK. Then check `account_balance`, download ONE clip, and check again. If the
-  balance dropped, stop and have the owner download the clips on the website instead; pick them up with
-  `creations_search`. If it didn't drop, record here that MCP stock downloads are confirmed free.
+- **✅ CONFIRMED FREE through the MCP (Nov 26, 2026):** balance was 35,324 before and after a premium video
+  `stock_download`, even though `stock_search` shows `creditCost: 600`. Ignore that label: **`stock_download`
+  (photos, videos, icons, vectors) is free to use as much as needed.** Download URLs may come from
+  delivery.gettyimages.com, which is normal.
+- Still never call generation tools (`audio_tts`, `images_generate`, `video_generate`, music, upscales, …) without the
+  `simulate_cost` = 0 check above. Only *downloads of existing stock* are free.
 
 ## Decisions so far
 - Name: **Dull Profits**. YouTube @dullprofits, dullprofits.com, X **@dull_profits** (@dullprofits is taken on X).
