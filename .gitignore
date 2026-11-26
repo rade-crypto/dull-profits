@@ -1,0 +1,7 @@
+# Large/derived audio: full-quality WAVs are attached to GitHub Releases instead
+*.wav
+auditions/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
