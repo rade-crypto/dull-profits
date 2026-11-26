@@ -64,7 +64,7 @@ SHOTS = [
     # ---------------------------------------------------------------- 1 · Hook
     ftg(None, "01-phone-pay-vending.mp4", 1.0),
     ftg("and a soda drops", "c12-vending-closeup.mp4", 4.0),
-    dict(at="$2", kind="GF", clip="c02-office-vending.mp4", **{"in": 6.0},
+    dict(at="$2", kind="GF", clip="c12-vending-closeup.mp4", **{"in": 5.4},
          scene=split(["@government", "@drink company", "@card processor", "@software company", "@the building", None],
                      title="$2.00", titleAt=0, wholeAt="@Before the owner", splitAt="@five other players", dim=0.72)),
     ftg("At one of the busiest airports", "c05-lax-plane-landing-sunset.mp4", 4.0),
@@ -77,7 +77,7 @@ SHOTS = [
              dict(text="“Easy passive income.”", at=0),
              dict(text="“Stock it once a week.”", at="@Stock a machine"),
              dict(text="“Let the cash pile up.”", at="@let the cash pile up")]))),
-    dict(at="So we check the real numbers", kind="GF", clip="c05-traveler-vending-snack.mp4", **{"in": 1.0},
+    dict(at="So we check the real numbers", kind="GF", clip="c10-checking-sales-records.mp4", **{"in": 1.0},
          scene=dict(type="sources", params=dict(dim=0.75, items=[
              dict(title="Payment data", key="pay", cue="@payment data"),
              dict(title="Public contracts", key="loc", cue="@public contracts"),
@@ -99,7 +99,7 @@ SHOTS = [
     dict(at="Most of them are built around a route", kind="GF", clips=[("c02-van-side-door-cases.mp4", 0, 4.5), ("c09-restock-drive-suburb.mp4", 1, None)],
          scene=dict(type="words", params=dict(items=[
              dict(text="Restock", cue="@restocking"), dict(text="Pull cash", cue="@pulling cash"), dict(text="Fix what broke", cue="@fixing")]))),
-    dict(at="The machines aren't cheap", kind="GF", clips=[("c02-combo-machine.mp4", 6, 7.5), ("c12-vending-closeup.mp4", 0.5, None)],
+    dict(at="The machines aren't cheap", kind="GF", clips=[("n-street-vending-man.mp4", 0.5, 9.5), ("n-touchscreen-snack-machine.mp4", 0, None)],
          scene=dict(type="cards", params=dict(valueSize=110, items=[
              dict(label="Countertop", value="$1,900", key="sup", cue="@countertop"),
              dict(label="Combo", value="$3,450", key="sup", cue="@combo"),
@@ -109,7 +109,7 @@ SHOTS = [
     dict(at="Busy places know", kind="GF", clip="c02-transit-station.mp4", **{"in": 4.0},
          scene=dict(type="bignum", params=dict(at="@five to 20%", text="5–20%", size=280, y=300, lines=[
              dict(text="of gross sales")]))),
-    dict(at="Sales per machine depend", kind="GF", clips=[("c09-busy-office.mp4", 2, 13.3), ("c02-hospital-corridor.mp4", 0.5, 2.2), ("c02-factory-floor.mp4", 1, 1.8), ("c02-transit-station.mp4", 12, None)],
+    dict(at="Sales per machine depend", kind="GF", clips=[("c01-office-lobby.mp4", 4, 4.5), ("n-subway-vending-woman2.mp4", 1, 9.3), ("c02-hospital-corridor.mp4", 0.5, 2.2), ("c02-factory-floor.mp4", 1, 1.8), ("c05-ohare-crowd-legs.mp4", 2, None)],
          scene=dict(type="bars", params=dict(kicker="Sales per machine, per month", max=2600, labelW=470, items=[
              dict(label="Typical site", from_=150, value=700, text="$150–700", key="sup", cue="@a typical site"),
              dict(label="Strong site", value=1500, text="up to $1,500", key="sup", cue="@a strong one"),
@@ -117,25 +117,25 @@ SHOTS = [
              source="VMFS USA"))),
 
     # ---------------------------------------------------------------- 3 · Following the two dollars
-    ftg("Those are sales figures", "01-phone-pay-vending.mp4", 5.0),
+    ftg("Those are sales figures", "n-can-opening.mp4", 0.5),
     dict(at="Here's how one equipment supplier", kind="GF", clip="c03-receipt.mp4", **{"in": 3.0},
          scene=dict(type="ledger", params=dict(w=1100, y=220, lines=[
              dict(label="Price", value="$2.00", cue=0),
              dict(label="Sales tax", value="6%", cue="@6%", dot="tax"),
              dict(label="Location's cut", value="10%", cue="@10%", dot="loc"),
              dict(label="Paid by card", value="78%", cue="@paying by card", dot="pay")], source=SRC_VMFS))),
-    dict(at="First, about 11 cents", kind="GF", clips=[("c02-office-vending.mp4", 10, 5.5), ("c01-bottling-line.mp4", 1, 7.8), ("c01-card-reader-tap.mp4", 1, 8.6), ("c01-office-lobby.mp4", 4, None)],
-         scene=split(["@11 cents", "@94 cents", "@Card processing", "@four more", "@The building takes", "@That leaves"],
+    dict(at="First, about 11 cents", kind="G",
+         scene=dict(opaque=True, **split(["@11 cents", "@94 cents", "@Card processing", "@four more", "@The building takes", "@That leaves"],
                      amounts=True, wholeAt=0, splitAt=0, dim=0.8, y=390,
                      tally=dict(label="Operator keeps", at=0, steps=[
                          dict(cents=11, cue="@11 cents"), dict(cents=94, cue="@94 cents"), dict(cents=9, cue="@nine cents"),
-                         dict(cents=4, cue="@four more"), dict(cents=20, cue="@20 cents")]), source=SRC_VMFS)),
-    dict(at="before paying for gas", kind="GF", clip="c03-gas-pump-gallons.mp4", **{"in": 20.0},
-         scene=split([0, 0, 0, 0, 0, 0], amounts=True, labels=False, wholeAt=0, splitAt=0, dim=0.8, y=390,
+                         dict(cents=4, cue="@four more"), dict(cents=20, cue="@20 cents")]), source=SRC_VMFS))),
+    dict(at="before paying for gas", kind="G",
+         scene=dict(opaque=True, **split([0, 0, 0, 0, 0, 0], amounts=True, labels=False, wholeAt=0, splitAt=0, dim=0.8, y=390,
                      costs=[dict(label="Gas", cue="@gas"), dict(label="Labor", cue="@labor"), dict(label="Repairs", cue="@repairs"),
-                            dict(label="Insurance", cue="@insurance"), dict(label="Income tax", cue="@income tax")])),
+                            dict(label="Insurance", cue="@insurance"), dict(label="Income tax", cue="@income tax")]))),
     ftg("Every restock means driving out", "c03-highway-driving.mp4", 2.0),
-    ftg("Those costs come out", "c03-hand-truck.mp4", 2.0),
+    ftg("Those costs come out", "c03-gas-pump-gallons.mp4", 20.0),
     dict(at="Run the full numbers", kind="GF", clips=[("c09-calculator-hands.mp4", 6, 7), ("c02-driver-paperwork.mp4", 2, None)],
          scene=dict(type="ledger", params=dict(w=1100, y=240, lines=[
              dict(label="Sales", value="$900", cue="@$900"),
@@ -144,7 +144,7 @@ SHOTS = [
     dict(at="And the better the location", kind="D",
          scene=dict(type="doc", params=dict(header="Riverside Community College District vending agreement, 2022",
                     html='(5) Commission Proposal - The Vendor guarantees commission of <span class="hl" data-cue="@33%">33% on gross sales</span>, and a signing bonus in the amount of $5,000 ...'))),
-    dict(at="and that airport from the start", kind="GF", clip="c05-lax-dusk-overview.mp4", **{"in": 8.0}, blur=LAX_NIGHT_BLUR,
+    dict(at="and that airport from the start", kind="GF", clip="n-airport-low-angle.mp4", **{"in": 0.0},
          scene=dict(type="bars", params=dict(kicker="The location's cut", max=70, labelW=470, items=[
              dict(label="Typical", value=10, text="10%", key="loc", cue=0),
              dict(label="Riverside", value=33, text="33%", key="loc", cue=0.3),
@@ -152,21 +152,21 @@ SHOTS = [
 
     # ---------------------------------------------------------------- 4 · Card payments
     ftg("Card payments do help", "c04-card-tap-terminal.mp4", 1.0),
-    dict(at="people paying by card or phone", kind="GF", clips=[("c04-card-tap-terminal.mp4", 4, 3.6), ("c01-card-reader-tap.mp4", 0.5, 6.5), ("c08-card-tap-unlock.mp4", 0, None)],
+    dict(at="people paying by card or phone", kind="GF", clips=[("c01-card-reader-tap.mp4", 0.5, 8.5), ("n-coins-office-vending.mp4", 1, None)],
          scene=dict(type="cards", params=dict(kicker="Average purchase, 2025", valueSize=130, items=[
              dict(label="Card or phone", value="$2.45", key="pay", cue="@$2.45"),
              dict(label="Cash", value="$1.57", key="tax", cue="@$1.57")], source=SRC_CANT))),
-    dict(at="and 78%", kind="GF", clip="c04-dollar-bill-acceptor.mp4", **{"in": 1.0},
+    dict(at="and 78%", kind="GF", clip="n-phone-tap-kiosk.mp4", **{"in": 0.0},
          scene=dict(type="bignum", params=dict(at=0, count=[0, 78], fmt="pct0", size=300, y=280, lines=[
              dict(text="of sales were cashless")], source=SRC_CANT))),
-    dict(at="So the operator ends up", kind="GF", clips=[("c05-traveler-vending-snack.mp4", 6, 3), ("c06-warehouse-drink-racks.mp4", 2, 3), ("01-phone-pay-vending.mp4", 3, None)],
+    dict(at="So the operator ends up", kind="GF", clip="n-drinks-machine-night.mp4", **{"in": 0.0},
          scene=dict(type="cards", params=dict(valueSize=100, items=[
              dict(label="", value="Location", key="loc", cue="@three kinds"),
              dict(label="", value="Scale", key="sup", cue="@three kinds"),
              dict(label="", value="Payments", key="pay", cue="@three kinds")]))),
 
     # ---------------------------------------------------------------- 5 · Winner 1: the location
-    ftg("Winner number one", "c05-lax-dusk-overview.mp4", 12.0, blur=LAX_NIGHT_BLUR),
+    ftg("Winner number one", "n-airport-busy-wide.mp4", 0.0),
     ftg("That airport is Los Angeles", "c05-lax-theme-building-day.mp4", 2.0, blur=LAX_DAY_BLUR),
     dict(at="In 2023, its board", kind="D",
          scene=dict(type="doc", params=dict(header="LA Board of Airport Commissioners, Feb 16, 2023",
@@ -177,7 +177,7 @@ SHOTS = [
              dict(label="Canteen", value=51.6, text="51.6%", key="sup", cue="@Canteen"),
              dict(label="Gilly Vending", value=42.0, text="42.0%", key="tax", cue="@Canteen")],
              source="LAX board report, 2023"))),
-    ftg("The operator runs and maintains", "c05-traveler-vending-snack.mp4", 1.0),
+    ftg("The operator runs and maintains", "c02-repair-closeup.mp4", 2.0),
     ftg("The airport just collects", "06-airport-terminal-4k.mp4", 1.0),
 
     # ---------------------------------------------------------------- 6 · Winner 2: scale
@@ -187,48 +187,48 @@ SHOTS = [
              dict(text="100 machines, one area", cue="@100 machines"),
              dict(text="10 machines, across a city", cue="@10 machines")]))),
     ftg("Big operators also buy", "c06-warehouse-drink-racks.mp4", 2.0),
-    ftg("The biggest of them all", "c06-chicago-skyline.mp4", 2.0),
+    ftg("The biggest of them all", "c12-office-tower.mp4", 0.0),
     dict(at="It started in Chicago", kind="GF", clip="c06-archival-1933-street.mp4", **{"in": 2.0},
          scene=dict(type="bignum", params=dict(at=0, text="1929", size=240, y=320, dim=0.5, lines=[
              dict(text="Chicago, 5¢ candy bars")]))),
-    dict(at="Today, Compass Group describes", kind="GF", clip="c01-office-lobby.mp4", **{"in": 4.0},
-         scene=dict(type="quote", params=dict(at=0, size=110, y=330,
+    dict(at="Today, Compass Group describes", kind="G",
+         scene=dict(type="quote", opaque=True, params=dict(at=0, size=110, y=330,
                     text="“The largest unattended retail provider in the United States.”", by="Compass Group"))),
-    dict(at="And the big players keep getting bigger", kind="GF", clips=[("c06-trucks-docks-aerial.mp4", 4, 5), ("c06-warehouse-drink-racks.mp4", 10, 6), ("c02-van-side-door-cases.mp4", 0, None)],
-         scene=dict(type="flow", params=dict(kicker="2025", src=dict(title="Buffalo Rock"), dst=dict(title="Canteen"), arrowLabel="sold",
+    dict(at="And the big players keep getting bigger", kind="GF", clips=[("c01-bottling-line.mp4", 1, 8.5), ("c03-cans-conveyor.mp4", 0, None)],
+         scene=dict(type="flow", params=dict(stack=True, y=260, kicker="2025", src=dict(title="Buffalo Rock"), dst=dict(title="Canteen"), arrowLabel="sold",
                     facts=[dict(text="~700 micro markets", cue="@700", key="sup"),
                            dict(text="7,600+ vending locations", cue="@7,600", key="sup")],
                     source="VendingMarketWatch"))),
 
     # ---------------------------------------------------------------- 7 · Winner 3: payments
-    ftg("The third winner", "c01-card-reader-tap.mp4", 2.0),
+    ftg("The third winner", "n-card-terminal.mp4", 1.0),
     ftg("Every tap sends", "c08-card-tap-unlock.mp4", 0.5),
-    dict(at="Cantaloupe, one of the biggest", kind="GF", clips=[("c01-server-room.mp4", 0, 9.5), ("c08-card-tap-unlock.mp4", 0, None)],
+    dict(at="Cantaloupe, one of the biggest", kind="GF", clip="c01-server-room.mp4", **{"in": 0.0},
          scene=dict(type="cards", params=dict(kicker="Cantaloupe, 2025", valueSize=130, items=[
              dict(label="Machines and kiosks", value="600,000+", key="pay", cue="@600,000"),
              dict(label="Sales", value="$4.6B", key="pay", cue="@$4.6 billion")]))),
-    dict(at="Cantaloupe earns a cut", kind="GF", clip="c04-card-tap-terminal.mp4", **{"in": 0.0},
-         scene=dict(type="flow", params=dict(src=dict(title="Every card sale"), dst=dict(title="Cantaloupe"), arrowLabel="a cut + monthly fees"))),
-    dict(at="And Cantaloupe itself just changed hands", kind="GF", clips=[("c10-handshake-warehouse.mp4", 1, 5.5), ("c05-contract-signing.mp4", 1, 7), ("c05-boardroom-wide.mp4", 2, None)],
-         scene=dict(type="flow", params=dict(kicker="May 2026", src=dict(title="365 Retail Markets"), dst=dict(title="Cantaloupe"), arrowLabel="bought",
+    dict(at="Cantaloupe earns a cut", kind="GF", clip="n-contactless-machine.mp4", **{"in": 0.0},
+         scene=dict(type="flow", params=dict(stack=True, y=300, src=dict(title="Every card sale"), dst=dict(title="Cantaloupe"), arrowLabel="a cut + monthly fees"))),
+    dict(at="And Cantaloupe itself just changed hands", kind="GF", clips=[("c10-handshake-warehouse.mp4", 1, 5.5), ("c05-boardroom-wide.mp4", 2, 7), ("c11-penn-ave-capitol-dusk.mp4", 2, None)],
+         scene=dict(type="flow", params=dict(stack=True, y=260, kicker="May 2026", src=dict(title="365 Retail Markets"), dst=dict(title="Cantaloupe"), arrowLabel="bought",
                     facts=[dict(text="About $848 million", cue="@$848 million", key="pay")], source="SEC filing"))),
 
     # ---------------------------------------------------------------- 8 · Micro markets
     ftg("But some of the biggest changes", "c09-busy-office.mp4", 4.0),
     ftg("A micro market is an unlocked", "c08-grab-and-go-cooler.mp4", 2.0),
     ftg("and a self-checkout kiosk", "c08-self-checkout-scan.mp4", 2.0),
-    dict(at="In 2025, the average vending purchase", kind="GF", clips=[("c08-kiosk-touchscreen.mp4", 1, 6.5), ("c08-self-checkout-scan.mp4", 8, 6), ("c08-card-tap-unlock.mp4", 0, None)],
+    dict(at="In 2025, the average vending purchase", kind="GF", clips=[("c08-kiosk-touchscreen.mp4", 1, 6.5), ("n-self-checkout-kiosk.mp4", 1, 6), ("c08-smart-cabinet.mp4", 0, None)],
          scene=dict(type="bars", params=dict(kicker="Average purchase, 2025", max=5.6, labelW=470, items=[
              dict(label="Vending machine", value=2.01, text="$2.01", key="tax", cue="@$2.01"),
              dict(label="Micro market", value=3.02, text="$3.02", key="sup", cue="@$3.02"),
              dict(label="Smart store", value=4.49, text="$4.49", key="pay", cue="@$4.49")],
              source=SRC_CANT))),
-    dict(at="Micro markets on that network", kind="GF", clips=[("c08-grab-and-go-cooler.mp4", 7, 10.5), ("c09-busy-office.mp4", 8, None)],
+    dict(at="Micro markets on that network", kind="GF", clip="n-self-service-kiosks.mp4", **{"in": 0.0},
          scene=dict(type="cards", params=dict(valueSize=110, items=[
              dict(label="Micro market sales", value="$1B+", key="sup", cue="@billion"),
              dict(label="Smart stores", value="71→572", key="pay", cue="@71 locations"),
              dict(label="Smart store sales", value="$6M", key="pay", cue="@$6 million")]))),
-    dict(at="Vending machines still bring in", kind="GF", clips=[("c02-office-vending.mp4", 11, 6.5), ("c08-office-break-room.mp4", 3, None)],
+    dict(at="Vending machines still bring in", kind="GF", clip="c02-combo-machine.mp4", **{"in": 1.0},
          scene=dict(type="bars", params=dict(kicker="Total sales, 2025", max=3.9, labelW=470, items=[
              dict(label="Vending machines", value=3.3, text="$3.3B", key="tax", cue=0),
              dict(label="Micro markets", value=1.0, text="$1B+", key="sup", cue=0.2),
@@ -237,75 +237,75 @@ SHOTS = [
 
     # ---------------------------------------------------------------- 9 · A beginner's first six months
     ftg("But the passive income videos", "c09-laptop-night.mp4", 2.0),
-    dict(at="They posted their numbers", kind="GF", clip="c09-laptop-night.mp4", **{"in": 6.0},
-         scene=dict(type="post", params=dict(meta="",
+    dict(at="They posted their numbers", kind="G",
+         scene=dict(type="post", opaque=True, params=dict(meta="",
                     title="Vending machine side hustle: 6-month update",
                     body="$3,200 on two refurbished machines. $400 on snacks and drinks."))),
-    ftg("One machine sits in an office", "c09-busy-office.mp4", 14.0),
+    ftg("One machine sits in an office", "n-office-50-staff.mp4", 0.0),
     ftg("The other is in an auto repair shop", "c09-mechanic-under-lift.mp4", 1.0),
-    dict(at="The office machine brings in", kind="GF", clips=[("c09-busy-office.mp4", 20, 6.5), ("c09-auto-repair-shop.mp4", 1.5, 6.5), ("c09-restock-drive-suburb.mp4", 6, None)],
+    dict(at="The office machine brings in", kind="GF", clips=[("n-office-50-staff.mp4", 3.4, 6.5), ("c09-auto-repair-shop.mp4", 1.5, 6.5), ("c02-restocking-shelf-proxy.mp4", 2, None)],
          scene=dict(type="ledger", params=dict(w=1150, y=220, lines=[
              dict(label="Office machine", value="$280–350/mo", cue=0, dot="sup"),
-             dict(label="Repair shop machine", value="$120–180/mo", cue="@The repair shop", dot="sup"),
+             dict(label="Repair shop", value="$120–180/mo", cue="@The repair shop", dot="sup"),
              dict(label="Kept", value="$130–150/mo", cue="@they say they keep", total=True)]))),
-    dict(at="Their verdict was simple", kind="GF", clip="c09-restock-drive-suburb.mp4", **{"in": 11.0},
-         scene=dict(type="quote", params=dict(at="@It's not as passive", text="“It's not as passive as people make it sound.”", size=120, y=330))),
-    dict(at="Now do the math", kind="GF", clips=[("c02-driver-paperwork.mp4", 12, 9.5), ("c03-receipt.mp4", 14, None)],
-         scene=dict(type="payback", params=dict(title="Paying off a $3,500 machine", years=15, marks=[
+    dict(at="Their verdict was simple", kind="G",
+         scene=dict(type="quote", opaque=True, params=dict(at=0, text="“It's not as passive as people make it sound.”", size=120, y=330))),
+    dict(at="Now do the math", kind="G",
+         scene=dict(type="payback", opaque=True, params=dict(title="Paying off a $3,500 machine", years=15, marks=[
              dict(years=14.6, label="14+ years", key="loc", op=0.55, align="right", cue="@14 years"),
              dict(years=1.67, label="20 months", key="own", cue="@20 months")],
              source=SRC_VMFS))),
     ftg("Things do break", "c04-dollar-bill-acceptor.mp4", 0.5),
     ftg("and an attempted break-in", "c09-security-camera.mp4", 2.0),
     ftg("Then there's debt", "c09-credit-card-overdue.mp4", 2.0),
-    dict(at="looked at one creator's breakdown", kind="GF", clip="c09-calculator-hands.mp4", **{"in": 2.0},
+    dict(at="looked at one creator's breakdown", kind="GF", clip="c09-one-dollar-bill.mp4", **{"in": 1.0},
          scene=dict(type="quote", params=dict(at="@And his advice", size=104, y=330,
                     text="Save it in cash. Don't borrow it.", by="George Kamel, via 24/7 Wall St."))),
-    ftg("Put it on a card", "01-phone-pay-vending.mp4", 5.5),
+    ftg("Put it on a card", "n-card-into-reader.mp4", 0.5),
 
     # ---------------------------------------------------------------- 10 · Buying a route
-    dict(at="If you'd rather buy a route", kind="F", clips=[("c10-financial-docs-review.mp4", 0.2, 5), ("c01-office-lobby.mp4", 12, None)]),
+    dict(at="If you'd rather buy a route", kind="F", clips=[("c10-financial-docs-review.mp4", 0.2, 5), ("n-docs-review-senior.mp4", 1, None)]),
     dict(at="BizBuy sells figures", kind="GF", clip="c10-spreadsheet-monitor.mp4", **{"in": 1.0},
          scene=dict(type="multiple", params=dict(title="What vending businesses sell for", max=4, marks=[
              dict(x=2.0, label="≈ 2×", key="sup", cue="@two times")],
              source="BizBuySell"))),
     ftg("One Chicago area route", "c10-arlington-heights-aerial.mp4", 3.0),
-    dict(at="The seller estimates", kind="GF", clip="c10-chicago-suburbs-aerial.mp4", **{"in": 10.0},
+    dict(at="The seller estimates", kind="GF", clip="c10-arlington-heights-aerial.mp4", **{"in": 9.0},
          scene=dict(type="multiple", params=dict(title="One Chicago-area route, 12 machines", max=4, marks=[
              dict(x=2.0, label="≈ 2×", key="tax", cue=0),
              dict(x=2.8, label="2.8×", key="loc", cue="@nearly three times", above=False)],
              source="The Route Exchange"))),
     ftg("Those are asking prices", "c10-calculator-ledger.mp4", 1.0),
-    ftg("A careful buyer asks", "c10-checking-sales-records.mp4", 1.0),
+    ftg("A careful buyer asks", "n-records-review-warehouse.mp4", 0.0),
 
     # ---------------------------------------------------------------- 11 · Operation Vend Up Broke
     ftg("And none of this is new", "c11-newsprint-listings.mp4", 5.0),
     dict(at="In 1998, the Federal Trade Commission", kind="D",
          scene=dict(type="doc", params=dict(header="FTC press release, Sept 3, 1998", size=48,
                     html='FTC Announces <span class="hl" data-cue="@Operation Vend Up Broke">"OPERATION VEND UP BROKE"</span>: States and Feds Stop Business Opportunity Scams<br><br>"Every year, thousands of consumers literally end up broke after investing in purportedly lucrative vending opportunities." … <span class="hl" data-cue="@fake references">"You can\'t rely on supposedly satisfied consumers supplied by the seller."</span>'))),
-    ftg("The ads have moved", "c11-phone-night-viewer.mp4", 6.0),
+    ftg("The ads have moved", "n-phone-social-feed.mp4", 2.0),
     dict(at="and the math behind them", kind="D",
          scene=dict(type="doc", params=dict(header="Trustpilot review of a vending locator", size=56, y=300,
                     html='"He provided me with <span class="hl" data-cue="0">\'leads\', not actual locations.</span>"'))),
 
     # ---------------------------------------------------------------- 12 · Who really wins
-    dict(at="Back to your $2", kind="GF", clips=[("c12-vending-closeup.mp4", 1, 8), ("c02-office-vending.mp4", 2, None)],
-         scene=split([0, 0, 0, 0, 0, 0], amounts=True, wholeAt=0, splitAt=0, dim=0.8, y=390,
-                     tally=dict(label="Operator keeps", at=0, steps=[dict(cents=138, cue=0)]))),
-    dict(at="The people who win", kind="GF", clip="c02-combo-machine.mp4", **{"in": 1.0},
+    dict(at="Back to your $2", kind="G",
+         scene=dict(opaque=True, **split([0, 0, 0, 0, 0, 0], amounts=True, wholeAt=0, splitAt=0, dim=0.8, y=390,
+                     tally=dict(label="Operator keeps", at=0, steps=[dict(cents=138, cue=0)])))),
+    dict(at="The people who win", kind="GF", clip="c05-traveler-vending-snack.mp4", **{"in": 0.0},
          scene=dict(type="cards", params=dict(valueSize=100, items=[
              dict(label="", value="Location", key="loc", cue="@the location"),
              dict(label="", value="Scale", key="sup", cue="@the scale"),
              dict(label="", value="Technology", key="pay", cue="@the technology")]))),
-    dict(at="So if you're ever looking", kind="GF", clip="c10-checking-sales-records.mp4", **{"in": 4.0},
-         scene=dict(type="checklist", params=dict(title="Before you buy a route", y=280, rowH=104, font=54, box=64, items=[
+    dict(at="So if you're ever looking", kind="G",
+         scene=dict(type="checklist", opaque=True, params=dict(title="Before you buy a route", y=280, rowH=104, font=54, box=64, items=[
              dict(text="Does it own the location, scale or tech?", key="hl", cue="@ask which"),
              dict(text="Location contracts that transfer", cue="@ask which"),
              dict(text="Sales records for every machine", cue="@ask which"),
              dict(text="Machine age", cue="@ask which"),
              dict(text="Card vs cash sales", cue="@ask which")]))),
-    dict(at="Would you still buy one", kind="GF", clip="c09-laptop-night.mp4", **{"in": 4.0},
-         scene=dict(type="quote", params=dict(at=0, text="Would you still buy one?", size=140, y=420))),
+    dict(at="Would you still buy one", kind="G",
+         scene=dict(type="quote", opaque=True, params=dict(at=0, text="Would you still buy one?", size=140, y=420))),
     ftg("Next time, the car wash", "c12-car-wash-tunnel.mp4", 2.0),
     dict(at="Subscribe so you don't miss it", kind="G", scene=dict(type="end", opaque=True, params=dict(logo=LOGO, y=300))),
 ]
