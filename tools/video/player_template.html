@@ -17,6 +17,8 @@ body{background:var(--ui-bg);color:var(--ui-fg)}
 .controls button.primary{background:var(--ui-fg);color:var(--ui-bg)}
 .controls button:disabled{opacity:.4;cursor:default}
 .controls button:focus-visible,.controls input:focus-visible{outline:2px solid var(--ui-hl);outline-offset:2px}
+.controls select{font:600 15px 'Libre Franklin',system-ui,sans-serif;background:var(--ui-bg);color:var(--ui-fg);border:1px solid var(--ui-fg);padding:9px 10px;cursor:pointer}
+.controls select:focus-visible{outline:2px solid var(--ui-hl);outline-offset:2px}
 .controls input[type=range]{flex:1 1 200px;min-width:0;accent-color:#FFFFFF}
 .time{font:500 15px 'Libre Franklin',system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ui-dim)}
 .bar{height:3px;background:var(--ui-line)}
@@ -55,6 +57,7 @@ body{background:var(--ui-bg);color:var(--ui-fg)}
     <button id="fwd" class="icon" type="button" aria-label="Forward 5 seconds">+5s</button>
     <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Position in the video">
     <span class="time" id="time">0:00 / 0:00</span>
+    <select id="speed" aria-label="Playback speed"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
   </div>
   <p class="note" id="hint" hidden>Click anywhere on the picture to leave a note on that spot. Choose Send to Claude and it comes straight to me while you keep watching.</p>
   <section class="notes" id="notes" aria-labelledby="notes-h" hidden>
@@ -95,6 +98,7 @@ function enter(i, t) {
     else if (vids[front].dataset.src !== s.src) { vids[front].dataset.src = s.src; vids[front].src = s.src; }
     const v = vids[front], back = vids[1 - front];
     v.style.visibility = 'visible'; back.style.visibility = 'hidden'; back.pause();
+    v.defaultPlaybackRate = v.playbackRate = audio.playbackRate;
     try { v.currentTime = Math.max(0, t - s.start); } catch (e) {}
     if (playing) v.play().catch(() => {});
     const next = shots.slice(i + 1).find(x => x.src);
@@ -128,6 +132,7 @@ $('play').onclick = () => {
   if (playing) audio.play().catch(() => { playing = false; $('play').textContent = 'Play'; }); else audio.pause();
   $('play').textContent = playing ? 'Pause' : 'Play';
 };
+$('speed').onchange = () => { const r = +$('speed').value; audio.playbackRate = r; vids.forEach(v => { v.defaultPlaybackRate = r; v.playbackRate = r; }); };
 $('back').onclick = () => jump(audio.currentTime - 5);
 $('fwd').onclick = () => jump(audio.currentTime + 5);
 audio.addEventListener('ended', () => { playing = false; $('play').textContent = 'Play'; });
