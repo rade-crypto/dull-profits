@@ -13,6 +13,8 @@ Audience: roughly 40–65+, has capital, might actually buy or sell one; many wa
   SendUserFile `display: "render"`. Never use `display: "attach"` for things the owner should read.
 - **Never send drafts before the research they depend on is finished.** Finish the research first, then send the finished
   piece. "Storyboard" means **stills** (one rendered frame per shot, real clips plus our graphics), not a text table.
+- **Order of work, one step at a time:** research → decision report → owner's OK → style → B-roll → stills storyboard →
+  video. Don't start a later step (B-roll, graphics, storyboard) before the step it depends on is finished.
 - The owner wants **reports that explain the decision making**: what was researched, the sources, the competitors, and why
   each choice was made.
 - **The channel always uses AI voices.** Never suggest the owner record their own voice, hire a voice actor, or
