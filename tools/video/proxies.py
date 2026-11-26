@@ -7,6 +7,7 @@ A shot uses `clip` + `in`, or `clips`: a list of (file, in, seconds) pieces join
 (the last piece's seconds may be None: it fills the rest). Pieces never freeze: if a clip is too short it is
 slowed (at most 1.5x), and only then held. render.py calls make_bg() for the final, higher-quality version.
 """
+import hashlib
 import json
 import subprocess
 import sys
@@ -20,6 +21,12 @@ XF = 0.5  # crossfade between pieces
 def dur_of(f):
     return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(f)],
                                 capture_output=True, text=True, check=True).stdout)
+
+
+def shot_key(s):
+    """Stable file name for a shot's background: changes only when its footage or length changes."""
+    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")], sort_keys=True)
+    return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
 def pieces_of(s):
@@ -65,7 +72,10 @@ def make_bg(ep, s, out, crf=28):
 
 
 def one(ep, s):
-    return make_bg(ep, s, ep / "render" / "player" / "shots" / f"s{s['n']:02d}.mp4")
+    out = ep / "render" / "player" / "shots" / f"{shot_key(s)}.mp4"
+    if out.exists():
+        return s["n"]
+    return make_bg(ep, s, out)
 
 
 def main():

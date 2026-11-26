@@ -31,7 +31,17 @@ css = css.replace("body{color:var(--ink);", ".frame{width:1920px;height:1080px;o
 js = js.replace("const S = document.getElementById('stage');", "const S = document.getElementById('stage');")
 js = js.replace("if (scene.opaque) document.body.style.background = 'var(--bg)';", "S.style.background = scene.opaque ? 'var(--bg)' : '';")
 
-edit = json.loads((P / "edit.json").read_text())
+sys.path.insert(0, str(HERE))
+from stills import resolve  # noqa: E402
+from proxies import shot_key  # noqa: E402
+shots, _ = resolve(ep)
+edit = {"shots": [], "duration": shots[-1]["end"]}
+for s in shots:
+    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "scene")}
+    if d["clip"] or d["clips"]:
+        d["key"] = shot_key(d)
+    edit["shots"].append(d)
+(P / "edit.json").write_text(json.dumps(edit))
 logo = "data:image/png;base64," + b64(ep.parents[1] / "brand" / "wordmark.png")
 for s in edit["shots"]:
     if s.get("scene") and s["scene"].get("type") == "end":

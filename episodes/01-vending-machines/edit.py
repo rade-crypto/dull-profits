@@ -63,6 +63,7 @@ CHAPTERS = [  # for the storyboard sheets and YouTube chapter markers only; neve
 SHOTS = [
     # ---------------------------------------------------------------- 1 · Hook
     ftg(None, "01-phone-pay-vending.mp4", 1.0),
+    ftg("and a soda drops", "c12-vending-closeup.mp4", 4.0),
     dict(at="$2", kind="GF", clip="c02-office-vending.mp4", **{"in": 6.0},
          scene=split(["@government", "@drink company", "@card processor", "@software company", "@the building", None],
                      title="$2.00", titleAt=0, wholeAt="@Before the owner", splitAt="@five other players", dim=0.72)),
@@ -81,7 +82,7 @@ SHOTS = [
              dict(title="Payment data", key="pay", cue="@payment data"),
              dict(title="Public contracts", key="loc", cue="@public contracts"),
              dict(title="Operators' own results", key="sup", cue="@operators")]))),
-    ftg("The picture is a lot less exciting", "c05-ohare-crowd-legs.mp4", 3.0),
+    ftg("The picture is a lot less exciting", "c03-hand-truck.mp4", 8.0),
     ftg("So let's follow the $2", "c12-coins-in-hand.mp4", 4.0),
 
     # ---------------------------------------------------------------- 2 · Who owns the machine

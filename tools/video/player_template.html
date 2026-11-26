@@ -80,7 +80,7 @@ const EDIT = /*EDIT_JSON*/null;
 const $ = id => document.getElementById(id);
 const W = 1920;
 const shots = EDIT.shots, TOTAL = EDIT.duration;
-shots.forEach(s => { s.src = (s.clip || s.clips) ? `shots/s${String(s.n).padStart(2, '0')}.mp4` : null; });
+shots.forEach(s => { s.src = s.key ? `shots/${s.key}.mp4` : null; });
 const audio = $('audio'), vids = [$('va'), $('vb')], stage = $('stage');
 let cur = -1, front = 0, playing = false, scrubbing = false, sceneOf = -1, token = 0;
 const say = t => { $('status').textContent = t; };
