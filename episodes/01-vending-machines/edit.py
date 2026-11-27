@@ -221,8 +221,8 @@ SHOTS = [
                            dict(label="3", key="pay", cue="@three kinds+0.8")], labelSize=150)),
 
     # ---------------------------------------------------------------- 5 · Winner 1: the location
-    dict(at="Winner number one", kind="GF", clip="n-airport-busy-wide.mp4", **{"in": 0.0}, scene=sc("tag", at="@the location", title="1&emsp;Location", rule="var(--loc)", size=72)),
-    dict(at="That airport is Los Angeles", kind="GF", clip="c05-lax-theme-building-day.mp4", **{"in": 2.0}, blur=LAX_DAY_BLUR,   # T37
+    dict(at="Winner number one", kind="GF", clip="n-airport-busy-wide.mp4", **{"in": 0.0}, scene=sc("tag", at="@the location", lead="1", leadAt="@number one", title="Location", rule="var(--loc)", size=72)),
+    dict(at="That airport is Los Angeles+0.8", kind="GF", clip="c05-lax-theme-building-day.mp4", **{"in": 2.0}, blur=LAX_DAY_BLUR,   # T37
          scene=sc("tag", at=0.3, title="Los Angeles International Airport", sub="California", color="#0B1422", y=90)),
     ftg("In 2023, its board", "c05-contract-signing.mp4", 3.0),
     dict(at="where the operator pays", kind="D", bg=[("prev", 0, 4.6), ("c05-lax-theme-building-day.mp4", 7.0)], soft=14.0, dim=0.42,                                                                           # T8
@@ -236,8 +236,8 @@ SHOTS = [
     ftg("The airport just collects", "06-airport-terminal-4k.mp4", 1.0),
 
     # ---------------------------------------------------------------- 6 · Winner 2: scale
-    dict(at="Winner number two", kind="GF", clip="c06-trucks-docks-aerial.mp4", **{"in": 2.0}, scene=sc("tag", at="@scale", title="2&emsp;Scale", rule="var(--sup)", size=72, color="#0B1422")),
-    ftg("Driving between machines", "c06-downtown-traffic-aerial.mp4", 0.2),
+    dict(at="Winner number two", kind="GF", clip="c06-trucks-docks-aerial.mp4", **{"in": 2.0}, scene=sc("tag", at="@scale", lead="2", leadAt="@number two", title="Scale", rule="var(--sup)", size=72, color="#0B1422")),
+    ftg("Driving between machines+1.0", "c06-downtown-traffic-aerial.mp4", 0.2),
     B("so an operator with 100 machines", "prev",                                          # T18
       sc("density", a=dict(label="100 machines, one area", cue="@100 machines"), b=dict(label="10 machines, a whole city", cue="@10 machines"))),
     ftg("Big operators also buy", "c06-warehouse-drink-racks.mp4", 2.0),
@@ -253,8 +253,8 @@ SHOTS = [
          body='Almost <span class="hl" data-cue="@700">700 micro markets</span> and more than <span class="hl" data-cue="@7,600">7,600 vending locations</span>.', headSize=80, w=1200, x=360)),
 
     # ---------------------------------------------------------------- 7 · Winner 3: payments
-    dict(at="The third winner", kind="GF", clip="n-card-terminal.mp4", **{"in": 2.2}, scene=sc("tag", at="@payments", title="3&emsp;Payments", rule="var(--pay)", size=72, color="#0B1422")),
-    ftg("Every tap sends", "c08-card-tap-unlock.mp4", 0.5),
+    dict(at="The third winner", kind="GF", clip="n-card-terminal.mp4", **{"in": 2.2}, scene=sc("tag", at="@payments", lead="3", leadAt="@third winner", title="Payments", rule="var(--pay)", size=72, color="#0B1422")),
+    ftg("Every tap sends+0.9", "c08-card-tap-unlock.mp4", 0.5),
     dict(at="Cantaloupe, one of the biggest", kind="GF", clips=[("c01-server-room.mp4", 0, 7), ("n-data-center.mp4", 1, None)], push=0.06,   # T1
          scene=sc("num", y=110, size=200, items=[dict(at="@600,000", text="600,000", pre="More than", preAt="@more than", kicker="Connected machines and kiosks"),
                                                  dict(at="@$4.6 billion", text="$4.6 billion", kicker="Sales they handled, 2025")])),

@@ -35,7 +35,11 @@ def resolve(ep: Path):
     tl = Timeline(ep / "voiceover" / "timings-clean.json")
     shots, prev = [], 0.0
     for i, s in enumerate(m.SHOTS):
-        start = 0.0 if s.get("at") is None else tl.at(s["at"], after=max(0.0, prev - 0.05))
+        a, off = s.get("at"), 0.0
+        mm = re.match(r"^(.*?)([+-]\d+(?:\.\d+)?)$", a) if isinstance(a, str) else None
+        if mm:   # "phrase+0.8": cut 0.8 s after the phrase starts
+            a, off = mm[1].rstrip(), float(mm[2])
+        start = 0.0 if a is None else round(tl.at(a, after=max(0.0, prev - 0.05)) + off, 3)
         shots.append(dict(s, n=i + 1, start=start))
         prev = start
     tail = getattr(m, "END_TAIL", 20.0)
@@ -117,8 +121,7 @@ def resolve(ep: Path):
             first = b[0] if isinstance(b[0], (list, tuple)) else b
             if "rack" not in s:
                 s["rack"] = not s.get("carry")   # always start sharp and pull focus; a carried graphic keeps its soft picture
-        if prev and prev.get("kind") in ("B", "D") and s.get("kind") in ("F", "GF") and "rack_open" not in s:
-            s["rack_open"] = 0.5
+        # no automatic soft opening after a graphic: footage starts sharp on the cut (owner: "why is it blurry from the start")
     for i, s in enumerate(shots):
         nxt = shots[i + 1] if i + 1 < len(shots) else None
         if s.get("scene"):
