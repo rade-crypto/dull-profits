@@ -73,7 +73,7 @@ P1 = ("n-drinks-machine-night.mp4", 0.5)   # a stocked machine (swap for a lit o
 P3 = ("c04-coin-into-slot.mp4", 1.0)            # the cash
 C1 = ("c01-office-lobby.mp4", 2.0, "#0B1422")              # food service at work
 R1 = ("n-loading-cargo-truck.mp4", 9.0)         # restocking
-R2 = ("px-counting-money-office.mp4", 4.0)       # pulling cash (Pexels)
+R2 = ("c12-coins-in-hand.mp4", 20.0)            # pulling cash
 R3 = ("px-man-working-machine.mp4", 1.0)         # fixing (Pexels)
 
 
@@ -115,6 +115,7 @@ SHOTS = [
                           dict(title="Public contracts", sub="LAX board, 2023", cue="@public contracts"),
                           dict(title="Operators' own results", sub="Posted online", cue="@operators")])),
     ftg("The picture is a lot less exciting", "c03-hand-truck.mp4", 8.0),
+    ftg("and it shows where the money", "px-counting-money-office.mp4", 18.0),
     ftg("So let's follow the $2", "c12-coins-in-hand.mp4", 4.0),
 
     # ---------------------------------------------------------------- 2 · Who owns the machine

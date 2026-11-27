@@ -116,7 +116,7 @@ def resolve(ep: Path):
                 s["bg"] = b = [lp + tuple(b[0][2:])] + [tuple(x) for x in b[1:]]
             first = b[0] if isinstance(b[0], (list, tuple)) else b
             if "rack" not in s:
-                s["rack"] = bool(lp and first[0] == lp[0] and abs(first[1] - lp[1]) < 1.0)
+                s["rack"] = not s.get("carry")   # always start sharp and pull focus; a carried graphic keeps its soft picture
         if prev and prev.get("kind") in ("B", "D") and s.get("kind") in ("F", "GF") and "rack_open" not in s:
             s["rack_open"] = 0.5
     for i, s in enumerate(shots):

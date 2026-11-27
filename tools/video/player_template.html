@@ -80,7 +80,7 @@ const EDIT = /*EDIT_JSON*/null;
 const $ = id => document.getElementById(id);
 const W = 1920;
 const shots = EDIT.shots, TOTAL = EDIT.duration;
-shots.forEach(s => { s.src = s.key ? `shots/${s.key}.mp4` : null; });
+shots.forEach(s => { s.src = s.reel || (s.key ? `shots/${s.key}.mp4` : null); s.off = s.off || 0; });   // reels: many shots per file
 const audio = $('audio'), vids = [$('va'), $('vb')], stage = $('stage');
 let cur = -1, front = 0, playing = false, scrubbing = false, sceneOf = -1, token = 0;
 const say = t => { $('status').textContent = t; };
@@ -98,7 +98,7 @@ function whenReady(v, fn) {
   v.addEventListener('seeked', on); v.addEventListener('loadeddata', on);
 }
 function preload(i) {
-  const next = shots.slice(i + 1).find(x => x.src), back = vids[1 - front];
+  const next = shots.slice(i + 1).find(x => x.src && x.src !== shots[i].src), back = vids[1 - front];
   if (next && back.dataset.src !== next.src && back.style.visibility !== 'visible') { back.dataset.src = next.src; back.src = next.src; back.load(); }
 }
 function showScene(i) {
@@ -108,14 +108,19 @@ function showScene(i) {
 function enter(i, t) {
   cur = i; const s = shots[i], my = ++token;
   if (s.src) {
+    const f = vids[front], target = s.off + Math.max(0, t - s.start);
+    if (f.dataset.src === s.src && f.style.visibility === 'visible' && f.readyState >= 2) {   // same reel: it simply keeps playing
+      if (Math.abs(f.currentTime - target) > 0.3) { try { f.currentTime = target; } catch (e) {} }
+      if (playing && f.paused) f.play().catch(() => {});
+      showScene(i); preload(i); return;
+    }
     let v = vids[front];
     if (vids[1 - front].dataset.src === s.src) v = vids[1 - front];
     else if (v.dataset.src !== s.src) { v = vids[1 - front]; v.dataset.src = s.src; v.src = s.src; }
     v.defaultPlaybackRate = v.playbackRate = audio.playbackRate;
     // During normal playback the next clip is already loaded at its first frame: start it from there instead of
     // seeking (a seek stalls the picture for a few frames, which reads as a glitch at the cut). Only seek when jumping.
-    const want = Math.max(0, t - s.start);
-    if (!(want < 0.3 && v.readyState >= 2 && v.currentTime < 0.05)) { try { v.currentTime = want; } catch (e) {} }
+    if (!(target - s.off < 0.3 && s.off === 0 && v.readyState >= 2 && v.currentTime < 0.05)) { try { v.currentTime = target; } catch (e) {} }
     whenReady(v, () => {
       if (my !== token) return;
       const old = vids.find(x => x !== v);
@@ -136,7 +141,7 @@ function tick() {
   if (i !== cur) enter(i, t);
   if (s.scene && sceneOf === i) draw(t - s.start);
   if (s.src && vids[front].dataset.src === s.src) {
-    const v = vids[front], want = t - s.start, drift = want - v.currentTime;
+    const v = vids[front], want = s.off + (t - s.start), drift = want - v.currentTime;
     // keep the picture on the voice without seeking: nudge the speed for small drifts, seek only when far off
     if (Math.abs(drift) > 0.6) { try { v.currentTime = want; } catch (e) {} }
     else { const r = audio.playbackRate * (Math.abs(drift) > 0.04 ? 1 + Math.max(-0.25, Math.min(0.25, drift)) : 1);

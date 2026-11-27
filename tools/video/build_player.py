@@ -41,6 +41,40 @@ for s in shots:
     if d["clip"] or d["clips"] or d["bg"]:
         d["key"] = shot_key(d)
     edit["shots"].append(d)
+# Reels: consecutive shots joined into a few long files (~14 MB each), so the preview swaps video files only a handful
+# of times instead of at every cut (each swap can stall a frame or flash the previous clip while the next one loads).
+import hashlib, subprocess
+def fdur(f):
+    return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(f)],
+                                capture_output=True, text=True).stdout)
+(P / "reels").mkdir(exist_ok=True)
+groups, cur, size = [], [], 0
+for s in edit["shots"]:
+    f = P / "shots" / f"{s['key']}.mp4" if s.get("key") else None
+    if not f or not f.exists():
+        if cur: groups.append(cur); cur, size = [], 0
+        continue
+    sz = f.stat().st_size
+    if cur and size + sz > 14e6:
+        groups.append(cur); cur, size = [], 0
+    cur.append(s); size += sz
+if cur: groups.append(cur)
+keep = set()
+for g in groups:
+    name = "r" + hashlib.sha1("".join(s["key"] for s in g).encode()).hexdigest()[:12] + ".mp4"
+    out = P / "reels" / name; keep.add(name)
+    if not out.exists():
+        lst = P / "reels" / (name + ".txt")
+        lst.write_text("".join(f"file '{(P / 'shots' / (s['key'] + '.mp4')).resolve()}'\n" for s in g))
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", "-movflags", "+faststart",
+                        str(out.with_suffix(".part.mp4"))], check=True)
+        out.with_suffix(".part.mp4").replace(out); lst.unlink()
+    off = 0.0
+    for s in g:
+        s["reel"], s["off"] = f"reels/{name}", round(off, 4)
+        off += fdur(P / "shots" / f"{s['key']}.mp4")
+for f in (P / "reels").glob("r*.mp4"):
+    if f.name not in keep: f.unlink()
 (P / "edit.json").write_text(json.dumps(edit))
 logo = "data:image/png;base64," + b64(ep.parents[1] / "brand" / "wordmark.png")
 for s in edit["shots"]:

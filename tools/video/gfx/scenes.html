@@ -66,7 +66,7 @@ function apply(tw, t) {
       n.style.opacity = o; n.style.transform = `${tw.base} translateY(${(1 - p) * (tw.dist ?? 48) - (1 - q) * 24}px)`;
       n.style.filter = b > 0.05 && o > 0 ? `blur(${b.toFixed(2)}px)` : ''; break; }
     case 'land': { const r = tw.rot ?? 0, hold = Math.max(0, t - a - tw.dur);
-      n.style.opacity = o; n.style.transform = `translateY(${(1 - p) * (tw.dist ?? 140)}px) rotate(${(r + (1 - p) * (tw.turn ?? -3) + (tw.sway ?? 0.04) * hold).toFixed(3)}deg)`;
+      n.style.opacity = o; n.style.transform = `translateY(${(1 - p) * (tw.dist ?? 140)}px) rotate(${(r + (1 - p) * (tw.turn ?? -3)).toFixed(3)}deg)`;
       n.style.boxShadow = 'none'; break; }
     case 'slide': n.style.opacity = o; n.style.transform = `translateX(${(1 - p) * -220}px)`; break;
     case 'pop': n.style.opacity = o; n.style.transform = `${tw.base} scale(${(tw.from ?? 0.6) + (1 - (tw.from ?? 0.6)) * p})`; break;
@@ -115,9 +115,9 @@ function maskRise(node, at, dur = 0.7) {
   const wrap = document.createElement('div'); wrap.style.clipPath = 'inset(-60px -80px -0.12em -80px)';
   node.parentNode.insertBefore(wrap, node); wrap.appendChild(node);
   return anim(node, { anim: 'fn', at, dur: 1.2, ease: false, fn: pp => { const e = E.out(clamp(pp * 1.2 / dur)), e2 = E.out(pp);
-    node.style.opacity = pp > 0 ? 1 : 0; node.style.transform = `translateY(${((1 - e) * 120).toFixed(2)}%)`; node.style.letterSpacing = `${(6 - 7 * e2).toFixed(2)}px`; } });
+    node.style.opacity = pp > 0 ? 1 : 0; node.style.transform = `translateY(${((1 - e) * 120).toFixed(2)}%)`; } });
 }
-function camTo(at, dx = 0, dy = 0, ds = 0, dur = 1.4) { CAMKEYS.push({ at, dx, dy, ds, dur }); }
+function camTo() { }   // off: once text lands it stays put (owner)
 function focusOn(node, at, k = 0.35, ds = 0.04, dur = 1.4) { // move the camera part of the way toward a node's centre
   const r = node.getBoundingClientRect(); camTo(at, (960 - (r.left + r.width / 2)) * k, (540 - (r.top + r.height / 2)) * k * 0.6, ds, dur); }
 function startCamera(sc, p) {
@@ -128,10 +128,10 @@ function startCamera(sc, p) {
   const T = rs.length ? Math.min(...rs.map(r => r.top)) : 440, B = rs.length ? Math.max(...rs.map(r => r.bottom)) : 640;
   const ox = (L + R) / 2, oy = (T + B) / 2;
   // push at most 3% (0.35%/s) but never past the safe margins; then drift toward the side with more room
-  let push = p.push ?? Math.min(0.03, 0.0035 * D);
+  let push = p.push ?? 0;   // no constant push or drift on text: it reads as shake (owner). The footage carries the motion.
   push = Math.max(0, Math.min(push, (ox - SAFE) / (ox - L || 1) - 1, (1920 - SAFE - ox) / (R - ox || 1) - 1, (918 - oy) / (B - oy || 1) - 1));
   const roomL = ox - (ox - L) * (1 + push) - SAFE, roomR = 1920 - SAFE - (ox + (R - ox) * (1 + push));
-  const want = p.drift ?? Math.min(48, 6 * D), drift = roomR >= roomL ? -Math.min(want, Math.max(0, roomR)) : Math.min(want, Math.max(0, roomL));
+  const want = p.drift ?? 0, drift = roomR >= roomL ? -Math.min(want, Math.max(0, roomR)) : Math.min(want, Math.max(0, roomL));
   const exitAt = sc.exit === false ? Infinity : D - (sc.exitDur ?? 0.4);
   anim(CAM, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
     let x = -drift * pp, y = 0, s = 1 + push * pp;
@@ -147,10 +147,10 @@ window.setup = (scene) => {
   CUES = scene.cues || {}; TWEENS = []; CAMKEYS = []; ROOT.innerHTML = ''; SC = scene;
   if (scene.opaque) document.body.style.background = 'var(--bg)';
   CAM = el('<div id="cam" class="abs" style="left:0;top:0;width:1920px;height:1080px"></div>', ROOT);
-  LAYERS = {}; [['far', 0.7], ['mid', 1], ['near', 1.25]].forEach(([k, d]) => { LAYERS[k] = el('<div class="abs" style="left:0;top:0;width:1920px;height:1080px"></div>', CAM); LAYERS[k].depth = d; });
+  LAYERS = {}; [['far', 0.7], ['mid', 1], ['near', 1.25]].forEach(([k, d]) => { LAYERS[k] = el('<div class="abs" style="left:0;top:0;width:1920px;height:1080px;will-change:transform"></div>', CAM); LAYERS[k].depth = d; });
   GLASS = el('<div class="abs" style="left:0;top:0;width:1920px;height:1080px"></div>', ROOT);
   S = LAYERS.mid;
-  if (scene.kind === 'GF') scene.params = Object.assign({ drift: 0, push: 0.015 }, scene.params || {});
+  if (scene.kind === 'GF') scene.params = Object.assign({ drift: 0, push: 0 }, scene.params || {});
   SCENES[scene.type](scene.params || {}, scene); countUps();
   if (scene.carry) TWEENS.forEach(tw => { if (!tw.live && tw.node !== CAM && cue(tw.at) <= 0.05) tw.at = -100; });
   if (scene.camera !== false && (scene.params || {}).camera !== false) startCamera(scene, scene.params || {});
