@@ -123,7 +123,7 @@ SHOTS = [
     ftg("places them in other people's buildings", "c02-office-vending.mp4", 3.0),
     # Fix B: the same clip keeps playing and the lens racks soft; the van aerial takes over on "more than"
     B("In 2025, US vending operators", [("prev", 0, 3.9), ("c02-van-aerial-road.mp4", 1.0)],                         # T1
-      sc("num", x=116, y=230, size=200, items=[dict(at="@$7 billion", text="$7 billion", kicker="US vending operators' sales, 2025", kickerAt="@US vending",
+      sc("num", x=116, y=420, size=200, items=[dict(at="@$7 billion", text="$7 billion", kicker="US vending operators' sales, 2025", kickerAt="@US vending",
                                                     pre="More than", preAt="@more than", source="IBISWorld", sourceAt="@according to")])),
     # Fix C: the giants over food service at work, then the map of small operators
     B("The biggest names are food service giants", ("n-cafeteria-serving.mp4", 4.0),                                # T16
@@ -148,8 +148,8 @@ SHOTS = [
                 dict(kind="combo", label="Combo", value="$3,500", cue="@combo", valueAt="@$3,500"),
                 dict(kind="elevator", label="Elevator", value="$8,650", cue="@An elevator machine", valueAt="@$8,650")])),
     ftg("Then there's the deal with the location", "n-phone-pay-office-machine.mp4", 0.0),
-    dict(at="Busy places know", kind="GF", clip="c02-transit-station.mp4", **{"in": 4.0},                             # T1
-         scene=sc("num", at="@five to 20%", text="5–20%", kicker="Share of gross sales", kickerAt="@share of gross", align="right", x=1804, y=70, source="VMFS USA", sourceAt="@five to 20%")),
+    dict(at="Busy places know", kind="GF", clip="c02-transit-station.mp4", **{"in": 4.0}, shade="right",                             # T1
+         scene=sc("num", at="@five to 20%", text="5–20%", kicker="Share of gross sales", kickerAt="@share of gross", align="right", x=1804, y=70, source="VMFS USA", sourceAt="@five to 20%", sourceY=440)),
     ftg("Sales per machine depend+1.0", "n-office-coins-vending2.mp4", 8.0),
     B("The same supplier's guide", ("c09-busy-office.mp4", 12.0),                                                    # T12
       sc("bars", kicker="Sales per machine, per month", kickerAt=0.2, max=2600, items=[
@@ -177,7 +177,7 @@ SHOTS = [
     B("Roughly half the pre-tax price", [("c03-cans-conveyor.mp4", 0.0, 2.6), ("n-can-opening.mp4", 6.4)],
       split([0, "@94 cents", 99, 99, 99, 99], amounts=True, owner="Operator?", wholeAt=0, splitAt=0, y=390, source=SRC_VMFS,
             tally=dict(label="Operator keeps", at=0, steps=[dict(cents=11, cue=0), dict(cents=94, cue="@94 cents")])), carry=True),
-    ftg("Then the tech companies take theirs", "n-card-terminal.mp4", 8.0),
+    ftg("Then the tech companies take theirs", "n-card-terminal.mp4", 6.0),
     B("Card processing costs", "prev",
       split([0, 0, "@nine cents", "@four more", 99, 99], amounts=True, owner="Operator?", wholeAt=0, splitAt=0, y=390, source=SRC_VMFS,
             tally=dict(label="Operator keeps", at=0, steps=[dict(cents=11, cue=0), dict(cents=94, cue=0), dict(cents=9, cue="@nine cents"),
@@ -221,9 +221,9 @@ SHOTS = [
       sc("claim", x=116, y=300, size=110, items=[dict(html="Three kinds<br>of [players]", at="@three kinds")])),
 
     # ---------------------------------------------------------------- 5 · Winner 1: the location
-    dict(at="Winner number one", kind="GF", clip="n-airport-busy-wide.mp4", **{"in": 0.0}, scene=sc("tag", at="@the location", lead="1", leadAt="@number one", title="Location", rule="var(--loc)", size=72)),
-    dict(at="That airport is Los Angeles+0.8", kind="GF", clip="c05-lax-theme-building-day.mp4", **{"in": 2.0}, zoom=(1.45, 0, 0),   # T37
-         scene=sc("tag", at=0.3, title="Los Angeles International Airport", sub="California", y=90)),
+    dict(at="Winner number one", kind="GF", clip="n-airport-busy-wide.mp4", **{"in": 0.0}, shade="left", scene=sc("tag", at="@the location", lead="1", leadAt="@number one", title="Location", rule="var(--loc)", size=72)),
+    dict(at="That airport is Los Angeles+0.8", kind="GF", clip="c05-lax-theme-building-day.mp4", **{"in": 2.0}, shade="left", zoom=(1.45, 0, 0),   # T37
+         scene=sc("tag", at=0.3, title="Los Angeles<br>International Airport", sub="California", y=90)),
     ftg("In 2023, its board+1.0", "c05-contract-signing.mp4", 3.0),
     dict(at="where the operator pays", kind="D", bg=[("prev", 0, 4.6), ("c05-lax-theme-building-day.mp4", 7.0)], soft=14.0, dim=0.42,                                                                           # T8
          scene=dict(type="doc", params=dict(header="LA Board of Airport Commissioners, Feb 16, 2023",
@@ -236,7 +236,7 @@ SHOTS = [
     ftg("The airport just collects", "n-airport-keypad-vending.mp4", 0.0),
 
     # ---------------------------------------------------------------- 6 · Winner 2: scale
-    dict(at="Winner number two", kind="GF", clip="c06-trucks-docks-aerial.mp4", **{"in": 2.0}, scene=sc("tag", at="@scale", lead="2", leadAt="@number two", title="Scale", rule="var(--sup)", size=72)),
+    dict(at="Winner number two", kind="GF", clip="c06-trucks-docks-aerial.mp4", **{"in": 2.0}, shade="left", scene=sc("tag", at="@scale", lead="2", leadAt="@number two", title="Scale", rule="var(--sup)", size=72)),
     ftg("Driving between machines+1.4", "c06-downtown-traffic-aerial.mp4", 0.2),
     B("so an operator with 100 machines", "prev",                                          # T18
       sc("density", a=dict(label="100 machines, one area", cue="@100 machines"), b=dict(label="10 machines, a whole city", cue="@10 machines"))),
@@ -253,7 +253,7 @@ SHOTS = [
          body='Almost <span class="hl" data-cue="@700">700 micro markets</span> and more than <span class="hl" data-cue="@7,600">7,600 vending locations</span>.', headSize=80, w=1200, x=360)),
 
     # ---------------------------------------------------------------- 7 · Winner 3: payments
-    dict(at="The third winner", kind="GF", clip="n-card-terminal.mp4", **{"in": 2.2}, scene=sc("tag", at="@payments", lead="3", leadAt="@third winner", title="Payments", rule="var(--pay)", size=72)),
+    dict(at="The third winner", kind="GF", clip="n-card-terminal.mp4", **{"in": 2.2}, shade="left", scene=sc("tag", at="@payments", lead="3", leadAt="@third winner", title="Payments", rule="var(--pay)", size=72)),
     ftg("Every tap sends+1.3", "px-payment-terminal.mp4", 1.0),
     dict(at="Cantaloupe, one of the biggest", kind="GF", clips=[("c01-server-room.mp4", 0, 7), ("n-data-center.mp4", 1, None)], push=0.06,   # T1
          scene=sc("num", y=330, size=200, items=[dict(at="@600,000", text="600,000", pre="More than", preAt="@more than", kicker="Connected machines and kiosks"),
@@ -284,11 +284,11 @@ SHOTS = [
           dict(label="Smart store", value=4.49, text="$4.49", key="own", cue="@$4.49")], source=SRC_CANT), carry=True),
     dict(at="Micro markets on that network", kind="GF", clip="n-self-service-kiosks.mp4", **{"in": 0.0},              # T1
          push=0.06, scene=sc("num", at="@billion", text="$1 billion", pre="More than", preAt="@more than", label="micro market sales, up 13%", labelAt="@billion", y=110, source=SRC_CANT)),
-    B("Smart stores grew from", ("n-touchscreen-snack-machine.mp4", 3.0),                                                      # T20
+    B("Smart stores grew from", ("n-touchscreen-snack-machine.mp4", 1.5),                                                      # T20
       sc("growth", kicker="Smart stores on Cantaloupe's network", a=dict(value="71", sub="locations", cue="@71"), b=dict(value="572", sub="a year later", cue="@572"), source=SRC_CANT)),
     dict(at="Though together+0.8", kind="GF", clip="c08-kiosk-touchscreen.mp4", **{"in": 0.5},                                 # T1
          scene=sc("num", at="@$6 million", text="$6 million", label="smart store sales, 2025", y=200, size=180, source=SRC_CANT, sourceAt="@$6 million")),
-    B("Vending machines still bring in+0.8", [("c02-combo-machine.mp4", 5.6, 6.0), ("c08-smart-cabinet.mp4", 2.0)],                                             # T12
+    B("Vending machines still bring in+0.8", [("c02-combo-machine.mp4", 5.6, 6.0), ("c08-smart-cabinet.mp4", 0.5)],                                             # T12
       sc("bars", kicker="Total sales on that network, 2025", max=3.9, items=[
           dict(label="Vending machines", value=3.3, text="$3.3B", key="own", cue="@$3.3 billion"),
           dict(label="Micro markets", value=1.0, text="$1B+", key="own", cue="@$3.3 billion+0.5"),
@@ -311,7 +311,7 @@ SHOTS = [
          source="a beginner's post on Reddit", total=dict(label="Kept", value="$130–150", cue="@they say they keep"), note=dict(text="after gas, restocking and repairs", cue="@they say they keep")), carry=True),
     ftg("We can't check those numbers", "c03-receipt.mp4", 12.0),
     B("Their verdict was simple", ("c02-van-side-door-cases.mp4", 0.5),                                             # T24
-      sc("quote", at="@It's not as passive", size=120, text="“It's not as passive<br>as people make it sound.”", name="A beginner operator", role="Reddit", nameDy=300), dim=0.42),
+      sc("quote", at="@It's not as passive", size=120, text="It's not as passive<br>as people make it sound.”", name="A beginner operator", role="Reddit", nameDy=300), dim=0.42),
     B("Now do the math", ("c10-chicago-suburbs-aerial.mp4", 40.0),                                                            # T1 on its own background
       sc("num", at="@nets about", text="$20–175", kicker="A typical site nets, per month", kickerAt="@One supplier", source="VMFS USA", y=330)),
     B("At that rate", [("n-office-coins-vending2.mp4", 14.0, 6.2), ("px-coins-into-jar.mp4", 0.0)],                                                               # T41
@@ -323,7 +323,7 @@ SHOTS = [
     B("looked at one creator's breakdown", ("px-person-accounting.mp4", 1.0),                                             # T1 on its own background
       sc("num", at="@$3,330", text="$3,330", kicker="One creator's breakdown, to start", kickerAt="@one creator's", source="George Kamel, as reported by 24/7 Wall St.", sourceAt="@$3", y=330)),
     B("And his advice", ("c09-one-dollar-bill.mp4", 1.0),                                                         # T24
-      sc("quote", at="@Save it in cash", size=130, text="“Save it in cash.<br>Don't borrow it.”", name="George Kamel", role="As reported by 24/7 Wall St.", nameDy=320)),
+      sc("quote", at="@Save it in cash", size=130, text="Save it in cash.<br>Don't borrow it.”", name="George Kamel", role="As reported by 24/7 Wall St.", nameDy=320)),
     ftg("Put it on a card", "n-card-into-reader.mp4", 4.0),
 
     # ---------------------------------------------------------------- 10 · Buying a route
@@ -343,11 +343,11 @@ SHOTS = [
 
     # ---------------------------------------------------------------- 11 · Operation Vend Up Broke
     B("And none of this is new", ("c11-fraud-highlighted.mp4", 0.3),                                  # T23
-      sc("clipping", at="@In 1998", date="Sept. 3, 1998", place="Washington", headline="“Operation Vend Up Broke”", w=1200, x=360,
+      sc("clipping", at="@In 1998", date="Sept. 3, 1998", place="Washington", headline="“Operation<br>Vend Up Broke”", w=1200, x=360,
          body='The FTC and <span class="hl" data-cue="@10 states">10 states</span> announce <span class="hl" data-cue="@40 enforcement">40 enforcement actions</span> against sellers of vending business opportunities.')),
     ftg("against companies selling", "c11-gavel-strike.mp4", 1.0),
     ftg("The pitch back then", "n-money-counter.mp4", 0.5),
-    dict(at="The FTC warned", kind="D",                                                                               # T8
+    dict(at="The FTC warned", kind="D", bg=[("prev", 0, 3.0), ("c11-landline-dialing.mp4", 2.0)], soft=14.0, dim=0.42,                                                                               # T8
          scene=dict(type="doc", params=dict(header="FTC press release, Sept 3, 1998", size=50,
                     html='"Every year, thousands of consumers literally end up broke after investing in purportedly lucrative vending opportunities." … <span class="hl" data-cue="@fake references">"You can\'t rely on supposedly satisfied consumers supplied by the seller."</span>'))),
     ftg("The ads have moved", "n-phone-social-feed.mp4", 1.0),
@@ -359,7 +359,7 @@ SHOTS = [
             relabel={0: dict(label="Tax"), 1: dict(label="Supplier"), 2: dict(label="Payments", amount="13¢", row=-1), 3: dict(label=None, amount=None)},
             tally=dict(label="Operator keeps", at="@the operator keeps", steps=[dict(cents=138, cue="@the operator keeps")]))),
     ftg("if the location is good+1.2", "01-phone-pay-vending.mp4", 3.0),                                                   # callback: the opening machine
-    B("The people who win", ("px-people-at-vending-machines.mp4", 0.5),                                                 # T17
+    B("The people who win", [("px-people-at-vending-machines.mp4", 0.0, 5.0), ("05-machines-night-4k.mp4", 0.0)],                                                 # T17
       sc("columns", items=[dict(label="Location", key="loc", cue="@the location"), dict(label="Scale", key="sup", cue="@the scale"),
                            dict(label="Technology", key="pay", cue="@the technology")])),
     ftg("So if you're ever looking", "c10-checking-sales-records.mp4", 3.2),

@@ -47,7 +47,7 @@ def shot_key(s):
     """Stable file name for a shot's background: changes only when its footage, length or look changes."""
     ep = Path(__file__).resolve().parents[2] / "episodes" / "01-vending-machines" / "footage"
     low = any(src_fps(ep / f) < 29 for f in _sources(s) if (ep / f).exists())   # 24/25 fps sources are motion-interpolated
-    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([s["zoom"]] if s.get("zoom") else []) + ([True] if s.get("flip") else [])
+    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([s["zoom"]] if s.get("zoom") else []) + (["shade-" + s["shade"]] if s.get("shade") else []) + ([True] if s.get("flip") else [])
                       + ([s["bg"], s.get("rack"), s.get("soft"), s.get("dim")] if s.get("bg") else [])
                       + [s.get("rack_open"), s.get("push"), "v3"] + (["rk2"] if s.get("bg") and s.get("rack") else []) + (["mi1"] if low else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
@@ -168,6 +168,24 @@ def make_still_bg(ep, s, out, crf):
     return s["n"]
 
 
+def shade_png(ep, side):
+    """Black gradient, 62% at the text edge fading to nothing by 60% of the width (smoothstep)."""
+    out = ep / "render" / "player" / "img" / f"shade-{side}.png"
+    if not out.exists():
+        from PIL import Image
+        import numpy as np
+        x = np.linspace(0, 1, 1920)
+        if side == "right":
+            x = x[::-1]
+        u = np.clip(x / 0.6, 0, 1)
+        a = (0.62 * (1 - u * u * (3 - 2 * u)) * 255).astype(np.uint8)
+        rgba = np.zeros((1080, 1920, 4), np.uint8)
+        rgba[..., 3] = a[None, :]
+        out.parent.mkdir(parents=True, exist_ok=True)
+        Image.fromarray(rgba, "RGBA").save(out)
+    return out
+
+
 def make_bg(ep, s, out, crf=28):
     if s.get("bg"):
         return make_still_bg(ep, s, out, crf)
@@ -201,7 +219,11 @@ def make_bg(ep, s, out, crf=28):
         ro, cf = s["rack_open"], out.with_suffix(".open.txt")
         rack_cmds(cf, ro, 8.0, 0.6, 0.75, opening=True)
         post.append(f"sendcmd=f='{cf}',gblur=sigma=0.01:steps=2,colorchannelmixer=rr=1:gg=1:bb=1,eq=saturation=1")
-    chains.append(f"{tail}{','.join(post) if post else 'null'}[v]")
+    if s.get("shade"):  # the style guide's text-side darkening: a soft left-to-right (or right-to-left) gradient, no box
+        cmd += ["-loop", "1", "-i", str(shade_png(ep, s["shade"]))]
+        chains.append(f"{tail}{','.join(post) if post else 'null'}[pv];[pv][{n}:v]overlay=0:0:shortest=1,format=yuv420p[v]")
+    else:
+        chains.append(f"{tail}{','.join(post) if post else 'null'}[v]")
     cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
             "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p",
             "-movflags", "+faststart", "-an", str(out)]

@@ -562,7 +562,7 @@ const SCENES = {
 // ================================================================================================
 const F = "'Libre Franklin'", NAVY = '#0B1422';
 function blk(html, x, y, extra = '') { return el(`<div class="abs" style="left:${x}px;top:${y}px;${extra}">${html}</div>`); }
-function srcLine(text, at, y = 850, x = 140, col = '#fff') { return anim(GLASS.appendChild(blk(`<div class="${col === '#fff' ? 'shadow' : ''}" style="font:500 46px ${F};color:${col}">Source: ${text}</div>`, x, y)), { anim: 'fade', at: cue(at) + 0.9, dur: 0.6 }); }
+function srcLine(text, at, y = 850, x = 140, col = '#fff', right = false) { return anim(GLASS.appendChild(blk(`<div class="${col === '#fff' ? 'shadow' : ''}" style="font:500 46px ${F};color:${col};white-space:nowrap">Source: ${text}</div>`, x, y, right ? 'transform:translateX(-100%);text-align:right' : '')), { anim: 'fade', at: cue(at) + 0.9, dur: 0.6 }); }
 Object.assign(SCENES, {
   // T1 / T38 — a number (or date) in the shot's empty space. items: shown one after another in the same place.
   num(p) {
@@ -580,7 +580,7 @@ Object.assign(SCENES, {
       else anim(n, Object.assign({ anim: 'up', at: it.at }, out));
       if (it.label) anim(el(`<div style="font:600 52px ${F};margin-top:16px;max-width:${it.maxw || 1200}px;line-height:1.2">${it.label}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.labelAt ?? it.at) + 0.3 }, out));
       if (it.sub) anim(el(`<div style="font:500 46px ${F};margin-top:10px">${it.sub}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.subAt ?? it.at) + 0.5 }, out));
-      if (it.source) srcLine(it.source, it.sourceAt !== undefined ? cue(it.sourceAt) - 0.9 : it.at, p.sourceY ?? 850, it.x ?? p.x ?? 140);
+      if (it.source) srcLine(it.source, it.sourceAt !== undefined ? cue(it.sourceAt) - 0.9 : it.at, it.sourceY ?? p.sourceY ?? 850, it.x ?? p.x ?? 140, '#fff', right);
     });
   },
   // T37 — place tag: a short rule, a name, a line under it.
