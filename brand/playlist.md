@@ -4,7 +4,7 @@
 
 **How Much Small Businesses Really Make**
 
-## Description (paste, 365 characters)
+## Description (paste, 367 characters)
 
 ```
 Vending machines, car washes, laundromats, funeral homes: what these small businesses really make, and how much the owner keeps after the supplier, the landlord, the payment companies and the running costs. Every episode follows the money with real contracts, sale listings and operator numbers, so you know what you're buying before you buy it. Not financial advice.
