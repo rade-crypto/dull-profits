@@ -1,25 +1,23 @@
 # YouTube "About" text
 
-Paste this into YouTube Studio → Customization → Basic info → Description (about 870 characters; the limit is 1,000).
+## Use this (272 characters)
 
----
+> What does the owner actually keep?
+>
+> Vending routes, laundromats, car washes, funeral homes. We follow every dollar through the boring businesses nobody brags about, using real contracts, real listings and real numbers.
+>
+> No hype. Not financial advice.
 
-Net to Owner looks at the small businesses nobody makes highlight reels about: vending routes, laundromats, car washes, self-storage, HVAC and plumbing companies, funeral homes. Every episode asks one question: what does the owner actually keep?
+## Two shorter options
 
-We follow the money with real numbers from public contracts, supplier price lists, business-for-sale listings and what operators report themselves. Every figure on screen shows where it came from. No hype and no "passive income" promises, just how these businesses really make money and where it leaks out.
+- **Mark Rober style (two lines, 120 characters):** "Boring businesses, real numbers. We follow every dollar to find out what the owner actually keeps. Not financial advice."
+- **Wendover style (one sentence, 147 characters):** "Net to Owner is about the money behind the businesses nobody brags about: vending routes, laundromats and car washes, and who really gets paid."
 
-It's for anyone thinking about buying a small business or selling one, or anyone who's curious how the boring ones really work.
+## How good About sections are written (what I found)
 
-"Net to owner" is the line in a business-for-sale listing that shows what the owner takes home. That's the number we chase.
-
-Nothing here is financial, legal or tax advice. Do your own due diligence before you buy anything.
-
----
-
-## Files to upload
-
-| What | File | Size | Where in YouTube Studio |
-|---|---|---|---|
-| Logo (profile picture) | `brand/profile-picture.png` | 800 × 800 | Customization → Branding → Picture |
-| Banner | `brand/youtube-banner.png` | 2560 × 1440. The text sits inside the 1546 × 423 area that shows on every device. | Customization → Branding → Banner image |
-| Wordmark (watermark or website) | `brand/wordmark.png` | 1600 × 400 | Optional |
+- **The first line does almost all the work.** YouTube's own advice is to put the core message in the first 45 characters, because that's what the preview shows. SEO guides say only the first 100–150 characters appear in search ([YouTube blog](https://blog.youtube/news-and-events/three-tips-to-help-potential-viewers/), [Backlinko](https://backlinko.com/hub/youtube/channel-description)). That's why the first line here is the channel's hook, a question that is also its name.
+- **Short beats complete.** The 1,000-character limit is a ceiling, not a target ([Influencer Marketing Hub](https://influencermarketinghub.com/youtube-character-limits/)). Well-known channels use one or two lines:
+  - Mark Rober: "Former NASA engineer. Current CrunchLabs founder and friend of science." ([Search Engine Land](https://searchengineland.com/guide/youtube-channel-description))
+  - Wendover Productions: "all about explaining how our world works. From travel, to economics, to geography… every video will leave you with a little better understanding of our world." ([YouTube Wiki](https://youtube.fandom.com/wiki/Wendover_Productions))
+- **The structure:** what the channel is, who it's for, and what makes it different, in that order ([LocalIQ](https://localiq.com/blog/youtube-channel-description-examples/), [Wild & Free Tools](https://wildandfreetools.com/blog/youtube-channel-description-template/)). Here, concrete business names do the "what", and "real contracts, real numbers" plus "no hype" do the "different". The "not financial advice" line stays because the channel talks about buying businesses.
+- **No "subscribe for…" lines or schedules:** an About section that promises an upload schedule goes stale fast.

@@ -5,7 +5,7 @@ const { chromium } = require('playwright'); const fs = require('fs'); const path
   const jobs = JSON.parse(fs.readFileSync(process.argv[2])); const url = 'file://' + process.argv[3];
   const b = await chromium.launch(); const queue = [...jobs];
   async function worker() {
-    const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
+    const p = await b.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: +(process.env.GFX_SCALE || 1) });   // 2 = native 4K text
     while (queue.length) {
       const j = queue.shift(); fs.mkdirSync(j.dir, { recursive: true });
       await p.goto(url); await p.evaluate(() => document.fonts.ready);

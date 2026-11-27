@@ -40,6 +40,7 @@ def main():
     ap.add_argument("--out", default="episode.mp4")
     ap.add_argument("--music", default="music/Meditation_Impromptu_02.mp3")
     ap.add_argument("--music-db", type=float, default=-31.0, help="music loudness before ducking (LUFS)")
+    ap.add_argument("--4k", dest="uhd", action="store_true", help="3840x2160: graphics drawn natively at 4K, footage backgrounds upscaled")
     ap.add_argument("--redo", default="", help="with an existing render/work: only re-render these shot numbers, e.g. 85 or 3,7")
     args = ap.parse_args()
     ep = Path(args.episode).resolve()
@@ -66,10 +67,15 @@ def main():
             shutil.rmtree(j["dir"])
     (work / "gfx.json").write_text(json.dumps(jobs))
     if jobs:
-        run(["node", str(HERE / "render_gfx.js"), str(work / "gfx.json"), str(HERE / "gfx" / "scenes.html")])
+        import os
+        r = subprocess.run(["node", str(HERE / "render_gfx.js"), str(work / "gfx.json"), str(HERE / "gfx" / "scenes.html")],
+                           capture_output=True, text=True, env=dict(os.environ, GFX_SCALE="2" if args.uhd else "1"))
+        if r.returncode:
+            sys.exit(r.stderr[-2000:])
 
     # 2) one video segment per shot (4 at a time; the graphic's PNG frames are deleted once composited)
     from concurrent.futures import ThreadPoolExecutor
+    up = "scale=3840:2160:flags=lanczos" if args.uhd else "null"
     def seg(s):
         n, dur = s["n"], s["frames"] / FPS
         out = work / f"s{n:02d}.mp4"
@@ -82,14 +88,14 @@ def main():
             cmd += ["-i", str(bg)]
             if s.get("scene"):
                 cmd += ["-framerate", str(FPS), "-i", str(work / f"g{n:02d}" / "%05d.png")]
-                chains.append("[1:v]format=rgba[fg];[0:v][fg]overlay=0:0:format=auto,format=yuv420p[v]")
+                chains.append(f"[0:v]{up}[bg];[1:v]format=rgba[fg];[bg][fg]overlay=0:0:format=auto,format=yuv420p[v]")
             else:
-                chains.append("[0:v]format=yuv420p[v]")
+                chains.append(f"[0:v]{up},format=yuv420p[v]")
         else:
             cmd += ["-framerate", str(FPS), "-i", str(work / f"g{n:02d}" / "%05d.png")]
             chains.append("[0:v]format=yuv420p[v]")
         cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-frames:v", str(s["frames"]), "-r", str(FPS),
-                "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-an", str(out)]
+                "-c:v", "libx264", "-preset", "fast" if args.uhd else "medium", "-crf", "17" if args.uhd else "18", "-pix_fmt", "yuv420p", "-an", str(out)]
         run(cmd)
         if s.get("scene"):
             shutil.rmtree(work / f"g{n:02d}", ignore_errors=True)
