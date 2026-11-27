@@ -52,6 +52,35 @@ and `research/ep2-car-washes/fact-check-part-b.md` (from "The private equity bet
 
 Lines confirmed with no change (✅), among others: 76% of Mister wash sales from memberships (10-K FY2025, Item 1A); 485 leased / 63 owned (Item 2); nine sale-leasebacks for $48.4M with a $12.1M net loss and 20-year leases; $15 IPO (424B4, Jun 24 2021), 344 sites, 1.4M members; $7.00 take-private closed May 19, 2026, ~$3.1B EV; Zips $653.9M debt, 260+ sites, members per site doubled, revenue $345M → $303M, the "upwards of 900 new car wash sites" quote (verbatim, Doc 14 p. 3), emergence Apr 30, 2025 with ~230 sites; Driven's 382 sites, $385M with a $130M seller note; Warren's moratorium; Matthews' 12,029 conveyors and 87% within 3 miles; Rinsed 7.8% monthly churn (4.5% + 3.3%); Tommy's 272 sites / 242 franchised, 4% + 1%; the Car Wash Forum quote (verbatim); California Water Code §10951. No line has the narrator speaking as a person or owner, and the checklist doesn't read as advice.
 
+## Script-doctor changes (after the fact-check)
+
+Three separate reviewers read the fact-checked v2: a retention editor, a target viewer aged 58, and a skeptical car wash broker.
+Their notes are in `review/retention.md`, `review/viewer-40-65.md` and `review/broker.md`. The changes below were applied to the final `script-v2.md`.
+None of them adds a figure, except the two marked **NEW**, which are sourced.
+
+| # | Change | From |
+|---|--------|------|
+| R1 | The $6.30 now comes up in the first 20 seconds ("By our estimate, the owner is left with about 6 dollars and 30 cents"), so the hook matches title 1 | Retention |
+| R2 | "The biggest winners aren't the ones you'd expect" → "the money in this business doesn't always go where you'd expect". It's planted again at the end of the cold open ("who really comes out ahead") and paid off in the close ("the steadiest winners weren't the investors buying up chains") | Retention, viewer |
+| R3 | The Split setup says the $30 is one member's payment and an estimate, "not one wash's books"; the rent is called in-place rent on investor listings (not "asking rent"); the full source line is on screen | Viewer, broker |
+| R4 | Every slice is read as "N dollars and N cents" ("3 dollars 6" could be heard as $3.60) | Retention, viewer |
+| R5 | Churn read as one number (7.8%); the 4.5% / 3.3% breakdown is on screen only | Viewer |
+| R6 | The sale-leaseback loss is explained: "it sold them for less than its own books said they were worth" | Viewer |
+| R7 | Mister: "that loss landed on people who bought shares from 2021 on" (Leonard Green had owned it since 2014) | Broker |
+| R8 | SBA write-offs: "car wash loans made before the boom… Loans from the boom years are still too new to judge"; "charged off" → "written off" | Broker, viewer |
+| R9 | A bridge before the buyer section: older washes have "fewer staff, no franchise fee, and usually the owner doing the work. Their split looks different." "Most" → "Many" | Broker |
+| R10 | BizBuySell: "32 car washes… a small sample that doesn't say how many included the land" | Broker |
+| R11 | "The seller would put its cash flow at about 150,000… A buyer has to prove it." | Broker |
+| R12 | 10% down is "of the total cost" | Broker (fact-check B #30) |
+| R13 | **NEW:** the 25-year case. SBA 7(a) allows up to 25 years on real estate (https://www.sba.gov/partners/lenders/7a-loan-program/terms-conditions-eligibility). $630,000 at 8.75% over 300 months = $62,154 a year (Net to Owner calculation) → about $88,000 left from $150,000, "but that's fifteen more years of interest". The 10-year case is now labelled "the usual term when the land isn't included" | Broker |
+| R14 | The checklist was rebuilt around what actually breaks deals: land in the price or leased, paying members checked against bank deposits, an equipment technician's inspection, an environmental check, permits that transfer, 3 years of tax returns. One line was added for sellers | Broker, viewer |
+| R15 | "At a franchise tunnel, the workers get the biggest share"; "here are the questions the numbers point to" (more neutral, not advice) | Broker |
+| R16 | Driven Brands: "about a million dollars a wash" cut. The filings don't say how much real estate went with the 382 sites, so a per-site price would be compared with the build cost unfairly | Broker |
+| R17 | Cut to keep the run time near 13 minutes: Mister's quarterly comps, the gallons-per-car comparison (the California 60% rule stays), the EPRT sentence (now on screen only), the MacNeil/Ryko/Berkshire line (on screen only), the Zips $345M → $303M figures (on screen only), Getty's 70% recovery, Warren's "25 car washes" count (on screen only), the Wisconsin sales tax aside, the SBA 504 aside (its rule stays in the source tag), and several "So…" openers | Retention, broker |
+| R18 | "In Zips' own sworn words" → "Zips put it this way, under oath", which is easier for the voice to read | Voiceover QA |
+
+Final length: about 1,900 spoken words (about 13 minutes), the top of the 1,700–1,900 target.
+
 ## ⚠️ Open these in a browser before publishing
 Automated access was blocked, so these were confirmed only through secondary copies or search snippets:
 1. **BizBuySell car wash valuation benchmarks** (2025 median sale price ~$700,000; average multiple ~4.7× cash flow): https://www.bizbuysell.com/learning-center/valuation-benchmarks/car-washes/ . Screenshot it for the Deal File.
@@ -66,6 +95,7 @@ Automated access was blocked, so these were confirmed only through secondary cop
 - Mister Car Wash take-private completion (8-K, May 19, 2026): https://www.sec.gov/Archives/edgar/data/0001853513/000119312526229866/d128344dex991.htm
 - Tommy's Express FDD 2025, Item 19: https://pub-22da695f2b6542a48e234bc59bc67d23.r2.dev/item19/cmfed99c0026z1vbterovmhcw.pdf
 - 1851 Franchise on the Tommy's Express 2026 FDD: https://1851franchise.com/tommys-express-car-wash-franchise-costs-fees-profit-2732879
+- SBA 7(a) terms (25-year real estate maturity): https://www.sba.gov/partners/lenders/7a-loan-program/terms-conditions-eligibility
 - B+E NNN car wash report, Sept 2026: https://tradenetlease.com/nnn-car-wash-listed-inventory-september-2026/
 - Rinsed Q3 2026 industry report: https://www.rinsed.com/news/rinsed-releases-new-quarterly-car-wash-industry-report-with-insights-from-q3-2026
 - Wisconsin DOR, car wash sales tax (Fact Sheet 2108): https://www.revenue.wi.gov/DOR%20Publications/2108carwash.pdf
