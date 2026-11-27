@@ -1,5 +1,39 @@
 # Episode 1 thumbnails and the test to run
 
+## New (Nov 27): mysterious and geeky versions for "How Much Profit Vending Machines Really Make"
+
+![M](M-missing-can-1280.jpg)
+![G](G-exploded-can-1280.jpg)
+
+**M, the missing can (use this).** A real $2 can with only the owner's 62¢ left, and the rest a dashed ghost. **G, the exploded can (geeky).** The same can cut into its five slices, each sized to its cents, with the owner's slice boxed.
+
+**Why M.**
+- It's one familiar object with something wrong with it ("where did the rest go?").
+- It has two short labels, $2 and 62¢. That hints at the answer without giving away the monthly profit, which is even lower after gas and repairs.
+- The title asks "how much profit … really". The thumbnail shows it's a fraction. The video tells you how small.
+
+G works too. It is a Branch Education-style cutaway, but its five numbers explain more and leave less to wonder about.
+
+**What I studied.** The 150 latest uploads of ten channels known for mysterious or geeky thumbnails: Branch Education, Real Engineering, Practical Engineering, Veritasium, Half as Interesting, Steve Mould, Technology Connections, The B1M, Johnny Harris and Kurzgesagt. Each video is scored against the 20 around it.
+
+Their biggest hits use four moves:
+1. **A cutaway or exploded view of a familiar object**, with the inside revealed:
+   - Branch Education's SSD and Bluetooth: 10.1× and 8.0×
+   - Steve Mould's teapot and washing-machine cross-sections: 17.2× and 8.7×
+   - Practical Engineering's landfill cross-section: 5.0×
+   - That's **G**.
+2. **Something missing or wrong with an everyday object**:
+   - Technology Connections, "Why the holes?" on a plug: 4.3×
+   - Veritasium, "This shouldn't exist." on a machine: 6.1×
+   - That's **M**.
+3. **A pattern with one odd item circled**: Half as Interesting's grid of $324 prices with one $116 circled ("FRAUD?"), 6.3×.
+4. **A minimal technical figure on dark navy**: Veritasium's "3x+1" in serif type on navy, 3.5×. That's close to our brand look.
+
+All of them have one focal point, a few characters of text or none, and a real or realistic object rather than an abstract chart. Our earlier A, a dark can with a color bar, was the weakest on that last point.
+
+The can is a free Magnific stock photo of a blank can, with no brand. The source files stay out of this public repo, because they contain the raw stock photo.
+
+
 ![A](A-62c-owner-1280.jpg)
 ![A2](A2-62c-owner-machine-1280.jpg)
 ![B](B-lax-59-5-percent-1280.jpg)
@@ -12,7 +46,7 @@ Upload the **4K files** (3840×2160): `A-62c-owner-4k.jpg`, `B-lax-59-5-percent-
 
 **First: "Thumbnail only", A vs B, with the main title fixed.**
 1. Before you upload, verify the channel in Studio → Settings → Channel → Feature eligibility. Test & Compare needs **advanced features**, which come from ID or video verification. Phone verification isn't enough.
-2. Publish with the title "How Much Profit Vending Machines Really Make" and **thumbnail A2** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and A is the stronger guess.
+2. Publish with the title "How Much Profit Vending Machines Really Make" and **thumbnail M** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and M is the stronger guess.
 3. In desktop Studio, open the video → Test & Compare → **Thumbnail only** → add B. Use only two options: a new channel's first video gets few impressions, and three options split them further.
 4. Leave it alone for up to 14 days. **Any edit to the title or thumbnail stops the test.**
 5. YouTube picks the winner by **watch time share**, not clicks. "Inconclusive" is normal for a first video, because telling apart a 4% and a 5% click rate takes about 6,700 impressions per option. If that happens, keep A and try a bolder idea on Episode 2.
