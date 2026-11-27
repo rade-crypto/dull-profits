@@ -1,11 +1,25 @@
 # Episode 1 thumbnails and the test to run
 
-## New (Nov 27): mysterious and geeky versions for "How Much Profit Vending Machines Really Make"
+## Newest (Nov 27): N, "Follow the $2" (use this)
+
+![N](N-follow-the-2-1280.jpg)
+
+**What it is.** Real 4K footage from the episode: a row of glowing vending machines on a dark street at night. A yellow coin trail runs from a machine's coin slot, along the wet street, to a figure walking away into the dark. The only text is "FOLLOW THE $2." `N2-trail-no-text` is the same image without the words.
+
+**Why it replaced M and G.** The owner's notes: they "reveal everything," and are "just a graphic."
+- **No answer on it.** No 62¢ and no slices. The title asks how much profit, and the thumbnail only says the money goes somewhere you can't see.
+- **A real place, not a chart.** The mystery thumbnails in our study all use a real, striking photo with one small unresolved detail: B1M's "...IS THIS IT?", Veritasium's "This shouldn't exist.", Technology Connections' "Why the holes?" (3.7×–6.1× their neighbours).
+- **One question in the image:** where is the money going, and who is walking away with it? The video answers it, slice by slice.
+- **Text is three words** and doesn't repeat the title. The yellow trail ties to the "follow the two dollars" line in the voiceover.
+- The drink-brand ads on the machines are softened, so no brand is featured.
+
+
+## Earlier (Nov 27): graphic versions for "How Much Profit Vending Machines Really Make"
 
 ![M](M-missing-can-1280.jpg)
 ![G](G-exploded-can-1280.jpg)
 
-**M, the missing can (use this).** A real $2 can with only the owner's 62¢ left, and the rest a dashed ghost. **G, the exploded can (geeky).** The same can cut into its five slices, each sized to its cents, with the owner's slice boxed.
+**M, the missing can.** A real $2 can with only the owner's 62¢ left, and the rest a dashed ghost. **G, the exploded can (geeky).** The same can cut into its five slices, each sized to its cents, with the owner's slice boxed.
 
 **Why M.**
 - It's one familiar object with something wrong with it ("where did the rest go?").
@@ -46,7 +60,7 @@ Upload the **4K files** (3840×2160): `A-62c-owner-4k.jpg`, `B-lax-59-5-percent-
 
 **First: "Thumbnail only", A vs B, with the main title fixed.**
 1. Before you upload, verify the channel in Studio → Settings → Channel → Feature eligibility. Test & Compare needs **advanced features**, which come from ID or video verification. Phone verification isn't enough.
-2. Publish with the title "How Much Profit Vending Machines Really Make" and **thumbnail M** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and M is the stronger guess.
+2. Publish with the title "How Much Profit Vending Machines Really Make" and **thumbnail N** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and N is the stronger guess.
 3. In desktop Studio, open the video → Test & Compare → **Thumbnail only** → add B. Use only two options: a new channel's first video gets few impressions, and three options split them further.
 4. Leave it alone for up to 14 days. **Any edit to the title or thumbnail stops the test.**
 5. YouTube picks the winner by **watch time share**, not clicks. "Inconclusive" is normal for a first video, because telling apart a 4% and a 5% click rate takes about 6,700 impressions per option. If that happens, keep A and try a bolder idea on Episode 2.
