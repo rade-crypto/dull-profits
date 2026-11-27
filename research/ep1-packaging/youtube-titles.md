@@ -133,7 +133,7 @@ Some samples are small, so treat these as signals, not laws.
   - The MrBeast guide is a leaked copy.
   - Both studies are observational: they show correlation, not cause.
 
-**Final pick (§5 + §6):** "An Airport Takes 59.5% of Every Vending Machine Sale" (it was "LAX…" until the owner pointed out that not everyone knows the code)
-- The owner rejected "How Vending Machines Really Make Money" because the video isn't about that.
-- The owner also asked how "Who Really Makes Money From Vending Machines" is interesting. Fair point: it's a format, not a surprise.
-- The LAX title follows the strategists' main rule: state a strange, true fact and hold back the explanation. The number itself is the surprise.
+**Final pick:** "How Much Profit Vending Machines Really Make". This is the owner's direction ("more like how much profit do vending machines really make"), written as a statement with no "?".
+- It matches the top search phrase.
+- It uses the "…Really Make" pattern.
+- It matches what the video actually answers.

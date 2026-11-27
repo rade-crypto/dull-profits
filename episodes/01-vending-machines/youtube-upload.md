@@ -2,28 +2,17 @@
 
 ## Title
 
-**An Airport Takes 59.5% of Every Vending Machine Sale** (52 characters)
+**How Much Profit Vending Machines Really Make** (43 characters)
 
-It says "an airport", not "LAX", because many viewers won't know the code. The video names it: Los Angeles International.
+Your wording, written as a statement with no "?". In our niche, titles ending in a question mark did 0.64× as well, and 0.82× across 4M videos ([vidIQ](https://vidiq.com/research/youtube-title-formulas-study/)).
 
-Use it with **thumbnail A2** (the 62¢ owner slice in front of a real machine). Don't use B, because it repeats the 59.5%.
+Use it with **thumbnail A2**: the title asks how much, and the thumbnail shows the owner's 62¢ out of $2 without saying the monthly answer.
 
-Other options, if you prefer one:
-- A Vending Machine Can Take 14 Years to Pay Off (46)
-- Who Really Makes Money From Vending Machines (44). This is a format, not a surprise (see below).
-
-**Why "Who Really Makes Money From Vending Machines" isn't interesting**
-- It names the topic but doesn't surprise anyone. There's nothing in it a viewer didn't already expect.
-- That format probably works for Modern MBA and PolyMatter because people already know and trust those channels. A new channel's title has to make a stranger stop scrolling all by itself.
-
-**Why the airport title is**
-- **It's a fact nobody would guess.** People assume the person who owns the machine keeps most of the money. Here an airport takes 59.5% of every sale. Galloway's example of the same idea: "Why are there 96 million black balls on this reservoir?" (100M+ views) against "How LA addresses its water shortage problem."
-- **It's familiar but unexpected:** an airport and an everyday machine, with a number that doesn't fit either.
-- **It raises three questions and answers none of them.** Why would anyone sign that? (The runner-up bid offered 51.6%.) Who gets the rest? What's left for the owner? The video answers all three.
-- **The number is the surprise,** which is the only time strategists say to put a number in a title.
-- **It's one claim in 9 words, with no second sentence and no "?".**
-- **It's true and the video keeps the promise.** The voiceover teases the LAX deal 15 seconds in ("We'll get to that deal in a few minutes"), and the contract appears on screen at 4:19. It's the most extreme case of the video's point: the location wins. The contract says 59.5% of gross sales or $100 per machine per month, whichever is more, so the airport gets at least 59.5%.
-- **The thumbnail adds the other half.** The title says the airport's cut, and the thumbnail shows the owner's 62¢.
+**Why it works**
+- **It's the question people actually type.** "How much does a vending machine make" is Google's first autocomplete for the topic.
+- **"Really" opens the gap.** It says the TikTok numbers are wrong without giving the real ones away.
+- **It's the video.** The voiceover answers it step by step: 62¢ per soda, $20–175 a month at a typical site, a beginner keeping $130–150 a month, 20 months to 14 years to pay back a machine, and what routes sell for.
+- **It's short, with one idea and no second sentence,** like the explainer titles that did best ("How Pizzerias Really Make Money", "How McDonald's Really Makes Money").
 
 Data and sources: `research/ep1-packaging/youtube-titles.md` §5–6.
 
