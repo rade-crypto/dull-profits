@@ -2,11 +2,25 @@
 
 ## Title
 
-**A Vending Machine Sells $900 a Month. The Owner Keeps $197.** (59 characters)
+**Everyone Gets Paid Before the Vending Machine Owner** (51 characters)
 
-In YouTube Studio, open **Test & Compare** (desktop, under the title) and add these two as well. YouTube picks the winner by watch time:
-- A $3,500 Vending Machine Can Take 14 Years to Pay Off (53)
-- Who Actually Gets Your $2 at a Vending Machine (46)
+Use it with thumbnail A. The title says everyone gets paid first, and the thumbnail shows who: the colored slices, then the owner's 62¢ at the end.
+
+Backups, if you want to change it later:
+- LAX Takes 59.5% of Every Vending Machine Sale (45). Use it with thumbnail A, not B, because B shows the same 59.5%.
+- Who Really Makes Money From Vending Machines (44)
+
+**Why the old title ("A Vending Machine Sells $900 a Month. The Owner Keeps $197.") was flat:**
+- It gives the answer away, so there's no question left to click for.
+- $197 a month isn't a shock. It reads like a line from a spreadsheet.
+- Nobody believes the opposite, so there's no twist.
+
+**Why this one works:**
+- **It's a twist on something familiar.** People assume the owner of a machine is the one who gets paid. Paddy Galloway's rule is "familiar but unexpected" ([Colin & Samir](https://www.colinandsamir.com/resources/the-new-rules-of-youtube-from-paddy-galloway)).
+- **It opens a question without a "?"**: who gets paid first? Question marks did worse in our niche (0.64×) and across 4M+ videos (0.82×, [vidIQ](https://vidiq.com/research/youtube-title-formulas-study/)).
+- **The video answers it straight away.** It's the first line of the voiceover: "Before the owner of this machine keeps a single cent, five other players get paid." So the promise is kept, which YouTube rewards ([YouTube Help](https://support.google.com/youtube/answer/12340300?hl=en)).
+- **It matches the ending,** "The machine itself is just the box in the middle," and the pattern of the biggest faceless hit in this lane, PolyMatter's "How McDonald's Really Makes Money" (3.9M).
+- **It's short.** At 51 characters, it has "Vending Machine" in the first 35 characters and no number. The thumbnail carries the number (62¢), so the two don't repeat each other.
 
 ## Description (paste as is)
 
