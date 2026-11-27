@@ -1,6 +1,13 @@
 # Episode 1 thumbnails and the test to run
 
-## Newest (Nov 27): N, "Follow the $2" (use this)
+## Final (Nov 27): K, "$900 IN → $??? KEPT" (use this)
+
+![K](K-900-in-kept-1280.jpg)
+
+The owner picked this copy from `copy.md`. It's set on real 4K night footage of glowing vending machines. It shows what people already know (a machine sells $900 a month) and hides what they want to know (what the owner keeps). The video answers it: about $197, before the owner pays themselves (script line 52).
+
+
+## Earlier (Nov 27): N, "Follow the $2"
 
 ![N](N-follow-the-2-1280.jpg)
 
@@ -60,7 +67,7 @@ Upload the **4K files** (3840×2160): `A-62c-owner-4k.jpg`, `B-lax-59-5-percent-
 
 **First: "Thumbnail only", A vs B, with the main title fixed.**
 1. Before you upload, verify the channel in Studio → Settings → Channel → Feature eligibility. Test & Compare needs **advanced features**, which come from ID or video verification. Phone verification isn't enough.
-2. Publish with the title "How Much Profit Vending Machines Really Make" and **thumbnail N** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and N is the stronger guess.
+2. Publish with the title "How Much Profit Vending Machines Really Make" and **thumbnail K** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and K is the stronger guess.
 3. In desktop Studio, open the video → Test & Compare → **Thumbnail only** → add B. Use only two options: a new channel's first video gets few impressions, and three options split them further.
 4. Leave it alone for up to 14 days. **Any edit to the title or thumbnail stops the test.**
 5. YouTube picks the winner by **watch time share**, not clicks. "Inconclusive" is normal for a first video, because telling apart a 4% and a 5% click rate takes about 6,700 impressions per option. If that happens, keep A and try a bolder idea on Episode 2.

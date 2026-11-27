@@ -6,7 +6,7 @@
 
 Your wording, written as a statement with no "?". In our niche, titles ending in a question mark did 0.64× as well, and 0.82× across 4M videos ([vidIQ](https://vidiq.com/research/youtube-title-formulas-study/)).
 
-Use it with **thumbnail A2**: the title asks how much, and the thumbnail shows the owner's 62¢ out of $2 without saying the monthly answer.
+Use it with **thumbnail K** ("$900 IN → $??? KEPT"): the thumbnail hides the answer the title asks for.
 
 **Why it works**
 - **It's the question people actually type.** "How much does a vending machine make" is Google's first autocomplete for the topic.
