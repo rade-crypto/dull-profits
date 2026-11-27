@@ -102,6 +102,14 @@ Every generation or processing job through the Magnific MCP costs credits, even 
   "David - American Narrator" (https://elevenlabs.io/app/voice-library?voiceId=v9LgF91V36LGgbLX3iHW),
   "David Castlemore - Newsreader" (…voiceId=XjLkpWUlnhS8i7gGz3lZ), "Bill - Informative, Clean and Natural" (…voiceId=lnUnPeUhSI5EcqtFBux7).
 
+## Episode 2: car washes (`episodes/02-car-washes/`)
+- `script-v2.md` / `narration-v2.md` is the final, fact-checked script (~1,900 words, ~13 min), after retention, viewer and broker reviews (`review/`).
+  `fact-check.md` lists every change and source, plus 4 items to open in a browser before publishing (BizBuySell, Tommy's 2026 FDD, Warren vote, Getty call).
+- Spine: The Split of a $30 membership (Mister's 2025 average, our estimate): workers 6.84 · chemicals/water/power 4.46 · repairs/equipment 3.06 ·
+  landlord 5.27 · brand/office 3.41 · card/software 0.66 · **owner 6.30**. Research in `research/ep2-car-washes/` (incl. `outliers.md`).
+- Title order (from outliers): 1. "A $30 Car Wash Membership. The Owner Keeps $6.30." 2. "Inside a $5 Million Car Wash: Who Actually Gets Paid" 3. "Mister Car Wash Went Public at $15. It Sold for $7."
+- `voiceover-script.md`: text for the owner to paste into ElevenLabs, 3 boxes under 4,500 characters, no headings inside the boxes. Never generate audio.
+
 ## Next steps
 1. Confirm the Magnific MCP tools work. Find out what they offer (stock video? images? AI video?) and their credit cost.
 2. Wait for the owner's ElevenLabs voiceover file, then time everything to it.
