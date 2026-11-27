@@ -872,9 +872,9 @@ function usmapMap(p, D) {
       anim(lb, { anim: 'up', at: p.labelAt, dist: 32, out: zoomAt, outDur: 0.3 }); }
     // map camera: a slow push all along, then the zoom-through toward Chicago, then it dissolves into the footage
     anim(map, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
-      const z = E.in(clamp((t - zoomAt) / (rev + 0.35 - zoomAt)));
+      const z = E.in(clamp((t - zoomAt) / (rev + 0.8 - zoomAt)));
       map.style.transform = `scale(${(1 + 0.04 * clamp(t / Math.max(1, zoomAt)) + 3 * z).toFixed(4)})`;
-      map.style.opacity = 1 - E.outCubic(clamp((t - rev) / 0.35)); } });
+      map.style.opacity = 1 - E.sine(clamp((t - rev + 0.15) / 0.8)); } });   // an even 0.8 s dissolve into the footage (no one-frame drop)
 }
 function usmapRoute(p, D) {
     const host = el(`<div class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:0 0"></div>`, GLASS);
