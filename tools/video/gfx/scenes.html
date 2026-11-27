@@ -651,11 +651,8 @@ Object.assign(SCENES, {
     anim(r, { anim: 'land', at, rot: p.rot ?? -1.5 });
     if (p.title) el(`<div style="font:700 54px 'Libre Caslon Text';text-align:center">${p.title}</div>`, r);
     el(`<div style="border-top:3px dashed #9aa3ae;margin:30px 0 14px"></div>`, r);
-    const grow = (node, c) => { const t0 = cue(c ?? at); if (t0 <= at + 0.05) return anim(node, { anim: 'fade', at: t0 });
-      const h = node.getBoundingClientRect().height, cs = getComputedStyle(node), mt = parseFloat(cs.marginTop), mb = parseFloat(cs.marginBottom);
-      node.style.overflow = 'hidden';
-      return anim(node, { anim: 'fn', at: t0 - 0.3, dur: 0.6, ease: false, fn: pp => { const g = E.outQuint(clamp(pp / 0.5)), o = E.outCubic(clamp((pp - 0.5) / 0.5));
-        node.style.height = pp >= 1 ? '' : (h * g).toFixed(2) + 'px'; node.style.marginTop = (mt * g) + 'px'; node.style.marginBottom = (mb * g) + 'px'; node.style.opacity = o; } }); };
+    // each line fades in on its word; the card is its full size from the start, so nothing resizes or slides (owner: "glitchy")
+    const grow = (node, c) => anim(node, { anim: 'fade', at: cue(c ?? at) });
     p.lines.forEach(l => grow(el(`<div style="display:flex;justify-content:space-between;gap:40px;font-size:54px;margin:18px 0"><span>${l.label}</span><span style="white-space:nowrap">${l.value}</span></div>`, r), l.cue));
     if (p.total) {
       const tw = el(`<div><div style="border-top:3px dashed #9aa3ae;margin:30px 0 22px"></div><div style="display:flex;justify-content:space-between;font:700 66px 'Libre Caslon Text'"><span>${p.total.label}</span><span class="hl" style="white-space:nowrap">${p.total.value}</span></div></div>`, r);
