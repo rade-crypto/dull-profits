@@ -2,25 +2,29 @@
 
 ## Title
 
-**Everyone Gets Paid Before the Vending Machine Owner** (51 characters)
+**How Vending Machines Really Make Money** (38 characters, 6 words)
 
-Use it with thumbnail A. The title says everyone gets paid first, and the thumbnail shows who: the colored slices, then the owner's 62¢ at the end.
+Use it with thumbnail A. The title asks how the money is made, and the thumbnail hints at the answer: the colored slices, with the owner's 62¢ boxed at the end.
 
-Backups, if you want to change it later:
-- LAX Takes 59.5% of Every Vending Machine Sale (45). Use it with thumbnail A, not B, because B shows the same 59.5%.
+Backups:
 - Who Really Makes Money From Vending Machines (44)
+- Why LAX Takes 59.5% of Every Vending Machine Sale (49). Use it with thumbnail A, not B, because B shows the same 59.5%.
 
-**Why the old title ("A Vending Machine Sells $900 a Month. The Owner Keeps $197.") was flat:**
-- It gives the answer away, so there's no question left to click for.
-- $197 a month isn't a shock. It reads like a line from a spreadsheet.
-- Nobody believes the opposite, so there's no twist.
+**Why this one**
+- **It's the proven format for exactly this kind of video.** Modern MBA uses it for its small-business money videos: "How Pizzerias Really Make Money" (2.3× the views of the videos around it), "How Boba Shops Really Make Money" (2.0×, 1.6M) and "How Barbers Really Make Money" (1.7×). PolyMatter's "How McDonald's Really Makes Money" got 4.5× (3.9M). Across 1,885 videos from 14 big faceless explainer channels, "…Make(s) Money" titles had the best median of any pattern: 1.29×, with 41% of them doubling the videos around them.
+- **"Really" is the curiosity gap.** It says the version you've heard (passive income) is wrong, without giving away the answer. Strategists call this the most important part of a title: open a question, and let the video answer it (Paddy Galloway, Jake Thomas).
+- **It's short.** At 6 words and 38 characters, the key words come first. In a study of 300K+ videos, 5–6 word titles did best, and titles of 30 characters or fewer got about 60% more views (1of10). YouTube's own advice is "be succinct… put the most important words near the beginning."
+- **It matches what people type.** "How much does a vending machine make" is Google's first autocomplete suggestion for the topic.
+- **The title and the thumbnail split the job.** The title asks, and the thumbnail shows the 62¢. They don't repeat each other, which strategists call a "one-two punch" (Jake Thomas).
+- **Honest.** The video answers the question: it follows the $2 and names who really wins (the location, scale and the payment network).
 
-**Why this one works:**
-- **It's a twist on something familiar.** People assume the owner of a machine is the one who gets paid. Paddy Galloway's rule is "familiar but unexpected" ([Colin & Samir](https://www.colinandsamir.com/resources/the-new-rules-of-youtube-from-paddy-galloway)).
-- **It opens a question without a "?"**: who gets paid first? Question marks did worse in our niche (0.64×) and across 4M+ videos (0.82×, [vidIQ](https://vidiq.com/research/youtube-title-formulas-study/)).
-- **The video answers it straight away.** It's the first line of the voiceover: "Before the owner of this machine keeps a single cent, five other players get paid." So the promise is kept, which YouTube rewards ([YouTube Help](https://support.google.com/youtube/answer/12340300?hl=en)).
-- **It matches the ending,** "The machine itself is just the box in the middle," and the pattern of the biggest faceless hit in this lane, PolyMatter's "How McDonald's Really Makes Money" (3.9M).
-- **It's short.** At 51 characters, it has "Vending Machine" in the first 35 characters and no number. The thumbnail carries the number (62¢), so the two don't repeat each other.
+**What was wrong with the earlier titles**
+- "A Vending Machine Sells $900 a Month. The Owner Keeps $197." was two sentences that gave the answer away. Two-sentence titles had the lowest median of any pattern in the channel data (0.88×).
+- "Everyone Gets Paid Before the Vending Machine Owner" was a sentence, not a format viewers recognise.
+
+Caveat: the format isn't magic on its own. Tiny channels using "How They Really Make Money" got under 100 views. The thumbnail and the video still have to deliver.
+
+Data and sources: `research/ep1-packaging/youtube-titles.md` §5–6.
 
 ## Description (paste as is)
 
