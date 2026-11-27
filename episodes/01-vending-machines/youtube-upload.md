@@ -2,27 +2,26 @@
 
 ## Title
 
-**How Vending Machines Really Make Money** (38 characters, 6 words)
+**LAX Takes 59.5% of Every Vending Machine Sale** (45 characters)
 
-Use it with thumbnail A. The title asks how the money is made, and the thumbnail hints at the answer: the colored slices, with the owner's 62¢ boxed at the end.
+Use it with **thumbnail A2** (the 62¢ owner slice in front of a real machine). Don't use B, because it repeats the 59.5%.
 
-Backups:
-- Who Really Makes Money From Vending Machines (44)
-- Why LAX Takes 59.5% of Every Vending Machine Sale (49). Use it with thumbnail A, not B, because B shows the same 59.5%.
+Other options, if you prefer one:
+- A Vending Machine Can Take 14 Years to Pay Off (46)
+- Who Really Makes Money From Vending Machines (44). This is a format, not a surprise (see below).
 
-**Why this one**
-- **It's the proven format for exactly this kind of video.** Modern MBA uses it for its small-business money videos: "How Pizzerias Really Make Money" (2.3× the views of the videos around it), "How Boba Shops Really Make Money" (2.0×, 1.6M) and "How Barbers Really Make Money" (1.7×). PolyMatter's "How McDonald's Really Makes Money" got 4.5× (3.9M). Across 1,885 videos from 14 big faceless explainer channels, "…Make(s) Money" titles had the best median of any pattern: 1.29×, with 41% of them doubling the videos around them.
-- **"Really" is the curiosity gap.** It says the version you've heard (passive income) is wrong, without giving away the answer. Strategists call this the most important part of a title: open a question, and let the video answer it (Paddy Galloway, Jake Thomas).
-- **It's short.** At 6 words and 38 characters, the key words come first. In a study of 300K+ videos, 5–6 word titles did best, and titles of 30 characters or fewer got about 60% more views (1of10). YouTube's own advice is "be succinct… put the most important words near the beginning."
-- **It matches what people type.** "How much does a vending machine make" is Google's first autocomplete suggestion for the topic.
-- **The title and the thumbnail split the job.** The title asks, and the thumbnail shows the 62¢. They don't repeat each other, which strategists call a "one-two punch" (Jake Thomas).
-- **Honest.** The video answers the question: it follows the $2 and names who really wins (the location, scale and the payment network).
+**Why "Who Really Makes Money From Vending Machines" isn't interesting**
+- It names the topic but doesn't surprise anyone. There's nothing in it a viewer didn't already expect.
+- That format probably works for Modern MBA and PolyMatter because people already know and trust those channels. A new channel's title has to make a stranger stop scrolling all by itself.
 
-**What was wrong with the earlier titles**
-- "A Vending Machine Sells $900 a Month. The Owner Keeps $197." was two sentences that gave the answer away. Two-sentence titles had the lowest median of any pattern in the channel data (0.88×).
-- "Everyone Gets Paid Before the Vending Machine Owner" was a sentence, not a format viewers recognise.
-
-Caveat: the format isn't magic on its own. Tiny channels using "How They Really Make Money" got under 100 views. The thumbnail and the video still have to deliver.
+**Why the LAX title is**
+- **It's a fact nobody would guess.** People assume the person who owns the machine keeps most of the money. Here an airport takes 59.5% of every sale. Galloway's example of the same idea: "Why are there 96 million black balls on this reservoir?" (100M+ views) against "How LA addresses its water shortage problem."
+- **It's familiar but unexpected:** a famous airport and an everyday machine, with a number that doesn't fit either.
+- **It raises three questions and answers none of them.** Why would anyone sign that? (The runner-up bid offered 51.6%.) Who gets the rest? What's left for the owner? The video answers all three.
+- **The number is the surprise,** which is the only time strategists say to put a number in a title.
+- **It's one claim in 8 words, with no second sentence and no "?".**
+- **It's true and the video keeps the promise.** The voiceover teases the LAX deal 15 seconds in ("We'll get to that deal in a few minutes"), and the contract appears on screen at 4:19. It's the most extreme case of the video's point: the location wins. The contract says 59.5% of gross sales or $100 per machine per month, whichever is more, so LAX gets at least 59.5%.
+- **The thumbnail adds the other half.** The title says the airport's cut, and the thumbnail shows the owner's 62¢.
 
 Data and sources: `research/ep1-packaging/youtube-titles.md` §5–6.
 

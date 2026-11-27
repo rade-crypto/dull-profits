@@ -133,8 +133,7 @@ Some samples are small, so treat these as signals, not laws.
   - The MrBeast guide is a leaked copy.
   - Both studies are observational: they show correlation, not cause.
 
-**Final pick (§5 + §6):** "How Vending Machines Really Make Money"
-- 6 words, 38 characters.
-- It uses the best-performing pattern from §5.
-- "Really" opens the gap.
-- It has no number, so the thumbnail's 62¢ does that job.
+**Final pick (§5 + §6):** "LAX Takes 59.5% of Every Vending Machine Sale"
+- The owner rejected "How Vending Machines Really Make Money" because the video isn't about that.
+- The owner also asked how "Who Really Makes Money From Vending Machines" is interesting. Fair point: it's a format, not a surprise.
+- The LAX title follows the strategists' main rule: state a strange, true fact and hold back the explanation. The number itself is the surprise.
