@@ -36,8 +36,19 @@ from stills import resolve  # noqa: E402
 from proxies import shot_key  # noqa: E402
 shots, _ = resolve(ep)
 edit = {"shots": [], "duration": shots[-1]["end"]}
+# A graphic's background stays sharp until the graphic's first text or shape appears; then the focus pulls (owner:
+# "b rolls get blurry so early, before the text even starts appearing").
+import subprocess as _sp, tempfile as _tf
+_jobs = [{"n": s["n"], "scene": s["scene"], "dur": s["dur"]} for s in shots if s.get("bg") and s.get("rack") and s.get("scene")]
+with _tf.TemporaryDirectory() as _d:
+    json.dump(_jobs, open(f"{_d}/in.json", "w"))
+    _sp.run(["node", str(Path(__file__).resolve().parent / "firstvis.js"), f"{_d}/in.json", f"{_d}/out.json"], check=True)
+    _first = {int(k): v for k, v in json.load(open(f"{_d}/out.json")).items()}
 for s in shots:
-    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene", "rack", "rack_open", "push", "soft", "dim", "carry", "zoom", "shade")}
+    if s["n"] in _first:
+        s["rackAt"] = round(min(_first[s["n"]], max(0.0, s["dur"] - 0.7)), 2)
+for s in shots:
+    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene", "rack", "rack_open", "push", "soft", "dim", "carry", "zoom", "shade", "rackAt")}
     if d["clip"] or d["clips"] or d["bg"]:
         d["key"] = shot_key(d)
     edit["shots"].append(d)

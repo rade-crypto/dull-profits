@@ -49,7 +49,7 @@ def shot_key(s):
     low = any(src_fps(ep / f) < 29 for f in _sources(s) if (ep / f).exists())   # 24/25 fps sources are motion-interpolated
     spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([s["zoom"]] if s.get("zoom") else []) + (["shade-" + s["shade"]] if s.get("shade") else []) + ([True] if s.get("flip") else [])
                       + ([s["bg"], s.get("rack"), s.get("soft"), s.get("dim")] if s.get("bg") else [])
-                      + [s.get("rack_open"), s.get("push"), "v3"] + (["rk2"] if s.get("bg") and s.get("rack") else []) + (["mi1"] if low else []), sort_keys=True)
+                      + [s.get("rack_open"), s.get("push"), "v3"] + (["rk2", s.get("rackAt") or 0] if s.get("bg") and s.get("rack") else []) + (["mi1"] if low else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
@@ -145,20 +145,23 @@ def make_still_bg(ep, s, out, crf):
     rest = dur + XB * (n - 1) - sum(x for x in fixed if x)
     lens = [fixed[i] if fixed[i] else rest / len(free) for i in range(n)]
     cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
+    ra = (s.get("rackAt") or 0.0) if s.get("rack") else 0.0
+    p0 = 0.0
     for i, (p, L) in enumerate(zip(pieces, lens)):
         f, t = p[0], p[1]
         clip = ep / "footage" / f
         avail = max(0.3, dur_of(clip) - t - 0.05)
-        # a focus pull starts sharp: no frame blending on that piece (it ghosts), real in-between frames instead
-        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s, soft=not (i == 0 and s.get("rack")), crf=crf)
+        # while the picture is sharp (before and during the focus pull): real in-between frames, no frame blending (it ghosts)
+        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s, soft=not (s.get("rack") and p0 < ra + 0.6), crf=crf)
+        p0 += L - XB
         cmd += ["-ss", f"{t:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
         chains.append(ch)
     last = _join(chains, lens, [0] + [XB] * (n - 1))
     look = f"gblur=sigma={sigma}:steps=2,colorchannelmixer=rr={dim}:gg={dim}:bb={dim},eq=saturation={sat}"
-    if s.get("rack"):
+    if s.get("rack"):   # sharp until the graphic appears (rackAt), then a 0.6 s focus pull
         cf = out.with_suffix(".rack.txt")
-        rack_cmds(cf, 0.6, sigma, dim, sat)
-        look = f"sendcmd=f='{cf}'," + look
+        rack_cmds(cf, 0.6, sigma, dim, sat, start=ra)
+        look = f"sendcmd=f='{cf}',gblur=sigma=0.01:steps=2,colorchannelmixer=rr=1:gg=1:bb=1,eq=saturation=1"
     chains.append(f"[{last}]trim=duration={dur:.3f},setpts=PTS-STARTPTS,{look},{push_filter(0.05, dur)},format=yuv420p[v]")
     cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-t", f"{dur:.3f}", "-r", str(FPS), "-c:v", "libx264",
             "-preset", "veryfast" if crf >= 24 else "medium", "-crf", str(crf), "-g", "30", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", str(out)]
