@@ -37,7 +37,7 @@ from proxies import shot_key  # noqa: E402
 shots, _ = resolve(ep)
 edit = {"shots": [], "duration": shots[-1]["end"]}
 for s in shots:
-    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene", "rack", "rack_open", "push", "soft", "dim", "carry")}
+    d = {k: s.get(k) for k in ("n", "kind", "start", "end", "dur", "clip", "clips", "in", "blur", "flip", "bg", "scene", "rack", "rack_open", "push", "soft", "dim", "carry", "zoom")}
     if d["clip"] or d["clips"] or d["bg"]:
         d["key"] = shot_key(d)
     edit["shots"].append(d)

@@ -22,7 +22,7 @@ body{color:var(--ink);font-family:'Libre Franklin',sans-serif;font-variant-numer
 .shadow{text-shadow:0 2px 10px rgba(0,0,0,.55),0 4px 34px rgba(0,0,0,.6)}
 .card{background:transparent;padding:34px 0 0 0}
 .paper{background:#F7F8F5;color:#111827;box-shadow:none;font-family:'Libre Caslon Text',Georgia,serif;font-weight:400}
-.hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;border-radius:0}
+.hl{background:linear-gradient(90deg,var(--hl) 0,var(--hl) var(--p,0%),transparent var(--p,0%));padding:0 6px;margin:0 -6px;border-radius:0}
 </style></head>
 <body><div id="stage"></div>
 <div aria-hidden="true" style="position:absolute;left:-9999px;top:0;opacity:0"><span style="font:500 20px 'Libre Franklin'">a1</span><span style="font:700 20px 'Libre Franklin'">a1</span><span class="h">a1</span><span style="font-family:'Libre Caslon Text'">a1</span><b style="font-family:'Libre Caslon Text'">a1</b></div>
@@ -95,7 +95,7 @@ function spot(items, restore) {
   const back = restore === undefined ? Infinity : cue(restore);
   items.forEach((it, i) => { const next = items[i + 1]; if (!next) return; const off = cue(next.at);
     live(t => { const d = E.sine(clamp((t - off) / 0.4)) * (1 - E.sine(clamp((t - back) / 0.5)));
-      it.node.style.filter = d > 0.001 ? `opacity(${(1 - 0.6 * d).toFixed(3)})` : ''; }); });
+      [it.node, ...(it.extra || [])].forEach(n => { n.style.filter = d > 0.001 ? `opacity(${(1 - 0.6 * d).toFixed(3)})` : ''; }); }); });
 }
 // Text lists: a 6 px bar in the item's colour slides to the row being spoken (0.6 s, outExpo). Text stays white.
 function marker(rows, x = 112) { // rows: [{node, at, key}]
@@ -157,7 +157,11 @@ window.setup = (scene) => {
   S = LAYERS.mid;
   if (scene.kind === 'GF') scene.params = Object.assign({ drift: 0, push: 0 }, scene.params || {});
   SCENES[scene.type](scene.params || {}, scene); countUps();
-  if (scene.carry) TWEENS.forEach(tw => { if (!tw.live && tw.node !== CAM && cue(tw.at) <= 0.05) tw.at = -100; });
+  if (scene.carry) { const T = scene.carryUntil ?? 1.0;   // the first newly spoken cue (stills.py); anything before it was already on screen
+    TWEENS.forEach(tw => { if (tw.live || tw.node === CAM) return;
+      if (cue(tw.at) < T) tw.at = -100;
+      if (tw.out !== undefined && cue(tw.out) <= 0.05) tw.out = -100; });
+    if (scene.carryFade) TWEENS.push({ node: ROOT, anim: 'fade', at: 0, dur: 0.3, base: '' }); }
   if (scene.camera !== false && (scene.params || {}).camera !== false) startCamera(scene, scene.params || {});
   draw(0);
 };
@@ -177,10 +181,12 @@ function countUps() {
       const txt = e.textContent.trim(), m = txt.match(/^([$~−-]?)(\d[\d,]*\.?\d*)(¢|%|×|x|k|K|M|B| billion| million)?(\+)?$/);
       if (!m || /^(19|20)\d\d$/.test(txt) || parseFloat(getComputedStyle(e).fontSize) < 52) return;
       const num = parseFloat(m[2].replace(/,/g, '')); if (!(num > 0)) return;
+      if (!m[1] && !m[3] && !m[4] && num < 100) return;                              // ranks and small counts stay put
+      if (e.closest('.nocount') || getComputedStyle(e).color !== 'rgb(255, 255, 255)') return;   // printed documents, already-landed figures
       const dec = (m[2].split('.')[1] || '').length, comma = m[2].includes(',');
       counted.add(e); const box = lockWidth(e);
-      add.push({ node: e, anim: 'fn', at: tw.at, dur: num >= 10 ? 1.2 : 0.9, ease: false, base: '', fn: (pp) => {
-        const v = num * E.out(pp);
+      add.push({ node: e, anim: 'fn', at: tw.at, dur: 0.45, ease: false, base: '', fn: (pp) => {
+        const v = num * E.outQuint(pp);
         box.textContent = m[1] + (comma ? v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : v.toFixed(dec)) + (m[3] || '') + (m[4] || ''); } });
     });
   });
@@ -241,7 +247,8 @@ const SCENES = {
     anim(whole, { anim: 'wipe', at: p.wholeAt ?? 0, dur: 0.7, out: p.splitAt, outDur: 0.35 });
     const segs = sl.map((s, i) => {
       const g = geo[i];
-      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:0;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:600 46px 'Libre Franklin'">${s.inside || ''}</div>`);
+      const seg = el(`<div class="abs" style="left:${g.x}px;top:${Y}px;width:${g.w}px;height:${H}px;border-radius:0;background:var(--${s.key});display:flex;align-items:center;justify-content:center;color:var(--bg);font:600 46px 'Libre Franklin'">${s.inside ? `<span>${s.inside}</span>` : ''}</div>`);
+      if (s.inside && s.cue !== undefined && s.cue !== null && cue(s.cue) > cue(p.splitAt) + 0.5 && cue(s.cue) < 90) anim(seg.firstElementChild, { anim: 'fade', at: s.cue });
       anim(seg, { anim: 'wipe', at: cue(p.splitAt) + i * 0.09, dur: 0.45 });
       if (s.cue && s.key !== 'own') { // dim slices until named, then brighten
         anim(seg, { anim: 'fn', at: s.cue, dur: 0.35, fn: (pp) => { seg.style.filter = `saturate(${0.25 + 0.75 * pp}) brightness(${0.55 + 0.45 * pp})`; } });
@@ -256,7 +263,8 @@ const SCENES = {
         const line = el(`<div class="abs" style="left:${cx - 2}px;top:${row < 0 ? ly + 104 : Y + H + 8}px;width:4px;height:${row < 0 ? Y - ly - 112 : ly - Y - H - 14}px;background:var(--${s.key})"></div>`);
         const lab = el(`<div class="abs" style="left:${lx}px;top:${ly}px;transform:${tx};white-space:nowrap;text-align:${align}">
             <div class="label shadow">${s.label}</div>${s.amount ? `<div class="shadow" style="font:600 52px 'Libre Franklin';margin-top:6px;font-variant-numeric:tabular-nums">${s.amount}</div>` : ''}</div>`);
-        anim(line, { anim: 'growY', at: s.cue, dur: 0.35 }); anim(lab, { anim: 'up', at: s.cue, dur: 0.45 });
+        const gone = p.costs && p.costs.length ? { out: cue(p.costs[0].cue) - 0.35, outDur: 0.3 } : {};
+        anim(line, Object.assign({ anim: 'growY', at: s.cue, dur: 0.35 }, gone)); anim(lab, Object.assign({ anim: 'up', at: s.cue, dur: 0.45 }, gone));
       }
     });
     if (p.costs) { // operating-cost chips that bite into the owner's slice
@@ -564,11 +572,11 @@ Object.assign(SCENES, {
       const right = (it.align || p.align) === 'right';
       const w = blk('', it.x ?? p.x ?? 140, it.y ?? p.y ?? 140, `color:${col};${right ? 'transform:translateX(-100%);text-align:right' : ''}`);
       w.className += ' ' + sh;
-      const out = nxt ? { out: cue(nxt.at) - 0.1, outDur: 0.3 } : {};
+      const out = nxt ? { out: cue(nxt.at) - 0.45, outDur: 0.3 } : {};
       if (it.kicker) anim(el(`<div style="font:600 ${it.kickerSize || 52}px ${F};margin-bottom:${it.pre ? 40 : 6}px">${it.kicker}</div>`, w), Object.assign({ anim: 'up', dist: 32, at: it.kickerAt ?? it.at }, out));
       if (it.pre) anim(el(`<div style="font:600 56px ${F};margin-bottom:2px">${it.pre}</div>`, w), Object.assign({ anim: 'up', dist: 32, at: it.preAt ?? it.at }, out));
       const n = el(`<div class="h" style="font-size:${it.size || p.size || 230}px;white-space:nowrap">${it.text || fmt[it.fmt](it.count[1])}</div>`, w);
-      if (it.count) anim(n, Object.assign({ anim: 'count', at: it.at, dur: it.countDur ?? 1.1, from: it.count[0], to: it.count[1], fmt: it.fmt }, out));
+      if (it.count) anim(n, Object.assign({ anim: 'count', at: it.at, dur: it.countDur ?? 0.5, from: it.count[0], to: it.count[1], fmt: it.fmt }, out));
       else anim(n, Object.assign({ anim: 'up', at: it.at }, out));
       if (it.label) anim(el(`<div style="font:600 52px ${F};margin-top:16px;max-width:${it.maxw || 1200}px;line-height:1.2">${it.label}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.labelAt ?? it.at) + 0.3 }, out));
       if (it.sub) anim(el(`<div style="font:500 46px ${F};margin-top:10px">${it.sub}</div>`, w), Object.assign({ anim: 'fade', at: cue(it.subAt ?? it.at) + 0.5 }, out));
@@ -639,37 +647,43 @@ Object.assign(SCENES, {
   receipt(p) {
     const w = p.w ?? 860, x = p.x ?? (960 - w / 2), y = p.y ?? 110, at = cue(p.at ?? 0);
     const r = blk('', x, y, `width:${w}px;background:#F7F8F5;color:#111827;padding:56px 66px;transform:rotate(${p.rot ?? -1.5}deg);box-shadow:none;font-family:'Libre Caslon Text'`);
+    r.style.transformOrigin = '50% 0';   // rows arriving at the bottom don't swing the rows above
     anim(r, { anim: 'land', at, rot: p.rot ?? -1.5 });
     if (p.title) el(`<div style="font:700 54px 'Libre Caslon Text';text-align:center">${p.title}</div>`, r);
     el(`<div style="border-top:3px dashed #9aa3ae;margin:30px 0 14px"></div>`, r);
-    p.lines.forEach(l => anim(el(`<div style="display:flex;justify-content:space-between;gap:40px;font-size:54px;margin:18px 0"><span>${l.label}</span><span style="white-space:nowrap">${l.value}</span></div>`, r), { anim: 'fade', at: l.cue ?? at }));
+    const grow = (node, c) => { const t0 = cue(c ?? at); if (t0 <= at + 0.05) return anim(node, { anim: 'fade', at: t0 });
+      const h = node.getBoundingClientRect().height, cs = getComputedStyle(node), mt = parseFloat(cs.marginTop), mb = parseFloat(cs.marginBottom);
+      node.style.overflow = 'hidden';
+      return anim(node, { anim: 'fn', at: t0 - 0.3, dur: 0.6, ease: false, fn: pp => { const g = E.outQuint(clamp(pp / 0.5)), o = E.outCubic(clamp((pp - 0.5) / 0.5));
+        node.style.height = pp >= 1 ? '' : (h * g).toFixed(2) + 'px'; node.style.marginTop = (mt * g) + 'px'; node.style.marginBottom = (mb * g) + 'px'; node.style.opacity = o; } }); };
+    p.lines.forEach(l => grow(el(`<div style="display:flex;justify-content:space-between;gap:40px;font-size:54px;margin:18px 0"><span>${l.label}</span><span style="white-space:nowrap">${l.value}</span></div>`, r), l.cue));
     if (p.total) {
       const tw = el(`<div><div style="border-top:3px dashed #9aa3ae;margin:30px 0 22px"></div><div style="display:flex;justify-content:space-between;font:700 66px 'Libre Caslon Text'"><span>${p.total.label}</span><span class="hl" style="white-space:nowrap">${p.total.value}</span></div></div>`, r);
-      anim(tw, { anim: 'fade', at: p.total.cue ?? at }); anim(tw.querySelector('.hl'), { anim: 'hl', at: cue(p.total.cue ?? at) + 0.3, dur: 0.7 });
+      grow(tw, p.total.cue); anim(tw.querySelector('.hl'), { anim: 'hl', at: cue(p.total.cue ?? at) + 0.3, dur: 0.7 });
     }
-    if (p.note) anim(el(`<div style="font:500 46px ${F};margin-top:26px;color:#111827">${p.note.text}</div>`, r), { anim: 'fade', at: p.note.cue ?? at });
+    if (p.note) grow(el(`<div style="font:500 46px ${F};margin-top:26px;color:#111827">${p.note.text}</div>`, r), p.note.cue);
     if (p.source) srcLine(p.source, at, 850, 140);
   },
   // T12 — comparison bars, wide, value in serif at the bar's end.
   bars(p) {
     const X = 140, W = p.barW ?? 1300, n = p.items.length, rowH = p.rowH ?? (n > 3 ? 160 : 190), top = p.y ?? Math.round(560 - n * rowH / 2 + 30);
-    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 52px ${F}">${p.kicker}</div>`, X, top - 120), { anim: 'fade', at: p.kickerAt ?? 0 });
+    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 52px ${F}">${p.kicker}</div>`, X, top - 120), { anim: 'fade', at: p.kickerAt ?? firstCue(p) });
     p.items.forEach((it, i) => {
       const y = top + i * rowH, by = y + 68;
       anim(blk(`<div class="shadow" style="font:500 48px ${F}">${it.label}</div>`, X, y), { anim: 'fade', at: it.cue });
       if (it.locked) { anim(blk(`<div class="shadow" style="font:600 110px ${F};line-height:1">?</div>`, X, by - 18), { anim: 'up', at: it.cue }); return; }
       const f = it.value / p.max, f0 = (it.from_ ?? 0) / p.max;
-      if (it.from_ !== undefined) anim(blk('', X, by, `width:${W * f0}px;height:64px;background:var(--${it.key});opacity:.35`), { anim: 'grow', at: it.cue, dur: 0.6 });
-      const bw = Math.max(8, W * (f - f0)), t0 = cue(it.cue) + 0.1;
+      const stub = it.from_ !== undefined ? anim(blk('', X, by, `width:${W * f0}px;height:64px;background:var(--${it.key});opacity:.35`), { anim: 'grow', at: it.cue, dur: 0.6 }) : null;
+      const bw = Math.max(8, W * (f - f0)), t0 = cue(it.valueAt ?? it.cue) + 0.1;
       const bar = anim(blk('', X + W * f0, by, `width:${bw}px;height:64px;background:var(--${it.key})`), { anim: 'grow', at: t0, dur: 1.0 });
       const val = blk(`<div class="h shadow" style="font-size:${p.valueSize || 96}px;white-space:nowrap">${it.text}</div>`, X + W * f0 + 28, by - 20), num = val.firstElementChild;
       const m = it.text.match(/^([^\d]*)(\d[\d,]*\.?\d*)(.*)$/), dec = m ? (m[2].split('.')[1] || '').length : 0, target = m ? parseFloat(m[2].replace(/,/g, '')) : 0;
       val.style.left = (X + W * f0 + bw + 28) + 'px'; const nbox = lockWidth(num);
-      anim(val, { anim: 'fn', at: t0, dur: 1.0, ease: false, fn: (pp) => { const e = E.outQuint(pp);
+      anim(val, { anim: 'fn', at: t0, dur: 1.0, ease: false, fn: (pp) => { const e = E.outQuint(clamp(pp * 2));
         val.style.opacity = E.outCubic(clamp(pp / 0.3));
         if (m && !/[–-]\d/.test(it.text)) nbox.textContent = m[1] + (target * e).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3]; } });
       if (i) focusOn(bar, t0, 0.12, 0.006, 1.2);
-      (p._spot = p._spot || []).push({ node: bar, at: t0 });
+      (p._spot = p._spot || []).push({ node: bar, at: t0, extra: stub ? [stub] : [] });
     });
     if (p._spot) spot(p._spot, p.restoreAt);
     if (p.source) srcLine(p.source, p.sourceAt ?? firstCue(p), top + n * rowH + 10);
@@ -677,6 +691,7 @@ Object.assign(SCENES, {
   // T41 — month grid: every month of 14 years; the good site's 20 months fill in white.
   months(p) {
     const total = p.total ?? 168, fill = p.fill ?? 20, cols = 14, c = 46, g = 12, x0 = 140, y0 = p.y ?? 160;
+    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 52px ${F}">${p.kicker}</div>`, x0, y0 - 100), { anim: 'up', dist: 32, at: p.kickerAt ?? 0 });
     for (let i = 0; i < total; i++) {
       const r = Math.floor(i / cols), k = i % cols, filled = i < fill;
       anim(blk('', x0 + k * (c + g), y0 + r * (c + g), `width:${c}px;height:${c}px;${filled ? 'background:#fff' : 'border:3px solid var(--loc)'}`),
@@ -763,12 +778,12 @@ Object.assign(SCENES, {
   // T21 — the equation, built term by term as it's said.
   equation(p) {
     const w = blk('', 0, p.y ?? 380, 'width:1920px;display:flex;justify-content:center;align-items:flex-end;gap:56px'); w.className += ' shadow';
-    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 52px ${F}">${p.kicker}</div>`, 0, (p.y ?? 380) - 150, 'width:1920px;text-align:center'), { anim: 'fade', at: p.terms[0].cue });
+    if (p.kicker) anim(blk(`<div class="shadow" style="font:600 52px ${F}">${p.kicker}</div>`, 0, (p.y ?? 380) - 150, 'width:1920px;text-align:center'), { anim: 'fade', at: p.kickerAt ?? p.terms[0].cue });
     p.terms.forEach((t, i) => {
       if (i) anim(el(`<div class="h" style="font-size:140px">${p.ops[i - 1]}</div>`, w), { anim: 'fade', at: t.cue });
-      anim(el(`<div style="text-align:center"><div class="h" style="font-size:${p.size || 170}px;white-space:nowrap;${t.hl ? 'color:var(--hl)' : ''}">${t.value}</div><div style="font:500 48px ${F};margin-top:20px">${t.sub || '&nbsp;'}</div></div>`, w), { anim: 'up', at: t.cue });
+      anim(el(`<div style="text-align:center"${t.still ? ' class="nocount"' : ''}><div class="h" style="font-size:${p.size || 170}px;white-space:nowrap;${t.hl ? 'color:var(--hl)' : ''}">${t.value}</div><div style="font:500 48px ${F};margin-top:20px">${t.sub || '&nbsp;'}</div></div>`, w), { anim: 'up', at: t.cue });
     });
-    if (p.source) srcLine(p.source, p.terms[0].cue, 850);
+    if (p.source) srcLine(p.source, p.sourceAt ?? p.kickerAt ?? p.terms[0].cue, 850);
   },
   // T22 — ring chart with the number counting in the middle.
   ring(p) {
@@ -793,7 +808,7 @@ Object.assign(SCENES, {
   // T24 — quote with the speaker's name.
   quote(p) {
     const at = cue(p.at ?? 0), y = p.y ?? 330;
-    anim(blk(`<div class="h shadow" style="font-size:300px;opacity:.55;line-height:1">“</div>`, 130, y - 170), { anim: 'fade', at });
+    anim(blk(`<div class="h shadow" style="font-size:300px;line-height:1">“</div>`, 130, y - 170), { anim: 'fade', at: p.span ? Math.max(0, cue(p.span[0]) - 0.15) : at });
     const q = blk(`<div class="h shadow" style="font-size:${p.size || 130}px;line-height:1.1;max-width:1640px">${p.text}</div>`, 140, y);
     if (p.span) wordsIn(q.firstElementChild, p.span); else anim(q, { anim: 'up', at });
     if (p.name) anim(blk(`<div class="shadow" style="font:600 54px ${F}">${p.name}</div>${p.role ? `<div class="shadow" style="font:500 48px ${F};margin-top:8px">${p.role}</div>` : ''}`, 146, y + (p.nameDy ?? 330)), { anim: 'fade', at: cue(p.nameAt ?? p.at) + 0.5 });
@@ -857,7 +872,7 @@ function usmapMap(p, D) {
       const at = d0 + spread * i / p.dots.length;
       anim(c, { anim: 'fn', at, dur: 0.3, ease: false, fn: pp => { c.style.opacity = pp > 0 ? 1 : 0; c.setAttribute('r', (7 * (0.5 + 0.5 * E.outQuint(pp))).toFixed(2)); } }); });
     if (p.label) { const lb = blk(`<div style="font:600 60px ${F}">${p.label}</div>`, 116, p.labelY ?? 760);   // outside the map, which keeps pushing in: the label stays put
-      anim(lb, { anim: 'up', at: p.labelAt, dist: 32, out: cue(zoomAt) - 0.3, outDur: 0.3 }); }
+      anim(lb, { anim: 'up', at: p.labelAt, dist: 32, out: zoomAt, outDur: 0.3 }); }
     // map camera: a slow push all along, then the zoom-through toward Chicago, then it dissolves into the footage
     anim(map, { anim: 'fn', at: 0, dur: D, ease: false, fn: (pp, q, t) => {
       const z = E.in(clamp((t - zoomAt) / (rev + 0.35 - zoomAt)));

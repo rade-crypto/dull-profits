@@ -119,8 +119,9 @@ def resolve(ep: Path):
             elif isinstance(b, list) and b and b[0][0] == "prev":
                 s["bg"] = b = [lp + tuple(b[0][2:])] + [tuple(x) for x in b[1:]]
             first = b[0] if isinstance(b[0], (list, tuple)) else b
-            if "rack" not in s:
-                s["rack"] = not s.get("carry")   # always start sharp and pull focus; a carried graphic keeps its soft picture
+            if "rack" not in s:   # start sharp and pull focus; a carried graphic keeps its soft picture, unless the clip continues from sharp footage
+                cont = (first[0] if isinstance(first, (list, tuple)) else None) == (lp[0] if lp else None)
+                s["rack"] = (not s.get("carry")) or (cont and prev.get("kind") in ("F", "GF") and not prev.get("bg"))
         # no automatic soft opening after a graphic: footage starts sharp on the cut (owner: "why is it blurry from the start")
     for i, s in enumerate(shots):
         nxt = shots[i + 1] if i + 1 < len(shots) else None
@@ -130,6 +131,23 @@ def resolve(ep: Path):
             s["scene"]["kind"] = s["kind"]
             if s.get("carry"):
                 s["scene"]["carry"] = True
+                # graphic comes back after footage: it fades in whole, as it left; straight continuation: nothing moves
+                prev = shots[i - 1] if i else None
+                s["scene"]["carryFade"] = not (prev and prev.get("scene") and prev["scene"].get("type") == s["scene"].get("type"))
+    def spoken(v, s0, out):   # every "@phrase" cue in a scene, resolved (for a carried graphic: what's new in this shot)
+        if isinstance(v, str) and v.startswith("@") and not v.startswith("@@"):
+            out.append(rel(v[1:], s0))
+        elif isinstance(v, str) and 'data-cue="@' in v:
+            out += [rel(x, s0) for x in re.findall(r'data-cue="@([^"]+)"', v)]
+        elif isinstance(v, dict):
+            [spoken(x, s0, out) for x in v.values()]
+        elif isinstance(v, list):
+            [spoken(x, s0, out) for x in v]
+        return out
+    for s in shots:
+        if s.get("scene", {}).get("carry"):
+            c = spoken(s["scene"].get("params", {}), s["start"], [])
+            s["scene"]["carryUntil"] = round(min(c) - 0.05, 3) if c else 1e6
     for s in shots:
         if s.get("scene") and isinstance(s["scene"].get("params", {}).get("img"), (list, tuple)):
             s["scene"]["params"]["img"] = still(s["scene"]["params"]["img"])

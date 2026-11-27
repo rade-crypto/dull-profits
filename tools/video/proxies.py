@@ -47,9 +47,9 @@ def shot_key(s):
     """Stable file name for a shot's background: changes only when its footage, length or look changes."""
     ep = Path(__file__).resolve().parents[2] / "episodes" / "01-vending-machines" / "footage"
     low = any(src_fps(ep / f) < 29 for f in _sources(s) if (ep / f).exists())   # 24/25 fps sources are motion-interpolated
-    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([True] if s.get("flip") else [])
+    spec = json.dumps([s.get("clip"), s.get("clips"), s.get("in"), round(s["dur"], 3), s.get("blur")] + ([s["zoom"]] if s.get("zoom") else []) + ([True] if s.get("flip") else [])
                       + ([s["bg"], s.get("rack"), s.get("soft"), s.get("dim")] if s.get("bg") else [])
-                      + [s.get("rack_open"), s.get("push"), "v3"] + (["mi1"] if low else []), sort_keys=True)
+                      + [s.get("rack_open"), s.get("push"), "v3"] + (["rk2"] if s.get("bg") and s.get("rack") else []) + (["mi1"] if low else []), sort_keys=True)
     return hashlib.sha1(spec.encode()).hexdigest()[:12]
 
 
@@ -149,7 +149,8 @@ def make_still_bg(ep, s, out, crf):
         f, t = p[0], p[1]
         clip = ep / "footage" / f
         avail = max(0.3, dur_of(clip) - t - 0.05)
-        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s, soft=True, crf=crf)
+        # a focus pull starts sharp: no frame blending on that piece (it ghosts), real in-between frames instead
+        slow, ch = _piece_chain(i, clip, t, L, avail, {}, s, soft=not (i == 0 and s.get("rack")), crf=crf)
         cmd += ["-ss", f"{t:.3f}", "-t", f"{L / slow + 1:.3f}", "-i", str(clip)]
         chains.append(ch)
     last = _join(chains, lens, [0] + [XB] * (n - 1))
@@ -191,6 +192,9 @@ def make_bg(ep, s, out, crf=28):
                       f"[m{i}][z{i}]overlay={x}:{y}[b{i}]")
         tail = f"[b{i}]"
     post = []
+    if s.get("zoom"):  # crop in (z, x0, y0 = top-left of the kept area) instead of blurring billboards and logos
+        z, zx, zy = s["zoom"]
+        post.append(f"crop={1920 / z:.0f}:{1080 / z:.0f}:{zx}:{zy},scale=1920:1080:flags=lanczos")
     if s.get("push"):  # a gentle push-in for clips whose camera barely moves
         post.append(push_filter(s["push"], dur))
     if s.get("rack_open"):  # after a graphic: start soft and dim, pull focus to sharp (one focus move across the cut)
