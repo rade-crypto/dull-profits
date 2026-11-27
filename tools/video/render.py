@@ -48,7 +48,9 @@ def main():
     if work.exists() and not redo:
         shutil.rmtree(work)
     work.mkdir(parents=True, exist_ok=True)
-    shots, _ = resolve(ep)
+    # the same edit the preview plays (render/player/edit.json from build_player.py: cues, carries, focus-pull times)
+    pj = ep / "render" / "player" / "edit.json"
+    shots = json.load(open(pj))["shots"] if pj.exists() else resolve(ep)[0]
     end_t = args.until or shots[-1]["end"]
     shots = [s for s in shots if s["start"] < end_t - 0.01]
     shots[-1]["end"] = min(shots[-1]["end"], end_t)
@@ -66,14 +68,13 @@ def main():
     if jobs:
         run(["node", str(HERE / "render_gfx.js"), str(work / "gfx.json"), str(HERE / "gfx" / "scenes.html")])
 
-    # 2) one video segment per shot
-    segs = []
-    for s in shots:
+    # 2) one video segment per shot (4 at a time; the graphic's PNG frames are deleted once composited)
+    from concurrent.futures import ThreadPoolExecutor
+    def seg(s):
         n, dur = s["n"], s["frames"] / FPS
         out = work / f"s{n:02d}.mp4"
         if redo and n not in redo and out.exists():
-            segs.append(out)
-            continue
+            return out
         cmd, chains = ["ffmpeg", "-v", "error", "-y"], []
         if s.get("clip") or s.get("clips") or s.get("bg"):
             bg = work / f"bg{n:02d}.mp4"
@@ -90,8 +91,12 @@ def main():
         cmd += ["-filter_complex", ";".join(chains), "-map", "[v]", "-frames:v", str(s["frames"]), "-r", str(FPS),
                 "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-an", str(out)]
         run(cmd)
-        segs.append(out)
+        if s.get("scene"):
+            shutil.rmtree(work / f"g{n:02d}", ignore_errors=True)
         print(f"shot {n:02d} {s['kind']:2} {dur:5.2f}s {s.get('clip') or '(graphic)'}", flush=True)
+        return out
+    with ThreadPoolExecutor(4) as ex:
+        segs = list(ex.map(seg, shots))
     (work / "list.txt").write_text("".join(f"file '{p}'\n" for p in segs))
     video = work / "video.mp4"
     run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(work / "list.txt"), "-c", "copy", str(video)])
