@@ -12,7 +12,7 @@ Upload the **4K files** (3840×2160): `A-62c-owner-4k.jpg`, `B-lax-59-5-percent-
 
 **First: "Thumbnail only", A vs B, with the main title fixed.**
 1. Before you upload, verify the channel in Studio → Settings → Channel → Feature eligibility. Test & Compare needs **advanced features**, which come from ID or video verification. Phone verification isn't enough.
-2. Publish with the title "LAX Takes 59.5% of Every Vending Machine Sale" and **thumbnail A2** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and A is the stronger guess.
+2. Publish with the title "An Airport Takes 59.5% of Every Vending Machine Sale" and **thumbnail A2** as the default. If the test is inconclusive, YouTube keeps the first one uploaded, and A is the stronger guess.
 3. In desktop Studio, open the video → Test & Compare → **Thumbnail only** → add B. Use only two options: a new channel's first video gets few impressions, and three options split them further.
 4. Leave it alone for up to 14 days. **Any edit to the title or thumbnail stops the test.**
 5. YouTube picks the winner by **watch time share**, not clicks. "Inconclusive" is normal for a first video, because telling apart a 4% and a 5% click rate takes about 6,700 impressions per option. If that happens, keep A and try a bolder idea on Episode 2.
